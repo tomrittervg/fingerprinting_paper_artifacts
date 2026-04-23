@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>FPJS Profile Gaps — Uncollected by Firefox</title>
+<style>
+  body { font-family: monospace; font-size: 13px; margin: 20px; background: #1a1a1a; color: #e0e0e0; }
+  h1 { font-size: 16px; color: #8cf; }
+  h2 { font-size: 14px; color: #adf; margin-top: 30px; border-bottom: 1px solid #333; padding-bottom: 4px; }
+  .note { color: #888; font-size: 12px; margin-bottom: 20px; }
+  .result { margin: 6px 0; padding: 8px 12px; background: #222; border-left: 3px solid #555; white-space: pre-wrap; word-break: break-all; }
+  .result.ok { border-left-color: #4a4; }
+  .result.err { border-left-color: #a44; }
+  .result.pending { border-left-color: #aa4; }
+  .label { color: #888; }
+  table { border-collapse: collapse; margin: 8px 0; }
+  td, th { padding: 3px 10px; border: 1px solid #333; text-align: left; }
+  th { background: #282828; color: #adf; }
+  td.val { color: #cf8; }
+  #summary { margin-top: 30px; padding: 12px; background: #1e2a1e; border: 1px solid #4a4; }
+</style>
+</head>
+<body>
+<h1>FPJS Profile Gaps — Signals Not Collected by Firefox</h1>
+<p class="note">Only signals with nonzero entropy that are not covered by any
+existing Firefox user-characteristics metric. See profile-gap-firefox-coverage.md
+for the full analysis of all 7 gaps.</p>
+
+<!-- Gap 1: WebRTC SDP (high entropy, not collected) -->
+<h2>Gap 1: WebRTC SDP Codec List <span style="color:#a44">[HIGH entropy]</span></h2>
+<p class="note">Firefox collects ice_order and ice_sd, but these have ~zero
+entropy. The SDP codec list — the actual high-entropy signal — is not collected.</p>
+<div id="webrtc-result" class="result pending">Collecting...</div>
+
+<!-- Gap 5: WebAuthn (low-medium entropy, not collected) -->
+<h2>Gap 5: WebAuthn Client Capabilities <span style="color:#aa4">[LOW-MEDIUM entropy]</span></h2>
+<p class="note">Not collected by Firefox. Entropy varies by platform: negligible
+on Linux, medium on Windows/macOS (platform authenticator hardware).</p>
+<div id="webauthn-result" class="result pending">Collecting...</div>
+
+<!-- Gap 6: StorageManager (low entropy, not collected) -->
+<h2>Gap 6: StorageManager Quota <span style="color:#aa4">[LOW entropy]</span></h2>
+<p class="note">Not collected by Firefox. Quota varies by disk size (bucketed),
+but is unstable over time. OPFS availability is ~always true.</p>
+<div id="storage-result" class="result pending">Collecting...</div>
+
+<!-- Summary -->
+<div id="summary" style="display:none"></div>
+
+<script>
+"use strict";
+
+const allResults = {};
+
+function show(id, data, isError) {
+  const el = document.getElementById(id);
+  el.className = "result " + (isError ? "err" : "ok");
+  if (typeof data === "object") {
+    el.textContent = JSON.stringify(data, null, 2);
+  } else {
+    el.textContent = String(data);
+  }
+  allResults[id] = data;
+}
+
+function showErr(id, err) {
+  show(id, "Error: " + (err.message || err), true);
+}
+
+// =========================================================================
+// Gap 1: WebRTC SDP Fingerprinting
+// Creates an RTCPeerConnection, generates an SDP offer, and extracts the
+// codec list and ICE candidates.
+// =========================================================================
+async function collectWebRTC() {
+  if (!window.RTCPeerConnection) {
+    return show("webrtc-result", "RTCPeerConnection not available", true);
+  }
+  try {
+    const pc = new RTCPeerConnection({
+      iceServers: [],
+      iceCandidatePoolSize: 0
+    });
+    // Add a data channel to ensure SDP contains data section
+    pc.createDataChannel("fp");
+
+    const candidates = [];
+    pc.onicecandidate = (e) => {
+      if (e.candidate) candidates.push(e.candidate.candidate);
+    };
+
+    const offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+
+    // Wait for ICE gathering (up to 500ms, matching FPJS behavior)
+    await new Promise((resolve) => {
+      if (pc.iceGatheringState === "complete") return resolve();
+      const timeout = setTimeout(resolve, 500);
+      pc.onicegatheringstatechange = () => {
+        if (pc.iceGatheringState === "complete") {
+          clearTimeout(timeout);
+          resolve();
+        }
+      };
+    });
+
+    const sdp = pc.localDescription.sdp;
+    pc.close();
+
+    // Parse SDP into structured sections
+    const lines = sdp.split("\r\n");
+    const codecLines = lines.filter(l => l.startsWith("a=rtpmap:"));
+    const fmtpLines = lines.filter(l => l.startsWith("a=fmtp:"));
+    const extLines = lines.filter(l => l.startsWith("a=extmap:"));
+    const mLines = lines.filter(l => l.startsWith("m="));
+    const fingerprintLine = lines.find(l => l.startsWith("a=fingerprint:"));
+
+    show("webrtc-result", {
+      mediaLines: mLines,
+      codecs: codecLines,
+      formatParams: fmtpLines,
+      rtpExtensions: extLines,
+      dtlsFingerprint: fingerprintLine || "(none)",
+      iceCandidates: candidates.length > 0 ? candidates : ["(none gathered in 500ms)"],
+      rawSdpLength: sdp.length
+    });
+  } catch (e) {
+    showErr("webrtc-result", e);
+  }
+}
+
+// =========================================================================
+// Gap 5: WebAuthn Client Capabilities
+// Queries PublicKeyCredential.getClientCapabilities() for supported features.
+// =========================================================================
+async function collectWebAuthn() {
+  if (!window.PublicKeyCredential) {
+    return show("webauthn-result", "PublicKeyCredential not available", true);
+  }
+  if (!PublicKeyCredential.getClientCapabilities) {
+    return show("webauthn-result", "getClientCapabilities() not available (requires Firefox 128+)", true);
+  }
+  try {
+    const caps = await PublicKeyCredential.getClientCapabilities();
+    // Convert Map-like to plain object if needed
+    const result = {};
+    if (caps && typeof caps === "object") {
+      for (const [k, v] of Object.entries(caps)) {
+        result[k] = v;
+      }
+    }
+    show("webauthn-result", {
+      capabilities: result,
+      isUserVerifyingPlatformAuthenticatorAvailable:
+        PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable
+          ? await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+          : "(method not available)",
+      isConditionalMediationAvailable:
+        PublicKeyCredential.isConditionalMediationAvailable
+          ? await PublicKeyCredential.isConditionalMediationAvailable()
+          : "(method not available)"
+    });
+  } catch (e) {
+    showErr("webauthn-result", e);
+  }
+}
+
+// =========================================================================
+// Gap 6: StorageManager Quota Probing
+// Reads storage quota estimate and tests OPFS availability.
+// =========================================================================
+async function collectStorageManager() {
+  if (!navigator.storage || !navigator.storage.estimate) {
+    return show("storage-result", "StorageManager.estimate() not available", true);
+  }
+  try {
+    const estimate = await navigator.storage.estimate();
+
+    let opfsAvailable = false;
+    let opfsError = null;
+    if (navigator.storage.getDirectory) {
+      try {
+        const dir = await navigator.storage.getDirectory();
+        opfsAvailable = true;
+      } catch (e) {
+        opfsError = e.message;
+      }
+    }
+
+    show("storage-result", {
+      quota: estimate.quota,
+      usage: estimate.usage,
+      quotaMB: Math.round(estimate.quota / 1048576),
+      usageMB: Math.round(estimate.usage / 1048576),
+      opfsAvailable: opfsAvailable,
+      opfsError: opfsError,
+      persisted: navigator.storage.persisted ? await navigator.storage.persisted() : "(not available)"
+    });
+  } catch (e) {
+    showErr("storage-result", e);
+  }
+}
+
+// =========================================================================
+// Run all collectors
+// =========================================================================
+async function runAll() {
+  await Promise.allSettled([
+    collectWebRTC(),
+    collectWebAuthn(),
+    collectStorageManager()
+  ]);
+
+  // Show summary
+  const summary = document.getElementById("summary");
+  summary.style.display = "block";
+  summary.innerHTML = "<h2>Collection Complete</h2><pre>" +
+    JSON.stringify(allResults, null, 2) + "</pre>";
+
+  console.log("Uncollected gap results:", allResults);
+}
+
+runAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FingerprintPro WebGPU Collector</title>
+<style>
+  body { font-family: monospace; font-size: 13px; margin: 20px; background: #1a1a1a; color: #d0d0d0; }
+  h1 { font-size: 16px; color: #fff; margin-bottom: 4px; }
+  .subtitle { color: #888; font-size: 11px; margin-bottom: 24px; }
+  .signal { margin-bottom: 32px; }
+  .signal-title {
+    font-size: 13px; font-weight: bold; color: #e8c97a;
+    border-bottom: 1px solid #444; padding-bottom: 4px; margin-bottom: 12px;
+  }
+  .signal-note { color: #666; font-size: 11px; margin-bottom: 10px; font-style: italic; }
+  .section { margin-bottom: 16px; }
+  .section-header {
+    font-size: 12px; font-weight: bold; color: #7ec8e3;
+    border-bottom: 1px solid #2a2a2a; padding-bottom: 3px; margin-bottom: 6px;
+    display: flex; gap: 12px; align-items: baseline;
+  }
+  .section-header .count { color: #666; font-weight: normal; font-size: 11px; }
+  .entry { padding: 1px 0; white-space: pre; }
+  .value  { color: #98d882; }
+  .absent { color: #d06060; }
+  .raw    { color: #aaa; }
+  .status-ok  { color: #98d882; }
+  .status-err { color: #e05050; }
+  .error { color: #e05050; font-weight: bold; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<h1>FingerprintPro WebGPU Collector</h1>
+<div class="subtitle">Same collection logic as FingerprintPro. Nothing is submitted.</div>
+<div id="output"></div>
+
+<script>
+// ── Hardcoded limits list ─────────────────────────────────────────────────────
+// From profiler observation (profile-gap-analysis.md lines 104-134).
+// FP reads exactly these 31 properties from adapter.limits.
+
+const LIMITS = [
+  "maxBindGroups",
+  "maxBindGroupsPlusVertexBuffers",
+  "maxBindingsPerBindGroup",
+  "maxBufferSize",
+  "maxColorAttachmentBytesPerSample",
+  "maxColorAttachments",
+  "maxComputeInvocationsPerWorkgroup",
+  "maxComputeWorkgroupSizeX",
+  "maxComputeWorkgroupSizeY",
+  "maxComputeWorkgroupSizeZ",
+  "maxComputeWorkgroupStorageSize",
+  "maxComputeWorkgroupsPerDimension",
+  "maxDynamicStorageBuffersPerPipelineLayout",
+  "maxDynamicUniformBuffersPerPipelineLayout",
+  "maxInterStageShaderVariables",
+  "maxSampledTexturesPerShaderStage",
+  "maxSamplersPerShaderStage",
+  "maxStorageBufferBindingSize",
+  "maxStorageBuffersPerShaderStage",
+  "maxStorageTexturesPerShaderStage",
+  "maxTextureArrayLayers",
+  "maxTextureDimension1D",
+  "maxTextureDimension2D",
+  "maxTextureDimension3D",
+  "maxUniformBufferBindingSize",
+  "maxUniformBuffersPerShaderStage",
+  "maxVertexAttributes",
+  "maxVertexBufferArrayStride",
+  "maxVertexBuffers",
+  "minStorageBufferOffsetAlignment",
+  "minUniformBufferOffsetAlignment",
+];
+
+// ── Bitvector helpers (matches gu() encoding logic) ──────────────────────────
+// gu() builds a Uint32Array where each present feature sets one bit.
+// The bit index comes from a pre-assigned index map (Lu/au in FP).
+// FP's exact index ordering is encrypted; we use insertion order here,
+// so the bitvector values will differ from FP's but the structure is identical.
+
+function buildBitvector(featureSet, indexMap) {
+  const wordCount = Math.ceil(indexMap.size / 32);
+  const d = new Uint32Array(wordCount);
+  let degraded = false;
+  for (const name of featureSet) {
+    const idx = indexMap.get(name);
+    if (idx === undefined) { degraded = true; continue; }
+    const word = Math.floor(idx / 32);
+    const bit  = idx & 31;
+    d[word] = (d[word] | (1 << bit)) >>> 0;
+  }
+  return { words: d, degraded };
+}
+
+// ── Rendering helpers ─────────────────────────────────────────────────────────
+
+function section(title, entries, colorFn, count) {
+  const div = document.createElement("div");
+  div.className = "section";
+  const n = count !== undefined ? count : entries.length;
+  const hdr = document.createElement("div");
+  hdr.className = "section-header";
+  hdr.innerHTML = `${title} <span class="count">${n} entries</span>`;
+  div.appendChild(hdr);
+  for (const e of entries) {
+    const row = document.createElement("div");
+    row.className = "entry " + (colorFn ? colorFn(e) : "raw");
+    row.textContent = e;
+    div.appendChild(row);
+  }
+  return div;
+}
+
+function kvSection(title, pairs) {
+  return section(title,
+    pairs.map(([k, v]) => `${k} = ${v}`),
+    () => "value",
+    pairs.length
+  );
+}
+
+function errorDiv(msg) {
+  const d = document.createElement("div");
+  d.className = "error";
+  d.textContent = msg;
+  return d;
+}
+
+// ── exp_s1016 / gu() — WGSL Language Features bitvector ──────────────────────
+// gu() is synchronous. navigator.gpu.wgslLanguageFeatures is synchronous.
+// requestAdapter() is async — so gu() cannot use adapter.features.
+// Conclusion: gu() encodes navigator.gpu.wgslLanguageFeatures.
+
+function collectWgslFeatures(out) {
+  const sig = document.createElement("div");
+  sig.className = "signal";
+
+  const title = document.createElement("div");
+  title.className = "signal-title";
+  title.textContent = "exp_s1016  /  gu()  —  WGSL Language Features bitvector  [synchronous]";
+  sig.appendChild(title);
+
+  const note = document.createElement("div");
+  note.className = "signal-note";
+  note.textContent =
+    "Source: navigator.gpu.wgslLanguageFeatures  |  " +
+    "Payload: Uint32Array bitvector — each present feature sets one bit at a pre-assigned index.  |  " +
+    "Note: FP's exact bit-index mapping is in an encrypted string table (Lu/Su); " +
+    "values shown here use local insertion-order indices so bitvector words differ from FP's.";
+  sig.appendChild(note);
+
+  if (!navigator.gpu) {
+    sig.appendChild(errorDiv("navigator.gpu unavailable — WebGPU not supported (status: -1)"));
+    out.appendChild(sig);
+    return;
+  }
+
+  const wgslFeatures = navigator.gpu.wgslLanguageFeatures;
+  if (!wgslFeatures) {
+    sig.appendChild(errorDiv("navigator.gpu.wgslLanguageFeatures unavailable"));
+    out.appendChild(sig);
+    return;
+  }
+
+  // Collect feature names
+  const names = [];
+  for (const f of wgslFeatures) names.push(f);
+  names.sort();
+
+  // Build index map (local order — not FP's encrypted Lu order)
+  const indexMap = new Map(names.map((n, i) => [n, i]));
+
+  // Encode bitvector (same algorithm as gu())
+  const { words, degraded } = buildBitvector(wgslFeatures, indexMap);
+
+  const status = degraded ? -2 : 0;
+  // Note: with a locally-built index map degraded is always false — it only
+  // fires in FP's version when the browser reports a feature name absent from
+  // its encrypted Lu list. We surface the status code for structural fidelity.
+  const statusEl = document.createElement("div");
+  statusEl.className = "entry status-ok";
+  statusEl.textContent = `status: ${status}`;
+  sig.appendChild(statusEl);
+
+  // Bitvector words
+  const bvEntries = Array.from(words).map((w, i) => `b[${i}] = ${w}  (0x${w.toString(16).padStart(8,"0")})`);
+  sig.appendChild(section("bitvector  { b: Uint32Array }", bvEntries, () => "raw"));
+
+  // Feature names list
+  sig.appendChild(section(
+    "wgslLanguageFeatures  (present)",
+    names,
+    () => "value"
+  ));
+
+  out.appendChild(sig);
+}
+
+// ── Async: adapter info + features + limits ───────────────────────────────────
+// From profiler: GPU.requestAdapter called, then adapter.info and adapter.limits read.
+// Attributed to the exp_s101x signal cluster (likely exp_s1014 / yu()).
+
+async function collectAdapterData(out) {
+  const sig = document.createElement("div");
+  sig.className = "signal";
+
+  const title = document.createElement("div");
+  title.className = "signal-title";
+  title.textContent = "exp_s101x  /  yu() + tu()  —  Adapter info, features, and limits  [async]";
+  sig.appendChild(title);
+
+  const note = document.createElement("div");
+  note.className = "signal-note";
+  note.textContent =
+    "Source: navigator.gpu.requestAdapter()  |  " +
+    "Profiler observed: GPU.requestAdapter (×2), GPUAdapter.info (×1), " +
+    "GPUAdapter.limits (×67 samples — object accessed once then all 31 properties read), " +
+    "GPUAdapterInfo.description/device (×1 each), GPUAdapter.isFallbackAdapter (×1)";
+  sig.appendChild(note);
+
+  if (!navigator.gpu) {
+    sig.appendChild(errorDiv("navigator.gpu unavailable — WebGPU not supported (status: -1)"));
+    out.appendChild(sig);
+    return;
+  }
+
+  let adapter;
+  try {
+    adapter = await navigator.gpu.requestAdapter();
+  } catch (e) {
+    sig.appendChild(errorDiv(`requestAdapter() threw: ${e}`));
+    out.appendChild(sig);
+    return;
+  }
+
+  if (!adapter) {
+    sig.appendChild(errorDiv("requestAdapter() returned null — no suitable adapter (status: -1)"));
+    out.appendChild(sig);
+    return;
+  }
+
+  // ── Adapter info (GPUAdapterInfo) ─────────────────────────────────────────
+  // Profiler observed: description, device (on GPUAdapterInfo),
+  // isFallbackAdapter (on GPUAdapter directly, not GPUAdapterInfo).
+  const info = adapter.info ?? {};
+  const infoPairs = [
+    ["description",       info.description ?? "(unavailable)"],
+    ["device",            info.device      ?? "(unavailable)"],
+    ["isFallbackAdapter", String(adapter.isFallbackAdapter ?? "(unavailable)")],
+  ];
+  sig.appendChild(kvSection("GPUAdapterInfo", infoPairs));
+
+  // ── Adapter features (GPUSupportedFeatures) ───────────────────────────────
+  const adapterFeatures = [];
+  if (adapter.features) {
+    for (const f of adapter.features) adapterFeatures.push(f);
+    adapterFeatures.sort();
+  }
+  sig.appendChild(section(
+    "GPUAdapter.features  (adapter.features — supported GPU features)",
+    adapterFeatures,
+    () => "value"
+  ));
+
+  // ── Limits (hardcoded list of 31 — from profiler) ─────────────────────────
+  // Profiler showed 67 samples on adapter.limits (the object), then 1 sample
+  // per individual property — consistent with: get limits object once, then
+  // read each named property from a hardcoded list.
+  const limits = adapter.limits;
+  const limitPairs = LIMITS.map(name => [name, limits ? String(limits[name] ?? "(unavailable)") : "(unavailable)"]);
+  sig.appendChild(kvSection(
+    "GPUSupportedLimits  (31 properties — hardcoded list from profiler)",
+    limitPairs
+  ));
+
+  out.appendChild(sig);
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+
+(async function main() {
+  const out = document.getElementById("output");
+  collectWgslFeatures(out);
+  await collectAdapterData(out);
+})();
+</script>
+</body>
+</html>

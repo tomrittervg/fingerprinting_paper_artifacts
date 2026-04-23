@@ -1,0 +1,5 @@
+google-cloud-bigquery
+matplotlib
+numpy
+scikit-learn
+tqdm

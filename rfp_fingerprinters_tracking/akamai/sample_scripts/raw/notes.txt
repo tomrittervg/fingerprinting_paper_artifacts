@@ -1,0 +1,9 @@
+Akamai Bot Manager fingerprinting scripts downloaded 2026-02-06 10:52 EST
+
+Sources:
+  https://www.americanexpress.com/akam/13/58debc84 -> americanexpress.js
+  https://www.prada.com/akam/13/54a94387           -> prada.js
+  https://www.xfinity.com/akam/13/1dfc9a83         -> xfinity.js
+
+These were the only 3 out of 28 attempted /akam/13/ URLs that still returned
+valid scripts (the rest returned 404). The hex tokens in the URL path rotate.

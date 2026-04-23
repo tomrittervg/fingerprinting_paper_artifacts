@@ -1,0 +1,21 @@
+Needs to be retirved from a special URL:
+https://imgs.signifyd.com/fp/check.js
+
+Examples:
+check.js.1
+https://imgs.signifyd.com/fp/check.js;CIS3SID=EF3EB2F8E9B966CD0DF49E53F5444342?org_id=w2txo5aa&session_id=731503498thinklabsmyshopifycom&nonce=777c2c2df7262855&jb=343326266a716f7d355761666e657f7324687b673f5f636e6c6d7f712f3a323330266a71627d3546617a6f6c677824687b6a3f4e63726d64677a2f3a32333437
+check.js.2
+https://imgs.signifyd.com/fp/check.js;CIS3SID=8E67574D312A3E25B044FB5F6806DF6F?org_id=w2txo5aa&session_id=731503498denimtearsmyshopifycom&nonce=e37c3d7d5a60d590&jb=343326266a716f7d355769646c67777326687167355561646467757b2738383332266a736075354e69726f6e6778266a7160354e6b7a6f66677a2d303a393635
+
+They can also come from the hosting domain:
+check.js.3
+https://content.discovercard.com/fp/check.js;CIS3SID=4390A34E65DFBC7911AB010BF57D2C16?org_id=2ol9uikb&session_id=a2508ef0-d3c2-11f0-bc11-d93fea32660d&nonce=05880b17bb2077fc&jb=3633262662736d7535576b6c66677773246a7b6d3f576966646775712532323332246a7362773d466172676667782468716a3d466b726d646d78253a30393635
+
+Same script, can be retrieved directly:
+https://cdn-scripts.signifyd.com/o/lite.js
+https://static.kyc.red/lite.js
+
+
+POST location:
+https://imgs.signifyd.com/[str-replaced-16]
+

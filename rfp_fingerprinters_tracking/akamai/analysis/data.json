@@ -1,0 +1,156 @@
+{
+  "apng_support": true,
+  "battery_status": 0,
+  "detected_fonts": null,
+  "font_hash": null,
+  "performance_timing": {
+    "retry_1_ms": 13,
+    "retry_2_ms": 115,
+    "retry_3_ms": 215,
+    "retry_4_ms": 317,
+    "retry_5_ms": 418,
+    "retry_6_ms": 520,
+    "function_profile": {
+      "plugin_hashes": "0ms",
+      "screen_dimensions": "0ms",
+      "dom_features": "0ms",
+      "local_time": "0ms",
+      "persistent_storage": "1ms",
+      "canvas_fingerprint": "8ms",
+      "flash_version": "0ms",
+      "silverlight": "0ms",
+      "browser_detect": "0ms",
+      "ie_userdata": "0ms",
+      "pdf_viewer": "0ms",
+      "z1": "2ms",
+      "js_version": "1ms",
+      "navigator": "0ms",
+      "permissions_api": "1ms",
+      "chrome_check": "0ms",
+      "z2": "0ms",
+      "z3": "1ms",
+      "z4": "0ms",
+      "z5": "1ms",
+      "z6": "1ms"
+    },
+    "page_load_to_start_ms": 57,
+    "fingerprint_compute_ms": 13,
+    "total_before_send_ms": 520
+  },
+  "plugin_hashes": "2087755996,1953464915,591862434,325835597,1068473606,-1382186647,-365096851,-1979186206,-108039040,-1906852049",
+  "screen_dimensions": {
+    "inner_window": [
+      1370,
+      856
+    ],
+    "outer_window": [
+      1680,
+      940
+    ],
+    "screen_position": [
+      0,
+      25
+    ],
+    "scroll_offset": [
+      0,
+      0
+    ],
+    "available_screen": [
+      1680,
+      974
+    ],
+    "total_screen": [
+      1680,
+      1050
+    ],
+    "body_client_area": [
+      1354,
+      143
+    ],
+    "color_depth": 30,
+    "pixel_depth": 30
+  },
+  "dom_feature_detection": {
+    "XDomainRequest": 0,
+    "createPopup": 0,
+    "removeEventListener": 1,
+    "globalStorage": 0,
+    "openDatabase": 0,
+    "indexedDB": 1,
+    "attachEvent": 0,
+    "ActiveXObject": 0,
+    "dispatchEvent": 1,
+    "addBehavior": 0,
+    "addEventListener": 1,
+    "detachEvent": 0,
+    "fireEvent": 0,
+    "MutationObserver": 1,
+    "HTMLMenuItemElement": 0,
+    "Int8Array": 1,
+    "postMessage": 1,
+    "querySelector": 1,
+    "getElementsByClassName": 1,
+    "images": 1,
+    "compatMode": "CSS1Compat",
+    "documentMode": 0,
+    "all": 1,
+    "now": 1,
+    "contextMenu": 0
+  },
+  "local_time_and_timezone": "1770398686598-5",
+  "persistent_storage": "true,true",
+  "canvas_fingerprint_hash": "658d2b5e3aafb5d1a0291cc0444b43ea21d39a7e",
+  "flash_version": false,
+  "silverlight_versions": false,
+  "browser_name": "Firefox",
+  "ie_userdata_storage": false,
+  "pdf_viewer_version": false,
+  "bot_detection": {
+    "flags_xor_key": 568,
+    "has_xpath_result": 1,
+    "chrome_without_runtime": 0
+  },
+  "bot_detection_property_indices": "",
+  "javascript_version": 1.5,
+  "navigator_properties": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:149.0) Gecko/20100101 Firefox/149.0",
+    "appName": "Netscape",
+    "appCodeName": "Mozilla",
+    "appVersion": "5.0 (Macintosh)",
+    "appMinorVersion": 0,
+    "product": "Gecko",
+    "productSub": "20100101",
+    "vendor": "",
+    "vendorSub": "",
+    "buildID": "20181001000000",
+    "platform": "MacIntel",
+    "oscpu": "Intel Mac OS X 10.15",
+    "hardwareConcurrency": 4,
+    "language": "en-US",
+    "languages": [
+      "en-US"
+    ],
+    "systemLanguage": 0,
+    "userLanguage": 0,
+    "doNotTrack": "1",
+    "msDoNotTrack": 0,
+    "cookieEnabled": true,
+    "geolocation": 1,
+    "vibrate": 0,
+    "maxTouchPoints": 0,
+    "webdriver": false,
+    "plugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ]
+  },
+  "chrome_runtime_check": {
+    "window.chrome": "-not-existent"
+  },
+  "site_key_hash": "8a1beaee63fed318ca54d4f7d18cee4081c68a74",
+  "site_identifier": "75e13f4bdcee54968548b43db914c0af",
+  "permissions_api_states": 11111133331333333000
+}

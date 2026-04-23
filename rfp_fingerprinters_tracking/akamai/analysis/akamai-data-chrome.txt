@@ -1,0 +1,171 @@
+{
+    "ap": true,
+    "bt": 0,
+    "fonts": null,
+    "fh": null,
+    "timing": {
+        "1": 35,
+        "2": 135,
+        "3": 236,
+        "4": 336,
+        "5": 437,
+        "6": 537,
+        "profile": {
+            "bp": 1,
+            "sr": 0,
+            "dp": 1,
+            "lt": 0,
+            "ps": 3,
+            "cv": 21,
+            "fp": 0,
+            "sp": 0,
+            "br": 1,
+            "ieps": 0,
+            "av": 0,
+            "z1": 6,
+            "jsv": 0,
+            "nav": 1,
+            "nap": 0,
+            "crc": 0,
+            "z2": 0,
+            "z3": 1,
+            "z4": 0,
+            "z5": 1,
+            "z6": 0
+        },
+        "main": 48,
+        "compute": 35,
+        "send": 537
+    },
+    "bp": "2087755996,1953464915,591862434,325835597,1068473606,-1382186647,-365096851,-1979186206,-108039040,-1906852049",
+    "sr": {
+        "inner": [
+            1896,
+            1899
+        ],
+        "outer": [
+            1940,
+            2082
+        ],
+        "screen": [
+            -10,
+            32
+        ],
+        "pageOffset": [
+            0,
+            0
+        ],
+        "avail": [
+            3840,
+            2062
+        ],
+        "size": [
+            3840,
+            2160
+        ],
+        "client": [
+            1880,
+            139
+        ],
+        "colorDepth": 24,
+        "pixelDepth": 24
+    },
+    "dp": {
+        "XDomainRequest": 0,
+        "createPopup": 0,
+        "removeEventListener": 1,
+        "globalStorage": 0,
+        "openDatabase": 0,
+        "indexedDB": 1,
+        "attachEvent": 0,
+        "ActiveXObject": 0,
+        "dispatchEvent": 1,
+        "addBehavior": 0,
+        "addEventListener": 1,
+        "detachEvent": 0,
+        "fireEvent": 0,
+        "MutationObserver": 1,
+        "HTMLMenuItemElement": 0,
+        "Int8Array": 1,
+        "postMessage": 1,
+        "querySelector": 1,
+        "getElementsByClassName": 1,
+        "images": 1,
+        "compatMode": "CSS1Compat",
+        "documentMode": 0,
+        "all": 1,
+        "now": 1,
+        "contextMenu": 0
+    },
+    "lt": "1772207862639-5",
+    "ps": "true,true",
+    "cv": "463a0a57a58a71ab0a89ef4293e5bb82bf43d21d",
+    "fp": false,
+    "sp": false,
+    "br": "Chrome",
+    "ieps": false,
+    "av": false,
+    "z": {
+        "a": 568,
+        "b": 1,
+        "c": 1
+    },
+    "zh": "",
+    "jsv": 1.5,
+    "nav": {
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+        "appName": "Netscape",
+        "appCodeName": "Mozilla",
+        "appVersion": "5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+        "appMinorVersion": 0,
+        "product": "Gecko",
+        "productSub": "20030107",
+        "vendor": "Google Inc.",
+        "vendorSub": "",
+        "buildID": 0,
+        "platform": "Linux x86_64",
+        "oscpu": 0,
+        "hardwareConcurrency": 64,
+        "language": "en-US",
+        "languages": [
+            "en-US",
+            "en"
+        ],
+        "systemLanguage": 0,
+        "userLanguage": 0,
+        "doNotTrack": null,
+        "msDoNotTrack": 0,
+        "cookieEnabled": true,
+        "geolocation": 1,
+        "vibrate": 1,
+        "maxTouchPoints": 0,
+        "webdriver": false,
+        "plugins": [
+            "PDF Viewer",
+            "Chrome PDF Viewer",
+            "Chromium PDF Viewer",
+            "Microsoft Edge PDF Viewer",
+            "WebKit built-in PDF"
+        ]
+    },
+    "crc": {
+        "window.chrome": {
+            "app": {
+                "isInstalled": false,
+                "InstallState": {
+                    "DISABLED": "disabled",
+                    "INSTALLED": "installed",
+                    "NOT_INSTALLED": "not_installed"
+                },
+                "RunningState": {
+                    "CANNOT_RUN": "cannot_run",
+                    "READY_TO_RUN": "ready_to_run",
+                    "RUNNING": "running"
+                }
+            }
+        }
+    },
+    "t": "8a1beaee63fed318ca54d4f7d18cee4081c68a74",
+    "u": "75e13f4bdcee54968548b43db914c0af",
+    "nap": "00300044040300044000"
+}

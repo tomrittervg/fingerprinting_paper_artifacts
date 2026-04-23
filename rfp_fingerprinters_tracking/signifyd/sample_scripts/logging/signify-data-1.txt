@@ -1,0 +1,162 @@
+{
+  "__sandboxed__": false,
+  "__mini_print__": "88384a93",
+  "navigation": {
+    "href": "http://10.2.1.150:8000/signifyd/sample_scripts/logging/lite.html",
+    "origin": "http://10.2.1.150:8000"
+  },
+  "sessionId": "test-1772207535159",
+  "browserFingerPrint": "n+meeRcRcQcBwBxRNbNLBJ4pgigiojoDoKq6y0zEvAs=",
+  "browserCryptoFingerPrint": {
+    "publicKey": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+  },
+  "hashes": {
+    "intl": {
+      "hash": "qaoaEfEfcQfLXCWyq/pfBWL2P6Na5S4CdAdAxJwZ0Q0=",
+      "use": true
+    },
+    "gpu": {
+      "hash": "nal6l1kFAAD/P/O/azYDAGKWiSgyMwMAnOluVsU8AwA=",
+      "use": true
+    },
+    "offlineAudioContext": {
+      "hash": "EJG56w5wFwFyp6qaOeO+C2I2E3E3k6kKgjhjhkhU1Q0=",
+      "use": true
+    },
+    "canvas2d": {
+      "hash": "7c7cHUFUdQfPjDiDiDjTDSJC5J7JbKYKvFsVocqMSAQ=",
+      "use": true
+    },
+    "clientRects": {
+      "hash": "okrkvsvc7Q6ECJDZ7S4SASZCdGcm8v8PJlJ1l7kLAAA=",
+      "use": true
+    },
+    "cookieMonster": {
+      "hash": "",
+      "use": false
+    },
+    "css": {
+      "hash": "QjRjppoJAABk9u/+n7lbBSbCjFgFsFsFpipSpTrDXAU=",
+      "use": true
+    },
+    "cssMedia": {
+      "hash": "XOWuWpX5nwl+twug6j4jAiJSpfp/x7wL2p25+383www=",
+      "use": true
+    },
+    "screen": {
+      "hash": "yyxCdDdT1Q2tqvpvZjbzD2aGuBtRZSYCeNc9456JyAw=",
+      "use": false
+    },
+    "svg": {
+      "hash": "283MbNad2Q29282sSvRPBGYWAcCcaZYJmKmaGSGSKQI=",
+      "use": true
+    },
+    "timezone": {
+      "hash": "EpGJSERk9g/0n2nGDECECOYO4I5IJHIHBjDzD1Clegc=",
+      "use": true
+    },
+    "webrtc": {
+      "hash": "",
+      "use": false
+    },
+    "windowFeatures": {
+      "hash": "UPXf3X0XgQiyyxwRgSgyA+I+w8z8P7MLAsD87/4/sws=",
+      "use": true
+    },
+    "workletAudioData": {
+      "hash": "BVAVAQAAAADn3s0MAAAAAOKO2A0AAAAA7C7iDgAAAAA=",
+      "use": false
+    }
+  },
+  "webrtc": {
+    "ipAddresses": [
+      "127.0.0.1"
+    ]
+  },
+  "navigator": {
+    "userAgentData": {
+      "platformVersion": "",
+      "uaFullVersion": "",
+      "mobile": false
+    },
+    "language": "",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:150.0) Gecko/20100101 Firefox/150.0",
+    "webdriver": false,
+    "platform": "Linux x86_64",
+    "appVersion": ""
+  },
+  "performanceData": {
+    "charging": false,
+    "level": 0
+  },
+  "workers": {
+    "main": {
+      "navigator": {
+        "userAgentData": {
+          "platformVersion": "",
+          "uaFullVersion": ""
+        },
+        "platform": "Linux x86_64",
+        "appVersion": "5.0 (X11)",
+        "language": "en-US",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:150.0) Gecko/20100101 Firefox/150.0",
+        "webdriver": false
+      }
+    },
+    "web": {
+      "navigator": {
+        "userAgentData": {
+          "platformVersion": "",
+          "uaFullVersion": ""
+        },
+        "platform": "Linux x86_64",
+        "appVersion": "5.0 (X11)",
+        "language": "en-US",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:150.0) Gecko/20100101 Firefox/150.0",
+        "webdriver": false
+      }
+    },
+    "shared": {
+      "navigator": {
+        "userAgentData": {
+          "platformVersion": "",
+          "uaFullVersion": ""
+        },
+        "platform": "Linux x86_64",
+        "appVersion": "5.0 (X11)",
+        "language": "en-US",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:150.0) Gecko/20100101 Firefox/150.0",
+        "webdriver": false
+      }
+    }
+  },
+  "incognito": {
+    "browserName": "Firefox",
+    "isPrivate": true
+  },
+  "timezone": {
+    "zone": "Eastern Standard Time",
+    "location": "America, New York",
+    "locationMeasured": "America, New York",
+    "offset": 300,
+    "offsetComputed": -300,
+    "locationEpoch": -27028667038000
+  },
+  "cssMediaComputed": {
+    "mediaCss": {
+      "orientation": "portrait"
+    },
+    "orientation": "landscape"
+  },
+  "cookieMonster": {
+    "cookies": true
+  },
+  "anomalies": {
+    "data": {
+      "CanvasRenderingContext2D.getImageData": [
+        "suspicious pixel data"
+      ]
+    },
+    "totalLies": 1
+  }
+}

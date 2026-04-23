@@ -1,0 +1,27 @@
+phase,visible,ic,short_name,long_name,filters
+0,1,ic,Processor Count,,addProcessorCountProtection
+0,1,ic,WebGL Renderer Sanitizing,,addWebGLRendererSanitizing
+0,1,ic,Minor Version,,addMinorVersionProtection
+1,1,ic,Font Protections,,fontProtectionsFilter
+1,1,ic,fdLibm,,fdlibmFilter
+2,1,ic,Processor Count,,procCountFilter
+2,1,ic,Screen Availability,,screenAvailFilter
+2,1,ic,Touch Points,,touchPointFilter
+2,1,ic,Font List Updates,,fontListUpdatesFilterLocaleConsideration
+3,1,ic,WebGL Vendor,,webGLVendorRendererFilter
+3,1,ic,Storage Quota,,storageQuotaFilter
+3,1,ic,Outer Equals Inner,,outerEqualsInnerFilter
+3,1,ic,Media Capabilities,,mediaCapabilitiesFilter
+3,1,ic,Software Canvas,,canvasToSoftwareFilter
+3,1,ic,Accept Language,,acceptLanguageLimitAndCollapseFilter
+3,1,ic,Timezone,,timezoneFilter
+4,0,ic,Shipping Missing Fonts,,shippingMissingFontsFilter
+4,0,ic,Letterboxing,,letterboxingFilter
+4,0,ic,Voices,,voicesFilter
+4,0,ic,ClientRects Round 2dp,,clientRectsRound2Filter
+4,0,ic,ClientRects Round 1dp,,clientRectsRound1Filter
+4,0,ic,ClientRects Round 0dp,,clientRectsRound0Filter
+4,0,ic,CSS System Colors,,cssSystemColorsFilter
+4,0,ic,MathML,,mathmlFilter
+Z,0,i,Accept Language Limit,,acceptLanguageLimitFilter
+Z,0,i,Accept Language Collapse,,acceptLanguageCollapseFilter

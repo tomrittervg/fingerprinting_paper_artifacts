@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signifyd lite.js - Non-CreepJS Features</title>
+    <style>
+        :root {
+            --bg: #1a1a2e;
+            --card-bg: #16213e;
+            --text: #eaeaea;
+            --text-muted: #a0a0a0;
+            --accent: #e94560;
+            --success: #4ecca3;
+            --warning: #ffc107;
+            --border: #0f3460;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card h3 {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin: 15px 0 10px 0;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .status.private {
+            background: var(--accent);
+            color: white;
+        }
+
+        .status.normal {
+            background: var(--success);
+            color: #1a1a2e;
+        }
+
+        .status.warning {
+            background: var(--warning);
+            color: #1a1a2e;
+        }
+
+        .status.unknown {
+            background: var(--text-muted);
+            color: #1a1a2e;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+        }
+
+        .result-key {
+            color: var(--text-muted);
+        }
+
+        .result-value {
+            color: var(--text);
+            text-align: right;
+            max-width: 60%;
+            word-break: break-all;
+        }
+
+        .anomaly-list {
+            background: rgba(233, 69, 96, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .anomaly-list.empty {
+            background: rgba(78, 204, 163, 0.1);
+            border-color: var(--success);
+        }
+
+        .anomaly-item {
+            color: var(--accent);
+            padding: 3px 0;
+            font-size: 0.9rem;
+        }
+
+        .anomaly-list.empty .anomaly-item {
+            color: var(--success);
+        }
+
+        .json-view {
+            background: #0d1117;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+
+        .loading::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .description {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .true-value { color: var(--success); }
+        .false-value { color: var(--accent); }
+        .null-value { color: var(--text-muted); }
+
+        footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Signifyd lite.js - Non-CreepJS Features</h1>
+    <p class="subtitle">
+        Fingerprinting techniques from Signifyd's lite.js that are either NOT in CreepJS
+        or represent significant architectural changes from the May 2023 fork.
+        <br>
+        <strong>Note:</strong> Some features were inherited from CreepJS (marked below).
+    </p>
+
+    <div id="results">
+        <div class="loading">Collecting fingerprint data</div>
+    </div>
+
+    <footer>
+        For analysis purposes only.
+        Based on research comparing <a href="https://cdn-scripts.signifyd.com/">Signifyd's lite.js</a>
+        with <a href="https://github.com/AbrahamJuliot/creep-js">CreepJS</a>.
+    </footer>
+
+    <script src="fingerprint.js"></script>
+    <script>
+        function formatValue(value) {
+            if (value === true) return '<span class="true-value">true</span>';
+            if (value === false) return '<span class="false-value">false</span>';
+            if (value === null || value === undefined) return '<span class="null-value">null</span>';
+            if (typeof value === 'object') return JSON.stringify(value);
+            return String(value);
+        }
+
+        function renderResults(data) {
+            const container = document.getElementById('results');
+            container.innerHTML = '';
+
+            // 1. Incognito Detection
+            const incognitoCard = document.createElement('div');
+            incognitoCard.className = 'card';
+            const incognitoStatus = data.incognito?.isPrivate
+                ? '<span class="status private">PRIVATE MODE</span>'
+                : data.incognito?.isPrivate === false
+                    ? '<span class="status normal">NORMAL MODE</span>'
+                    : '<span class="status unknown">UNKNOWN</span>';
+
+            incognitoCard.innerHTML = `
+                <h2>1. Incognito / Private Mode Detection <span class="status warning">EXTERNAL LIB</span></h2>
+                <div class="description">
+                    <strong>External library integrated by Signifyd</strong> (not from CreepJS).
+                    Uses browser-specific techniques to detect private browsing mode.
+                    Based on <a href="https://github.com/Joe12387/detectIncognito" style="color: var(--accent);">detectIncognito v1.4.1</a>.
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Status</span>
+                    <span class="result-value">${incognitoStatus}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Browser Detected</span>
+                    <span class="result-value">${data.incognito?.browserName || 'Unknown'}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Is Private</span>
+                    <span class="result-value">${formatValue(data.incognito?.isPrivate)}</span>
+                </div>
+            `;
+            container.appendChild(incognitoCard);
+
+            // 2. Navigator Anomalies
+            const anomaliesCard = document.createElement('div');
+            anomaliesCard.className = 'card';
+            const anomalies = data.navigatorAnomalies || [];
+            const anomalyListClass = anomalies.length === 0 ? 'anomaly-list empty' : 'anomaly-list';
+            const anomalyContent = anomalies.length === 0
+                ? '<div class="anomaly-item">No anomalies detected - navigator APIs appear native</div>'
+                : anomalies.map(a => `<div class="anomaly-item">• ${a}</div>`).join('');
+
+            anomaliesCard.innerHTML = `
+                <h2>2. Navigator Anomaly Detection <span class="status unknown">FROM CREEPJS</span></h2>
+                <div class="description">
+                    <strong>Not unique to Signifyd</strong> - this pattern came from CreepJS at the fork point.
+                    The hasKnownToString() and [native code] detection existed in CreepJS's lie detection module.
+                    <br><br>
+                    Checks if navigator properties have been tampered with by detecting
+                    non-native code in property getters/setters and function implementations.
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Anomalies Found</span>
+                    <span class="result-value">${anomalies.length}</span>
+                </div>
+                <div class="${anomalyListClass}">
+                    ${anomalyContent}
+                </div>
+            `;
+            container.appendChild(anomaliesCard);
+
+            // 3. Worker Context Comparison
+            const workerCard = document.createElement('div');
+            workerCard.className = 'card';
+            const worker = data.workerComparison || {};
+            const hasDiffs = worker.differences?.some(d => d.diffs?.length > 0);
+
+            workerCard.innerHTML = `
+                <h2>3. Worker Context Fingerprinting <span class="status normal">SIGNIFYD ADDITION</span></h2>
+                <div class="description">
+                    <strong>Genuinely new Signifyd code</strong> - architecturally different from CreepJS.
+                    CreepJS uses documentLie() to flag specific mismatches, while lite.js has a separate
+                    inline worker script that collects full navigator profiles.
+                    <br><br>
+                    Compares navigator properties across main thread, Web Worker, and Shared Worker
+                    to detect inconsistencies that may indicate spoofing.
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Main Thread</span>
+                    <span class="result-value">${worker.main ? '✓ Collected' : '✗ Failed'}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Web Worker</span>
+                    <span class="result-value">${worker.webWorker ? '✓ Collected' : '✗ Not available'}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Shared Worker</span>
+                    <span class="result-value">${worker.sharedWorker ? '✓ Collected' : '✗ Not available'}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Cross-Context Differences</span>
+                    <span class="result-value">${hasDiffs
+                        ? '<span class="status warning">DIFFERENCES FOUND</span>'
+                        : '<span class="status normal">CONSISTENT</span>'}</span>
+                </div>
+                <h3>Main Thread Anomalies</h3>
+                <div class="json-view">${JSON.stringify(worker.main?.anomalies || [], null, 2)}</div>
+            `;
+            container.appendChild(workerCard);
+
+            // 4. In-App WebView Detection
+            const webviewCard = document.createElement('div');
+            webviewCard.className = 'card';
+            const webview = data.inAppWebView || {};
+
+            webviewCard.innerHTML = `
+                <h2>4. In-App WebView Detection <span class="status normal">SIGNIFYD ADDITION</span></h2>
+                <div class="description">
+                    <strong>New code added by Signifyd</strong> (not in CreepJS).
+                    Detects if the page is running inside an in-app browser (Facebook, Instagram, etc.)
+                    rather than a standalone browser.
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Is In-App WebView</span>
+                    <span class="result-value">${webview.isInAppWebView
+                        ? '<span class="status warning">YES</span>'
+                        : '<span class="status normal">NO</span>'}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Browser</span>
+                    <span class="result-value">${webview.browser || 'Standard Browser'}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Indicators</span>
+                    <span class="result-value">${webview.indicators?.length || 0} found</span>
+                </div>
+                ${webview.indicators?.length ? `
+                    <div class="anomaly-list">
+                        ${webview.indicators.map(i => `<div class="anomaly-item">• ${i}</div>`).join('')}
+                    </div>
+                ` : ''}
+            `;
+            container.appendChild(webviewCard);
+
+            // 5. Cookie Monster
+            const cookieCard = document.createElement('div');
+            cookieCard.className = 'card';
+            const cookies = data.cookieMonster || {};
+
+            cookieCard.innerHTML = `
+                <h2>5. Cookie Monster - Storage Detection <span class="status normal">SIGNIFYD ADDITION</span></h2>
+                <div class="description">
+                    <strong>New code added by Signifyd</strong> (not in CreepJS).
+                    Tests various storage mechanisms to detect privacy settings or restrictions.
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Cookies Enabled</span>
+                    <span class="result-value">${formatValue(cookies.cookiesEnabled)}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Test Cookie Set</span>
+                    <span class="result-value">${formatValue(cookies.testCookieSet)}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Test Cookie Read</span>
+                    <span class="result-value">${formatValue(cookies.testCookieRead)}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Session Storage</span>
+                    <span class="result-value">${formatValue(cookies.sessionStorageEnabled)}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">Local Storage</span>
+                    <span class="result-value">${formatValue(cookies.localStorageEnabled)}</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-key">IndexedDB</span>
+                    <span class="result-value">${formatValue(cookies.indexedDBEnabled)}</span>
+                </div>
+            `;
+            container.appendChild(cookieCard);
+
+            // Raw JSON output
+            const rawCard = document.createElement('div');
+            rawCard.className = 'card';
+            rawCard.innerHTML = `
+                <h2>Raw Fingerprint Data</h2>
+                <div class="description">
+                    Complete JSON output of all collected data.
+                    Collection time: ${data.collectionTime?.toFixed(2) || '?'}ms
+                </div>
+                <div class="json-view">${JSON.stringify(data, null, 2)}</div>
+            `;
+            container.appendChild(rawCard);
+        }
+
+        // Listen for fingerprint ready event
+        window.addEventListener('signifyd-fingerprint-ready', (e) => {
+            renderResults(e.detail);
+        });
+
+        // Also try to render if already collected
+        if (window.SignifydUniqueFingerprint) {
+            window.SignifydUniqueFingerprint.collect().then(renderResults);
+        }
+    </script>
+</body>
+</html>

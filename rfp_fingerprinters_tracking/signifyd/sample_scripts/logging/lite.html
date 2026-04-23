@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Signifyd - WORKING FINAL</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 50px auto; padding: 20px; }
+        .info { background: #f0f0f0; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 5px; }
+        button:hover { background: #0056b3; }
+        #status { margin-top: 20px; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info-text { background: #d1ecf1; color: #0c5460; }
+        #dataDisplay { margin-top: 20px; max-height: 600px; overflow: auto; }
+        .data-container { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; padding: 15px; margin-bottom: 15px; }
+        .data-container h3 { margin-top: 0; color: #28a745; border-bottom: 2px solid #28a745; padding-bottom: 5px; }
+        .data-section { margin: 10px 0; }
+        .data-section h4 { color: #0066cc; margin: 10px 0 5px 0; font-size: 14px; }
+        pre { background: #fff; border: 1px solid #ddd; border-radius: 3px; padding: 10px; overflow-x: auto; font-size: 12px; line-height: 1.4; }
+        .key-value { display: grid; grid-template-columns: 200px 1fr; gap: 10px; margin: 5px 0; padding: 5px; }
+        .key-value:hover { background: #f0f0f0; }
+        .key { font-weight: bold; color: #495057; }
+        .value { color: #212529; word-break: break-all; }
+    </style>
+</head>
+<body>
+    <h1>Signifyd Fingerprinting - WORKING!</h1>
+
+    <div class="warning">
+        <h3>⚠️ Open DevTools Console (F12)!</h3>
+        <p>All fingerprinting data will be logged to console before encryption</p>
+    </div>
+
+    <div class="info">
+        <h3>Status: <span id="loadStatus">Loading...</span></h3>
+    </div>
+
+    <div>
+        <button id="triggerBtn" disabled>▶️ Collect Fingerprint Data</button>
+        <button id="clearBtn">🗑️ Clear Console & Display</button>
+    </div>
+
+    <div id="status"></div>
+
+    <div id="dataDisplay"></div>
+
+    <script>
+        // Polyfill crypto.subtle for insecure contexts (HTTP on non-localhost).
+        // crypto.subtle is only available in secure contexts (HTTPS or localhost).
+        // The fingerprint data is captured via JSON.stringify interception BEFORE
+        // encryption, so the polyfill just needs to not crash — exact crypto
+        // output doesn't matter for data capture.
+        if (!window.isSecureContext && (!window.crypto || !window.crypto.subtle)) {
+            console.warn('⚠️ Insecure context detected — injecting crypto.subtle polyfill.');
+            console.warn('   For correct crypto hashes, serve from https:// or http://localhost instead.');
+            if (!window.crypto) window.crypto = {};
+            const fakeKey = { type: 'public', algorithm: { name: 'ECDH' }, extractable: true, usages: [] };
+            const fakeKeyPair = { publicKey: fakeKey, privateKey: { ...fakeKey, type: 'private' } };
+            const enc = (s) => new TextEncoder().encode(s);
+            // Simple non-crypto hash (djb2-based, returns 32 bytes) — good enough for
+            // fingerprint component hashing so the profiler still produces distinct values.
+            function simpleHash(data) {
+                const bytes = new Uint8Array(data);
+                let h1 = 5381, h2 = 52711;
+                for (let i = 0; i < bytes.length; i++) {
+                    h1 = ((h1 << 5) + h1 + bytes[i]) >>> 0;
+                    h2 = ((h2 << 5) + h2 + bytes[i]) >>> 0;
+                }
+                const out = new Uint8Array(32);
+                for (let i = 0; i < 8; i++) {
+                    out[i]      = (h1 >>> (i * 4)) & 0xff;
+                    out[i + 8]  = (h2 >>> (i * 4)) & 0xff;
+                    out[i + 16] = ((h1 ^ h2) >>> (i * 4)) & 0xff;
+                    out[i + 24] = ((h1 + h2) >>> (i * 4)) & 0xff;
+                }
+                return out.buffer;
+            }
+            window.crypto.subtle = {
+                async generateKey()  { return fakeKeyPair; },
+                async importKey()    { return fakeKey; },
+                async exportKey(fmt) {
+                    if (fmt === 'jwk') return { kty: 'EC', crv: 'P-256', x: 'AAAA', y: 'BBBB' };
+                    return new Uint8Array(65).buffer;  // raw public key length
+                },
+                async deriveBits()   { return new Uint8Array(32).buffer; },
+                async encrypt(_alg, _key, data) { return data; },
+                async decrypt(_alg, _key, data) { return data; },
+                async sign()         { return new Uint8Array(64).buffer; },
+                async verify()       { return true; },
+                async digest(_alg, data) { return simpleHash(data); },
+            };
+        }
+    </script>
+    <script>
+        console.log('%c=== SIGNIFYD FINGERPRINTING ===', 'background: #0066cc; color: white; font-size: 18px; padding: 8px;');
+
+        // Save original JSON.stringify FIRST before any interception
+        const originalStringify = JSON.stringify;
+
+        // Function to display data on webpage
+        function displayCapturedData(data, index) {
+            const displayDiv = document.getElementById('dataDisplay');
+            const container = document.createElement('div');
+            container.className = 'data-container';
+
+            const header = document.createElement('h3');
+            header.textContent = `Captured Data #${index + 1} - ${new Date().toLocaleTimeString()}`;
+            container.appendChild(header);
+
+            // Display key sections
+            if (data.browserFingerPrint) {
+                const section = document.createElement('div');
+                section.className = 'data-section';
+                section.innerHTML = '<h4>🖥️ Browser Fingerprint</h4>';
+
+                const keyValue = document.createElement('div');
+                keyValue.className = 'key-value';
+                keyValue.innerHTML = `<div class="key">Fingerprint Hash:</div><div class="value">${data.browserFingerPrint}</div>`;
+                section.appendChild(keyValue);
+                container.appendChild(section);
+            }
+
+            if (data.sessionId) {
+                const section = document.createElement('div');
+                section.className = 'data-section';
+                section.innerHTML = '<h4>🔑 Session Info</h4>';
+
+                const keyValue = document.createElement('div');
+                keyValue.className = 'key-value';
+                keyValue.innerHTML = `<div class="key">Session ID:</div><div class="value">${data.sessionId}</div>`;
+                section.appendChild(keyValue);
+                container.appendChild(section);
+            }
+
+            if (data.navigator) {
+                const section = document.createElement('div');
+                section.className = 'data-section';
+                section.innerHTML = '<h4>🧭 Navigator Data</h4>';
+
+                for (const [key, value] of Object.entries(data.navigator)) {
+                    const keyValue = document.createElement('div');
+                    keyValue.className = 'key-value';
+                    // Use originalStringify to avoid infinite loop
+                    const displayValue = typeof value === 'object' ? originalStringify(value) : value;
+                    keyValue.innerHTML = `<div class="key">${key}:</div><div class="value">${displayValue}</div>`;
+                    section.appendChild(keyValue);
+                }
+                container.appendChild(section);
+            }
+
+            if (data.hashes) {
+                const section = document.createElement('div');
+                section.className = 'data-section';
+                section.innerHTML = '<h4>🔐 Hashes</h4>';
+
+                for (const [key, value] of Object.entries(data.hashes)) {
+                    const keyValue = document.createElement('div');
+                    keyValue.className = 'key-value';
+                    keyValue.innerHTML = `<div class="key">${key}:</div><div class="value">${value}</div>`;
+                    section.appendChild(keyValue);
+                }
+                container.appendChild(section);
+            }
+
+            if (data.webrtc) {
+                const section = document.createElement('div');
+                section.className = 'data-section';
+                section.innerHTML = '<h4>📡 WebRTC</h4>';
+
+                for (const [key, value] of Object.entries(data.webrtc)) {
+                    const keyValue = document.createElement('div');
+                    keyValue.className = 'key-value';
+                    // Use originalStringify to avoid infinite loop
+                    const displayValue = typeof value === 'object' ? originalStringify(value) : value;
+                    keyValue.innerHTML = `<div class="key">${key}:</div><div class="value">${displayValue}</div>`;
+                    section.appendChild(keyValue);
+                }
+                container.appendChild(section);
+            }
+
+            // Raw JSON dump - Use originalStringify to avoid infinite loop
+            const rawSection = document.createElement('div');
+            rawSection.className = 'data-section';
+            rawSection.innerHTML = '<h4>📄 Complete JSON Data</h4>';
+            const pre = document.createElement('pre');
+            pre.textContent = originalStringify(data, null, 2);
+            rawSection.appendChild(pre);
+            container.appendChild(rawSection);
+
+            displayDiv.appendChild(container);
+        }
+
+        // Intercept JSON.stringify to log data
+        const capturedData = [];
+
+        JSON.stringify = function(...args) {
+            const result = originalStringify.apply(this, args);
+
+            if (result && result.length > 1000 &&
+                (result.includes('"sessionId"') ||
+                 result.includes('"browserFingerPrint"') ||
+                 result.includes('"navigation"'))) {
+
+                console.log('%c=== FINGERPRINT DATA CAPTURED ===',
+                    'background: #28a745; color: white; font-size: 16px; padding: 6px;');
+
+                try {
+                    const parsed = JSON.parse(result);
+                    console.log('Complete Fingerprint Data:', parsed);
+                    capturedData.push(parsed);
+
+                    // Display on webpage
+                    displayCapturedData(parsed, capturedData.length - 1);
+
+                    // Log key sections
+                    if (parsed.browserFingerPrint) {
+                        console.log('→ Browser Fingerprint:', parsed.browserFingerPrint);
+                    }
+                    if (parsed.navigator) {
+                        console.log('→ Navigator:', parsed.navigator);
+                    }
+                    if (parsed.hashes) {
+                        console.log('→ Hashes:', parsed.hashes);
+                    }
+                    if (parsed.webrtc) {
+                        console.log('→ WebRTC:', parsed.webrtc);
+                    }
+                } catch(e) {
+                    console.log('Raw data:', result.substring(0, 500) + '...');
+                }
+            }
+
+            return result;
+        };
+
+        // Intercept fetch to see what's sent
+        const originalFetch = window.fetch;
+        window.fetch = function(...args) {
+            if (typeof args[0] === 'string' && args[0].includes('signifyd.com')) {
+                console.log('%c=== SENDING TO SERVER ===',
+                    'background: #dc3545; color: white; font-size: 16px; padding: 6px;');
+                console.log('URL:', args[0]);
+                console.log('Captured data count:', capturedData.length);
+                console.log('All captured data:', capturedData);
+            }
+            return originalFetch.apply(this, args);
+        };
+
+        // Load and modify the script
+        fetch('../raw/lite.js')
+            .then(response => response.text())
+            .then(scriptText => {
+                console.log('✓ Script loaded, length:', scriptText.length);
+
+                // CRITICAL FIX: Change })({}) at the end to })(window)
+                // This makes the IIFE use window as Ix, exposing everything globally!
+                const modifiedScript = scriptText.replace(/\}\)\(\{\}\);?\s*$/, '})(window);');
+
+                if (modifiedScript === scriptText) {
+                    console.warn('Warning: Script ending pattern not found, trying alternate...');
+                    // Try alternate pattern
+                    const altModified = scriptText.replace(/\}\)\(\s*\{\s*\}\s*\);?\s*$/, '})(window);');
+                    if (altModified !== scriptText) {
+                        console.log('✓ Used alternate pattern');
+                        scriptText = altModified;
+                    } else {
+                        console.error('Could not modify script ending. Proceeding anyway...');
+                    }
+                } else {
+                    console.log('✓ Modified script to use window instead of {}');
+                    scriptText = modifiedScript;
+                }
+
+                // Execute the modified script
+                const scriptElement = document.createElement('script');
+                scriptElement.textContent = scriptText;
+                document.head.appendChild(scriptElement);
+
+                // Check if profiler is available
+                setTimeout(() => {
+                    console.log('Checking for profiler...');
+                    console.log('typeof window.profiler:', typeof window.profiler);
+
+                    if (typeof window.profiler === 'function') {
+                        document.getElementById('loadStatus').textContent = '✅ Ready!';
+                        document.getElementById('loadStatus').style.color = 'green';
+                        document.getElementById('triggerBtn').disabled = false;
+                        document.getElementById('status').className = 'success';
+                        document.getElementById('status').innerHTML =
+                            '<strong>✓ Script loaded! Click button to collect fingerprint data.</strong>';
+                        console.log('✓✓✓ window.profiler is available!');
+                    } else {
+                        document.getElementById('loadStatus').textContent = '❌ Failed';
+                        document.getElementById('loadStatus').style.color = 'red';
+                        document.getElementById('status').className = 'error';
+                        document.getElementById('status').innerHTML =
+                            '<strong>✗ Profiler not available. Check console for details.</strong>';
+
+                        console.error('Profiler not found at window.profiler');
+                        console.log('Checking window object for profiler-like properties...');
+
+                        const profilerKeys = Object.keys(window).filter(k =>
+                            k.includes('profil') || k.includes('Profil') ||
+                            k.includes('finger') || k.includes('Finger') ||
+                            (typeof window[k] === 'object' && window[k] && 'profiler' in window[k])
+                        );
+
+                        console.log('Possible profiler keys:', profilerKeys);
+
+                        if (profilerKeys.length > 0) {
+                            console.log('Found potential profiler locations:');
+                            profilerKeys.forEach(key => {
+                                console.log(`  window.${key}:`, typeof window[key]);
+                                if (typeof window[key] === 'object' && window[key]) {
+                                    console.log(`    Keys:`, Object.keys(window[key]));
+                                }
+                            });
+                        }
+                    }
+                }, 200);
+            })
+            .catch(error => {
+                console.error('Error loading script:', error);
+                document.getElementById('loadStatus').textContent = '❌ Error';
+                document.getElementById('loadStatus').style.color = 'red';
+                document.getElementById('status').className = 'error';
+                document.getElementById('status').innerHTML =
+                    '<strong>✗ Failed to load: ' + error.message + '</strong>';
+            });
+    </script>
+
+    <script>
+        const statusDiv = document.getElementById('status');
+        const triggerBtn = document.getElementById('triggerBtn');
+
+        function updateStatus(message, type = 'info-text') {
+            statusDiv.className = type;
+            statusDiv.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+        }
+
+        triggerBtn.addEventListener('click', async () => {
+            console.clear();
+            console.log('%c╔════════════════════════════════════════╗',
+                'background: #0066cc; color: white; font-size: 14px;');
+            console.log('%c║   FINGERPRINTING COLLECTION STARTED   ║',
+                'background: #0066cc; color: white; font-size: 16px;');
+            console.log('%c╚════════════════════════════════════════╝\n',
+                'background: #0066cc; color: white; font-size: 14px;');
+
+            updateStatus('🔍 Collecting fingerprint data...', 'info-text');
+            triggerBtn.disabled = true;
+
+            try {
+                if (typeof window.profiler === 'function') {
+                    const sessionId = 'test-' + Date.now();
+                    console.log('Session ID:', sessionId);
+                    console.log('Calling profiler...\n');
+
+                    await window.profiler(
+                        sessionId,
+                        '1.0',
+                        window.location.href,
+                        'test-ping',
+                        'test-profile'
+                    );
+
+                    console.log('\n%c╔════════════════════════════════════════╗',
+                        'background: #28a745; color: white; font-size: 14px;');
+                    console.log('%c║      COLLECTION COMPLETED!      ║',
+                        'background: #28a745; color: white; font-size: 16px;');
+                    console.log('%c╚════════════════════════════════════════╝',
+                        'background: #28a745; color: white; font-size: 14px;');
+
+                    updateStatus('✅ Complete! Scroll up to see all collected data.', 'success');
+                } else {
+                    updateStatus('✗ Profiler function not available', 'error');
+                }
+            } catch (error) {
+                console.error('\n%c╔════════════════════════════════════════╗',
+                    'background: #dc3545; color: white; font-size: 14px;');
+                console.error('%c║         ERROR OCCURRED         ║',
+                    'background: #dc3545; color: white; font-size: 16px;');
+                console.error('%c╚════════════════════════════════════════╝',
+                    'background: #dc3545; color: white; font-size: 14px;');
+                console.error('Error:', error.message);
+                console.error('Stack:', error.stack);
+
+                updateStatus('✗ Error: ' + error.message, 'error');
+            } finally {
+                triggerBtn.disabled = false;
+            }
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            console.clear();
+            document.getElementById('dataDisplay').innerHTML = '';
+            capturedData.length = 0;
+            updateStatus('Console and display cleared', 'info-text');
+        });
+    </script>
+</body>
+</html>

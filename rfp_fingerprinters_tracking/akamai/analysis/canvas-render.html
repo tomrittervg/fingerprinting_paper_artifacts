@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Akamai Canvas Fingerprint — Visual Render</title>
+<style>
+body { font-family: sans-serif; margin: 20px; }
+h2 { margin-top: 30px; }
+canvas { border: 1px solid #ccc; display: block; margin: 10px 0; }
+pre { background: #f4f4f4; padding: 10px; font-size: 12px; overflow-x: auto; }
+code { font-size: 12px; }
+.hash { font-weight: bold; color: #333; }
+.section { margin-bottom: 40px; }
+</style>
+</head>
+<body>
+<h1>Akamai Bot Manager — Canvas Fingerprint Render</h1>
+<p>Reproduces the exact canvas drawing operations from the Akamai fingerprinting script (function D).</p>
+
+<div class="section">
+  <h2>Canvas Fingerprint (function D)</h2>
+  <p>Default canvas size: 300x150. Drawing operations in order:</p>
+  <ol>
+    <li><code>fillStyle = "rgba(255,153,153, 0.5)"</code>, <code>font = "18pt Tahoma"</code>, <code>textBaseline = "top"</code></li>
+    <li><code>fillText("Soft Ruddy Foothold 2", 2, 2)</code></li>
+    <li><code>fillStyle = "#0000FF"</code> &rarr; <code>fillRect(100, 25, 30, 10)</code></li>
+    <li><code>fillStyle = "#E0E0E0"</code> &rarr; <code>fillRect(100, 25, 20, 30)</code></li>
+    <li><code>fillStyle = "#FF3333"</code> &rarr; <code>fillRect(100, 25, 10, 15)</code></li>
+    <li><code>fillText("!H71JCaj)]# 1@#", 4, 8)</code></li>
+  </ol>
+  <canvas id="fingerprint-canvas"></canvas>
+  <p>SHA-1 of <code>toDataURL()</code>: <span id="hash" class="hash">computing...</span></p>
+  <details>
+    <summary>Raw toDataURL() output</summary>
+    <pre id="dataurl"></pre>
+  </details>
+</div>
+
+<div class="section">
+  <h2>APNG Support Check (function A)</h2>
+  <p>Loads a 1x1 base64 APNG image, draws it to canvas, and checks if the alpha channel
+     of pixel (0,0) is 0. If so, the browser supports APNG (the second frame replaced the first,
+     which had alpha=0).</p>
+  <canvas id="apng-canvas" width="1" height="1" style="width: 50px; height: 50px; image-rendering: pixelated;"></canvas>
+  <p>Pixel (0,0) RGBA: <span id="apng-pixel" class="hash">loading...</span></p>
+  <p>APNG supported: <span id="apng-result" class="hash">...</span></p>
+</div>
+
+<script>
+// === Canvas Fingerprint (function D) ===
+(function() {
+  var canvas = document.getElementById("fingerprint-canvas");
+  var a = canvas.getContext("2d");
+
+  // Exact operations from xfinity.deob2.js lines 256-265
+  a.fillStyle = "rgba(255,153,153, 0.5)";
+  a.font = "18pt Tahoma";
+  a.textBaseline = "top";
+  a.fillText("Soft Ruddy Foothold 2", 2, 2);
+  a.fillStyle = "#0000FF";
+  a.fillRect(100, 25, 30, 10);
+  a.fillStyle = "#E0E0E0";
+  a.fillRect(100, 25, 20, 30);
+  a.fillStyle = "#FF3333";
+  a.fillRect(100, 25, 10, 15);
+  a.fillText("!H71JCaj)]# 1@#", 4, 8);
+
+  var dataURL = canvas.toDataURL();
+  document.getElementById("dataurl").textContent = dataURL;
+
+  // SHA-1 hash (same as Akamai's c.hash())
+  crypto.subtle.digest("SHA-1", new TextEncoder().encode(dataURL)).then(function(buf) {
+    var hex = Array.from(new Uint8Array(buf)).map(function(b) {
+      return b.toString(16).padStart(2, "0");
+    }).join("");
+    document.getElementById("hash").textContent = hex;
+  });
+})();
+
+// === APNG Support Check (function A) ===
+(function() {
+  var img = new Image();
+  var canvas = document.getElementById("apng-canvas");
+  var ctx = canvas.getContext("2d");
+
+  img.onload = function() {
+    ctx.drawImage(img, 0, 0);
+    var data = ctx.getImageData(0, 0, 1, 1).data;
+    var rgba = "R=" + data[0] + " G=" + data[1] + " B=" + data[2] + " A=" + data[3];
+    document.getElementById("apng-pixel").textContent = rgba;
+    var supported = (data[3] === 0);
+    document.getElementById("apng-result").textContent = supported ? "YES (alpha=0)" : "NO (alpha=" + data[3] + ")";
+  };
+
+  // Exact base64 from xfinity.deob2.js lines 93-94
+  img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACGFjVEwAAAABAAAAAcMq2TYAAAANSURBVAiZY2BgYPgPAAEEAQB9ssjfAAAAGmZjVEwAAAAAAAAAAQAAAAEAAAAAAAAAAAD6A+gBAbNU+2sAAAARZmRBVAAAAAEImWNgYGBgAAAABQAB6MzFdgAAAABJRU5ErkJggg==";
+})();
+</script>
+</body>
+</html>

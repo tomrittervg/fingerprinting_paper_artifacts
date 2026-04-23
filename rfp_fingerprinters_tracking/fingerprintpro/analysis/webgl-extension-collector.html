@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FingerprintPro WebGL Extension Collector</title>
+<style>
+  body { font-family: monospace; font-size: 13px; margin: 20px; background: #1a1a1a; color: #d0d0d0; }
+  h1 { font-size: 16px; color: #fff; margin-bottom: 4px; }
+  .subtitle { color: #888; font-size: 11px; margin-bottom: 24px; }
+  .section { margin-bottom: 20px; }
+  .section-header {
+    font-size: 12px; font-weight: bold; color: #7ec8e3;
+    border-bottom: 1px solid #333; padding-bottom: 3px; margin-bottom: 6px;
+    display: flex; gap: 12px; align-items: baseline;
+  }
+  .section-header .count { color: #888; font-weight: normal; font-size: 11px; }
+  .entry { padding: 1px 0; color: #c8c8c8; white-space: pre; }
+  .entry.raw   { color: #aaa; }
+  .entry.null  { color: #e8a97a; }
+  .entry.value { color: #98d882; }
+  .entry.absent { color: #d06060; }
+  .error { color: #e05050; font-weight: bold; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+</style>
+</head>
+<body>
+<h1>FingerprintPro WebGL Extension Collector</h1>
+<div class="subtitle">WebGL1 only &mdash; same collection logic as FingerprintPro. Nothing is submitted.</div>
+<div id="output"></div>
+
+<script>
+// ── Browser detection (matches FP's isFirefox/isChrome/isSafari) ──────────────
+
+function countTrue(arr) {
+  return arr.reduce((n, v) => n + (v ? 1 : 0), 0);
+}
+
+function isFirefox() {
+  const e = window;
+  const s = document.documentElement?.style ?? {};
+  return countTrue([
+    "buildID" in navigator,
+    "MozAppearance" in s,
+    "onmozfullscreenchange" in e,
+    "mozInnerScreenX" in e,
+    "CSSMozDocumentRule" in e,
+    "CanvasCaptureMediaStream" in e,
+  ]) >= 4;
+}
+
+function isChrome() {
+  const e = window, n = navigator;
+  return countTrue([
+    "webkitPersistentStorage" in n,
+    "webkitTemporaryStorage" in n,
+    (n.vendor || "").indexOf("Google") === 0,
+    "webkitResolveLocalFileSystemURL" in e,
+    "BatteryManager" in e,
+    "webkitMediaStream" in e,
+    "webkitSpeechGrammar" in e,
+  ]) >= 5;
+}
+
+function isSafari() {
+  const e = window;
+  return countTrue([
+    "ApplePayError" in e,
+    "CSSPrimitiveValue" in e,
+    "Counter" in e,
+    navigator.vendor.indexOf("Apple") === 0,
+    "RGBColor" in e,
+    "WebKitMediaKeys" in e,
+  ]) >= 4;
+}
+
+// ── GL constant sets ──────────────────────────────────────────────────────────
+
+// Context properties whose numeric value triggers a getParameter() call (Nn / f)
+const PARAM_GETPARAM_SET = new Set([
+  10752,2849,2884,2885,2886,2928,2929,2930,2931,2932,2960,2961,2962,2963,2964,
+  2965,2966,2967,2968,2978,3024,3042,3088,3089,3106,3107,32773,32777,32823,
+  32824,32936,32937,32938,32939,32968,32969,32970,32971,3317,33170,3333,3379,
+  3386,33901,33902,34016,34024,34076,3408,3410,3411,3412,3413,3414,3415,34467,
+  34816,34817,34818,34819,34877,34921,34930,35660,35661,35724,35738,35739,
+  36003,36004,36005,36347,36348,36349,37440,37441,37443,7936,7937,7938,
+]);
+
+// Extension properties whose numeric value triggers a getParameter() call (Mn / y)
+const EXT_GETPARAM_SET = new Set([
+  34047, 35723, 36063, 34852, 34853, 34854, 34229, 36392, 36795, 38449,
+]);
+
+
+const SHADER_TYPES     = ["FRAGMENT_SHADER", "VERTEX_SHADER"];
+const PRECISION_TYPES  = ["LOW_FLOAT", "MEDIUM_FLOAT", "HIGH_FLOAT",
+                          "LOW_INT",   "MEDIUM_INT",   "HIGH_INT"];
+const DEBUG_RENDERER   = "WEBGL_debug_renderer_info";
+const POLYGON_MODE     = "WEBGL_polygon_mode";
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+// Returns all uppercase-only/digit/underscore/x prototype keys (Un / K filter).
+// This is how FP enumerates GL constants from a context or extension object.
+function getProtoKeys(obj) {
+  return Object.keys(obj.__proto__).filter(
+    k => typeof k === "string" && !k.match(/[^A-Z0-9_x]/)
+  );
+}
+
+function getShaderPrecision(gl, shaderType, precisionType) {
+  const fmt = gl.getShaderPrecisionFormat(gl[shaderType], gl[precisionType]);
+  return fmt ? [fmt.rangeMin, fmt.rangeMax, fmt.precision] : [];
+}
+
+// ── Context creation (Zn / D) ─────────────────────────────────────────────────
+
+function getWebGLContext() {
+  const canvas = document.createElement("canvas");
+  let ctx;
+  canvas.addEventListener("webglCreateContextError", () => { ctx = undefined; });
+  for (const type of ["webgl", "experimental-webgl"]) {
+    try { ctx = canvas.getContext(type); } catch (e) { /* ignore */ }
+    if (ctx) break;
+  }
+  return ctx || null;
+}
+
+// ── Raw collection (kt / anonymous at line 6562) ──────────────────────────────
+
+function collectRaw(gl) {
+  const extensions          = gl.getSupportedExtensions();
+  const ctxAttrs            = gl.getContextAttributes();
+  const contextAttributes   = [];
+  const parameters          = [];
+  const shaderPrecisions    = [];
+  const extensionParameters = [];
+  const unsupportedExtensions = [];
+
+  // Context attributes
+  if (ctxAttrs) {
+    for (const key of Object.keys(ctxAttrs)) {
+      contextAttributes.push(`${key}=${ctxAttrs[key]}`);
+    }
+  }
+
+  // Context prototype keys → parameters
+  for (const key of getProtoKeys(gl)) {
+    const val = gl[key];
+    parameters.push(
+      `${key}=${val}${PARAM_GETPARAM_SET.has(val) ? `=${gl.getParameter(val)}` : ""}`
+    );
+  }
+
+  // Extensions
+  if (extensions) {
+    for (const extName of extensions) {
+      // Skip WEBGL_debug_renderer_info on Firefox (privacy guard)
+      if (extName === DEBUG_RENDERER && isFirefox()) continue;
+      // Skip WEBGL_polygon_mode on Chrome or Safari
+      if (extName === POLYGON_MODE && (isChrome() || isSafari())) continue;
+
+      const ext = gl.getExtension(extName);
+      if (ext) {
+        for (const key of getProtoKeys(ext)) {
+          const val = ext[key];
+          extensionParameters.push(
+            `${key}=${val}${EXT_GETPARAM_SET.has(val) ? `=${gl.getParameter(val)}` : ""}`
+          );
+        }
+      } else {
+        unsupportedExtensions.push(extName);
+      }
+    }
+  }
+
+  // Shader precisions
+  for (const st of SHADER_TYPES) {
+    for (const pt of PRECISION_TYPES) {
+      const p = getShaderPrecision(gl, st, pt);
+      shaderPrecisions.push(`${st}.${pt}=${p.join(",")}`);
+    }
+  }
+
+  extensionParameters.sort();
+  parameters.sort();
+
+  return {
+    contextAttributes,
+    parameters,
+    shaderPrecisions,
+    extensions: extensions || [],
+    extensionParameters,
+    unsupportedExtensions,
+  };
+}
+
+
+// ── Rendering ─────────────────────────────────────────────────────────────────
+
+function section(title, entries, colorFn) {
+  const div = document.createElement("div");
+  div.className = "section";
+
+  const hdr = document.createElement("div");
+  hdr.className = "section-header";
+  hdr.innerHTML = `${title} <span class="count">${entries.length} entries</span>`;
+  div.appendChild(hdr);
+
+  for (const e of entries) {
+    const row = document.createElement("div");
+    row.className = "entry " + (colorFn ? colorFn(e) : "raw");
+    row.textContent = e;
+    div.appendChild(row);
+  }
+  return div;
+}
+
+function render(data) {
+  const out = document.getElementById("output");
+
+  // Row 1: context attributes + extensions list (two columns)
+  const row1 = document.createElement("div");
+  row1.className = "two-col";
+  row1.appendChild(section("contextAttributes", data.contextAttributes, () => "value"));
+  row1.appendChild(section("extensions  (getSupportedExtensions)", data.extensions, () => "value"));
+  out.appendChild(row1);
+
+  // unsupportedExtensions (extensions where getExtension() returned null)
+  out.appendChild(section("unsupportedExtensions  (getExtension() → null)", data.unsupportedExtensions, () => "absent"));
+
+  // extensionParameters and parameters side by side
+  const row2 = document.createElement("div");
+  row2.className = "two-col";
+  row2.appendChild(section("extensionParameters", data.extensionParameters, () => "raw"));
+  row2.appendChild(section("parameters", data.parameters, () => "raw"));
+  out.appendChild(row2);
+
+  // shaderPrecisions
+  out.appendChild(section("shaderPrecisions", data.shaderPrecisions, () => "value"));
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+
+(function main() {
+  const out = document.getElementById("output");
+
+  const gl = getWebGLContext();
+  if (!gl) {
+    const e = document.createElement("div");
+    e.className = "error";
+    e.textContent = "Error -1: Could not create a WebGL context.";
+    out.appendChild(e);
+    return;
+  }
+  if (typeof gl.getParameter !== "function") {
+    const e = document.createElement("div");
+    e.className = "error";
+    e.textContent = "Error -2: Context does not expose getParameter (context lost?).";
+    out.appendChild(e);
+    return;
+  }
+
+  const data = collectRaw(gl);
+  render(data);
+})();
+</script>
+</body>
+</html>

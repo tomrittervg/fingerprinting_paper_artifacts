@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>FPJS Profile Gap Analysis — Collection Demo</title>
+<style>
+  body { font-family: monospace; font-size: 13px; margin: 20px; background: #1a1a1a; color: #e0e0e0; }
+  h1 { font-size: 16px; color: #8cf; }
+  h2 { font-size: 14px; color: #adf; margin-top: 30px; border-bottom: 1px solid #333; padding-bottom: 4px; }
+  .result { margin: 6px 0; padding: 8px 12px; background: #222; border-left: 3px solid #555; white-space: pre-wrap; word-break: break-all; }
+  .result.ok { border-left-color: #4a4; }
+  .result.err { border-left-color: #a44; }
+  .result.pending { border-left-color: #aa4; }
+  .label { color: #888; }
+  table { border-collapse: collapse; margin: 8px 0; }
+  td, th { padding: 3px 10px; border: 1px solid #333; text-align: left; }
+  th { background: #282828; color: #adf; }
+  td.val { color: #cf8; }
+  #summary { margin-top: 30px; padding: 12px; background: #1e2a1e; border: 1px solid #4a4; }
+</style>
+</head>
+<body>
+<h1>FingerprintJS Pro — Profile Gap Collection Demo</h1>
+<p>Demonstrates how to collect each API surface identified in the profile-based
+gap analysis. Open the browser console for additional detail.</p>
+
+<!-- Gap 1: WebRTC SDP -->
+<h2>Gap 1: WebRTC SDP Fingerprinting</h2>
+<div id="webrtc-result" class="result pending">Collecting...</div>
+
+<!-- Gap 2: WebGPU Adapter + Limits -->
+<h2>Gap 2: WebGPU Adapter + Limits</h2>
+<div id="webgpu-result" class="result pending">Collecting...</div>
+
+<!-- Gap 3: MediaCapabilities.decodingInfo -->
+<h2>Gap 3: MediaCapabilities.decodingInfo</h2>
+<div id="mediacap-result" class="result pending">Collecting...</div>
+
+<!-- Gap 4: EME/DRM System Probing -->
+<h2>Gap 4: EME/DRM System Probing</h2>
+<div id="eme-result" class="result pending">Collecting...</div>
+
+<!-- Gap 5: WebAuthn Client Capabilities -->
+<h2>Gap 5: WebAuthn Client Capabilities</h2>
+<div id="webauthn-result" class="result pending">Collecting...</div>
+
+<!-- Gap 6: StorageManager Quota -->
+<h2>Gap 6: StorageManager Quota Probing</h2>
+<div id="storage-result" class="result pending">Collecting...</div>
+
+<!-- Gap 7: Cookie Probing -->
+<h2>Gap 7: Cookie Probing</h2>
+<div id="cookie-result" class="result pending">Collecting...</div>
+
+<!-- Summary -->
+<div id="summary" style="display:none"></div>
+
+<script>
+"use strict";
+
+const allResults = {};
+
+function show(id, data, isError) {
+  const el = document.getElementById(id);
+  el.className = "result " + (isError ? "err" : "ok");
+  if (typeof data === "object") {
+    el.textContent = JSON.stringify(data, null, 2);
+  } else {
+    el.textContent = String(data);
+  }
+  allResults[id] = data;
+}
+
+function showErr(id, err) {
+  show(id, "Error: " + (err.message || err), true);
+}
+
+// =========================================================================
+// Gap 1: WebRTC SDP Fingerprinting
+// Creates an RTCPeerConnection, generates an SDP offer, and extracts the
+// codec list and ICE candidates.
+// =========================================================================
+async function collectWebRTC() {
+  if (!window.RTCPeerConnection) {
+    return show("webrtc-result", "RTCPeerConnection not available", true);
+  }
+  try {
+    const pc = new RTCPeerConnection({
+      iceServers: [],
+      iceCandidatePoolSize: 0
+    });
+    // Add a data channel to ensure SDP contains data section
+    pc.createDataChannel("fp");
+
+    const candidates = [];
+    pc.onicecandidate = (e) => {
+      if (e.candidate) candidates.push(e.candidate.candidate);
+    };
+
+    const offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+
+    // Wait for ICE gathering (up to 500ms, matching FPJS behavior)
+    await new Promise((resolve) => {
+      if (pc.iceGatheringState === "complete") return resolve();
+      const timeout = setTimeout(resolve, 500);
+      pc.onicegatheringstatechange = () => {
+        if (pc.iceGatheringState === "complete") {
+          clearTimeout(timeout);
+          resolve();
+        }
+      };
+    });
+
+    const sdp = pc.localDescription.sdp;
+    pc.close();
+
+    // Parse SDP into structured sections
+    const lines = sdp.split("\r\n");
+    const codecLines = lines.filter(l => l.startsWith("a=rtpmap:"));
+    const fmtpLines = lines.filter(l => l.startsWith("a=fmtp:"));
+    const extLines = lines.filter(l => l.startsWith("a=extmap:"));
+    const mLines = lines.filter(l => l.startsWith("m="));
+    const fingerprintLine = lines.find(l => l.startsWith("a=fingerprint:"));
+
+    show("webrtc-result", {
+      mediaLines: mLines,
+      codecs: codecLines,
+      formatParams: fmtpLines,
+      rtpExtensions: extLines,
+      dtlsFingerprint: fingerprintLine || "(none)",
+      iceCandidates: candidates.length > 0 ? candidates : ["(none gathered in 500ms)"],
+      rawSdpLength: sdp.length
+    });
+  } catch (e) {
+    showErr("webrtc-result", e);
+  }
+}
+
+// =========================================================================
+// Gap 2: WebGPU Adapter and Limits
+// Requests a GPU adapter and reads all 31 limit properties plus adapter info.
+// =========================================================================
+async function collectWebGPU() {
+  if (!navigator.gpu) {
+    return show("webgpu-result", "WebGPU (navigator.gpu) not available", true);
+  }
+  try {
+    const adapter = await navigator.gpu.requestAdapter();
+    if (!adapter) {
+      return show("webgpu-result", "requestAdapter() returned null (no GPU)", true);
+    }
+
+    const info = adapter.info || {};
+    const adapterInfo = {
+      description: info.description,
+      device: info.device,
+      vendor: info.vendor,
+      architecture: info.architecture,
+      isFallbackAdapter: adapter.isFallbackAdapter
+    };
+
+    // Read all GPUSupportedLimits properties
+    const limits = adapter.limits;
+    const limitNames = [
+      "maxBindGroups", "maxBindGroupsPlusVertexBuffers",
+      "maxBindingsPerBindGroup", "maxBufferSize",
+      "maxColorAttachmentBytesPerSample", "maxColorAttachments",
+      "maxComputeInvocationsPerWorkgroup", "maxComputeWorkgroupSizeX",
+      "maxComputeWorkgroupSizeY", "maxComputeWorkgroupSizeZ",
+      "maxComputeWorkgroupStorageSize", "maxComputeWorkgroupsPerDimension",
+      "maxDynamicStorageBuffersPerPipelineLayout",
+      "maxDynamicUniformBuffersPerPipelineLayout",
+      "maxInterStageShaderVariables",
+      "maxSampledTexturesPerShaderStage", "maxSamplersPerShaderStage",
+      "maxStorageBufferBindingSize", "maxStorageBuffersPerShaderStage",
+      "maxStorageTexturesPerShaderStage",
+      "maxTextureArrayLayers", "maxTextureDimension1D",
+      "maxTextureDimension2D", "maxTextureDimension3D",
+      "maxUniformBufferBindingSize", "maxUniformBuffersPerShaderStage",
+      "maxVertexAttributes", "maxVertexBufferArrayStride", "maxVertexBuffers",
+      "minStorageBufferOffsetAlignment", "minUniformBufferOffsetAlignment"
+    ];
+
+    const limitsObj = {};
+    for (const name of limitNames) {
+      limitsObj[name] = limits[name];
+    }
+
+    // Features
+    const features = [];
+    if (adapter.features) {
+      for (const f of adapter.features) features.push(f);
+    }
+
+    show("webgpu-result", {
+      adapterInfo: adapterInfo,
+      features: features,
+      limits: limitsObj
+    });
+  } catch (e) {
+    showErr("webgpu-result", e);
+  }
+}
+
+// =========================================================================
+// Gap 3: MediaCapabilities.decodingInfo
+// Probes a set of codec/resolution combinations and reports support +
+// hardware acceleration (powerEfficient).
+// =========================================================================
+async function collectMediaCapabilities() {
+  if (!navigator.mediaCapabilities) {
+    return show("mediacap-result", "MediaCapabilities API not available", true);
+  }
+  try {
+    const configs = [
+      { type: "file", video: { contentType: 'video/mp4; codecs="avc1.42E01E"', width: 1920, height: 1080, bitrate: 5000000, framerate: 30 }},
+      { type: "file", video: { contentType: 'video/mp4; codecs="avc1.640028"', width: 3840, height: 2160, bitrate: 20000000, framerate: 60 }},
+      { type: "file", video: { contentType: 'video/webm; codecs="vp8"', width: 1920, height: 1080, bitrate: 5000000, framerate: 30 }},
+      { type: "file", video: { contentType: 'video/webm; codecs="vp09.00.10.08"', width: 1920, height: 1080, bitrate: 5000000, framerate: 30 }},
+      { type: "file", video: { contentType: 'video/webm; codecs="vp09.00.10.08"', width: 3840, height: 2160, bitrate: 20000000, framerate: 60 }},
+      { type: "file", video: { contentType: 'video/mp4; codecs="av01.0.08M.08"', width: 1920, height: 1080, bitrate: 5000000, framerate: 30 }},
+      { type: "file", video: { contentType: 'video/mp4; codecs="hev1.1.6.L93.B0"', width: 1920, height: 1080, bitrate: 5000000, framerate: 30 }},
+      { type: "file", audio: { contentType: 'audio/mp4; codecs="mp4a.40.2"', channels: 2, bitrate: 128000, samplerate: 44100 }},
+      { type: "file", audio: { contentType: 'audio/webm; codecs="opus"', channels: 2, bitrate: 128000, samplerate: 48000 }},
+    ];
+
+    const results = {};
+    for (const config of configs) {
+      const codec = (config.video || config.audio).contentType;
+      try {
+        const info = await navigator.mediaCapabilities.decodingInfo(config);
+        results[codec] = {
+          supported: info.supported,
+          smooth: info.smooth,
+          powerEfficient: info.powerEfficient
+        };
+      } catch (e) {
+        results[codec] = { error: e.message };
+      }
+    }
+    show("mediacap-result", results);
+  } catch (e) {
+    showErr("mediacap-result", e);
+  }
+}
+
+// =========================================================================
+// Gap 4: EME/DRM System Probing
+// Tests which DRM key systems are available and their supported configs.
+// =========================================================================
+async function collectEME() {
+  if (!navigator.requestMediaKeySystemAccess) {
+    return show("eme-result", "EME (requestMediaKeySystemAccess) not available", true);
+  }
+
+  const keySystems = [
+    "com.widevine.alpha",
+    "org.w3.clearkey",
+    "com.apple.fps",
+    "com.apple.fps.1_0",
+    "com.microsoft.playready",
+    "com.microsoft.playready.recommendation"
+  ];
+
+  const baseConfig = [{
+    initDataTypes: ["cenc", "webm"],
+    audioCapabilities: [
+      { contentType: 'audio/mp4; codecs="mp4a.40.2"', robustness: "" }
+    ],
+    videoCapabilities: [
+      { contentType: 'video/mp4; codecs="avc1.42E01E"', robustness: "" }
+    ]
+  }];
+
+  const results = {};
+  for (const ks of keySystems) {
+    try {
+      const access = await navigator.requestMediaKeySystemAccess(ks, baseConfig);
+      const config = access.getConfiguration();
+      results[ks] = {
+        available: true,
+        keySystem: access.keySystem,
+        audioCapabilities: config.audioCapabilities,
+        videoCapabilities: config.videoCapabilities,
+        sessionTypes: config.sessionTypes,
+        distinctiveIdentifier: config.distinctiveIdentifier,
+        persistentState: config.persistentState
+      };
+    } catch (e) {
+      results[ks] = { available: false, reason: e.message };
+    }
+  }
+  show("eme-result", results);
+}
+
+// =========================================================================
+// Gap 5: WebAuthn Client Capabilities
+// Queries PublicKeyCredential.getClientCapabilities() for supported features.
+// =========================================================================
+async function collectWebAuthn() {
+  if (!window.PublicKeyCredential) {
+    return show("webauthn-result", "PublicKeyCredential not available", true);
+  }
+  if (!PublicKeyCredential.getClientCapabilities) {
+    return show("webauthn-result", "getClientCapabilities() not available (requires Firefox 128+)", true);
+  }
+  try {
+    const caps = await PublicKeyCredential.getClientCapabilities();
+    // Convert Map-like to plain object if needed
+    const result = {};
+    if (caps && typeof caps === "object") {
+      for (const [k, v] of Object.entries(caps)) {
+        result[k] = v;
+      }
+    }
+    show("webauthn-result", {
+      capabilities: result,
+      isUserVerifyingPlatformAuthenticatorAvailable:
+        PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable
+          ? await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+          : "(method not available)",
+      isConditionalMediationAvailable:
+        PublicKeyCredential.isConditionalMediationAvailable
+          ? await PublicKeyCredential.isConditionalMediationAvailable()
+          : "(method not available)"
+    });
+  } catch (e) {
+    showErr("webauthn-result", e);
+  }
+}
+
+// =========================================================================
+// Gap 6: StorageManager Quota Probing
+// Reads storage quota estimate and tests OPFS availability.
+// =========================================================================
+async function collectStorageManager() {
+  if (!navigator.storage || !navigator.storage.estimate) {
+    return show("storage-result", "StorageManager.estimate() not available", true);
+  }
+  try {
+    const estimate = await navigator.storage.estimate();
+
+    let opfsAvailable = false;
+    let opfsError = null;
+    if (navigator.storage.getDirectory) {
+      try {
+        const dir = await navigator.storage.getDirectory();
+        opfsAvailable = true;
+      } catch (e) {
+        opfsError = e.message;
+      }
+    }
+
+    show("storage-result", {
+      quota: estimate.quota,
+      usage: estimate.usage,
+      quotaMB: Math.round(estimate.quota / 1048576),
+      usageMB: Math.round(estimate.usage / 1048576),
+      opfsAvailable: opfsAvailable,
+      opfsError: opfsError,
+      persisted: navigator.storage.persisted ? await navigator.storage.persisted() : "(not available)"
+    });
+  } catch (e) {
+    showErr("storage-result", e);
+  }
+}
+
+// =========================================================================
+// Gap 7: Cookie Probing
+// Tests cookie write/read behavior with different attributes.
+// =========================================================================
+function collectCookies() {
+  try {
+    const results = {};
+
+    // navigator.cookieEnabled
+    results.cookieEnabled = navigator.cookieEnabled;
+
+    // Basic cookie write/read (matching FPJS s32)
+    const testName = "__fp_test";
+    document.cookie = testName + "=1; SameSite=Strict; path=/";
+    const canRead = document.cookie.indexOf(testName + "=1") !== -1;
+    // Clean up
+    document.cookie = testName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    results.sameSiteStrict = canRead;
+
+    // Test SameSite=Lax
+    document.cookie = testName + "_lax=1; SameSite=Lax; path=/";
+    results.sameSiteLax = document.cookie.indexOf(testName + "_lax=1") !== -1;
+    document.cookie = testName + "_lax=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+
+    // Test SameSite=None (requires Secure, will fail on http)
+    document.cookie = testName + "_none=1; SameSite=None; Secure; path=/";
+    results.sameSiteNoneSecure = document.cookie.indexOf(testName + "_none=1") !== -1;
+    document.cookie = testName + "_none=; expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; path=/";
+
+    // Test Partitioned (CHIPS)
+    document.cookie = testName + "_part=1; SameSite=None; Secure; Partitioned; path=/";
+    results.partitioned = document.cookie.indexOf(testName + "_part=1") !== -1;
+    document.cookie = testName + "_part=; expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; Partitioned; path=/";
+
+    // Cookie count and size test
+    results.currentCookieCount = document.cookie.split(";").filter(s => s.trim()).length;
+
+    show("cookie-result", results);
+  } catch (e) {
+    showErr("cookie-result", e);
+  }
+}
+
+// =========================================================================
+// Run all collectors
+// =========================================================================
+async function runAll() {
+  // Run sync collector immediately
+  collectCookies();
+
+  // Run async collectors concurrently
+  await Promise.allSettled([
+    collectWebRTC(),
+    collectWebGPU(),
+    collectMediaCapabilities(),
+    collectEME(),
+    collectWebAuthn(),
+    collectStorageManager()
+  ]);
+
+  // Show summary
+  const summary = document.getElementById("summary");
+  summary.style.display = "block";
+  summary.innerHTML = "<h2>Collection Complete</h2><pre>" +
+    JSON.stringify(allResults, null, 2) + "</pre>";
+
+  console.log("All gap analysis results:", allResults);
+}
+
+runAll();
+</script>
+</body>
+</html>

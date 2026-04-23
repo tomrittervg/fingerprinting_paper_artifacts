@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FingerprintPro Audio Collector</title>
+<style>
+  body { font-family: monospace; font-size: 13px; margin: 20px; background: #1a1a1a; color: #d0d0d0; }
+  h1 { font-size: 16px; color: #fff; margin-bottom: 4px; }
+  .subtitle { color: #888; font-size: 11px; margin-bottom: 24px; }
+  .signal { margin-bottom: 28px; }
+  .signal-title {
+    font-size: 13px; font-weight: bold; color: #e8c97a;
+    border-bottom: 1px solid #444; padding-bottom: 4px; margin-bottom: 10px;
+  }
+  .signal-note { color: #666; font-size: 11px; margin-bottom: 10px; font-style: italic; }
+  .section { margin-bottom: 12px; }
+  .section-header {
+    font-size: 12px; font-weight: bold; color: #7ec8e3;
+    border-bottom: 1px solid #2a2a2a; padding-bottom: 3px; margin-bottom: 6px;
+  }
+  .entry { padding: 1px 0; white-space: pre; }
+  .value  { color: #98d882; }
+  .raw    { color: #aaa; }
+  .status-ok  { color: #98d882; }
+  .status-err { color: #e05050; }
+  .status-skip { color: #888; }
+  .error { color: #e05050; font-weight: bold; margin-bottom: 6px; }
+  .kv { padding: 1px 0; }
+  .kv .k { color: #7ec8e3; }
+  .kv .v { color: #98d882; }
+  .kv .v.err { color: #e05050; }
+</style>
+</head>
+<body>
+<h1>FingerprintPro Audio Collector</h1>
+<div class="subtitle">Same collection logic as FingerprintPro. Nothing is submitted.</div>
+<div id="output"></div>
+
+<script>
+// ── Browser / platform detection ─────────────────────────────────────────────
+// Matches FP's cn(), ln(), sn(), dn() exactly.
+
+function countTrue(arr) {
+  return arr.reduce((n, v) => n + (v ? 1 : 0), 0);
+}
+
+function isChrome() {
+  const e = window, n = navigator;
+  return countTrue([
+    "webkitPersistentStorage" in n,
+    "webkitTemporaryStorage" in n,
+    (n.vendor || "").indexOf("Google") === 0,
+    "webkitResolveLocalFileSystemURL" in e,
+    "BatteryManager" in e,
+    "webkitMediaStream" in e,
+    "webkitSpeechGrammar" in e,
+  ]) >= 5;
+}
+
+function isFirefox() {
+  const e = window;
+  const s = document.documentElement?.style ?? {};
+  return countTrue([
+    "buildID" in navigator,
+    "MozAppearance" in s,
+    "onmozfullscreenchange" in e,
+    "mozInnerScreenX" in e,
+    "CSSMozDocumentRule" in e,
+    "CanvasCaptureMediaStream" in e,
+  ]) >= 4;
+}
+
+function isSafari() {
+  const e = window;
+  return countTrue([
+    "ApplePayError" in e,
+    "CSSPrimitiveValue" in e,
+    "Counter" in e,
+    navigator.vendor.indexOf("Apple") === 0,
+    "RGBColor" in e,
+    "WebKitMediaKeys" in e,
+  ]) >= 4;
+}
+
+// dn() — mobile detection (mobile Chrome or Android Firefox)
+function isMobile() {
+  const e = window, n = navigator, conn = n["connection"];
+  if (isChrome()) {
+    return countTrue([
+      !("SharedWorker" in e),
+      conn && "ontypechange" in conn,
+      !("sinkId" in new Audio()),
+    ]) >= 2;
+  }
+  if (isFirefox()) {
+    return countTrue([
+      "onorientationchange" in e,
+      "orientation" in e,
+      /android/i.test(n.appVersion),
+    ]) >= 2;
+  }
+  return false;
+}
+
+// ── Rendering helpers ─────────────────────────────────────────────────────────
+
+function makeError(name) {
+  const e = new Error(name);
+  e.name = name;
+  return e;
+}
+
+function row(label, value, cls = "value") {
+  const div = document.createElement("div");
+  div.className = "kv";
+  div.innerHTML = `<span class="k">${label}: </span><span class="v ${cls}">${value}</span>`;
+  return div;
+}
+
+function heading(text) {
+  const div = document.createElement("div");
+  div.className = "section-header";
+  div.textContent = text;
+  return div;
+}
+
+// ── s21 — OfflineAudioContext oscillator fingerprint ──────────────────────────
+// vn(), lines 412–463 of deobfuscated source.
+//
+// Audio graph: OscillatorNode(triangle, 10kHz)
+//              → DynamicsCompressorNode(threshold=-50, knee=40, ratio=12, attack=0, release=0.25)
+//              → destination
+//
+// OfflineAudioContext(1, 5000, 44100) — 1ch, 5000 samples, 44.1kHz
+// After render: getChannelData(0).subarray(4500) → sum of abs(sample)
+// Returns -2 if OfflineAudioContext unavailable, -1 on platform mismatch,
+//          -3 on timeout or suspension.
+
+function collectS21() {
+  return new Promise((resolve) => {
+    const OfflineCtx = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    if (!OfflineCtx) { resolve({ s: -2, v: null }); return; }
+
+    // Platform check: skip if Safari (non-desktop) && not the specific browser
+    // combination FP allows (sn()&&!an() && !extra-check).
+    // Faithfully replicated: FP returns -1 when isSafari() && !isDesktopSafari()
+    // && !hasCertainDOMAPIs(). We implement the exact check:
+    if (isSafari() && !isDesktopSafari() && !hasExtraWebAPIs()) {
+      resolve({ s: -1, v: null }); return;
+    }
+
+    // OfflineAudioContext: 1 channel, 5000 samples, 44100 Hz
+    const ctx = new OfflineCtx(1, 5000, 44100);
+
+    // OscillatorNode: triangle wave at 10 kHz
+    const osc = ctx.createOscillator();
+    osc.type = "triangle";
+    osc.frequency.value = 10000;
+
+    // DynamicsCompressorNode with FP's exact parameters
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -50;
+    comp.knee.value      =  40;
+    comp.ratio.value     =  12;
+    comp.attack.value    =   0;
+    comp.release.value   = 0.25;
+
+    // Audio graph: oscillator → compressor → destination
+    osc.connect(comp);
+    comp.connect(ctx.destination);
+    osc.start(0);
+
+    // Rendering with suspension/timeout handling (matches FP exactly)
+    // Constants from line 425: suspendMax=3, retryDelay=500, runningMax=500, timeout=5000
+    const SUSPEND_MAX    = 3;
+    const RETRY_DELAY_MS = 500;
+    const RUNNING_MAX_MS = 500;
+    const TIMEOUT_MS     = 5000;
+
+    let finishCalled  = false;
+    let startTime     = 0;
+    let suspendCount  = 0;
+
+    let timeoutHandle = null;
+
+    function scheduleTimeout() {
+      const remaining = Math.min(RUNNING_MAX_MS, startTime + TIMEOUT_MS - Date.now());
+      timeoutHandle = setTimeout(() => reject(makeError("timeout")), remaining);
+    }
+
+    let rejectFn;
+    const renderPromise = new Promise((res, rej) => {
+      rejectFn = rej;
+      ctx.oncomplete = (e) => res(e.renderedBuffer);
+    });
+
+    function reject(err) {
+      if (timeoutHandle) clearTimeout(timeoutHandle);
+      rejectFn(err);
+    }
+
+    function tryRender() {
+      try {
+        const p = ctx.startRendering();
+        // Attach catch to avoid unhandled-rejection warning on the returned Promise
+        if (p && typeof p.then === "function") p.catch(() => {});
+
+        switch (ctx.state) {
+          case "running":
+            startTime = Date.now();
+            if (finishCalled) scheduleTimeout();
+            break;
+          case "suspended":
+            if (!document.hidden) suspendCount++;
+            if (finishCalled && suspendCount >= SUSPEND_MAX) {
+              reject(makeError("suspended"));
+            } else {
+              setTimeout(tryRender, RETRY_DELAY_MS);
+            }
+            break;
+        }
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    tryRender();
+
+    // "Finish" trigger — called externally to arm the timeout countdown.
+    // In FP, this is called immediately after vn() returns its closure.
+    function finishRendering() {
+      if (!finishCalled) {
+        finishCalled = true;
+        if (startTime > 0) scheduleTimeout();
+      }
+    }
+
+    // FP calls finishRendering() right after starting (line 463: `return () => (u(), c)`)
+    finishRendering();
+
+    renderPromise.then(
+      (buffer) => {
+        const samples = buffer.getChannelData(0).subarray(4500);
+        let sum = 0;
+        for (let i = 0; i < samples.length; i++) sum += Math.abs(samples[i]);
+        resolve({ s: 0, v: sum });
+      },
+      (err) => {
+        if (err.name === "timeout" || err.name === "suspended") {
+          resolve({ s: -3, v: null });
+        } else {
+          resolve({ s: -3, v: null }); // unexpected error → -3
+        }
+      }
+    );
+  });
+}
+
+// Desktop Safari check used inside vn()'s platform guard
+// (the an() function from FP — checks for desktop Safari markers)
+function isDesktopSafari() {
+  const e = window, t = window.HTMLElement, d = window.Document;
+  return countTrue([
+    "safari" in e,
+    !("ongestureend" in e),
+    !("TouchEvent" in e),
+    !("orientation" in e),
+    t && !("autocapitalize" in t.prototype),
+    d && "pointerLockElement" in d.prototype,
+  ]) >= 4;
+}
+
+// Extra Web API check used in vn()'s platform guard for non-desktop Safari
+// (the anonymous function at line 415–419)
+function hasExtraWebAPIs() {
+  const e = window;
+  return countTrue([
+    "DOMRectList" in e,
+    "RTCPeerConnectionIceEvent" in e,
+    "SVGGeometryElement" in e,
+    "ontransitioncancel" in e,
+  ]) >= 3;
+}
+
+// ── s22 / s96 — AudioContext.baseLatency ─────────────────────────────────────
+// Rt(), lines 877–881 of deobfuscated source.
+//
+// Platform gate (dn() || sn()): only runs on mobile browsers or Safari.
+// Returns -2 if gate fails, -1 if AudioContext missing or baseLatency null,
+//          -3 if baseLatency is not finite.
+
+function collectBaseLatency() {
+  const mobile = isMobile(), safari = isSafari();
+  if (!mobile && !safari) return { s: -2, v: null };
+  if (!window.AudioContext)  return { s: -1, v: null };
+  const lat = new AudioContext().baseLatency;
+  if (lat == null)            return { s: -1, v: null };
+  if (!isFinite(lat))         return { s: -3, v: null };
+  return { s: 0, v: lat };
+}
+
+// ── Rendering ─────────────────────────────────────────────────────────────────
+
+function renderSignal(container, id, fnDesc, note, pairs) {
+  const sig = document.createElement("div");
+  sig.className = "signal";
+
+  const title = document.createElement("div");
+  title.className = "signal-title";
+  title.textContent = `${id}  —  ${fnDesc}`;
+  sig.appendChild(title);
+
+  if (note) {
+    const n = document.createElement("div");
+    n.className = "signal-note";
+    n.textContent = note;
+    sig.appendChild(n);
+  }
+
+  for (const [label, value, cls] of pairs) {
+    sig.appendChild(row(label, value, cls));
+  }
+
+  container.appendChild(sig);
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+
+(async function main() {
+  const out = document.getElementById("output");
+
+  // Platform flags (shown for all signals)
+  const mobile = isMobile(), safari = isSafari(),
+        chrome = isChrome(), firefox = isFirefox();
+
+  // ── s21 ──────────────────────────────────────────────────────────────────
+
+  // Show setup params before collecting (s21 is async)
+  {
+    const sig = document.createElement("div");
+    sig.className = "signal";
+
+    const title = document.createElement("div");
+    title.className = "signal-title";
+    title.textContent = "s21  —  vn()  —  OfflineAudioContext oscillator fingerprint";
+    sig.appendChild(title);
+
+    const note = document.createElement("div");
+    note.className = "signal-note";
+    note.textContent =
+      "OfflineAudioContext(1, 5000, 44100)  |  " +
+      "OscillatorNode(triangle, 10kHz) → DynamicsCompressor → destination  |  " +
+      "Result: sum of abs(getChannelData(0).subarray(4500))";
+    sig.appendChild(note);
+
+    sig.appendChild(heading("audio graph parameters"));
+    for (const [k, v] of [
+      ["context",              "OfflineAudioContext(channels=1, length=5000, sampleRate=44100)"],
+      ["oscillator.type",      "triangle"],
+      ["oscillator.frequency", "10000 Hz"],
+      ["comp.threshold",       "-50 dB"],
+      ["comp.knee",            "40 dB"],
+      ["comp.ratio",           "12"],
+      ["comp.attack",          "0 s"],
+      ["comp.release",         "0.25 s"],
+      ["routing",              "oscillator → compressor → destination"],
+      ["samples used",         "getChannelData(0).subarray(4500)  →  indices 4500–4999"],
+    ]) {
+      sig.appendChild(row(k, v, "raw"));
+    }
+
+    sig.appendChild(heading("rendering timeout constants"));
+    for (const [k, v] of [
+      ["SUSPEND_MAX",    "3 checks"],
+      ["RETRY_DELAY_MS", "500 ms"],
+      ["RUNNING_MAX_MS", "500 ms"],
+      ["TIMEOUT_MS",     "5000 ms"],
+    ]) {
+      sig.appendChild(row(k, v, "raw"));
+    }
+
+    const resultSection = document.createElement("div");
+    resultSection.className = "section";
+    const resultHdr = document.createElement("div");
+    resultHdr.className = "section-header";
+    resultHdr.textContent = "result  (collecting…)";
+    resultSection.appendChild(resultHdr);
+
+    const statusRow = document.createElement("div");
+    statusRow.className = "kv";
+    statusRow.innerHTML = `<span class="k">status/value: </span><span class="v raw">waiting…</span>`;
+    resultSection.appendChild(statusRow);
+    sig.appendChild(resultSection);
+    out.appendChild(sig);
+
+    // Collect asynchronously and update in place
+    collectS21().then(({ s, v }) => {
+      const cls = s === 0 ? "value" : "err";
+      resultHdr.textContent = "result";
+      statusRow.innerHTML =
+        `<span class="k">status: </span><span class="v ${cls}">${s}</span>`;
+      if (v !== null) {
+        const valRow = document.createElement("div");
+        valRow.className = "kv";
+        valRow.innerHTML = `<span class="k">value: </span><span class="v value">${v}</span>`;
+        resultSection.appendChild(valRow);
+      }
+    });
+  }
+
+  // ── s22 / s96 ────────────────────────────────────────────────────────────
+
+  const bl = collectBaseLatency();
+  const platformGatePassed = isMobile() || isSafari();
+
+  const platformNote =
+    "Platform gate (dn() || sn()): only runs on mobile browsers or Safari.  |  " +
+    `isMobile()=${mobile}, isSafari()=${safari}, isChrome()=${chrome}, isFirefox()=${firefox}  |  ` +
+    `gate passed: ${platformGatePassed}`;
+
+  renderSignal(out, "s22 / s96", "Rt()  —  AudioContext.baseLatency",
+    platformNote,
+    [
+      ["platform gate (isMobile() || isSafari())", String(platformGatePassed),
+        platformGatePassed ? "value" : "status-skip"],
+      ["status", String(bl.s), bl.s === 0 ? "value" : bl.s === -2 ? "status-skip" : "err"],
+      ["value",
+        bl.v !== null ? `${bl.v} s  (${(bl.v * 1000).toFixed(3)} ms)` : "null",
+        bl.v !== null ? "value" : "raw"],
+      ["note", "s22 and s96 call the same Rt() function — differ only in their result-envelope wrapper", "raw"],
+    ]
+  );
+
+})();
+</script>
+</body>
+</html>

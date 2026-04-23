@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FingerprintJS Pro — Analysis Harness</title>
+<style>
+    :root {
+        --bg: #1a1a2e;
+        --card-bg: #16213e;
+        --text: #eaeaea;
+        --text-muted: #a0a0a0;
+        --accent: #e94560;
+        --success: #4ecca3;
+        --warning: #ffc107;
+        --border: #0f3460;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    h1 { color: var(--accent); margin-bottom: 10px; font-size: 1.5rem; }
+    .subtitle { color: var(--text-muted); margin-bottom: 20px; font-size: 0.9rem; }
+    #status {
+        font-weight: bold;
+        color: var(--warning);
+        margin-bottom: 15px;
+    }
+    #status.done { color: var(--success); }
+    #status.error { color: var(--accent); }
+    .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .card h2 {
+        color: var(--accent);
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+    }
+    .result-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .result-row:last-child { border-bottom: none; }
+    .result-key { color: var(--text-muted); }
+    .result-value { color: var(--text); text-align: right; max-width: 60%; word-break: break-all; }
+    textarea.json-view {
+        background: #0d1117;
+        border: none;
+        border-radius: 4px;
+        padding: 15px;
+        font-family: inherit;
+        font-size: 0.85rem;
+        color: var(--text);
+        width: 100%;
+        min-height: 200px;
+        max-height: 600px;
+        resize: vertical;
+        white-space: pre;
+        overflow: auto;
+    }
+    .network-log {
+        background: rgba(233, 69, 96, 0.1);
+        border: 1px solid var(--accent);
+        border-radius: 4px;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 0.85rem;
+    }
+    .network-log .entry {
+        padding: 4px 0;
+        border-bottom: 1px solid rgba(233, 69, 96, 0.2);
+    }
+    .network-log .entry:last-child { border-bottom: none; }
+    .blocked { color: var(--accent); }
+    .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+    .tag.blocked { background: var(--accent); color: white; }
+    .tag.ok { background: var(--success); color: var(--bg); }
+    footer {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        text-align: center;
+    }
+</style>
+<script>
+// ===================================================================
+// Intercept all network requests BEFORE the library loads.
+// FingerprintJS Pro uses XMLHttpRequest to send collected fingerprint
+// data to its API. We replace XMLHttpRequest with a logging shim and
+// also intercept fetch() for completeness.
+// ===================================================================
+
+var interceptedRequests = [];
+
+// Decompress deflate/deflate-raw data, parse as JSON, and update entry
+function decompressAndParse(compressedBytes, entry) {
+    // The library wraps deflate-raw output with a 2-byte header and 4-byte trailer.
+    // If deflate-raw was used, the actual deflate-raw stream is bytes[2 .. length-6].
+    // If plain deflate was used, the full bytes are the deflate stream.
+    // We try both: first strip the wrapper and try deflate-raw, then try plain deflate.
+    var attempts = [
+        { name: "deflate-raw (stripped)", format: "deflate-raw", data: compressedBytes.slice(2, compressedBytes.length - 4) },
+        { name: "deflate-raw (full)", format: "deflate-raw", data: compressedBytes },
+        { name: "deflate (full)", format: "deflate", data: compressedBytes },
+    ];
+
+    (async function tryNext(idx) {
+        if (idx >= attempts.length) {
+            // All attempts failed — try interpreting as raw UTF-8
+            try {
+                var raw = new TextDecoder().decode(compressedBytes);
+                entry.bodyParsed = JSON.parse(raw);
+                onEntryDecoded(entry);
+            } catch(e) {
+                entry.decodeError = "All decompression attempts failed";
+                onEntryDecoded(entry);
+            }
+            return;
+        }
+        var attempt = attempts[idx];
+        try {
+            var ds = new DecompressionStream(attempt.format);
+            var writer = ds.writable.getWriter();
+            writer.write(attempt.data);
+            writer.close();
+            var reader = ds.readable.getReader();
+            var chunks = [];
+            var totalLen = 0;
+            while (true) {
+                var chunk = await reader.read();
+                if (chunk.done) break;
+                chunks.push(chunk.value);
+                totalLen += chunk.value.byteLength;
+            }
+            var result = new Uint8Array(totalLen);
+            var offset = 0;
+            for (var ci = 0; ci < chunks.length; ci++) {
+                result.set(chunks[ci], offset);
+                offset += chunks[ci].byteLength;
+            }
+            var jsonStr = new TextDecoder().decode(result);
+            entry.bodyParsed = JSON.parse(jsonStr);
+            entry.decompressionMethod = attempt.name;
+            onEntryDecoded(entry);
+        } catch(e) {
+            tryNext(idx + 1);
+        }
+    })(0);
+}
+
+function onEntryDecoded(entry) {
+    console.group("%c[DECODED] " + entry.url, "color: #4ecca3; font-weight: bold; font-size: 14px");
+    if (entry.bodyParsed) {
+        console.log("Decompression:", entry.decompressionMethod || "none");
+        console.dir(entry.bodyParsed);
+    } else {
+        console.warn("Decode error:", entry.decodeError);
+    }
+    console.groupEnd();
+    renderNetworkLog();
+    // Update the request bodies textarea if it exists
+    updateRequestBodies();
+}
+
+function updateRequestBodies() {
+    var el = document.getElementById("request-bodies");
+    if (!el) return;
+    var bodies = interceptedRequests
+        .filter(function(r) { return r.bodyParsed || r.body; })
+        .map(function(r) {
+            return {
+                type: r.type,
+                method: r.method,
+                url: r.url,
+                compressed: r.isCompressed,
+                decompressionMethod: r.decompressionMethod,
+                rawBytes: r.rawLength,
+                data: r.bodyParsed || "(binary — decode failed: " + (r.decodeError || "pending") + ")"
+            };
+        });
+    if (bodies.length > 0) {
+        el.value = JSON.stringify(bodies, null, 2);
+    }
+}
+
+// --- Intercept XMLHttpRequest ---
+var OriginalXHR = window.XMLHttpRequest;
+function FakeXHR() {
+    this._method = null;
+    this._url = null;
+    this._headers = {};
+    this._async = true;
+    this.readyState = 0;
+    this.status = 0;
+    this.statusText = "";
+    this.responseText = "";
+    this.response = "";
+    this.onreadystatechange = null;
+    this.onload = null;
+    this.onerror = null;
+    this.ontimeout = null;
+    this.withCredentials = false;
+    this.timeout = 0;
+    this.responseType = "";
+}
+FakeXHR.prototype.open = function(method, url, async) {
+    this._method = method;
+    this._url = url;
+    this._async = async !== false;
+};
+FakeXHR.prototype.setRequestHeader = function(name, value) {
+    this._headers[name] = value;
+};
+FakeXHR.prototype.send = function(body) {
+    var entry = {
+        type: "XMLHttpRequest",
+        method: this._method,
+        url: this._url,
+        headers: Object.assign({}, this._headers),
+        body: body,
+        timestamp: new Date().toISOString()
+    };
+
+    // Decode the binary payload.
+    // FingerprintJS Pro encodes signals as: XOR encryption → deflate compression → UTF-8 JSON bytes.
+    // Binary layout from zr(): [baseByte][flags...][paddingCount+baseByte][padding...][xorKey(9 bytes)][encrypted data]
+    // For Vi(data, isCompressed): flags are [3,14] if compressed, [3,13] if not. paddingMax=3, keyLen=9.
+    if (body && (body instanceof ArrayBuffer || (body.buffer instanceof ArrayBuffer))) {
+        var bytes = body instanceof ArrayBuffer ? new Uint8Array(body) : new Uint8Array(body.buffer, body.byteOffset, body.byteLength);
+        entry.rawBytes = bytes;
+        entry.rawLength = bytes.length;
+
+        try {
+            // Reverse the zr() encoding:
+            // Byte 0: baseByte (random)
+            // Bytes 1..flagsLen: each is baseByte + flag value
+            // Byte 1+flagsLen: baseByte + paddingCount
+            // Next paddingCount bytes: random padding
+            // Next keyLen bytes: XOR key
+            // Remaining bytes: XOR-encrypted data
+            var flagsLen = 2; // Vi passes [3,13] or [3,14] — always 2 flags
+            var keyLen = 9;
+            var baseByte = bytes[0];
+            var flags = [];
+            for (var fi = 0; fi < flagsLen; fi++) {
+                flags.push((bytes[1 + fi] - baseByte + 256) % 256);
+            }
+            var paddingCount = (bytes[1 + flagsLen] - baseByte + 256) % 256;
+            var headerLen = 1 + flagsLen + 1 + paddingCount + keyLen;
+            var xorKey = bytes.slice(1 + flagsLen + 1 + paddingCount, headerLen);
+            var encrypted = bytes.slice(headerLen);
+
+            // Un-XOR the data
+            var decrypted = new Uint8Array(encrypted.length);
+            for (var di = 0; di < encrypted.length; di++) {
+                decrypted[di] = encrypted[di] ^ xorKey[di % keyLen];
+            }
+
+            entry.flags = flags;
+            entry.isCompressed = (flags[1] === 14); // [3,14] = compressed, [3,13] = not
+
+            if (entry.isCompressed) {
+                // Decompress — try deflate-raw first, then deflate
+                decompressAndParse(decrypted, entry);
+            } else {
+                // Not compressed, just UTF-8 JSON
+                var jsonStr = new TextDecoder().decode(decrypted);
+                entry.bodyParsed = JSON.parse(jsonStr);
+                onEntryDecoded(entry);
+            }
+        } catch(decodeErr) {
+            console.warn("[decode error]", decodeErr);
+            entry.decodeError = decodeErr.message;
+        }
+    } else if (body && typeof body === "string") {
+        try { entry.bodyParsed = JSON.parse(body); }
+        catch(e) {
+            var params = {};
+            body.split("&").forEach(function(pair) {
+                var eq = pair.indexOf("=");
+                if (eq > -1) {
+                    var key = decodeURIComponent(pair.slice(0, eq));
+                    var val = decodeURIComponent(pair.slice(eq + 1));
+                    try { params[key] = JSON.parse(val); } catch(e2) { params[key] = val; }
+                }
+            });
+            if (Object.keys(params).length > 0) entry.bodyParsed = params;
+        }
+    }
+
+    interceptedRequests.push(entry);
+    console.group("%c[XHR INTERCEPTED] " + this._method + " " + this._url,
+        "color: red; font-weight: bold; font-size: 14px");
+    console.log("Headers:", this._headers);
+    console.log("Raw bytes:", entry.rawLength, "flags:", entry.flags, "compressed:", entry.isCompressed);
+    if (entry.bodyParsed) {
+        console.log("%cDecoded payload:", "color: green; font-weight: bold");
+        console.dir(entry.bodyParsed);
+    } else if (entry.decodeError) {
+        console.warn("Decode failed:", entry.decodeError);
+    } else {
+        console.log("Raw body:", body);
+    }
+    console.groupEnd();
+
+    renderNetworkLog();
+
+    // Simulate a successful empty response so the library doesn't error out
+    // before returning its local result object.
+    var self = this;
+    self.readyState = 4;
+    self.status = 200;
+    self.statusText = "OK";
+    self.responseText = "{}";
+    self.response = "{}";
+    setTimeout(function() {
+        if (typeof self.onreadystatechange === "function") self.onreadystatechange();
+        if (typeof self.onload === "function") self.onload();
+    }, 0);
+};
+FakeXHR.prototype.abort = function() {};
+FakeXHR.prototype.getAllResponseHeaders = function() { return ""; };
+FakeXHR.prototype.getResponseHeader = function() { return null; };
+FakeXHR.prototype.overrideMimeType = function() {};
+FakeXHR.prototype.addEventListener = function(evt, fn) {
+    if (evt === "load") this.onload = fn;
+    else if (evt === "error") this.onerror = fn;
+    else if (evt === "timeout") this.ontimeout = fn;
+    else if (evt === "readystatechange") this.onreadystatechange = fn;
+};
+FakeXHR.prototype.removeEventListener = function() {};
+FakeXHR.UNSENT = 0;
+FakeXHR.OPENED = 1;
+FakeXHR.HEADERS_RECEIVED = 2;
+FakeXHR.LOADING = 3;
+FakeXHR.DONE = 4;
+window.XMLHttpRequest = FakeXHR;
+
+// --- Intercept fetch() ---
+var originalFetch = window.fetch;
+window.fetch = function(url, options) {
+    var method = (options && options.method) || "GET";
+    var entry = {
+        type: "fetch",
+        method: method,
+        url: typeof url === "string" ? url : url.url,
+        headers: options && options.headers ? Object.assign({}, options.headers) : {},
+        body: options ? options.body : null,
+        timestamp: new Date().toISOString()
+    };
+
+    if (entry.body && typeof entry.body === "string") {
+        try { entry.bodyParsed = JSON.parse(entry.body); } catch(e) {}
+    }
+
+    interceptedRequests.push(entry);
+    console.group("%c[FETCH INTERCEPTED] " + method + " " + entry.url,
+        "color: red; font-weight: bold; font-size: 14px");
+    if (entry.bodyParsed) {
+        console.log("%cParsed body:", "color: green; font-weight: bold");
+        console.dir(entry.bodyParsed);
+    } else if (entry.body) {
+        console.log("Raw body:", entry.body);
+    }
+    console.groupEnd();
+
+    renderNetworkLog();
+
+    // Return a fake successful response
+    return Promise.resolve(new Response("{}", { status: 200, headers: { "Content-Type": "application/json" } }));
+};
+
+// --- Intercept sendBeacon ---
+var originalSendBeacon = navigator.sendBeacon;
+if (navigator.sendBeacon) {
+    navigator.sendBeacon = function(url, data) {
+        var entry = {
+            type: "sendBeacon",
+            url: url,
+            body: data,
+            timestamp: new Date().toISOString()
+        };
+        interceptedRequests.push(entry);
+        console.log("%c[BEACON INTERCEPTED] " + url, "color: red; font-weight: bold; font-size: 14px");
+        renderNetworkLog();
+        return true;
+    };
+}
+
+function renderNetworkLog() {
+    var el = document.getElementById("network-log");
+    if (!el) return;
+    if (interceptedRequests.length === 0) {
+        el.innerHTML = "<em>No outbound requests intercepted yet.</em>";
+        return;
+    }
+    el.innerHTML = interceptedRequests.map(function(r, i) {
+        return '<div class="entry">'
+            + '<span class="tag blocked">BLOCKED</span> '
+            + '<strong>' + r.type + '</strong> '
+            + r.method + ' ' + r.url
+            + ' <span style="color: var(--text-muted);">(' + r.timestamp + ')</span>'
+            + '</div>';
+    }).join("");
+}
+
+window.onerror = function(msg, url, line, col, err) {
+    console.error("[onerror]", msg, "at", url + ":" + line + ":" + col, err);
+};
+</script>
+</head>
+<body>
+    <h1>FingerprintJS Pro v3 — Analysis Harness</h1>
+    <p class="subtitle">
+        Loads the local copy of FingerprintJS Pro, intercepts all network requests,
+        and logs the collected fingerprint data instead of submitting it.
+    </p>
+    <p id="status">Loading FingerprintJS Pro library...</p>
+
+    <div class="card">
+        <h2>Intercepted Network Requests</h2>
+        <div id="network-log" class="network-log">
+            <em>No outbound requests intercepted yet.</em>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>fp.get() Result</h2>
+        <textarea id="get-result" class="json-view" readonly>Waiting for fingerprint collection...</textarea>
+    </div>
+
+    <div class="card">
+        <h2>Intercepted Request Bodies</h2>
+        <textarea id="request-bodies" class="json-view" readonly>Waiting for data...</textarea>
+    </div>
+
+    <script type="module">
+        // Import the local FingerprintJS Pro library.
+        // It's an ES module that exports `load` among other things.
+        import { load } from '../sample_scripts/raw/1.js';
+
+        var statusEl = document.getElementById('status');
+        var getResultEl = document.getElementById('get-result');
+        var requestBodiesEl = document.getElementById('request-bodies');
+
+        statusEl.textContent = 'Library loaded. Calling load()...';
+
+        try {
+            // load() initializes the fingerprint agent.
+            // Normally you pass an apiKey; without one the library may still
+            // collect local signals before failing at the server call.
+            var fp = await load();
+
+            statusEl.textContent = 'Agent ready. Calling fp.get()...';
+
+            try {
+                var result = await fp.get();
+
+                statusEl.textContent = 'Fingerprint collected — data intercepted. See below and console.';
+                statusEl.className = 'done';
+
+                console.group('%c[FP RESULT] fp.get() returned:', 'color: #4ecca3; font-weight: bold; font-size: 14px');
+                console.dir(result);
+                console.groupEnd();
+
+                getResultEl.value = JSON.stringify(result, null, 2);
+
+            } catch (getErr) {
+                // fp.get() may throw if the server response is invalid (since we
+                // returned a fake "{}"). The interesting data is in the intercepted
+                // request bodies — the fingerprint signals were already collected
+                // and sent before the error.
+                statusEl.textContent = 'fp.get() threw (expected with intercepted network) — fingerprint data was captured in network requests below.';
+                statusEl.className = 'done';
+
+                console.group('%c[FP GET ERROR]', 'color: orange; font-weight: bold; font-size: 14px');
+                console.error(getErr);
+                console.groupEnd();
+
+                getResultEl.value = 'fp.get() error: ' + (getErr.message || getErr) + '\n\n'
+                    + 'This is expected — the library threw because our fake server response\n'
+                    + 'does not match what it expects. The collected fingerprint signals are\n'
+                    + 'in the intercepted request bodies below.';
+            }
+
+        } catch (loadErr) {
+            statusEl.textContent = 'load() error: ' + (loadErr.message || loadErr);
+            statusEl.className = 'error';
+            console.error('load() failed:', loadErr);
+        }
+
+        // The request bodies are rendered asynchronously by onEntryDecoded()
+        // as decompression completes. Trigger one final update here.
+        updateRequestBodies();
+    </script>
+
+    <footer>
+        For analysis purposes only. FingerprintJS Pro v3.12.6.
+    </footer>
+</body>
+</html>

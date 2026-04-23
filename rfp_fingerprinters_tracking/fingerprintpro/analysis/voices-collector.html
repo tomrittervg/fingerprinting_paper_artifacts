@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FingerprintPro Voices Collector</title>
+<style>
+  body { font-family: monospace; font-size: 13px; margin: 20px; background: #1a1a1a; color: #d0d0d0; }
+  h1 { font-size: 16px; color: #fff; margin-bottom: 4px; }
+  .subtitle { color: #888; font-size: 11px; margin-bottom: 24px; }
+  .signal { margin-bottom: 32px; }
+  .signal-title {
+    font-size: 13px; font-weight: bold; color: #e8c97a;
+    border-bottom: 1px solid #444; padding-bottom: 4px; margin-bottom: 10px;
+  }
+  .signal-note { color: #666; font-size: 11px; margin-bottom: 10px; font-style: italic; }
+  .section { margin-bottom: 14px; }
+  .section-header {
+    font-size: 12px; font-weight: bold; color: #7ec8e3;
+    border-bottom: 1px solid #2a2a2a; padding-bottom: 3px; margin-bottom: 6px;
+  }
+  .section-header .count { color: #666; font-weight: normal; font-size: 11px; }
+  .entry { padding: 1px 0; white-space: pre-wrap; }
+  .value  { color: #98d882; }
+  .raw    { color: #aaa; }
+  .match  { color: #e8a97a; }
+  .kv { padding: 1px 0; }
+  .kv .k { color: #7ec8e3; }
+  .kv .v { color: #98d882; }
+  .kv .v.err { color: #e05050; }
+  .kv .v.skip { color: #888; }
+  .kv .v.raw { color: #aaa; }
+  .error { color: #e05050; font-weight: bold; margin-bottom: 8px; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 4px; }
+  th { color: #7ec8e3; font-size: 11px; font-weight: bold; text-align: left;
+       border-bottom: 1px solid #333; padding: 2px 8px 2px 0; }
+  td { color: #aaa; font-size: 12px; padding: 2px 8px 2px 0; vertical-align: top; }
+  td.match { color: #e8a97a; }
+  td.bool-true  { color: #98d882; }
+  td.bool-false { color: #666; }
+</style>
+</head>
+<body>
+<h1>FingerprintPro Voices Collector</h1>
+<div class="subtitle">Same collection logic as FingerprintPro. Nothing is submitted.</div>
+<div id="output"></div>
+
+<script>
+// ── Browser / platform detection ─────────────────────────────────────────────
+// Matches FP's cn(), ln(), sn(), dn() exactly.
+
+function countTrue(arr) {
+  return arr.reduce((n, v) => n + (v ? 1 : 0), 0);
+}
+
+function isChrome() {
+  const e = window, n = navigator;
+  return countTrue([
+    "webkitPersistentStorage" in n,
+    "webkitTemporaryStorage" in n,
+    (n.vendor || "").indexOf("Google") === 0,
+    "webkitResolveLocalFileSystemURL" in e,
+    "BatteryManager" in e,
+    "webkitMediaStream" in e,
+    "webkitSpeechGrammar" in e,
+  ]) >= 5;
+}
+
+function isFirefox() {
+  const e = window;
+  const s = document.documentElement?.style ?? {};
+  return countTrue([
+    "buildID" in navigator,
+    "MozAppearance" in s,
+    "onmozfullscreenchange" in e,
+    "mozInnerScreenX" in e,
+    "CSSMozDocumentRule" in e,
+    "CanvasCaptureMediaStream" in e,
+  ]) >= 4;
+}
+
+function isSafari() {
+  const e = window;
+  return countTrue([
+    "ApplePayError" in e,
+    "CSSPrimitiveValue" in e,
+    "Counter" in e,
+    navigator.vendor.indexOf("Apple") === 0,
+    "RGBColor" in e,
+    "WebKitMediaKeys" in e,
+  ]) >= 4;
+}
+
+// Gr() — Firefox "limited environment" check: ≥3 of these APIs are missing.
+// If isFirefox() && isLimitedFirefox(), voices are collected immediately (no voiceschanged wait).
+function isLimitedFirefox() {
+  const e = window;
+  return countTrue([
+    !("PushManager" in e),
+    !("AudioBuffer" in e),
+    !("RTCPeerConnection" in e),
+    !("geolocation" in navigator),
+    !("ServiceWorker" in e),
+  ]) >= 3;
+}
+
+// ── CRC32 — FP's A(str) = C(w$1(str)) ────────────────────────────────────────
+// Polynomial: 0xEDB88320 (= 3988292384) — standard CRC32 reversed poly.
+// Input string is encoded as ASCII bytes if all chars ≤ 127, else UTF-8.
+
+let _crc32Table = null;
+function crc32(str) {
+  const tmp = new Uint8Array(str.length);
+  let bytes = null;
+  for (let i = 0; i < str.length; i++) {
+    const c = str.charCodeAt(i);
+    if (c > 127) { bytes = new TextEncoder().encode(str); break; }
+    tmp[i] = c;
+  }
+  if (!bytes) bytes = tmp;
+
+  if (!_crc32Table) {
+    _crc32Table = new Uint32Array(256);
+    for (let i = 0; i < 256; i++) {
+      let n = i;
+      for (let j = 0; j < 8; j++) n = (n & 1) ? (3988292384 ^ (n >>> 1)) : (n >>> 1);
+      _crc32Table[i] = n;
+    }
+  }
+  let e = -1;
+  for (let i = 0; i < bytes.length; i++) e = (e >>> 8) ^ _crc32Table[255 & (e ^ bytes[i])];
+  return (-1 ^ e) >>> 0;
+}
+
+// ── MurmurHash3 x64 128-bit — FP's Ct(str, seed=0) ──────────────────────────
+// Output: 32-char hex string (four 32-bit words, each as 8 hex chars).
+// 64-bit values represented as [hi32, lo32] arrays.
+
+function murmur3_x64_128(str, seed) {
+  seed = seed | 0;
+
+  // String → bytes (matches w$1: ASCII path if all chars ≤ 127, else UTF-8)
+  const tmp = new Uint8Array(str.length);
+  let bytes = null;
+  for (let i = 0; i < str.length; i++) {
+    const c = str.charCodeAt(i);
+    if (c > 127) { bytes = new TextEncoder().encode(str); break; }
+    tmp[i] = c;
+  }
+  if (!bytes) bytes = tmp;
+  const len = bytes.length;
+
+  // 64-bit arithmetic helpers (matching FP's G$1/H$1/U$1/B$2/$/J$1)
+  function add64(n, t) {
+    const e=n[0]>>>16, r=65535&n[0], o=n[1]>>>16, i=65535&n[1];
+    const u=t[0]>>>16, c=65535&t[0], s=t[1]>>>16;
+    let a=0, l=0, f=0, d=0;
+    d+=i+(65535&t[1]); f+=d>>>16; d&=65535;
+    f+=o+s;            l+=f>>>16; f&=65535;
+    l+=r+c;            a+=l>>>16; l&=65535;
+    a+=e+u;            a&=65535;
+    n[0]=a<<16|l; n[1]=f<<16|d;
+  }
+  function mul64(n, t) {
+    const e=n[0]>>>16, r=65535&n[0], o=n[1]>>>16, i=65535&n[1];
+    const u=t[0]>>>16, c=65535&t[0], s=t[1]>>>16, a=65535&t[1];
+    let l=0, f=0, d=0, m=0;
+    m+=i*a; d+=m>>>16; m&=65535;
+    d+=o*a; f+=d>>>16; d&=65535;
+    d+=i*s; f+=d>>>16; d&=65535;
+    f+=r*a; l+=f>>>16; f&=65535;
+    f+=o*s; l+=f>>>16; f&=65535;
+    f+=i*c; l+=f>>>16; f&=65535;
+    l+=e*a+r*s+o*c+i*u; l&=65535;
+    n[0]=l<<16|f; n[1]=d<<16|m;
+  }
+  function rotl64(n, t) {
+    const e = n[0];
+    t %= 64;
+    if (t === 32)      { n[0]=n[1]; n[1]=e; }
+    else if (t < 32)   { n[0]=e<<t|n[1]>>>32-t; n[1]=n[1]<<t|e>>>32-t; }
+    else               { t-=32; n[0]=n[1]<<t|e>>>32-t; n[1]=e<<t|n[1]>>>32-t; }
+  }
+  function shl64(n, t) {   // B$2 — logical left shift
+    t %= 64;
+    if (t !== 0) {
+      if (t < 32) { n[0]=n[1]>>>32-t; n[1]=n[1]<<t; }
+      else        { n[0]=n[1]<<t-32;  n[1]=0; }
+    }
+  }
+  function xor64(n, t) { n[0]^=t[0]; n[1]^=t[1]; }  // $ — XOR in place
+
+  // Constants
+  const c1 = [2277735313, 289559509];    // 0x87C37B91_114253D5
+  const c2 = [1291169091, 658871167];    // 0x4CF5AD43_2745937F
+  const K5 = [0, 5];
+  const Q1 = [0, 1390208809];            // 0x52DCE729
+  const Q2 = [0, 944331445];             // 0x38495AB5
+  const fm1= [4283543511, 3981806797];   // 0xFF51AFD7_ED558CCD
+  const fm2= [3301882366, 444984403];    // 0xC4CEB9FE_1A85EC53
+
+  function fmix64(n) {  // J$1
+    const t = [0, n[0]>>>1];
+    xor64(n, t); mul64(n, fm1);
+    t[1] = n[0]>>>1; xor64(n, t); mul64(n, fm2);
+    t[1] = n[0]>>>1; xor64(n, t);
+  }
+
+  const h1 = [0, seed], h2 = [0, seed];
+  const s  = [0, 0],    a  = [0, 0],    f  = [0, 0];
+  const nb = len >>> 4;  // number of 16-byte blocks
+
+  // Main body
+  for (let b = 0; b < nb; b++) {
+    const l = b * 16;
+    s[0]=bytes[l+4]|bytes[l+5]<<8|bytes[l+6]<<16|bytes[l+7]<<24;
+    s[1]=bytes[l  ]|bytes[l+1]<<8|bytes[l+2]<<16|bytes[l+3]<<24;
+    a[0]=bytes[l+12]|bytes[l+13]<<8|bytes[l+14]<<16|bytes[l+15]<<24;
+    a[1]=bytes[l+ 8]|bytes[l+ 9]<<8|bytes[l+10]<<16|bytes[l+11]<<24;
+    mul64(s,c1); rotl64(s,31); mul64(s,c2);
+    xor64(h1,s); rotl64(h1,27); add64(h1,h2); mul64(h1,K5); add64(h1,Q1);
+    mul64(a,c2); rotl64(a,33); mul64(a,c1);
+    xor64(h2,a); rotl64(h2,31); add64(h2,h1); mul64(h2,K5); add64(h2,Q2);
+  }
+
+  // Tail
+  s[0]=0; s[1]=0; a[0]=0; a[1]=0; f[0]=0; f[1]=0;
+  const tl = nb * 16;
+  /* eslint-disable no-fallthrough */
+  switch (len % 16) {
+    case 15: f[1]=bytes[tl+14]; shl64(f,48); xor64(a,f);
+    case 14: f[1]=bytes[tl+13]; shl64(f,40); xor64(a,f);
+    case 13: f[1]=bytes[tl+12]; shl64(f,32); xor64(a,f);
+    case 12: f[1]=bytes[tl+11]; shl64(f,24); xor64(a,f);
+    case 11: f[1]=bytes[tl+10]; shl64(f,16); xor64(a,f);
+    case 10: f[1]=bytes[tl+ 9]; shl64(f, 8); xor64(a,f);
+    case  9: f[1]=bytes[tl+ 8]; xor64(a,f); mul64(a,c2); rotl64(a,33); mul64(a,c1); xor64(h2,a);
+    case  8: f[1]=bytes[tl+ 7]; shl64(f,56); xor64(s,f);
+    case  7: f[1]=bytes[tl+ 6]; shl64(f,48); xor64(s,f);
+    case  6: f[1]=bytes[tl+ 5]; shl64(f,40); xor64(s,f);
+    case  5: f[1]=bytes[tl+ 4]; shl64(f,32); xor64(s,f);
+    case  4: f[1]=bytes[tl+ 3]; shl64(f,24); xor64(s,f);
+    case  3: f[1]=bytes[tl+ 2]; shl64(f,16); xor64(s,f);
+    case  2: f[1]=bytes[tl+ 1]; shl64(f, 8); xor64(s,f);
+    case  1: f[1]=bytes[tl    ]; xor64(s,f); mul64(s,c1); rotl64(s,31); mul64(s,c2); xor64(h1,s);
+  }
+
+  // Finalize
+  const r = [0, len];
+  xor64(h1,r); xor64(h2,r);
+  add64(h1,h2); add64(h2,h1);
+  fmix64(h1);   fmix64(h2);
+  add64(h1,h2); add64(h2,h1);
+
+  return ("00000000"+(h1[0]>>>0).toString(16)).slice(-8) +
+         ("00000000"+(h1[1]>>>0).toString(16)).slice(-8) +
+         ("00000000"+(h2[0]>>>0).toString(16)).slice(-8) +
+         ("00000000"+(h2[1]>>>0).toString(16)).slice(-8);
+}
+
+// ── Mc() — s52 processing: escape, tuple-join, sort, JSON, MurmurHash3-128 ──
+// FP source lines 3357–3362.
+//
+// For each voice: escape commas/backslashes in voiceURI, name, and lang, build tuple
+// [voiceURI, name, lang, localService, default], join with ",".
+// Sort the array, JSON.stringify, then hash with murmur3_x64_128(str, 0).
+
+function processS52(voices) {
+  const escape = n => n.replace(/([,\\])/g, "\\$1");
+  const tuples = voices.map(v => [
+    escape(v.voiceURI),
+    escape(v.name),
+    escape(v.lang),
+    v.localService ? "1" : "0",
+    v.default     ? "1" : "0",
+  ].join(",")).sort();
+  const json = JSON.stringify(tuples);
+  return {
+    s: voices.length ? 0 : 1,
+    v: murmur3_x64_128(json, 0),
+    tuples,
+    json,
+  };
+}
+
+// ── Fc() — s160 processing: CRC32 sentinel check ─────────────────────────────
+// FP source lines 3364–3369.
+//
+// For each voice: CRC32(name.slice(0, 6)).
+// Returns true if any voice matches the hardcoded sentinel 1655763047.
+// Sentinel in hex: 0x62B3D657.
+
+const S160_SENTINEL = 1655763047;  // 0x62B0F067
+
+function processS160(voices) {
+  const results = voices.map(v => {
+    const prefix = v.name.slice(0, 6);
+    const hash   = crc32(prefix);
+    return { name: v.name, prefix, hash, match: hash === S160_SENTINEL };
+  });
+  const matched = results.some(r => r.match);
+  return {
+    s: voices.length ? 0 : 1,
+    v: matched,
+    results,
+  };
+}
+
+// ── Rendering helpers ─────────────────────────────────────────────────────────
+
+function kv(label, value, cls = "v") {
+  const d = document.createElement("div");
+  d.className = "kv";
+  d.innerHTML = `<span class="k">${label}: </span><span class="v ${cls}">${value}</span>`;
+  return d;
+}
+
+function sectionHeader(text, count) {
+  const d = document.createElement("div");
+  d.className = "section-header";
+  d.innerHTML = count !== undefined
+    ? `${text} <span class="count">${count} entries</span>`
+    : text;
+  return d;
+}
+
+function entry(text, cls = "raw") {
+  const d = document.createElement("div");
+  d.className = `entry ${cls}`;
+  d.textContent = text;
+  return d;
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+
+(async function main() {
+  const out = document.getElementById("output");
+
+  const firefox = isFirefox(), safari = isSafari(),
+        chrome  = isChrome(),  limited = isLimitedFirefox();
+
+  // Platform gate (matches Nc()'s inner guard):
+  // !speechSynthesis.addEventListener || (isFirefox() && isLimitedFirefox()) || isSafari()
+  // → if true, call getVoices() immediately without waiting for voiceschanged
+  const ss = window.speechSynthesis;
+  if (!ss || typeof ss.getVoices !== "function") {
+    const e = document.createElement("div");
+    e.className = "error";
+    e.textContent = "speechSynthesis.getVoices not available (status: -1)";
+    out.appendChild(e);
+    return;
+  }
+
+  const useImmediate = !ss.addEventListener || (firefox && limited) || safari;
+  const strategyLabel = useImmediate
+    ? "immediate  (Safari / limited Firefox / no addEventListener)"
+    : "event-based  (voiceschanged listener + 600 ms fallback)";
+
+  // ── Platform info ───────────────────────────────────────────────────────────
+  {
+    const sig = document.createElement("div");
+    sig.className = "signal";
+    const title = document.createElement("div");
+    title.className = "signal-title";
+    title.textContent = "Platform flags  —  shared by s52 and s160";
+    sig.appendChild(title);
+
+    const note = document.createElement("div");
+    note.className = "signal-note";
+    note.textContent =
+      "Nc() (lines 3307–3356) caches one getVoices() call for both signals.  |  " +
+      "Platform gate: !speechSynthesis.addEventListener || (isFirefox()&&isLimitedFirefox()) || isSafari()  |  " +
+      "Gate true → immediate getVoices(); false → voiceschanged event + 600 ms fallback, max 10 s wait.";
+    sig.appendChild(note);
+
+    for (const [k, v] of [
+      ["isChrome()",                String(chrome),  chrome  ? "v" : "skip"],
+      ["isFirefox()",               String(firefox), firefox ? "v" : "skip"],
+      ["isSafari()",                String(safari),  safari  ? "v" : "skip"],
+      ["isLimitedFirefox() / Gr()", String(limited), limited ? "v" : "skip"],
+      ["!ss.addEventListener",      String(!ss.addEventListener), !ss.addEventListener ? "v" : "skip"],
+      ["collection strategy",       strategyLabel,   "raw"],
+    ]) {
+      sig.appendChild(kv(k, v, v === "raw" ? "raw" : (v === "true" ? "v" : "skip")));
+    }
+
+    out.appendChild(sig);
+  }
+
+  // ── Collect voices ──────────────────────────────────────────────────────────
+  // Matches Nc() async collection (lines 3307–3356).
+
+  let voices = [];
+  let collectionNote = "";
+
+  if (useImmediate) {
+    // Immediate path: just call getVoices()
+    voices = ss.getVoices();
+    collectionNote = "immediate getVoices()";
+  } else {
+    // Event-based path: wait for voiceschanged, fall back after 600 ms
+    // (matches FP's promise with t$1/e$1 timers)
+    voices = await new Promise((resolve) => {
+      const immediate = ss.getVoices();
+      if (immediate.length) {
+        collectionNote = "voiceschanged path — voices available immediately";
+        resolve(immediate);
+        return;
+      }
+
+      let resolved = false;
+      let fallbackTimer = null;
+      let resolveTimer = null;
+      let unsub = null;
+
+      function tryResolve() {
+        if (resolved) return;
+        const v = ss.getVoices();
+        if (v.length) {
+          resolved = true;
+          if (fallbackTimer) { clearTimeout(fallbackTimer); fallbackTimer = null; }
+          // 50 ms short delay (matches t$1(u,50))
+          resolveTimer = setTimeout(() => resolve(v), 50);
+          collectionNote = "voiceschanged path — resolved on voiceschanged event";
+        }
+      }
+
+      const handler = () => {
+        try { tryResolve(); } catch (_) {}
+      };
+
+      // 600 ms fallback (matches e$1(u,600))
+      fallbackTimer = setTimeout(() => {
+        if (!resolved) {
+          resolved = true;
+          if (unsub) { ss.removeEventListener("voiceschanged", handler); }
+          collectionNote = "voiceschanged path — resolved on 600 ms fallback, voices may be empty";
+          resolve(ss.getVoices());
+        }
+      }, 600);
+
+      unsub = true;
+      ss.addEventListener("voiceschanged", handler);
+      tryResolve();
+    });
+    // Unsubscribe after 10 s (matches i&&e$1(i,1e4)) — already done on resolve
+  }
+
+  voices = Array.from(voices || []);
+
+  // ── Raw voice list ──────────────────────────────────────────────────────────
+  {
+    const sig = document.createElement("div");
+    sig.className = "signal";
+    const title = document.createElement("div");
+    title.className = "signal-title";
+    title.textContent = `Raw voice list  —  speechSynthesis.getVoices()  (${collectionNote})`;
+    sig.appendChild(title);
+
+    const note = document.createElement("div");
+    note.className = "signal-note";
+    note.textContent =
+      "Properties read by both signals: voiceURI, name, lang, localService, default.  |  " +
+      `Total voices: ${voices.length}`;
+    sig.appendChild(note);
+
+    if (!voices.length) {
+      sig.appendChild(entry("(no voices — speechSynthesis.getVoices() returned empty list)", "raw"));
+    } else {
+      const sec = document.createElement("div");
+      sec.className = "section";
+      sec.appendChild(sectionHeader("voices", voices.length));
+
+      const table = document.createElement("table");
+      const thead = document.createElement("tr");
+      for (const h of ["#", "voiceURI", "name", "lang", "localService", "default"]) {
+        const th = document.createElement("th");
+        th.textContent = h;
+        thead.appendChild(th);
+      }
+      table.appendChild(thead);
+
+      voices.forEach((v, i) => {
+        const tr = document.createElement("tr");
+        const cells = [
+          [String(i), "raw"],
+          [v.voiceURI,            "raw"],
+          [v.name,                "value"],
+          [v.lang,                "raw"],
+          [String(v.localService), v.localService ? "bool-true" : "bool-false"],
+          [String(v.default),      v.default      ? "bool-true" : "bool-false"],
+        ];
+        for (const [text, cls] of cells) {
+          const td = document.createElement("td");
+          td.className = cls;
+          td.textContent = text;
+          tr.appendChild(td);
+        }
+        table.appendChild(tr);
+      });
+      sec.appendChild(table);
+      sig.appendChild(sec);
+    }
+    out.appendChild(sig);
+  }
+
+  // ── s52 — jc() → Nc(cache, Mc) ─────────────────────────────────────────────
+  {
+    const { s, v, tuples, json } = processS52(voices);
+
+    const sig = document.createElement("div");
+    sig.className = "signal";
+
+    const title = document.createElement("div");
+    title.className = "signal-title";
+    title.textContent = "s52  —  jc()  →  Nc(cache, Mc)  —  voice list MurmurHash3-128";
+    sig.appendChild(title);
+
+    const note = document.createElement("div");
+    note.className = "signal-note";
+    note.textContent =
+      "Mc() (lines 3357–3362): for each voice, escape commas/backslashes in voiceURI, name, and lang " +
+      "(escape fn applied to all three string properties, though lang rarely contains them), " +
+      "build tuple [voiceURI, name, lang, localService, default] joined with \",\".  " +
+      "Sort array, JSON.stringify, hash with MurmurHash3-x64-128(str, seed=0).  |  " +
+      "Status: 0 = voices found, 1 = empty list.";
+    sig.appendChild(note);
+
+    // Tuple array (input to hash)
+    const secTuples = document.createElement("div");
+    secTuples.className = "section";
+    secTuples.appendChild(sectionHeader("escaped+sorted tuple array  (voiceURI, name, lang all escaped; input to JSON.stringify)", tuples.length));
+    for (const t of tuples) secTuples.appendChild(entry(t, "raw"));
+    sig.appendChild(secTuples);
+
+    // JSON string
+    const secJson = document.createElement("div");
+    secJson.className = "section";
+    secJson.appendChild(sectionHeader("JSON.stringify(tuples)  (input to MurmurHash3)"));
+    const jsonEntry = document.createElement("div");
+    jsonEntry.className = "entry raw";
+    jsonEntry.style.wordBreak = "break-all";
+    jsonEntry.textContent = json;
+    secJson.appendChild(jsonEntry);
+    sig.appendChild(secJson);
+
+    // Result
+    const secResult = document.createElement("div");
+    secResult.className = "section";
+    secResult.appendChild(sectionHeader("result"));
+    secResult.appendChild(kv("status", String(s), s === 0 ? "v" : "err"));
+    secResult.appendChild(kv("value  (murmur3_x64_128 hex)", v || "null", v ? "v" : "raw"));
+    sig.appendChild(secResult);
+
+    out.appendChild(sig);
+  }
+
+  // ── s160 — Vc() → Nc(cache, Fc) ─────────────────────────────────────────────
+  {
+    const { s, v, results } = processS160(voices);
+
+    const sig = document.createElement("div");
+    sig.className = "signal";
+
+    const title = document.createElement("div");
+    title.className = "signal-title";
+    title.textContent = "s160  —  Vc()  →  Nc(cache, Fc)  —  CRC32 sentinel check";
+    sig.appendChild(title);
+
+    const note = document.createElement("div");
+    note.className = "signal-note";
+    note.textContent =
+      "Fc() (lines 3364–3369): for each voice, compute CRC32(name.slice(0, 6)).  " +
+      "Return true if any hash equals the hardcoded sentinel 1655763047 (0x62B0F067).  |  " +
+      "Status: 0 = voices found, 1 = empty list.  |  " +
+      "The sentinel identifies a specific voice name prefix; the exact name it targets is not decoded in FP source.";
+    sig.appendChild(note);
+
+    // Per-voice CRC32 table
+    const secVoices = document.createElement("div");
+    secVoices.className = "section";
+    secVoices.appendChild(sectionHeader(
+      `per-voice CRC32 check  (sentinel = ${S160_SENTINEL} = 0x${S160_SENTINEL.toString(16).padStart(8,"0").toUpperCase()})`,
+      results.length
+    ));
+
+    if (results.length) {
+      const table = document.createElement("table");
+      const thead = document.createElement("tr");
+      for (const h of ["#", "name", "name.slice(0,6)", "CRC32", "matches sentinel"]) {
+        const th = document.createElement("th");
+        th.textContent = h;
+        thead.appendChild(th);
+      }
+      table.appendChild(thead);
+
+      results.forEach((r, i) => {
+        const tr = document.createElement("tr");
+        const cells = [
+          [String(i),            "raw"],
+          [r.name,               "raw"],
+          [r.prefix,             "raw"],
+          [String(r.hash),       r.match ? "match" : "raw"],
+          [String(r.match),      r.match ? "match" : "bool-false"],
+        ];
+        for (const [text, cls] of cells) {
+          const td = document.createElement("td");
+          td.className = cls;
+          td.textContent = text;
+          tr.appendChild(td);
+        }
+        table.appendChild(tr);
+      });
+      secVoices.appendChild(table);
+    } else {
+      secVoices.appendChild(entry("(no voices)", "raw"));
+    }
+    sig.appendChild(secVoices);
+
+    // Result
+    const secResult = document.createElement("div");
+    secResult.className = "section";
+    secResult.appendChild(sectionHeader("result"));
+    secResult.appendChild(kv("status", String(s), s === 0 ? "v" : "err"));
+    secResult.appendChild(kv("value  (any voice name[:6] CRC32 == sentinel?)", String(v),
+      v === true ? "v" : "skip"));
+    sig.appendChild(secResult);
+
+    out.appendChild(sig);
+  }
+
+})();
+</script>
+</body>
+</html>

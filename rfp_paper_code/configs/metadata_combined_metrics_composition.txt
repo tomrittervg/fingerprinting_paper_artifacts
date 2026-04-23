@@ -1,0 +1,252 @@
+Combined metrics and their component inputs
+Source: process_02.sql (generated from process_02_03.sql.template)
+26 combined hash metrics total
+
+============================================================
+WEBGPU
+============================================================
+
+combined_wgpu_hash  (31 components)
+    wgpu_maxtexturedimension1d
+    wgpu_maxtexturedimension2d
+    wgpu_maxtexturedimension3d
+    wgpu_maxtexturearraylayers
+    wgpu_maxbindgroups
+    wgpu_maxbindgroupsplusvertexbuffers
+    wgpu_maxbindingsperbindgroup
+    wgpu_maxdynamicuniformbuffersperpipelinelayout
+    wgpu_maxdynamicstoragebuffersperpipelinelayout
+    wgpu_maxsampledtexturespershaderstage
+    wgpu_maxsamplerspershaderstage
+    wgpu_maxstoragebufferspershaderstage
+    wgpu_maxstoragetexturespershaderstage
+    wgpu_maxuniformbufferspershaderstage
+    wgpu_maxuniformbufferbindingsize
+    wgpu_maxstoragebufferbindingsize
+    wgpu_minuniformbufferoffsetalignment
+    wgpu_minstoragebufferoffsetalignment
+    wgpu_maxvertexbuffers
+    wgpu_maxbuffersize
+    wgpu_maxvertexattributes
+    wgpu_maxvertexbufferarraystride
+    wgpu_maxinterstageshadervariables
+    wgpu_maxcolorattachments
+    wgpu_maxcolorattachmentbytespersample
+    wgpu_maxcomputeworkgroupstoragesize
+    wgpu_maxcomputeinvocationsperworkgroup
+    wgpu_maxcomputeworkgroupsizex
+    wgpu_maxcomputeworkgroupsizey
+    wgpu_maxcomputeworkgroupsizez
+    wgpu_maxcomputeworkgroupsperdimension
+
+============================================================
+CANVAS
+============================================================
+
+combined_canvas_hardware_hash  (13 components)
+    canvasdata1
+    canvasdata2
+    canvasdata3
+    canvasdata4
+    canvasdata5
+    canvasdata6
+    canvasdata7
+    canvasdata8
+    canvasdata9
+    canvasdata10
+    canvasdata11_webgl
+    canvasdata12_fingerprintjs1
+    canvasdata13_fingerprintjs2
+
+combined_canvas_software_hash  (13 components)
+    canvasdata1_software
+    canvasdata2_software
+    canvasdata3_software
+    canvasdata4_software
+    canvasdata5_software
+    canvasdata6_software
+    canvasdata7_software
+    canvasdata8_software
+    canvasdata9_software
+    canvasdata10_software
+    canvasdata11_webgl_software
+    canvasdata12_fingerprintjs1_software
+    canvasdata13_fingerprintjs2_software
+
+============================================================
+CLIENTRECTS
+============================================================
+
+combined_clientrects_element_gbcr_hash  (12 components)
+    clientrects_element_gbcr_01
+    clientrects_element_gbcr_02
+    clientrects_element_gbcr_03
+    clientrects_element_gbcr_04
+    clientrects_element_gbcr_05
+    clientrects_element_gbcr_06
+    clientrects_element_gbcr_07
+    clientrects_element_gbcr_08
+    clientrects_element_gbcr_09
+    clientrects_element_gbcr_10
+    clientrects_element_gbcr_11
+    clientrects_element_gbcr_12
+
+combined_clientrects_element_gcr_hash  (12 components)
+    clientrects_element_gcr_01
+    clientrects_element_gcr_02
+    clientrects_element_gcr_03
+    clientrects_element_gcr_04
+    clientrects_element_gcr_05
+    clientrects_element_gcr_06
+    clientrects_element_gcr_07
+    clientrects_element_gcr_08
+    clientrects_element_gcr_09
+    clientrects_element_gcr_10
+    clientrects_element_gcr_11
+    clientrects_element_gcr_12
+
+combined_clientrects_range_gbcr_hash  (12 components)
+    clientrects_range_gbcr_01
+    clientrects_range_gbcr_02
+    clientrects_range_gbcr_03
+    clientrects_range_gbcr_04
+    clientrects_range_gbcr_05
+    clientrects_range_gbcr_06
+    clientrects_range_gbcr_07
+    clientrects_range_gbcr_08
+    clientrects_range_gbcr_09
+    clientrects_range_gbcr_10
+    clientrects_range_gbcr_11
+    clientrects_range_gbcr_12
+
+combined_clientrects_range_gcr_hash  (12 components)
+    clientrects_range_gcr_01
+    clientrects_range_gcr_02
+    clientrects_range_gcr_03
+    clientrects_range_gcr_04
+    clientrects_range_gcr_05
+    clientrects_range_gcr_06
+    clientrects_range_gcr_07
+    clientrects_range_gcr_08
+    clientrects_range_gcr_09
+    clientrects_range_gcr_10
+    clientrects_range_gcr_11
+    clientrects_range_gcr_12
+
+combined_clientrects_emoji_hash  (6 components)
+    clientrects_emoji_01
+    clientrects_emoji_02
+    clientrects_emoji_03
+    clientrects_emoji_04
+    clientrects_emoji_05
+    clientrects_emoji_06
+
+============================================================
+MATHML
+============================================================
+
+combined_mathml_hash  (10 components)
+    mathml1
+    mathml2
+    mathml3
+    mathml4
+    mathml5
+    mathml6
+    mathml7
+    mathml8
+    mathml9
+    mathml10
+
+combined_mathml_diag_hash  (1 component)
+    mathml_diag_values
+
+============================================================
+MATH OPS
+============================================================
+
+combined_math_ops_hash  (1 component)
+    math_ops
+
+combined_math_ops_fdlibm_hash  (1 component)
+    math_ops_fdlibm
+
+combined_math_ops_diag_hash  (1 component)
+    math_ops_fdlibm_2
+
+============================================================
+WEBGL1
+============================================================
+
+combined_webgl1_params_hash  (1 component)
+    gl_params
+
+combined_webgl1_params_sw_hash  (1 component)
+    gl_params_software
+
+combined_webgl_extensions_hash  (1 component)
+    gl_params_extensions
+
+combined_webgl_extensions_sw_hash  (1 component)
+    gl_params_extensions_software
+
+============================================================
+WEBGL2
+============================================================
+
+combined_webgl2_params_hash  (1 component)
+    gl2_params
+
+combined_webgl2_params_sw_hash  (1 component)
+    gl2_params_software
+
+combined_webgl2_extensions_hash  (1 component)
+    gl2_params_extensions
+
+combined_webgl2_extensions_sw_hash  (1 component)
+    gl2_params_extensions_software
+
+============================================================
+FONTS
+============================================================
+
+combined_fonts_variants_allowlisted_hash  (9 components)
+    fonts_variant_a_allowlisted
+    fonts_variant_b_allowlisted
+    fonts_variant_c_allowlisted
+    fonts_variant_d_allowlisted
+    fonts_variant_e_allowlisted
+    fonts_variant_f_allowlisted
+    fonts_variant_g_allowlisted
+    fonts_variant_h_allowlisted
+    fonts_variant_i_allowlisted
+
+combined_fonts_variants_nonallowlisted_hash  (9 components)
+    fonts_variant_a_nonallowlisted
+    fonts_variant_b_nonallowlisted
+    fonts_variant_c_nonallowlisted
+    fonts_variant_d_nonallowlisted
+    fonts_variant_e_nonallowlisted
+    fonts_variant_f_nonallowlisted
+    fonts_variant_g_nonallowlisted
+    fonts_variant_h_nonallowlisted
+    fonts_variant_i_nonallowlisted
+
+============================================================
+MEDIA
+============================================================
+
+combined_media_capabilities_hash  (4 components)
+    media_capabilities_not_efficient
+    media_capabilities_not_smooth
+    media_capabilities_unsupported
+    media_capabilities_h264
+
+============================================================
+CSS
+============================================================
+
+combined_css_colors_hash  (1 component)
+    css_system_colors
+
+combined_css_fonts_hash  (1 component)
+    css_system_fonts

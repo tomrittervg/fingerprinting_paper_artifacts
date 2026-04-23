@@ -1,0 +1,1361 @@
+[
+  {
+    "type": "XMLHttpRequest",
+    "method": "post",
+    "url": "https://api.fpjs.io/?ci=js/3.12.6&q=xx-fpjs-api-token-xx",
+    "compressed": true,
+    "decompressionMethod": "deflate-raw (full)",
+    "rawBytes": 5069,
+    "data": {
+      "c": "xx-fpjs-api-token-xx",
+      "m": "e",
+      "mo": [
+        "bd",
+        "ex",
+        "id"
+      ],
+      "s56": {
+        "s": -5,
+        "v": "200: {}"
+      },
+      "s67": {
+        "s": -1,
+        "v": null
+      },
+      "sc": {
+        "u": "http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js"
+      },
+      "ii": [],
+      "gt": 1,
+      "ab": {
+        "noop": "b"
+      },
+      "s106": {
+        "s": 0,
+        "v": true
+      },
+      "s154": {
+        "s": 0,
+        "v": {
+          "wv": false,
+          "wvp": false,
+          "pr": false,
+          "ck": true,
+          "pt": false,
+          "fp": false
+        }
+      },
+      "s158": {
+        "s": 0,
+        "v": false
+      },
+      "s160": {
+        "s": 0,
+        "v": false
+      },
+      "s97": {
+        "s": -3,
+        "v": null
+      },
+      "s70": {
+        "s": -3,
+        "v": null
+      },
+      "s152": {
+        "s": 0,
+        "v": 1
+      },
+      "s163": {
+        "s": -1,
+        "v": null
+      },
+      "exp_s1013": {
+        "s": -1,
+        "v": null
+      },
+      "exp_s1014": {
+        "s": -1,
+        "v": null
+      },
+      "s52": {
+        "s": 0,
+        "v": "e3926e1e1a1864bdc6417ecc25ddf892"
+      },
+      "s6": {
+        "s": 0,
+        "v": [
+          0,
+          0,
+          76,
+          0
+        ]
+      },
+      "s58": {
+        "s": -1,
+        "v": null
+      },
+      "s20": {
+        "s": 0,
+        "v": [
+          "Arial Unicode MS",
+          "Gill Sans",
+          "Helvetica Neue",
+          "Menlo"
+        ]
+      },
+      "s36": {
+        "s": -1,
+        "v": null
+      },
+      "s51": {
+        "s": 0,
+        "v": {
+          "default": 147.5833282470703,
+          "apple": 147.5833282470703,
+          "serif": 147.5833282470703,
+          "sans": 144.01666259765625,
+          "mono": 133.1666717529297,
+          "min": 9.23333740234375,
+          "system": 146
+        }
+      },
+      "s21": {
+        "s": 0,
+        "v": 35.749972093850374
+      },
+      "s79": {
+        "s": -3,
+        "v": [
+          {
+            "n": "default.ini",
+            "l": 2332499772
+          }
+        ]
+      },
+      "s69": {
+        "s": 0,
+        "v": [
+          {
+            "l": "http://10.2.1.150:8000/fingerprintpro/analysis/",
+            "f": "http://10.2.1.150:8000/fingerprintpro/"
+          }
+        ]
+      },
+      "s23": {
+        "s": -1,
+        "v": null
+      },
+      "s29": {
+        "s": -1,
+        "v": null
+      },
+      "s84": {
+        "s": 0,
+        "v": {
+          "w": 1680,
+          "h": 1050
+        }
+      },
+      "s85": {
+        "s": 0,
+        "v": ""
+      },
+      "s89": {
+        "s": -1,
+        "v": null
+      },
+      "s17": {
+        "s": 0,
+        "v": {
+          "winding": true,
+          "geometry": "a75b38448ec267c5260550dd587f8300",
+          "text": "2013bbd7fd8af5279057a6973463e415"
+        }
+      },
+      "s87": {
+        "s": 0,
+        "v": {
+          "ac": "rgb(0, 122, 255)",
+          "act": "rgb(255, 255, 255)",
+          "at": "rgb(238, 0, 0)",
+          "ab": "rgb(143, 143, 157)",
+          "aca": "rgb(255, 255, 255)",
+          "aw": "rgb(255, 255, 255)",
+          "b": "rgb(255, 255, 255)",
+          "bh": "rgb(233, 233, 237)",
+          "bs": "rgb(233, 233, 237)",
+          "bb": "rgb(143, 143, 157)",
+          "bf": "rgb(233, 233, 237)",
+          "bt": "rgb(0, 0, 0)",
+          "ft": "rgb(0, 0, 0)",
+          "gt": "rgb(109, 109, 109)",
+          "h": "rgba(103, 176, 255, 0.498)",
+          "ht": "rgb(0, 0, 0)",
+          "ib": "rgb(255, 255, 255)",
+          "ic": "rgb(255, 255, 255)",
+          "ict": "rgb(109, 109, 109)",
+          "it": "rgb(0, 0, 0)",
+          "lt": "rgb(0, 0, 238)",
+          "m": "rgb(255, 255, 0)",
+          "me": "rgb(255, 255, 255)",
+          "s": "rgb(255, 255, 255)",
+          "tdds": "rgb(143, 143, 157)",
+          "tdf": "rgb(233, 233, 237)",
+          "tdh": "rgb(143, 143, 157)",
+          "tdls": "rgb(143, 143, 157)",
+          "tds": "rgb(143, 143, 157)",
+          "vt": "rgb(85, 26, 139)",
+          "w": "rgb(255, 255, 255)",
+          "wf": "rgb(143, 143, 157)",
+          "wt": "rgb(0, 0, 0)",
+          "si": "rgb(0, 100, 225)",
+          "sit": "rgb(255, 255, 255)"
+        }
+      },
+      "s92": {
+        "s": 0,
+        "v": {
+          "x": 8,
+          "y": 10.5,
+          "left": 8,
+          "right": 293.70001220703125,
+          "bottom": 26.5,
+          "height": 16,
+          "top": 10.5,
+          "width": 285.70001220703125,
+          "font": "serif"
+        }
+      },
+      "s93": {
+        "s": 0,
+        "v": {
+          "x": 8,
+          "y": 12,
+          "left": 8,
+          "right": 1288,
+          "bottom": 28,
+          "height": 16,
+          "top": 12,
+          "width": 1280,
+          "font": "serif"
+        }
+      },
+      "s95": {
+        "s": -1,
+        "v": null
+      },
+      "s204": {
+        "s": 0,
+        "v": true
+      },
+      "s206": {
+        "s": 0,
+        "v": "-apple-system"
+      },
+      "s207": {
+        "s": 0,
+        "v": true
+      },
+      "s210": {
+        "s": -1,
+        "v": null
+      },
+      "s211": {
+        "s": 0,
+        "v": [
+          3,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ]
+      },
+      "s1": {
+        "s": 0,
+        "v": "Intel Mac OS X 10.15"
+      },
+      "s2": {
+        "s": 0,
+        "v": [
+          [
+            "en-US"
+          ],
+          [
+            "en-US"
+          ]
+        ]
+      },
+      "s4": {
+        "s": -1,
+        "v": null
+      },
+      "s5": {
+        "s": 0,
+        "v": [
+          1680,
+          1050
+        ]
+      },
+      "s7": {
+        "s": 0,
+        "v": 4
+      },
+      "s15": {
+        "s": 0,
+        "v": "MacIntel"
+      },
+      "s19": {
+        "s": 0,
+        "v": {
+          "maxTouchPoints": 0,
+          "touchEvent": false,
+          "touchStart": false
+        }
+      },
+      "s27": {
+        "s": 0,
+        "v": ""
+      },
+      "s74": {
+        "s": 0,
+        "v": {
+          "version": "WebGL 1.0",
+          "vendor": "Mozilla",
+          "vendorUnmasked": "",
+          "renderer": "Radeon R9 200 Series, or similar",
+          "rendererUnmasked": "",
+          "shadingLanguageVersion": "WebGL GLSL ES 1.0"
+        }
+      },
+      "s75": {
+        "s": 0,
+        "v": {
+          "contextAttributes": "48e630ae802ba2dc7ed36e8728edf4fc",
+          "parameters": "075059ba9f7f481e812230b5f31166f9",
+          "parameters2": "17df6088cd82d6efe2f80ce643eb4707",
+          "shaderPrecisions": "1aabf55167f5f14457db90ec2b1a88f0",
+          "extensions": "1a3d1ad9553685cd1c72a387e4f2eb24",
+          "extensionParameters": "0911fa64645cb6ee9fd24a29f1f1429a",
+          "extensionParameters2": "04af766f0af52fa872ee06462d32d8fa",
+          "unsupportedExtensions": []
+        }
+      },
+      "s24": {
+        "s": 0,
+        "v": 37
+      },
+      "s44": {
+        "s": 0,
+        "v": false
+      },
+      "s45": {
+        "s": 0,
+        "v": [
+          1770400830599,
+          1770382830599
+        ]
+      },
+      "s57": {
+        "s": 0,
+        "v": 2
+      },
+      "s59": {
+        "s": 0,
+        "v": false
+      },
+      "s60": {
+        "s": 0,
+        "v": false
+      },
+      "s61": {
+        "s": 0,
+        "v": false
+      },
+      "s62": {
+        "s": 0,
+        "v": false
+      },
+      "s63": {
+        "s": 0,
+        "v": true
+      },
+      "s64": {
+        "s": 0,
+        "v": true
+      },
+      "s65": {
+        "s": 0,
+        "v": false
+      },
+      "s68": {
+        "s": 0,
+        "v": false
+      },
+      "s72": {
+        "s": 0,
+        "v": false
+      },
+      "s82": {
+        "s": 0,
+        "v": "en-US"
+      },
+      "s83": {
+        "s": 0,
+        "v": [
+          "en-US"
+        ]
+      },
+      "s99": {
+        "s": 0,
+        "v": false
+      },
+      "s101": {
+        "s": 0,
+        "v": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:149.0) Gecko/20100101 Firefox/149.0"
+      },
+      "s103": {
+        "s": 0,
+        "v": "5.0 (Macintosh)"
+      },
+      "s104": {
+        "s": -1,
+        "v": null
+      },
+      "s117": {
+        "s": 0,
+        "v": 5
+      },
+      "s119": {
+        "s": 0,
+        "v": "fi@http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:58565\nAi/<@http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:62635\nV@http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:4176\nen/i</e<@http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:6191\nen/i</<@http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:6154\nen/i<@http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:6562\nN@http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:4350\n"
+      },
+      "s123": {
+        "s": 0,
+        "v": "20100101"
+      },
+      "s131": {
+        "s": 0,
+        "v": [
+          "lang"
+        ]
+      },
+      "s133": {
+        "s": 0,
+        "v": "[object External]"
+      },
+      "s136": {
+        "s": 0,
+        "v": true
+      },
+      "s148": {
+        "s": 0,
+        "v": "function bind() {\n    [native code]\n}"
+      },
+      "s149": {
+        "s": -1,
+        "v": null
+      },
+      "s150": {
+        "s": 0,
+        "v": {
+          "outerWidth": 1680,
+          "outerHeight": 940,
+          "innerWidth": 1370,
+          "innerHeight": 856
+        }
+      },
+      "s157": {
+        "s": 0,
+        "v": {
+          "awesomium": false,
+          "cef": false,
+          "cefsharp": false,
+          "coachjs": false,
+          "fminer": false,
+          "geb": false,
+          "nightmarejs": false,
+          "phantomas": false,
+          "phantomjs": false,
+          "rhino": false,
+          "selenium": false,
+          "webdriverio": false,
+          "webdriver": false,
+          "headless_chrome": false
+        }
+      },
+      "s102": {
+        "s": 0,
+        "v": false
+      },
+      "s118": {
+        "s": 0,
+        "v": true
+      },
+      "s120": {
+        "s": 0,
+        "v": false
+      },
+      "s130": {
+        "s": 0,
+        "v": [
+          "function",
+          "function"
+        ]
+      },
+      "s132": {
+        "s": 0,
+        "v": "function close() {\n    [native code]\n}"
+      },
+      "s135": {
+        "s": 0,
+        "v": 2
+      },
+      "s139": {
+        "s": 0,
+        "v": true
+      },
+      "s142": {
+        "s": 0,
+        "v": true
+      },
+      "s144": {
+        "s": -2,
+        "v": null
+      },
+      "s145": {
+        "s": 0,
+        "v": [
+          "javaEnabled",
+          "getGamepads",
+          "",
+          "requestMediaKeySystemAccess",
+          "getAutoplayPolicy",
+          "taintEnabled",
+          "Navigator"
+        ]
+      },
+      "s146": {
+        "s": 0,
+        "v": false
+      },
+      "s151": {
+        "s": -1,
+        "v": null
+      },
+      "s153": {
+        "s": 0,
+        "v": true
+      },
+      "s155": {
+        "s": 0,
+        "v": {}
+      },
+      "s156": {
+        "s": 0,
+        "v": [
+          "Iterator"
+        ]
+      },
+      "s159": {
+        "s": 0,
+        "v": false
+      },
+      "s162": {
+        "s": 0,
+        "v": false
+      },
+      "s165": {
+        "s": 0,
+        "v": {
+          "isTrusted": false
+        }
+      },
+      "s166": {
+        "s": 0,
+        "v": {
+          "l": 35,
+          "p": [
+            {
+              "i": 1,
+              "n": "getGamepads"
+            },
+            {
+              "i": 22,
+              "n": "webdriver"
+            },
+            {
+              "i": 33,
+              "n": "onLine"
+            }
+          ]
+        }
+      },
+      "exp_s1015": {
+        "s": 0,
+        "v": "3ZZNq13HEUX/itB4Dbp2fXUNNLDxIwiMYiQHQoQQhmggSGKQ/z+EennBCVhECQ6BDIpL9723z+ldey/q7duDIYKkaO473trBDBPmWGCJFdbYxQYdZEjIUaBEhRpdNPjBDRfueOCJF974xYc4hBEinAgiiSKauMSQhzRSpJNBJllkk5cc6lBGiXIqqKSKaupSQx/aaNFOB5100U1feriHa1xxnRvc5Ba3uZc7zGGMEeNMMMkU08xlBjsHO4YdYcexE9hJ7BR2GjsXO4M9ymbYCrfKrXSr3Yq36q18NpgOptVXmBxTYEpMhakxXUyD+cHcMN9GOOaBeWJemDfmF/PB4mBhWAiL7VhgkVgUFo3FxWKwPFgalsLSsdzWJpaFZWN5sRysDlaGlbByrAKr9UBh1VhdrAbrg7VhLawd68A6sV6zNNYX68Huwa5hV9h17AZ2E7uF3XXVxe5gc7ARNo5NYlPYNDZru/XdQcfQETqOTqCT6BQ6jc5FZ5CtQQ2ZkDmyQJbIClkju2h9vEZ+dLLQennNvG5eO6+f19Aa5Ae5IV/LO/JAnsgLeSO/yAfFQWEohGKzESgSRaFoFBfFoDwoDaVQOsoNUaIslI3yohxUB5WhEipHFag2bYWqUV1Ug/qgNtRC7agDdaLeWDbqi3rQPegaukLX0Q10E91Cd/N70R00B42hERpHE2gSTaFpNBv0TfrBj+FH+HH8BH4SP4Wf/htHfMOx3w/Pv/r25VdvHr55/91vX776/v2bl394eP/6q1e/eXjhPsdeGNfGni9ufGP0z7zxPcUct8Aff1K4NW4Xt8F1cH0ZeVzC5cseV/wMH1fiql/Gj6uXP677BCBf2vl5QpAv9R4f7v81CvkS4B8o5P4zhXyp8EQh31svHX5lCvnS5hcolDfJW3iIvI1HkHf3B49dXzwGfyTQr0ch33P64Ck8Hc9te/5bFHr++uHVNw+vH16/6PF+8fqHP3748S/PXs8znfPszYdPHz/8xLMfPz376eOfP/7ph0/PvwhZnlv7goPXwdc4Jbwc3xifIjdin0GWV+HV+F6yBt9LtuEtfCO+Bu7AO/GNudbpjffFe/B78Gv4Rt2d529+9/V3L3//8O37r19+/+aFx7kv7vP/G4r5YyW+Hnwk2ecpliPycf0vKDbniWI+ho/wcXKCfDyl8G30LFyGnCZnOTHveBvHiRPEKeI0cYawBZAIa8KCsCRsCB1CSyYRy6QFkpJQEbqEO+FBeBJehDfhu78T0dmn7SC1k9SOUjtLLc9iiDxEGpEi0oncgSuJLCKbyEvkECWinLhJ3CJuE+PEJDFF2laTdkkbUjujiZSTClJJLjXV5NLxGOmH9P3cYc5JD9KT9KVrU2f3L+lDxnkqo86idyvIKDKajD1zebz/S3J5nEOWyHKygqwk+5BtT+Vkx/9KnV41PqfOKvAF6vRn1Okh766LvPafqXP/rs67d38F"
+      },
+      "exp_s1016": {
+        "s": 0,
+        "v": {
+          "b": {
+            "0": 2281898568,
+            "1": 17054720
+          }
+        }
+      },
+      "s22": {
+        "s": 0,
+        "v": 23
+      },
+      "s30": {
+        "s": 0,
+        "v": "1"
+      },
+      "s33": {
+        "s": 0,
+        "v": false
+      },
+      "s49": {
+        "s": 0,
+        "v": [
+          1,
+          1
+        ]
+      },
+      "s50": {
+        "s": -1,
+        "v": null
+      },
+      "s66": {
+        "s": -1,
+        "v": null
+      },
+      "s71": {
+        "s": 0,
+        "v": {
+          "w": "http://10.2.1.150:8000",
+          "l": "http://10.2.1.150:8000",
+          "a": []
+        }
+      },
+      "s3": {
+        "s": 0,
+        "v": 30
+      },
+      "s9": {
+        "s": 0,
+        "v": "America/New_York"
+      },
+      "s10": {
+        "s": 0,
+        "v": true
+      },
+      "s11": {
+        "s": 0,
+        "v": true
+      },
+      "s12": {
+        "s": 0,
+        "v": true
+      },
+      "s13": {
+        "s": 0,
+        "v": false
+      },
+      "s14": {
+        "s": -1,
+        "v": null
+      },
+      "s16": {
+        "s": 0,
+        "v": [
+          {
+            "name": "PDF Viewer",
+            "description": "Portable Document Format",
+            "mimeTypes": [
+              {
+                "type": "application/pdf",
+                "suffixes": "pdf"
+              },
+              {
+                "type": "text/pdf",
+                "suffixes": "pdf"
+              }
+            ]
+          },
+          {
+            "name": "Chrome PDF Viewer",
+            "description": "Portable Document Format",
+            "mimeTypes": [
+              {
+                "type": "application/pdf",
+                "suffixes": "pdf"
+              },
+              {
+                "type": "text/pdf",
+                "suffixes": "pdf"
+              }
+            ]
+          },
+          {
+            "name": "Chromium PDF Viewer",
+            "description": "Portable Document Format",
+            "mimeTypes": [
+              {
+                "type": "application/pdf",
+                "suffixes": "pdf"
+              },
+              {
+                "type": "text/pdf",
+                "suffixes": "pdf"
+              }
+            ]
+          },
+          {
+            "name": "Microsoft Edge PDF Viewer",
+            "description": "Portable Document Format",
+            "mimeTypes": [
+              {
+                "type": "application/pdf",
+                "suffixes": "pdf"
+              },
+              {
+                "type": "text/pdf",
+                "suffixes": "pdf"
+              }
+            ]
+          },
+          {
+            "name": "WebKit built-in PDF",
+            "description": "Portable Document Format",
+            "mimeTypes": [
+              {
+                "type": "application/pdf",
+                "suffixes": "pdf"
+              },
+              {
+                "type": "text/pdf",
+                "suffixes": "pdf"
+              }
+            ]
+          }
+        ]
+      },
+      "s28": {
+        "s": 0,
+        "v": []
+      },
+      "s32": {
+        "s": 0,
+        "v": true
+      },
+      "s37": {
+        "s": 0,
+        "v": "srgb"
+      },
+      "s41": {
+        "s": -1,
+        "v": null
+      },
+      "s39": {
+        "s": 0,
+        "v": false
+      },
+      "s42": {
+        "s": 0,
+        "v": 0
+      },
+      "s38": {
+        "s": 0,
+        "v": 0
+      },
+      "s43": {
+        "s": 0,
+        "v": false
+      },
+      "s40": {
+        "s": 0,
+        "v": false
+      },
+      "s46": {
+        "s": 0,
+        "v": "5f030fa7d2e5f9f757bfaf81642eb1a6"
+      },
+      "s80": {
+        "s": 0,
+        "v": true
+      },
+      "s81": {
+        "s": 0,
+        "v": 255
+      },
+      "s86": {
+        "s": -1,
+        "v": null
+      },
+      "s91": {
+        "s": -1,
+        "v": null
+      },
+      "s96": {
+        "s": -2,
+        "v": null
+      },
+      "s98": {
+        "s": 0,
+        "v": false
+      },
+      "s200": {
+        "s": 0,
+        "v": 1770400830290
+      },
+      "s201": {
+        "s": 0,
+        "v": false
+      },
+      "s202": {
+        "s": 0,
+        "v": "en-US"
+      },
+      "s205": {
+        "s": 0,
+        "v": "c:"
+      },
+      "s203": {
+        "s": 0,
+        "v": "calc(-0.0773484px)"
+      },
+      "s209": {
+        "s": 0,
+        "v": {
+          "s": [
+            1858776194,
+            1439111821,
+            1020647507,
+            1994426652
+          ],
+          "p": [
+            208,
+            90,
+            237,
+            255,
+            224,
+            255,
+            24,
+            255,
+            218,
+            212,
+            204,
+            255,
+            3,
+            12,
+            155,
+            255,
+            172,
+            206,
+            45,
+            255,
+            69,
+            3,
+            106,
+            255,
+            5,
+            132,
+            93,
+            255,
+            125,
+            60,
+            61,
+            255,
+            98,
+            128,
+            179,
+            255,
+            33,
+            96,
+            130,
+            255,
+            6,
+            222,
+            179,
+            255,
+            161,
+            141,
+            147,
+            255,
+            184,
+            104,
+            98,
+            255,
+            254,
+            187,
+            196,
+            255,
+            61,
+            26,
+            238,
+            255,
+            84,
+            171,
+            154,
+            255
+          ],
+          "d": 4
+        }
+      },
+      "s76": {
+        "s": 0,
+        "v": "27fe1ccbc5487686e33188a40184c3b0"
+      },
+      "s94": {
+        "s": 0,
+        "v": {
+          "u": "a53af0f6-fce5-042a-8043-8cd2c3160b31",
+          "e": [],
+          "s": []
+        }
+      },
+      "s167": {
+        "s": -3,
+        "v": null
+      },
+      "epv": "df994e8",
+      "lr": [
+        {
+          "am": "get",
+          "v": "1",
+          "dt": "2026-02-06T17:49:57.399Z",
+          "ci": "js/3.12.6",
+          "pi": "ZjRmWHYgwT",
+          "ai": "s0RLqg11",
+          "ri": "8naO13VXnE2q",
+          "c": "xx-fpjs-api-token-xx",
+          "rid": null,
+          "er": "Response cannot be parsed",
+          "cr": null,
+          "mo": [
+            "bd",
+            "ex",
+            "id"
+          ],
+          "sa": [],
+          "ls": 192,
+          "le": 209,
+          "ca": [
+            {
+              "s": 209,
+              "e": 625,
+              "u": "https://api.fpjs.io/xridvya/qAo6p?q=xx-fpjs-api-token-xx",
+              "er": null,
+              "ds": null,
+              "de": null,
+              "cs": null,
+              "css": null,
+              "ce": null,
+              "qs": null,
+              "ss": null
+            }
+          ],
+          "ss": 193,
+          "se": 702,
+          "sd": {
+            "s106": 164,
+            "s154": 164,
+            "s158": 83,
+            "s160": 164,
+            "s97": 83,
+            "s70": 80,
+            "s152": 80,
+            "s163": 66,
+            "exp_s1013": 79,
+            "exp_s1014": 66,
+            "s52": 162,
+            "s6": 2,
+            "s58": 65,
+            "s20": 82,
+            "s36": 69,
+            "s51": 79,
+            "s21": 12,
+            "s79": 72,
+            "s69": 64,
+            "s23": 56,
+            "s29": 53,
+            "s84": 66,
+            "s85": 70,
+            "s89": 63,
+            "s17": 14,
+            "s87": 53,
+            "s92": 53,
+            "s93": 53,
+            "s95": 39,
+            "s204": 51,
+            "s206": 51,
+            "s207": 38,
+            "s210": 37,
+            "s211": 127,
+            "s1": 0,
+            "s2": 0,
+            "s4": 0,
+            "s5": 0,
+            "s7": 0,
+            "s15": 0,
+            "s19": 0,
+            "s27": 0,
+            "s74": 31,
+            "s75": 8,
+            "s24": 0,
+            "s44": 0,
+            "s45": 0,
+            "s57": 0,
+            "s59": 0,
+            "s60": 0,
+            "s61": 0,
+            "s62": 0,
+            "s63": 0,
+            "s64": 0,
+            "s65": 0,
+            "s68": 0,
+            "s72": 0,
+            "s82": 0,
+            "s83": 0,
+            "s99": 0,
+            "s101": 0,
+            "s103": 0,
+            "s104": 0,
+            "s117": 0,
+            "s119": 0,
+            "s123": 0,
+            "s131": 0,
+            "s133": 0,
+            "s136": 0,
+            "s148": 0,
+            "s149": 0,
+            "s150": 0,
+            "s157": 0,
+            "s102": 1,
+            "s118": 0,
+            "s120": 0,
+            "s130": 0,
+            "s132": 0,
+            "s135": 0,
+            "s139": 0,
+            "s142": 0,
+            "s144": 0,
+            "s145": 0,
+            "s146": 0,
+            "s151": 0,
+            "s153": 0,
+            "s155": 0,
+            "s156": 1,
+            "s159": 0,
+            "s162": 0,
+            "s165": 0,
+            "s166": 0,
+            "exp_s1015": 31,
+            "exp_s1016": 30,
+            "s22": 0,
+            "s30": 0,
+            "s33": 0,
+            "s49": 4,
+            "s50": 0,
+            "s66": 0,
+            "s71": 0,
+            "s3": 0,
+            "s9": 11,
+            "s10": 0,
+            "s11": 0,
+            "s12": 0,
+            "s13": 0,
+            "s14": 0,
+            "s16": 1,
+            "s28": 0,
+            "s32": 0,
+            "s37": 0,
+            "s41": 0,
+            "s39": 0,
+            "s42": 0,
+            "s38": 0,
+            "s43": 0,
+            "s40": 0,
+            "s46": 0,
+            "s80": 0,
+            "s81": 0,
+            "s86": 0,
+            "s91": 0,
+            "s96": 0,
+            "s98": 0,
+            "s200": 0,
+            "s201": 0,
+            "s202": 0,
+            "s205": 0,
+            "s203": 5,
+            "s209": 0,
+            "s76": 10,
+            "s94": 21,
+            "s167": 0
+          },
+          "gs": 209,
+          "ge": 710,
+          "cs": null,
+          "ce": null,
+          "fa": [],
+          "ia": [
+            {
+              "s": 704,
+              "e": 710,
+              "u": "https://api.fpjs.io/?ci=js/3.12.6&q=xx-fpjs-api-token-xx",
+              "er": null,
+              "ds": null,
+              "de": null,
+              "cs": null,
+              "css": null,
+              "ce": null,
+              "qs": null,
+              "ss": null
+            }
+          ],
+          "vs": [
+            {
+              "t": 192,
+              "s": "h"
+            },
+            {
+              "t": 625,
+              "s": "v"
+            }
+          ],
+          "ab": {
+            "noop": "a"
+          },
+          "ao": false,
+          "or": false
+        },
+        {
+          "am": "get",
+          "v": "1",
+          "dt": "2026-02-06T17:52:07.638Z",
+          "ci": "js/3.12.6",
+          "pi": "6SwZ7szeNM",
+          "ai": "Cpd4XuIj",
+          "ri": "PbI1IEjbIivG",
+          "c": "xx-fpjs-api-token-xx",
+          "rid": null,
+          "er": "Response cannot be parsed",
+          "cr": null,
+          "mo": [
+            "bd",
+            "ex",
+            "id"
+          ],
+          "sa": [],
+          "ls": 113,
+          "le": 121,
+          "ca": [
+            {
+              "s": 121,
+              "e": 130,
+              "u": "https://api.fpjs.io/xridvya/qAo6p?q=xx-fpjs-api-token-xx",
+              "er": null,
+              "ds": null,
+              "de": null,
+              "cs": null,
+              "css": null,
+              "ce": null,
+              "qs": null,
+              "ss": null
+            }
+          ],
+          "ss": 114,
+          "se": 266,
+          "sd": {
+            "s106": 130,
+            "s154": 130,
+            "s158": 63,
+            "s160": 66,
+            "s97": 61,
+            "s70": 61,
+            "s152": 61,
+            "s163": 50,
+            "exp_s1013": 60,
+            "exp_s1014": 49,
+            "s52": 64,
+            "s6": 0,
+            "s58": 48,
+            "s20": 60,
+            "s36": 53,
+            "s51": 58,
+            "s21": 3,
+            "s79": 58,
+            "s69": 53,
+            "s23": 48,
+            "s29": 45,
+            "s84": 53,
+            "s85": 56,
+            "s89": 51,
+            "s17": 4,
+            "s87": 49,
+            "s92": 50,
+            "s93": 50,
+            "s95": 41,
+            "s204": 47,
+            "s206": 47,
+            "s207": 39,
+            "s210": 39,
+            "s211": 111,
+            "s1": 0,
+            "s2": 0,
+            "s4": 0,
+            "s5": 0,
+            "s7": 0,
+            "s15": 0,
+            "s19": 0,
+            "s27": 0,
+            "s74": 33,
+            "s75": 6,
+            "s24": 0,
+            "s44": 0,
+            "s45": 0,
+            "s57": 0,
+            "s59": 0,
+            "s60": 0,
+            "s61": 1,
+            "s62": 0,
+            "s63": 0,
+            "s64": 0,
+            "s65": 0,
+            "s68": 0,
+            "s72": 0,
+            "s82": 0,
+            "s83": 0,
+            "s99": 0,
+            "s101": 0,
+            "s103": 0,
+            "s104": 0,
+            "s117": 0,
+            "s119": 0,
+            "s123": 0,
+            "s131": 0,
+            "s133": 0,
+            "s136": 0,
+            "s148": 0,
+            "s149": 0,
+            "s150": 0,
+            "s157": 1,
+            "s102": 0,
+            "s118": 0,
+            "s120": 0,
+            "s130": 0,
+            "s132": 0,
+            "s135": 0,
+            "s139": 0,
+            "s142": 0,
+            "s144": 0,
+            "s145": 0,
+            "s146": 0,
+            "s151": 0,
+            "s153": 0,
+            "s155": 0,
+            "s156": 1,
+            "s159": 0,
+            "s162": 0,
+            "s165": 0,
+            "s166": 0,
+            "exp_s1015": 28,
+            "exp_s1016": 28,
+            "s22": 1,
+            "s30": 0,
+            "s33": 0,
+            "s49": 3,
+            "s50": 0,
+            "s66": 0,
+            "s71": 0,
+            "s3": 0,
+            "s9": 1,
+            "s10": 0,
+            "s11": 0,
+            "s12": 0,
+            "s13": 0,
+            "s14": 0,
+            "s16": 0,
+            "s28": 0,
+            "s32": 0,
+            "s37": 0,
+            "s41": 0,
+            "s39": 0,
+            "s42": 0,
+            "s38": 0,
+            "s43": 0,
+            "s40": 0,
+            "s46": 0,
+            "s80": 0,
+            "s81": 0,
+            "s86": 0,
+            "s91": 0,
+            "s96": 0,
+            "s98": 0,
+            "s200": 0,
+            "s201": 0,
+            "s202": 0,
+            "s205": 0,
+            "s203": 6,
+            "s209": 1,
+            "s76": 10,
+            "s94": 13,
+            "s167": 0
+          },
+          "gs": 121,
+          "ge": 276,
+          "cs": null,
+          "ce": null,
+          "fa": [],
+          "ia": [
+            {
+              "s": 270,
+              "e": 276,
+              "u": "https://api.fpjs.io/?ci=js/3.12.6&q=xx-fpjs-api-token-xx",
+              "er": null,
+              "ds": null,
+              "de": null,
+              "cs": null,
+              "css": null,
+              "ce": null,
+              "qs": null,
+              "ss": null
+            }
+          ],
+          "vs": [
+            {
+              "t": 113,
+              "s": "v"
+            }
+          ],
+          "ab": {
+            "noop": "b"
+          },
+          "ao": false,
+          "or": false
+        }
+      ],
+      "url": "http://10.2.1.150:8000/fingerprintpro/analysis/",
+      "cr": "http://10.2.1.150:8000/fingerprintpro/",
+      "s55": {
+        "s": -1,
+        "v": null
+      },
+      "s48": {
+        "s": 0,
+        "v": [
+          -1002408801,
+          431892172,
+          -189720822,
+          -515005249,
+          1964109107,
+          -873514632
+        ]
+      }
+    }
+  }
+]

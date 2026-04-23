@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Akamai Fingerprint Analysis</title>
+<script>
+// Set the site-specific XOR key (normally set by the hosting page)
+window.bazadebezolkohpepadr = "568";
+
+// Restore global aliases stripped by deobfuscator but still referenced
+var b = window, u = document, l = navigator, s = screen;
+
+// Rename obfuscated property keys to descriptive names
+function renameFields(raw) {
+  var keyMap = {
+    nav:    "navigator_properties",
+    bp:     "plugin_hashes",
+    sr:     "screen_dimensions",
+    dp:     "dom_feature_detection",
+    lt:     "local_time_and_timezone",
+    ps:     "persistent_storage",
+    cv:     "canvas_fingerprint_hash",
+    fp:     "flash_version",
+    sp:     "silverlight_versions",
+    br:     "browser_name",
+    ieps:   "ie_userdata_storage",
+    av:     "pdf_viewer_version",
+    z:      "bot_detection",
+    zh:     "bot_detection_property_indices",
+    jsv:    "javascript_version",
+    nap:    "permissions_api_states",
+    crc:    "chrome_runtime_check",
+    ap:     "apng_support",
+    bt:     "battery_status",
+    t:      "site_key_hash",
+    u:      "site_identifier",
+    timing: "performance_timing",
+    fonts:  "detected_fonts",
+    fh:     "font_hash"
+  };
+
+  // Sub-key renaming for nested objects
+  var zKeyMap = {
+    a: "flags_xor_key",
+    b: "has_xpath_result",
+    c: "chrome_without_runtime",
+    e: "detection_error"
+  };
+
+  var srKeyMap = {
+    inner:      "inner_window",
+    outer:      "outer_window",
+    screen:     "screen_position",
+    pageOffset: "scroll_offset",
+    avail:      "available_screen",
+    size:       "total_screen",
+    client:     "body_client_area",
+    colorDepth: "color_depth",
+    pixelDepth: "pixel_depth"
+  };
+
+  var result = {};
+  for (var key in raw) {
+    if (!raw.hasOwnProperty(key)) continue;
+    var newKey = keyMap[key] || key;
+    var val = raw[key];
+
+    // Rename sub-keys for known nested objects
+    if (key === "z" && val && typeof val === "object") {
+      var zRenamed = {};
+      for (var zk in val) {
+        if (val.hasOwnProperty(zk))
+          zRenamed[zKeyMap[zk] || zk] = val[zk];
+      }
+      result[newKey] = zRenamed;
+    } else if (key === "sr" && val && typeof val === "object") {
+      var srRenamed = {};
+      for (var sk in val) {
+        if (val.hasOwnProperty(sk))
+          srRenamed[srKeyMap[sk] || sk] = val[sk];
+      }
+      result[newKey] = srRenamed;
+    } else if (key === "nav" && val && typeof val === "object") {
+      // nav properties are already human-readable (userAgent, platform, etc.)
+      result[newKey] = val;
+    } else if (key === "timing" && val && typeof val === "object") {
+      var timingRenamed = {};
+      for (var tk in val) {
+        if (!val.hasOwnProperty(tk)) continue;
+        if (tk === "main")         timingRenamed["page_load_to_start_ms"] = val[tk];
+        else if (tk === "compute") timingRenamed["fingerprint_compute_ms"] = val[tk];
+        else if (tk === "send")    timingRenamed["total_before_send_ms"] = val[tk];
+        else if (tk === "profile") {
+          var profRenamed = {};
+          var profMap = {
+            bp: "plugin_hashes", sr: "screen_dimensions", dp: "dom_features",
+            lt: "local_time", ps: "persistent_storage", cv: "canvas_fingerprint",
+            fp: "flash_version", sp: "silverlight", br: "browser_detect",
+            ieps: "ie_userdata", av: "pdf_viewer", jsv: "js_version",
+            nav: "navigator", nap: "permissions_api", crc: "chrome_check"
+          };
+          for (var pk in val[tk]) {
+            if (val[tk].hasOwnProperty(pk))
+              profRenamed[profMap[pk] || pk] = val[tk][pk] + "ms";
+          }
+          timingRenamed["function_profile"] = profRenamed;
+        }
+        else timingRenamed["retry_" + tk + "_ms"] = val[tk];
+      }
+      result[newKey] = timingRenamed;
+    } else {
+      result[newKey] = val;
+    }
+  }
+  return result;
+}
+
+// Intercept XMLHttpRequest to log instead of sending
+(function() {
+  function FakeXHR() {
+    this._method = null;
+    this._url = null;
+    this._headers = {};
+  }
+  FakeXHR.prototype.open = function(method, url, async) {
+    this._method = method;
+    this._url = url;
+  };
+  FakeXHR.prototype.setRequestHeader = function(name, value) {
+    this._headers[name] = value;
+  };
+  FakeXHR.prototype.send = function(body) {
+    console.group("%c[INTERCEPTED] " + this._method + " " + this._url,
+      "color: red; font-weight: bold; font-size: 14px");
+
+    if (body && typeof body === "string") {
+      // Parse URL-encoded body
+      var params = {};
+      body.split("&").forEach(function(pair) {
+        var eq = pair.indexOf("=");
+        var key = decodeURIComponent(pair.slice(0, eq));
+        var val = decodeURIComponent(pair.slice(eq + 1));
+        try { params[key] = JSON.parse(val); }
+        catch(e) { params[key] = val; }
+      });
+
+      // Build the renamed version
+      var named = renameFields(params);
+
+      console.log("%cFingerprint data (renamed):", "color: green; font-weight: bold; font-size: 13px");
+      console.dir(named);
+
+      console.log("%cOriginal keys:", "color: gray");
+      console.dir(params);
+
+      // Display on page
+      var pre = document.getElementById("output");
+      if (pre) pre.textContent = JSON.stringify(named, null, 2);
+      var status = document.getElementById("status");
+      if (status) {
+        status.textContent = "Data collected and intercepted — see console for details";
+        status.style.color = "green";
+      }
+    }
+    console.groupEnd();
+  };
+  window.XMLHttpRequest = FakeXHR;
+})();
+
+window.onerror = function(msg, url, line, col, err) {
+  console.error("[onerror]", msg, "at", url + ":" + line + ":" + col, err);
+};
+</script>
+</head>
+<body>
+<h2>Akamai Bot Manager Fingerprint Collector — Analysis Harness</h2>
+<p id="status" style="font-weight: bold; color: orange;">
+  Waiting for data collection (~500ms)...
+</p>
+<p>Open the browser console (F12) to see intercepted fingerprint data.</p>
+<pre id="output" style="background: #f4f4f4; padding: 12px; max-height: 600px; overflow: auto; font-size: 12px;"></pre>
+
+<script src="../sample_scripts/deobs/xfinity.deob2.js"></script>
+</body>
+</html>

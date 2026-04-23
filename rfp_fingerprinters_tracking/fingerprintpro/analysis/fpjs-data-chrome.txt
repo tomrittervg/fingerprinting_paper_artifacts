@@ -1,0 +1,936 @@
+[
+  {
+    "type": "XMLHttpRequest",
+    "method": "post",
+    "url": "https://api.fpjs.io/?ci=js/3.12.6&q=xx-fpjs-api-token-xx",
+    "compressed": true,
+    "decompressionMethod": "deflate-raw (full)",
+    "rawBytes": 4201,
+    "data": {
+      "c": "xx-fpjs-api-token-xx",
+      "m": "e",
+      "mo": [
+        "bd",
+        "ex",
+        "id"
+      ],
+      "s56": {
+        "s": -5,
+        "v": "200: {}"
+      },
+      "s67": {
+        "s": -1,
+        "v": null
+      },
+      "sc": {
+        "u": "http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js"
+      },
+      "ii": [],
+      "gt": 1,
+      "ab": {
+        "noop": "a"
+      },
+      "s106": {
+        "s": 0,
+        "v": false
+      },
+      "s154": {
+        "s": -1,
+        "v": null
+      },
+      "s158": {
+        "s": 0,
+        "v": false
+      },
+      "s160": {
+        "s": 0,
+        "v": true
+      },
+      "s97": {
+        "s": -3,
+        "v": null
+      },
+      "s70": {
+        "s": -3,
+        "v": null
+      },
+      "s152": {
+        "s": 0,
+        "v": 2
+      },
+      "s163": {
+        "s": 0,
+        "v": false
+      },
+      "exp_s1013": {
+        "s": -3,
+        "v": null
+      },
+      "exp_s1014": {
+        "s": -1,
+        "v": null
+      },
+      "s52": {
+        "s": 0,
+        "v": "82f82084561757ac6efc7b02b5f5db54"
+      },
+      "s6": {
+        "s": 0,
+        "v": [
+          32,
+          0,
+          66,
+          0
+        ]
+      },
+      "s58": {
+        "s": -1,
+        "v": null
+      },
+      "s20": {
+        "s": 0,
+        "v": [
+          "Calibri",
+          "PMingLiU"
+        ]
+      },
+      "s36": {
+        "s": -1,
+        "v": null
+      },
+      "s51": {
+        "s": 0,
+        "v": {
+          "default": 149.3125,
+          "apple": 149.3125,
+          "serif": 149.3125,
+          "sans": 144.015625,
+          "mono": 133.0625,
+          "min": 9.34375,
+          "system": 150.25
+        }
+      },
+      "s21": {
+        "s": 0,
+        "v": 124.04347527516074
+      },
+      "s79": {
+        "s": -3,
+        "v": [
+          {
+            "n": "default.ini",
+            "l": -1
+          }
+        ]
+      },
+      "s69": {
+        "s": 0,
+        "v": [
+          {
+            "l": "http://10.2.1.150:8000/fingerprintpro/analysis/logging.html",
+            "f": ""
+          }
+        ]
+      },
+      "s23": {
+        "s": -3,
+        "v": null
+      },
+      "s29": {
+        "s": 0,
+        "v": 500433469440
+      },
+      "s84": {
+        "s": 0,
+        "v": {
+          "w": 3840,
+          "h": 2160
+        }
+      },
+      "s85": {
+        "s": -1,
+        "v": null
+      },
+      "s89": {
+        "s": -1,
+        "v": null
+      },
+      "s17": {
+        "s": 0,
+        "v": {
+          "winding": true,
+          "geometry": "5cabd33bbeacee1acded8660a3acd8a2",
+          "text": "da9e91b99b2f37950385988bb72ec310"
+        }
+      },
+      "s87": {
+        "s": 0,
+        "v": {
+          "ac": "rgb(0, 0, 0)",
+          "act": "rgb(0, 0, 0)",
+          "at": "rgb(255, 0, 0)",
+          "ab": "rgb(0, 0, 0)",
+          "aca": "rgb(0, 0, 0)",
+          "aw": "rgb(255, 255, 255)",
+          "b": "rgb(255, 255, 255)",
+          "bh": "rgb(239, 239, 239)",
+          "bs": "rgb(239, 239, 239)",
+          "bb": "rgb(0, 0, 0)",
+          "bf": "rgb(239, 239, 239)",
+          "bt": "rgb(0, 0, 0)",
+          "ft": "rgb(0, 0, 0)",
+          "gt": "rgb(128, 128, 128)",
+          "h": "rgba(0, 65, 198, 0.8)",
+          "ht": "rgb(255, 255, 255)",
+          "ib": "rgb(255, 255, 255)",
+          "ic": "rgb(255, 255, 255)",
+          "ict": "rgb(128, 128, 128)",
+          "it": "rgb(0, 0, 0)",
+          "lt": "rgb(0, 0, 238)",
+          "m": "rgb(255, 255, 0)",
+          "me": "rgb(255, 255, 255)",
+          "s": "rgb(255, 255, 255)",
+          "tdds": "rgb(0, 0, 0)",
+          "tdf": "rgb(239, 239, 239)",
+          "tdh": "rgb(0, 0, 0)",
+          "tdls": "rgb(0, 0, 0)",
+          "tds": "rgb(0, 0, 0)",
+          "vt": "rgb(85, 26, 139)",
+          "w": "rgb(255, 255, 255)",
+          "wf": "rgb(0, 0, 0)",
+          "wt": "rgb(0, 0, 0)",
+          "si": "rgb(233, 84, 32)",
+          "sit": "rgb(255, 255, 255)"
+        }
+      },
+      "s92": {
+        "s": 0,
+        "v": {
+          "x": 8,
+          "y": 11,
+          "left": 8,
+          "right": 274.40625,
+          "bottom": 28,
+          "height": 17,
+          "top": 11,
+          "width": 266.40625,
+          "font": "\"Times New Roman\""
+        }
+      },
+      "s93": {
+        "s": 0,
+        "v": {
+          "x": 8,
+          "y": 9,
+          "left": 8,
+          "right": 1605.078125,
+          "bottom": 26,
+          "height": 17,
+          "top": 9,
+          "width": 1597.078125,
+          "font": "\"Times New Roman\""
+        }
+      },
+      "s95": {
+        "s": -1,
+        "v": null
+      },
+      "s204": {
+        "s": 0,
+        "v": false
+      },
+      "s206": {
+        "s": -1,
+        "v": null
+      },
+      "s207": {
+        "s": 0,
+        "v": false
+      },
+      "s210": {
+        "s": -1,
+        "v": null
+      },
+      "s211": {
+        "s": 0,
+        "v": [
+          3,
+          3,
+          3,
+          7,
+          7,
+          7,
+          3,
+          7
+        ]
+      },
+      "s1": {
+        "s": -1,
+        "v": null
+      },
+      "s2": {
+        "s": 0,
+        "v": [
+          [
+            "en-US"
+          ]
+        ]
+      },
+      "s4": {
+        "s": -1,
+        "v": null
+      },
+      "s5": {
+        "s": 0,
+        "v": [
+          3840,
+          2160
+        ]
+      },
+      "s7": {
+        "s": 0,
+        "v": 64
+      },
+      "s15": {
+        "s": 0,
+        "v": "Linux x86_64"
+      },
+      "s19": {
+        "s": 0,
+        "v": {
+          "maxTouchPoints": 0,
+          "touchEvent": false,
+          "touchStart": false
+        }
+      },
+      "s27": {
+        "s": 0,
+        "v": "Google Inc."
+      },
+      "s74": {
+        "s": 0,
+        "v": {
+          "version": "WebGL 1.0 (OpenGL ES 2.0 Chromium)",
+          "vendor": "WebKit",
+          "vendorUnmasked": "Google Inc. (AMD)",
+          "renderer": "WebKit WebGL",
+          "rendererUnmasked": "ANGLE (AMD, AMD Radeon Pro WX 3200 Series (radeonsi polaris12 ACO), OpenGL 4.6)",
+          "shadingLanguageVersion": "WebGL GLSL ES 1.0 (OpenGL ES GLSL ES 1.0 Chromium)"
+        }
+      },
+      "s75": {
+        "s": 0,
+        "v": {
+          "contextAttributes": "6b1ed336830d2bc96442a9d76373252a",
+          "parameters": "57a2cddb99538d50a0138430ed0720c5",
+          "parameters2": "ee33f2b6973c3832471b13160bb6ae2f",
+          "shaderPrecisions": "f223dfbcd580cf142da156d93790eb83",
+          "extensions": "2ec6a06c62e232a16e719d1738edbc16",
+          "extensionParameters": "b3c935e47ef8627769939694c703e787",
+          "extensionParameters2": "22fad1bae5d96011ed8c710f66905ce2",
+          "unsupportedExtensions": []
+        }
+      },
+      "s24": {
+        "s": 0,
+        "v": 33
+      },
+      "s44": {
+        "s": 0,
+        "v": true
+      },
+      "s45": {
+        "s": 0,
+        "v": [
+          1772207791417,
+          1772189791417
+        ]
+      },
+      "s57": {
+        "s": 0,
+        "v": 1
+      },
+      "s59": {
+        "s": 0,
+        "v": false
+      },
+      "s60": {
+        "s": 0,
+        "v": false
+      },
+      "s61": {
+        "s": 0,
+        "v": true
+      },
+      "s62": {
+        "s": 0,
+        "v": false
+      },
+      "s63": {
+        "s": 0,
+        "v": false
+      },
+      "s64": {
+        "s": 0,
+        "v": false
+      },
+      "s65": {
+        "s": 0,
+        "v": false
+      },
+      "s68": {
+        "s": 0,
+        "v": false
+      },
+      "s72": {
+        "s": 0,
+        "v": false
+      },
+      "s82": {
+        "s": 0,
+        "v": "en-US"
+      },
+      "s83": {
+        "s": 0,
+        "v": [
+          "en-US",
+          "en"
+        ]
+      },
+      "s99": {
+        "s": 0,
+        "v": false
+      },
+      "s101": {
+        "s": 0,
+        "v": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+      },
+      "s103": {
+        "s": 0,
+        "v": "5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+      },
+      "s104": {
+        "s": 0,
+        "v": 50
+      },
+      "s117": {
+        "s": 0,
+        "v": 5
+      },
+      "s119": {
+        "s": 0,
+        "v": "TypeError: Cannot read properties of null (reading '0')\n    at fi (http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:58569)\n    at http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:62635\n    at V (http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:4176)\n    at http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:6190\n    at new Promise (<anonymous>)\n    at http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:6154\n    at http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:6562\n    at N (http://10.2.1.150:8000/fingerprintpro/sample_scripts/raw/1.js:5:4350)"
+      },
+      "s123": {
+        "s": 0,
+        "v": "20030107"
+      },
+      "s131": {
+        "s": 0,
+        "v": [
+          "lang"
+        ]
+      },
+      "s133": {
+        "s": 0,
+        "v": "[object External]"
+      },
+      "s136": {
+        "s": 0,
+        "v": true
+      },
+      "s148": {
+        "s": 0,
+        "v": "function bind() { [native code] }"
+      },
+      "s149": {
+        "s": -1,
+        "v": null
+      },
+      "s150": {
+        "s": 0,
+        "v": {
+          "outerWidth": 1940,
+          "outerHeight": 2082,
+          "innerWidth": 1896,
+          "innerHeight": 1899
+        }
+      },
+      "s157": {
+        "s": 0,
+        "v": {
+          "awesomium": false,
+          "cef": false,
+          "cefsharp": false,
+          "coachjs": false,
+          "fminer": false,
+          "geb": false,
+          "nightmarejs": false,
+          "phantomas": false,
+          "phantomjs": false,
+          "rhino": false,
+          "selenium": false,
+          "webdriverio": false,
+          "webdriver": false,
+          "headless_chrome": false
+        }
+      },
+      "s102": {
+        "s": 0,
+        "v": false
+      },
+      "s118": {
+        "s": 0,
+        "v": true
+      },
+      "s120": {
+        "s": 0,
+        "v": false
+      },
+      "s130": {
+        "s": 0,
+        "v": [
+          "function",
+          "function"
+        ]
+      },
+      "s132": {
+        "s": 0,
+        "v": "function close() { [native code] }"
+      },
+      "s135": {
+        "s": 0,
+        "v": 2
+      },
+      "s139": {
+        "s": 0,
+        "v": true
+      },
+      "s142": {
+        "s": 0,
+        "v": false
+      },
+      "s144": {
+        "s": -2,
+        "v": null
+      },
+      "s145": {
+        "s": 0,
+        "v": [
+          "getGamepads",
+          "javaEnabled",
+          "",
+          "vibrate",
+          "Navigator"
+        ]
+      },
+      "s146": {
+        "s": 0,
+        "v": false
+      },
+      "s151": {
+        "s": -1,
+        "v": null
+      },
+      "s153": {
+        "s": 0,
+        "v": true
+      },
+      "s155": {
+        "s": 0,
+        "v": {}
+      },
+      "s156": {
+        "s": 0,
+        "v": [
+          "Iterator",
+          "chrome",
+          "WebAssembly"
+        ]
+      },
+      "s159": {
+        "s": 0,
+        "v": false
+      },
+      "s162": {
+        "s": 0,
+        "v": false
+      },
+      "s165": {
+        "s": 0,
+        "v": {
+          "isTrusted": false
+        }
+      },
+      "s166": {
+        "s": 0,
+        "v": {
+          "l": 36,
+          "p": [
+            {
+              "i": 25,
+              "n": "onLine"
+            },
+            {
+              "i": 26,
+              "n": "webdriver"
+            },
+            {
+              "i": 27,
+              "n": "getGamepads"
+            }
+          ]
+        }
+      },
+      "exp_s1015": {
+        "s": 0,
+        "v": "3ZbPi11bEYX/lx4pfINdq37tPehBay6x5aXfI+loMITGgY6c+f+D1E1rIibGBxHEwebCPXXuObfWWl/V+/cLQzhBUjSb84H3tjDDhDkWWGKFNbaxgxYyJOQoUKJCjTY6+MINF+544IkX3vjGD7EII0Q4EUQSRTSxiUMu0kiRTgaZZJFNbvJQizJKlFNBJVVUU5s69KKNFu100EkX3fSmD3uxjS22s4Od7GI3e7MPZ3GMI45zgpOc4jRncw62FrYMW8KWYyuwldgqbDW2NrYOdm2bYdO46dy0bno3zZvuTfvsYFqYpr/C5JgCU2IqTI1pYzqYL8wN8xHCMQ/ME/PCvDHfmB8sFhaGhbAYxQKLxKKwaCw2FgfLhaVhKSwdy5E2sSwsG8uN5cFqYWVYCSvHKrAaDxRWjdXG6mC9sDashbVjHVgn1mOWxnpjfbC9sG3YFrYd24HtxHZhe1y1sX2ws7Bj2BF2HDuBncROYaexM/Yb/y20DC2h5WgFWolWodVobbQOsjGqIRMyRxbIElkha2QbjZ/H0FdHC42nx9Tj6rH1+HqMrYN8ITfkY31HHsgTeSFv5Bv5QbFQGAqhmIwEikRRKBrFRnFQLpSGUigd5YQpURbKRrlRHlQLlaESKkcVqCZ1hapRbVQH9UJtqIXaUQfqRD3xbNQb9UF7oW1oC21HO9BOtAvtyfFG+6Cz0DF0hI6jE+gkOoVOozOBn8QvfBm+hC/HV+Ar8VX46o888QmJuLn74f7uzeXF0w/3D5en39+/ePzN0+u7h5eXW/ezdDuqxr75VPfTj/cPj09v7v9w+azO/lFniU/k/plNbsLNcQv8WlK4NW4bt4Nr4frPKOUSLh9OueITqFyJq76MKlcPq1z7GVY+ZPT1jCsfQl4f7v81YvnQ4jNiuX8ilg9Bnonl86+HJN+ZWD5k+gKxbl7dvXv69Y+vfnX/cHnx9Hh59/j29eXp/tXdy8vT24f7xze3nlV2W3GDh+EhPPzjfV8sj+Pr1jXlSe6DR38s/93l9ePlK3dl1d/vOvgVjd8Pjz6/0wtP4el4jsfyZ+HR8+fh0XPOPPvgtfAxYAkvxwcZE8fBxlfw6DXXG5/3r4PP+7fhLXxwMkHowDvxQYomMY33xvvge+Hb8P0Rjz5o+T/Bo19P4rvwKyK/jkffG79e/wYez3rGox/Dj/Dj+Al8fuUUPqqeIdIgaRHLiKUPvI/lxApiJbGKWE2sTaxD2NDLCBNhTlgQloQVYU3YJuwQWoQGcyIGcEM3JaEi1IQ24U54EJ6EF+FN+Hx/iKFk2LzNkPK60AUxK93sdLPUDSzjELmINCJFpBM5m18SWUQ2kZvIQ9QiSkQ5sUXsJHYRexbETexDHCdOEqdIS9Lms0nbpB1Si9QskSLlpIJUkoNqNalN6pC+SDfSZ9t00oP0JH2Q3qRv0g8Z63puXv709unF/ZvfXufR5d3jL7z65C9v//zHv/z1TzdkGBkiY+ZBkMOiKDKajE3O1Jj9dhbc2XBnblwHR5IzOmZ2zPDIQ9Yiy8gSWU5WkDUTpshqsjZZh+xFtj0fke1kB9n5v6pK19dV6f62Kv0NVW6vqvyLKH3IvT6Jsu37ibL170XZn4vy4cPfAA=="
+      },
+      "exp_s1016": {
+        "s": 0,
+        "v": {
+          "b": {
+            "0": 2285869946,
+            "1": 160185375
+          }
+        }
+      },
+      "s22": {
+        "s": 0,
+        "v": 23
+      },
+      "s30": {
+        "s": -1,
+        "v": null
+      },
+      "s33": {
+        "s": 0,
+        "v": false
+      },
+      "s49": {
+        "s": 0,
+        "v": [
+          0.09999942779541016,
+          0.10000038146972656
+        ]
+      },
+      "s50": {
+        "s": 0,
+        "v": 4294705152
+      },
+      "s66": {
+        "s": -1,
+        "v": null
+      },
+      "s71": {
+        "s": 0,
+        "v": {
+          "w": "http://10.2.1.150:8000",
+          "l": "http://10.2.1.150:8000",
+          "a": []
+        }
+      },
+      "s3": {
+        "s": 0,
+        "v": 24
+      },
+      "s9": {
+        "s": 0,
+        "v": "America/New_York"
+      },
+      "s10": {
+        "s": 0,
+        "v": true
+      },
+      "s11": {
+        "s": 0,
+        "v": true
+      },
+      "s12": {
+        "s": 0,
+        "v": true
+      },
+      "s13": {
+        "s": 0,
+        "v": false
+      },
+      "s14": {
+        "s": -1,
+        "v": null
+      },
+      "s16": {
+        "s": 0,
+        "v": [
+          {
+            "name": "PDF Viewer",
+            "description": "Portable Document Format",
+            "mimeTypes": [
+              {
+                "type": "application/pdf",
+                "suffixes": "pdf"
+              },
+              {
+                "type": "text/pdf",
+                "suffixes": "pdf"
+              }
+            ]
+          },
+          {
+            "name": "Chrome PDF Viewer",
+            "description": "Portable Document Format",
+            "mimeTypes": [
+              {
+                "type": "application/pdf",
+                "suffixes": "pdf"
+              },
+              {
+                "type": "text/pdf",
+                "suffixes": "pdf"
+              }
+            ]
+          },
+          {
+            "name": "Chromium PDF Viewer",
+            "description": "Portable Document Format",
+            "mimeTypes": [
+              {
+                "type": "application/pdf",
+                "suffixes": "pdf"
+              },
+              {
+                "type": "text/pdf",
+                "suffixes": "pdf"
+              }
+            ]
+          },
+          {
+            "name": "Microsoft Edge PDF Viewer",
+            "description": "Portable Document Format",
+            "mimeTypes": [
+              {
+                "type": "application/pdf",
+                "suffixes": "pdf"
+              },
+              {
+                "type": "text/pdf",
+                "suffixes": "pdf"
+              }
+            ]
+          },
+          {
+            "name": "WebKit built-in PDF",
+            "description": "Portable Document Format",
+            "mimeTypes": [
+              {
+                "type": "application/pdf",
+                "suffixes": "pdf"
+              },
+              {
+                "type": "text/pdf",
+                "suffixes": "pdf"
+              }
+            ]
+          }
+        ]
+      },
+      "s28": {
+        "s": 0,
+        "v": [
+          "chrome"
+        ]
+      },
+      "s32": {
+        "s": 0,
+        "v": true
+      },
+      "s37": {
+        "s": 0,
+        "v": "p3"
+      },
+      "s41": {
+        "s": -1,
+        "v": null
+      },
+      "s39": {
+        "s": 0,
+        "v": false
+      },
+      "s42": {
+        "s": 0,
+        "v": 0
+      },
+      "s38": {
+        "s": 0,
+        "v": 0
+      },
+      "s43": {
+        "s": 0,
+        "v": false
+      },
+      "s40": {
+        "s": 0,
+        "v": false
+      },
+      "s46": {
+        "s": 0,
+        "v": "5f030fa7d2e5f9f757bfaf81642eb1a6"
+      },
+      "s80": {
+        "s": 0,
+        "v": true
+      },
+      "s81": {
+        "s": 0,
+        "v": 255
+      },
+      "s86": {
+        "s": -1,
+        "v": null
+      },
+      "s91": {
+        "s": 0,
+        "v": false
+      },
+      "s96": {
+        "s": -2,
+        "v": null
+      },
+      "s98": {
+        "s": 0,
+        "v": false
+      },
+      "s200": {
+        "s": 0,
+        "v": 1772207791182.6
+      },
+      "s201": {
+        "s": 0,
+        "v": false
+      },
+      "s202": {
+        "s": 0,
+        "v": "en-US"
+      },
+      "s205": {
+        "s": 0,
+        "v": "c:"
+      },
+      "s203": {
+        "s": 0,
+        "v": "calc(0.207912px)"
+      },
+      "s209": {
+        "s": 0,
+        "v": {
+          "s": [
+            612446465,
+            -1274983849,
+            -1379840942,
+            1703514158
+          ],
+          "p": [
+            90,
+            95,
+            161,
+            255,
+            223,
+            176,
+            95,
+            255,
+            143,
+            140,
+            146,
+            255,
+            230,
+            201,
+            20,
+            255,
+            2,
+            147,
+            162,
+            255,
+            140,
+            156,
+            161,
+            255,
+            43,
+            113,
+            244,
+            255,
+            212,
+            179,
+            172,
+            255,
+            206,
+            174,
+            80,
+            255,
+            168,
+            138,
+            190,
+            255,
+            192,
+            228,
+            56,
+            255,
+            42,
+            254,
+            194,
+            255,
+            126,
+            20,
+            145,
+            255,
+            55,
+            197,
+            157,
+            255,
+            78,
+            102,
+            18,
+            255,
+            191,
+            114,
+            25,
+            255
+          ],
+          "d": 4
+        }
+      },
+      "s76": {
+        "s": 0,
+        "v": "02cb2f43849262a69b6033ca172b73a8"
+      },
+      "s94": {
+        "s": 0,
+        "v": {
+          "u": "26a31b59-b8b1-6b1d-1c2d-74249b30fb84",
+          "e": [],
+          "s": []
+        }
+      },
+      "s167": {
+        "s": -1,
+        "v": null
+      },
+      "epv": "df994e8",
+      "lr": [],
+      "url": "http://10.2.1.150:8000/fingerprintpro/analysis/logging.html",
+      "s55": {
+        "s": -1,
+        "v": null
+      },
+      "s48": {
+        "s": 0,
+        "v": [
+          -2013199846,
+          730795187,
+          1033333790,
+          -184080444,
+          -478368475,
+          -318794859
+        ]
+      }
+    }
+  }
+]

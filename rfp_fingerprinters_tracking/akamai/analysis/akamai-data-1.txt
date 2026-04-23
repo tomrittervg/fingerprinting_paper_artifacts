@@ -1,0 +1,154 @@
+{
+  "ap": true,
+  "bt": 0,
+  "fonts": null,
+  "fh": null,
+  "timing": {
+    "1": 20,
+    "2": 281,
+    "3": 382,
+    "4": 483,
+    "5": 583,
+    "profile": {
+      "bp": 0,
+      "sr": 5,
+      "dp": 0,
+      "lt": 0,
+      "ps": 1,
+      "cv": 9,
+      "fp": 0,
+      "sp": 1,
+      "br": 0,
+      "ieps": 0,
+      "av": 0,
+      "z1": 2,
+      "jsv": 0,
+      "nav": 1,
+      "nap": 1,
+      "crc": 0,
+      "z2": 0,
+      "z3": 0,
+      "z4": 0,
+      "z5": 0
+    },
+    "main": 118,
+    "compute": 20,
+    "send": 583
+  },
+  "bp": "2087755996,1953464915,591862434,325835597,1068473606,-1382186647,-365096851,-1979186206,-108039040,-1906852049",
+  "sr": {
+    "inner": [
+      2200,
+      2000
+    ],
+    "outer": [
+      2679,
+      2114
+    ],
+    "screen": [
+      174,
+      9
+    ],
+    "pageOffset": [
+      0,
+      0
+    ],
+    "avail": [
+      3840,
+      2160
+    ],
+    "size": [
+      3840,
+      2160
+    ],
+    "client": [
+      2184,
+      156
+    ],
+    "colorDepth": 24,
+    "pixelDepth": 24
+  },
+  "dp": {
+    "XDomainRequest": 0,
+    "createPopup": 0,
+    "removeEventListener": 1,
+    "globalStorage": 0,
+    "openDatabase": 0,
+    "indexedDB": 1,
+    "attachEvent": 0,
+    "ActiveXObject": 0,
+    "dispatchEvent": 1,
+    "addBehavior": 0,
+    "addEventListener": 1,
+    "detachEvent": 0,
+    "fireEvent": 0,
+    "MutationObserver": 1,
+    "HTMLMenuItemElement": 0,
+    "Int8Array": 1,
+    "postMessage": 1,
+    "querySelector": 1,
+    "getElementsByClassName": 1,
+    "images": 1,
+    "compatMode": "CSS1Compat",
+    "documentMode": 0,
+    "all": 1,
+    "now": 1,
+    "contextMenu": 0
+  },
+  "lt": "1772207835908-5",
+  "ps": "true,true",
+  "cv": "7b15287f74c8d062b47bd1fdc7100a658a3e25f2",
+  "fp": false,
+  "sp": false,
+  "br": "Firefox",
+  "ieps": false,
+  "av": false,
+  "z": {
+    "a": 568,
+    "b": 1,
+    "c": 0
+  },
+  "zh": "",
+  "jsv": 1.5,
+  "nav": {
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:150.0) Gecko/20100101 Firefox/150.0",
+    "appName": "Netscape",
+    "appCodeName": "Mozilla",
+    "appVersion": "5.0 (X11)",
+    "appMinorVersion": 0,
+    "product": "Gecko",
+    "productSub": "20100101",
+    "vendor": "",
+    "vendorSub": "",
+    "buildID": "20181001000000",
+    "platform": "Linux x86_64",
+    "oscpu": "Linux x86_64",
+    "hardwareConcurrency": 8,
+    "language": "en-US",
+    "languages": [
+      "en-US"
+    ],
+    "systemLanguage": 0,
+    "userLanguage": 0,
+    "doNotTrack": "1",
+    "msDoNotTrack": 0,
+    "cookieEnabled": true,
+    "geolocation": 1,
+    "vibrate": 0,
+    "maxTouchPoints": 0,
+    "webdriver": false,
+    "plugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ]
+  },
+  "crc": {
+    "window.chrome": "-not-existent"
+  },
+  "t": "8a1beaee63fed318ca54d4f7d18cee4081c68a74",
+  "u": "75e13f4bdcee54968548b43db914c0af",
+  "nap": 11111133331333333000
+}
