@@ -1,8 +1,15 @@
-This repository contains the artifacts for the paper
+Artifact for the paper submission. Two subdirectories:
 
-The contents are structured into the following sections:
-1. Reverse engineered scripts form Fingerprinters in the wild
-2. Our scripts to perform the data analysis
-3. Preliminary test data to verify our analysis. Aggregate data at browser scale will follow in a future release, as explained in our submission.
+- rfp_fingerprinters_tracking/: reverse-engineered scripts, captured
+  payloads, Web-API inventories, and gap analyses against Firefox's
+  current protections for Akamai Bot Manager, FingerprintJS Pro, and
+  Signifyd. See its README for further info.
+- rfp_paper_code/: Python toolkit that reads Firefox telemetry,
+  computes per-vendor fingerprints, measures entropy, and simulates
+  proposed countermeasures. See its README to run.
 
+The raw telemetry is not public. A preliminary aggregate sample for
+pipeline verification will ship in a future release.
 
+Author metadata has been stripped. Please report any residual
+identifying information to the PC chairs.
