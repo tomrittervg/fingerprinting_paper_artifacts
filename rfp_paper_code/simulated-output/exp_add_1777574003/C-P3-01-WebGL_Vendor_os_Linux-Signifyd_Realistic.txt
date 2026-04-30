@@ -1,0 +1,19 @@
+Analyzing the fingerprint distribution for P3-C: P2, WebGL Vendor (Linux)-Signifyd_Realistic
+  There are 202 total users
+  There are 145 unique users, or 71.7822% out of 202 users
+  Our cohort fitness score is 0.02921282227232624
+  Our cohort fitness score (HHI2, excl. singletons) is 0.322253000923361
+  Our P50 (median cohort size, non-unique users) is 21
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   145          |   145        |   71.78 %
+  24                 |   1            |   24         |   11.88 %
+  21                 |   1            |   21         |   10.4 %
+  2                  |   3            |   6          |   2.97 %
+  3                  |   2            |   6          |   2.97 %
+
+
+ There are 202 total users
+ There are 145 unique users, or 71.7822% out of 202 users
+

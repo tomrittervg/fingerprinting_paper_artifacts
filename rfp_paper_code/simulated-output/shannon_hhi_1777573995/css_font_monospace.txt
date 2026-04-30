@@ -1,0 +1,21 @@
+  css_font_monospace
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  ---------------------------------------------------
+  13px monospace           586    64.68        64.68
+  12px monospace           295    32.56        97.24
+  None                       8     0.88        98.12
+  13px monospac e            2     0.22        98.34
+  1 3px monospace            2     0.22        98.57
+  12px m onospace            2     0.22        98.79
+  12px mono space            2     0.22        99.01
+  13p x monospace            1     0.11        99.12
+  13px mono space            1     0.11        99.23
+  12px monos pace            1     0.11        99.34
+  12px monospa ce            1     0.11        99.45
+  13px  monospace            1     0.11        99.56
+  13px mon ospace            1     0.11        99.67
+  13px monosp ace            1     0.11        99.78
+  13px mo nospace            1     0.11        99.89
+  13px monospace             1     0.11       100.00
+

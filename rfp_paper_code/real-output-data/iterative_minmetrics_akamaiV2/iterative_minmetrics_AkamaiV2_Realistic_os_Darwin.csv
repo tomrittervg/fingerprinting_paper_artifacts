@@ -1,0 +1,17 @@
+K,MetricAdded,UniqueFingerprints,PercentUnique,NewlyUnique,CumulativeNewlyUnique
+1,screen_primary_avail,6708,0.3288,6708,6708
+2,canvas_canvasdata12_fingerprintjs1,79078,3.8757,72370,79078
+3,locale_accept_language,248856,12.1967,169778,248856
+4,intl_timezone_offset_web,400323,19.6203,151467,400323
+5,hw_processor_count,544080,26.6659,143757,544080
+6,user_agent,660386,32.3662,116306,660386
+7,prefs_general_donottrack_enabled,707108,34.6561,46722,707108
+8,canvas_canvasdata13_fingerprintjs2,720085,35.2921,12977,720085
+9,screen_primary_resolution,727577,35.6593,7492,727577
+10,prefs_cookiesenabled,727672,35.6640,95,727672
+11,locale_languages,727685,35.6646,13,727685
+12,platform,727685,35.6646,0,727685
+13,hw_max_touch_points,727685,35.6646,0,727685
+14,screen_primary_color_depth,727685,35.6646,0,727685
+15,hw_oscpu,727685,35.6646,0,727685
+16,screen_primary_pixel_depth,727685,35.6646,0,727685

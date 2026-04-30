@@ -1,0 +1,11 @@
+  css_font_status_bar (Linux)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  16px status-bar          194   96.04%       96.04%
+  16p x status-bar           3    1.49%       97.52%
+  16px  status-bar           1    0.50%       98.02%
+  16px status-bar            1    0.50%       98.51%
+  16px sta tus-bar           1    0.50%       99.01%
+  16px stat us-bar           1    0.50%       99.50%
+  None                       1    0.50%      100.00%

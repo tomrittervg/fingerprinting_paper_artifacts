@@ -1,0 +1,5 @@
+  webgl2_params_extensions_software_EXT_disjoint_timer_query (Darwin)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  None                     201  100.00%      100.00%

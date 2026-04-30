@@ -1,0 +1,15 @@
+  css_font_helvetica (WINNT)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  16px Helvetica           382   95.02%       95.02%
+  None                       9    2.24%       97.26%
+   16px Helvetica            2    0.50%       97.76%
+  16px  Helvetica            2    0.50%       98.26%
+  16px Helveti ca            1    0.25%       98.51%
+  16 px Helvetica            1    0.25%       98.76%
+  16px H elvetica            1    0.25%       99.00%
+  16px Helve tica            1    0.25%       99.25%
+  16px He lvetica            1    0.25%       99.50%
+  16px Helvet ica            1    0.25%       99.75%
+  16px Hel vetica            1    0.25%      100.00%

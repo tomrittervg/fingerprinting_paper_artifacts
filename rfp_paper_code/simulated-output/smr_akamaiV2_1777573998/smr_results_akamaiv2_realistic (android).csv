@@ -1,0 +1,17 @@
+Metric,UniqueUsersWhenRemoved,CohortFitnessWhenRemoved,CohortFitnessHHI2WhenRemoved,P50WhenRemoved
+canvas_canvasdata12_fingerprintjs1,11,0.5769042250759729,0.7251851851851852,76
+canvas_canvasdata13_fingerprintjs2,37,0.2930104891677287,,
+hw_max_touch_points,37,0.2930104891677287,,
+hw_oscpu,37,0.2930104891677287,,
+hw_processor_count,36,0.3930006862072346,0.9403550295857988,63
+intl_timezone_offset_web,37,0.2930104891677287,,
+locale_accept_language,29,0.3504558376629742,0.6840277777777776,59
+locale_languages,37,0.2930104891677287,,
+platform,37,0.2930104891677287,,
+prefs_cookiesenabled,37,0.2930104891677287,,
+prefs_general_donottrack_enabled,37,0.2930104891677287,,
+screen_primary_avail,37,0.2930104891677287,,
+screen_primary_color_depth,37,0.2930104891677287,,
+screen_primary_pixel_depth,37,0.2930104891677287,,
+screen_primary_resolution,37,0.2930104891677287,,
+user_agent,37,0.2930104891677287,,

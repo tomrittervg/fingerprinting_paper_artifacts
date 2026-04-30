@@ -1,0 +1,30 @@
+======================================================================
+metric_table.csv — Provenance Log
+Generated: 2026-04-28T03:19:26Z UTC
+======================================================================
+
+SHANNON ENTROPY + SIMPSON INDEX SOURCE
+  Config:         paper_indvmetrics_shannon_hhi
+  Output dir:     /home/user/sandbox-analyses/final-range/shannon_hhi_canvasfillin_final_1776808022
+  Date range:     2026-03-25 to 2026-04-17
+  Rows (users):   24871013
+  Schema floor:   >= 30
+
+SMR SOURCE
+  Config:             paper_indvmetrics_smr
+  Output dir:         /home/user/sandbox-analyses/final-range/smr_fpjsV2_final-realistic_1776894324
+  Date range:         2026-03-25 to 2026-04-17
+  Rows (users):       24871013
+  Schema floor:       >= 30
+  Fingerprinter set:  unknown
+  Metric count:       0
+
+OUTPUT
+  /home/user/code/gen_gfx/indv_metrics/metric_table.csv
+  Metrics in table: 684
+  Metrics with SMR data: 52
+
+NOTES
+  Schema floor (>= 30) is hardcoded in data.py:350 as of 2026-03-18.
+  SMR is computed over the fingerprinter set named above.
+  Metrics not in that subset have empty SMR columns.

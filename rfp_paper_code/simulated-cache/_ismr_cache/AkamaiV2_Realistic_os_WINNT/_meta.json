@@ -1,0 +1,32 @@
+{
+  "fingerprinter": "AkamaiV2_Realistic",
+  "os_value": "WINNT",
+  "start_day": "2026-02-13",
+  "end_day": "2026-05-01",
+  "partition_count": 16,
+  "metric_list": [
+    "intl_timezone_offset_web",
+    "screen_primary_avail",
+    "user_agent",
+    "prefs_general_donottrack_enabled",
+    "hw_oscpu",
+    "prefs_cookiesenabled",
+    "screen_primary_resolution",
+    "canvas_canvasdata12_fingerprintjs1",
+    "platform",
+    "canvas_canvasdata13_fingerprintjs2",
+    "locale_accept_language",
+    "screen_primary_pixel_depth",
+    "screen_primary_color_depth",
+    "locale_languages",
+    "hw_processor_count",
+    "hw_max_touch_points"
+  ],
+  "total_num_users": 402,
+  "baseline_num_users": 402,
+  "baseline_num_unique": 147,
+  "baseline_fitness": 0.10534392713051681,
+  "baseline_fitness_hhi2": 0.2595463283352557,
+  "baseline_p50": 54,
+  "created": "2026-04-30T18:02:06Z"
+}

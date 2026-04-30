@@ -1,0 +1,20 @@
+Analyzing the fingerprint distribution for P5-C: P4, Shipping Missing Fonts, Letterboxing, Voices, ClientRects Round 2dp, ClientRects Round 1dp, ClientRects Round 0dp, CSS System Colors, MathML (Darwin)-FPJSv2_Realistic
+  There are 201 total users
+  There are 63 unique users, or 31.3433% out of 201 users
+  Our cohort fitness score is 0.16843642484096924
+  Our cohort fitness score (HHI2, excl. singletons) is 0.3540222642302037
+  Our P50 (median cohort size, non-unique users) is 57
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   63           |   63         |   31.34 %
+  58                 |   1            |   58         |   28.86 %
+  57                 |   1            |   57         |   28.36 %
+  2                  |   4            |   8          |   3.98 %
+  8                  |   1            |   8          |   3.98 %
+  7                  |   1            |   7          |   3.48 %
+
+
+ There are 201 total users
+ There are 63 unique users, or 31.3433% out of 201 users
+

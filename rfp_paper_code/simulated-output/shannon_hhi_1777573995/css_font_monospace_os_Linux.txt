@@ -1,0 +1,10 @@
+  css_font_monospace (Linux)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  12px monospace           195   96.53%       96.53%
+  12px mono space            2    0.99%       97.52%
+  None                       2    0.99%       98.51%
+  12px m onospace            1    0.50%       99.01%
+  12px monos pace            1    0.50%       99.50%
+  12px monospa ce            1    0.50%      100.00%

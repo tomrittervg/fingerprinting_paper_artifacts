@@ -1,0 +1,10 @@
+  css_font_small_caption
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  ---------------------------------------------------
+  16px small-caption       900    99.34        99.34
+  16px small-caption         3     0.33        99.67
+  16px small-capt ion        1     0.11        99.78
+  16px small-cap tion        1     0.11        99.89
+  16px small- caption        1     0.11       100.00
+

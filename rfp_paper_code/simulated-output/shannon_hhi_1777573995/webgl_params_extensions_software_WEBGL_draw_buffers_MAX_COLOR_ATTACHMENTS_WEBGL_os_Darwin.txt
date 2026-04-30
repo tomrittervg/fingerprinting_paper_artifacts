@@ -1,0 +1,5 @@
+  webgl_params_extensions_software_WEBGL_draw_buffers_MAX_COLOR_ATTACHMENTS_WEBGL (Darwin)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  8                        201  100.00%      100.00%

@@ -1,0 +1,18 @@
+Analyzing the fingerprint distribution for P5-I: CSS System Colors (Android)-Signifyd_Realistic
+  There are 101 total users
+  There are 65 unique users, or 64.3564% out of 101 users
+  Our cohort fitness score is 0.06577786491520439
+  Our cohort fitness score (HHI2, excl. singletons) is 0.46759259259259256
+  Our P50 (median cohort size, non-unique users) is 24
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   65           |   65         |   64.36 %
+  24                 |   1            |   24         |   23.76 %
+  2                  |   3            |   6          |   5.94 %
+  3                  |   2            |   6          |   5.94 %
+
+
+ There are 101 total users
+ There are 65 unique users, or 64.3564% out of 101 users
+

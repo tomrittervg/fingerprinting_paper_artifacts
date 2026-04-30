@@ -1,0 +1,7 @@
+  css_font_small_caption (WINNT)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  16px small-caption       399   99.25%       99.25%
+  16px small-caption         2    0.50%       99.75%
+  16px small-cap tion        1    0.25%      100.00%

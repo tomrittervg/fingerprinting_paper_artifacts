@@ -1,0 +1,22 @@
+  webgl_vendor_raw (WINNT)
+  ------------------------------------------------------------
+  Key                         Count        % Cumulative %
+  -------------------------------------------------------
+  Google Inc. (NVIDIA)          382   95.02%       95.02%
+  Google Inc. (NVIDIA) #62        3    0.75%       95.77%
+  Google Inc. (NVIDIA) #47        2    0.50%       96.27%
+  Google Inc. (NVIDIA) #83        1    0.25%       96.52%
+  Google Inc. (NVIDIA) #91        1    0.25%       96.77%
+  Google Inc. (NVIDIA) #66        1    0.25%       97.01%
+  Google Inc. (NVIDIA) #26        1    0.25%       97.26%
+  Google Inc. (NVIDIA) #81        1    0.25%       97.51%
+  Google Inc. (NVIDIA) #98        1    0.25%       97.76%
+  Google Inc. (NVIDIA) #24        1    0.25%       98.01%
+  Google Inc. (NVIDIA) #17        1    0.25%       98.26%
+  Google Inc. (NVIDIA) #63        1    0.25%       98.51%
+  Google Inc. (NVIDIA) #82        1    0.25%       98.76%
+  Google Inc. (NVIDIA) #69        1    0.25%       99.00%
+  Google Inc. (NVIDIA) #18        1    0.25%       99.25%
+  Google Inc. (NVIDIA) #61        1    0.25%       99.50%
+  Google Inc. (NVIDIA) #68        1    0.25%       99.75%
+  Google Inc. (NVIDIA) #19        1    0.25%      100.00%

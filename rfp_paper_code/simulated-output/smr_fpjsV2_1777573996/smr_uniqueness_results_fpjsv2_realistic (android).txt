@@ -1,0 +1,6 @@
+  Uniqueness Results (FPJSv2_Realistic (Android)):
+    12 fewer unique users when ignoring combined_css_colors_hash
+    11 fewer unique users when ignoring webgl_renderer
+    6 fewer unique users when ignoring combined_css_fonts_hash
+    4 fewer unique users when ignoring canvas_canvasdata12_fingerprintjs1
+    2 fewer unique users when ignoring storage_quota

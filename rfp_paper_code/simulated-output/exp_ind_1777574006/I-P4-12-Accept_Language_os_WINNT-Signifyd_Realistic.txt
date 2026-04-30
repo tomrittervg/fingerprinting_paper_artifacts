@@ -1,0 +1,20 @@
+Analyzing the fingerprint distribution for P4-I: Accept Language (WINNT)-Signifyd_Realistic
+  There are 402 total users
+  There are 338 unique users, or 84.0796% out of 402 users
+  Our cohort fitness score is 0.0063117249573030375
+  Our cohort fitness score (HHI2, excl. singletons) is 0.16650390625
+  Our P50 (median cohort size, non-unique users) is 11
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   338          |   338        |   84.08 %
+  17                 |   1            |   17         |   4.23 %
+  2                  |   7            |   14         |   3.48 %
+  12                 |   1            |   12         |   2.99 %
+  11                 |   1            |   11         |   2.74 %
+  10                 |   1            |   10         |   2.49 %
+
+
+ There are 402 total users
+ There are 338 unique users, or 84.0796% out of 402 users
+

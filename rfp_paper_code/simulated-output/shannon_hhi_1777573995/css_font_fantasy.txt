@@ -1,0 +1,15 @@
+  css_font_fantasy
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  ---------------------------------------------------
+  16px fantasy             889    98.12        98.12
+  None                       7     0.77        98.90
+  16 px fantasy              2     0.22        99.12
+  16px f antasy              2     0.22        99.34
+  16px fantasy               1     0.11        99.45
+  16px  fantasy              1     0.11        99.56
+  16px fanta sy              1     0.11        99.67
+  16px fantas y              1     0.11        99.78
+  16px fant asy              1     0.11        99.89
+   16px fantasy              1     0.11       100.00
+

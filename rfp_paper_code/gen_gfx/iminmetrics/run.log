@@ -1,0 +1,25 @@
+============================================================
+viz_minmetrics_all — Provenance Log
+Generated: 2026-04-30T14:32:06Z
+============================================================
+
+SOURCE DIRECTORIES
+  ../../../sandbox-analyses/final-range/iterative_minmetrics_fpjsV2_final-realistic_1777125885
+
+FINGERPRINTERS: 1
+  FPJSv2_Realistic (Fingerprint Pro)
+
+PER-OS DATA
+  Fingerprint Pro (FPJSv2_Realistic):
+    Android   users=   8,914,105  baseline_unique=62.00%
+             csv: ../../../sandbox-analyses/final-range/iterative_minmetrics_fpjsV2_final-realistic_1777125885/iterative_minmetrics_FPJSv2_Realistic_os_Android.csv
+    macOS     users=   2,040,356  baseline_unique=82.63%
+             csv: ../../../sandbox-analyses/final-range/iterative_minmetrics_fpjsV2_final-realistic_1777125885/iterative_minmetrics_FPJSv2_Realistic_os_Darwin.csv
+    Linux     users=   1,844,561  baseline_unique=86.68%
+             csv: ../../../sandbox-analyses/final-range/iterative_minmetrics_fpjsV2_final-realistic_1777125885/iterative_minmetrics_FPJSv2_Realistic_os_Linux.csv
+    Windows   users=  12,071,991  baseline_unique=82.87%
+             csv: ../../../sandbox-analyses/final-range/iterative_minmetrics_fpjsV2_final-realistic_1777125885/iterative_minmetrics_FPJSv2_Realistic_os_WINNT.csv
+
+OUTPUT
+  /home/user/code/gen_gfx/iminmetrics/viz_minmetrics_1c.png
+

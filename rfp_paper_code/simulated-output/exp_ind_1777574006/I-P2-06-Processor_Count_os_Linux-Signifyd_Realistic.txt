@@ -1,0 +1,18 @@
+Analyzing the fingerprint distribution for P2-I: Processor Count (Linux)-Signifyd_Realistic
+  There are 202 total users
+  There are 175 unique users, or 86.6337% out of 202 users
+  Our cohort fitness score is 0.010979315753357515
+  Our cohort fitness score (HHI2, excl. singletons) is 0.3744855967078189
+  Our P50 (median cohort size, non-unique users) is 11
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   175          |   175        |   86.63 %
+  12                 |   1            |   12         |   5.94 %
+  11                 |   1            |   11         |   5.45 %
+  2                  |   2            |   4          |   1.98 %
+
+
+ There are 202 total users
+ There are 175 unique users, or 86.6337% out of 202 users
+

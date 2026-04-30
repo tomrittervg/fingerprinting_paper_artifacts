@@ -1,0 +1,8 @@
+  Uniqueness Results (Signifyd_Realistic (Darwin)):
+    44 fewer unique users when ignoring combined_css_colors_hash
+    31 fewer unique users when ignoring webgl_renderer
+    12 fewer unique users when ignoring combined_css_fonts_hash
+    8 fewer unique users when ignoring hw_processor_count
+    5 fewer unique users when ignoring storage_quota
+    2 fewer unique users when ignoring locale_accept_language
+    1 fewer unique users when ignoring webgl_vendor_raw

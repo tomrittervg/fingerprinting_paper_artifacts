@@ -1,0 +1,300 @@
+Started: 04/28/26 03:51:40 PM
+Reading data from:  Database
+Command line:  /home/tom/moz/fingerprinting-data/code/analyze.py -o /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2 -c configs/paper_uniqueness_tables_individual_realistic.py --cache-dir /home/tom/moz/fingerprinting-data/sandbox-cache --per-os=true --force
+Writing to:    /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900
+Git hash:      07d0282
+Date range:    2026-03-25 to 2026-04-17 (23 day(s))
+Tiny Mode:    DISABLED
+Minimize Mode:    DISABLED
+Partition width:    2 (256 partitions)
+Config file:   configs/paper_uniqueness_tables_individual_realistic.py
+  --per-os=true overrides config per_os_analysis
+Script config:
+  browser_modes = False
+  calculate_metric_experiment_aggregated = True
+  calculate_metrics_aggregated = False
+  correlation_analysis = False
+  experiments = True
+  experiments_output = False
+  fingerprint_archiving = False
+  fingerprint_buckets = False
+  fingerprints = True
+  fingerprints_output = False
+  max_procs = 10
+  max_threads_experiment_merging = 4
+  max_threads_graph_export = 2
+  max_worker_threads = None
+  metric_buckets = False
+  metrics_aggregated_output = False
+  missing_font_sets = False
+  missing_fonts = False
+  per_os_analysis = True
+  perform_iterative_single_metric_removal_analysis = False
+  perform_iterative_single_metric_replacement_analysis = False
+  perform_logical_metric_removal_analysis = False
+  perform_min_set_combo_analysis = False
+  perform_segmentation_decision_tree = False
+  perform_segmentation_shitty = False
+  perform_single_metric_removal_analysis = False
+  print_cohort_size_tables = True
+  print_log_scale_also = False
+  print_x_aggregate_entropy = False
+  print_x_aggregate_graphs = False
+  print_x_aggregate_tables = False
+  print_x_by_os_aggregate_graphs = False
+  print_x_hhi_index = False
+  raw_rows_only = False
+  show_all_metrics_aggregated = False
+  show_special_metrics_aggregated = False
+Pattern Hash: 8loOOxf7c8E= - /home/tom/moz/fingerprinting-data/sandbox-cache/8loOOxf7c8E=
+
+684 metrics to visualize
+
+Fetching BQ row counts for cache validation...
+  BQ row counts: 11778 day-partition entries, 512 filtered partition entries in 17.2s
+
+Processing 512 partitions with 10 worker processes...
+Worker logs: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/run_worker_<pid>.log (one per worker process)
+  [16:03:40] 52/512 partitions (10%) in 703s
+  [16:15:15] 103/512 partitions (20%) in 1398s
+  [16:26:47] 154/512 partitions (30%) in 2090s
+  [16:37:29] 205/512 partitions (40%) in 2732s
+  [16:49:02] 256/512 partitions (50%) in 3426s
+  [17:00:37] 308/512 partitions (60%) in 4120s
+  [17:11:37] 359/512 partitions (70%) in 4780s
+  [17:22:46] 410/512 partitions (80%) in 5449s
+  [17:34:15] 461/512 partitions (90%) in 6138s
+  [17:45:21] 512/512 partitions (100%) in 6804s
+  Parallel processing: 24,871,013 DataValues across 512 partitions in 6803.9s (8038s loading)
+  Data sources: 512 from range cache
+  Load breakdown (worker-seconds):    unpickle=8019
+  Compute breakdown (worker-seconds): corrections=3389  fingerprints=9000  experiments=45571
+
+  Wrote 469.63525581359863 megabytes to /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/metric_aggregation_output.bin
+  Per-OS analysis enabled for: ['Android', 'Darwin', 'Linux', 'WINNT']
+  Wrote 1315.7197370529175 megabytes to /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/alldata.bin
+  Elapsed time for fingerprints pickling: 20.30 seconds
+  Merging 23 experiments from 512 partition spill dirs (4 threads)...
+  Merged and pickled 23 experiments in 382.92s
+  Cleaned up experiment spill directory
+  Wrote experiment_manifest.json (45 slugs)
+Wrote combined hash lookup (2187128 entries): /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/combined_hash_lookup.json
+
+All analysis complete.
+Wrote to:    /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900
+Pattern Hash: 8loOOxf7c8E= - /home/tom/moz/fingerprinting-data/sandbox-cache/8loOOxf7c8E=
+
+Execution times (seconds):
+  bq_row_counts: 17.18
+  loading: 8038.20
+  parallel_processing: 6803.88
+  fingerprints_pickling: 20.30
+  baselines: 0.00
+  experiments_pickling: 382.92
+Total execution time: 7579.04 seconds
+
+
+============================================================
+gen_alldata_output.py — 2026-04-29T04:26:22Z
+  Output dir: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900
+============================================================
+Analyzing the fingerprint distribution for All-Data-FPJSv2_Realistic
+  There are 24871013 total users
+  There are 18816141 unique users, or 75.6549% out of 24871013 users
+  Our cohort fitness score is 7.183340799733149e-07
+  Our cohort fitness score (HHI2, excl. singletons) is 1.160678403533555e-05
+  Our P50 (median cohort size, non-unique users) is 6
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-FPJSv2_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 24871013 total users
+ There are 18816141 unique users, or 75.6549% out of 24871013 users
+
+
+Analyzing the fingerprint distribution for All-Data-AkamaiV2_Realistic
+  There are 24871013 total users
+  There are 4516337 unique users, or 18.159% out of 24871013 users
+  Our cohort fitness score is 4.679328681292682e-05
+  Our cohort fitness score (HHI2, excl. singletons) is 6.985127593529899e-05
+  Our P50 (median cohort size, non-unique users) is 92
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-AkamaiV2_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 24871013 total users
+ There are 4516337 unique users, or 18.159% out of 24871013 users
+
+
+Analyzing the fingerprint distribution for All-Data-Signifyd_Realistic
+  There are 24871013 total users
+  There are 15141707 unique users, or 60.8809% out of 24871013 users
+  Our cohort fitness score is 1.4592946205957648e-06
+  Our cohort fitness score (HHI2, excl. singletons) is 9.37603927956986e-06
+  Our P50 (median cohort size, non-unique users) is 10
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-Signifyd_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 24871013 total users
+ There are 15141707 unique users, or 60.8809% out of 24871013 users
+
+
+Analyzing the fingerprint distribution for All-Data (Android)-FPJSv2_Realistic
+  There are 8914105 total users
+  There are 5526718 unique users, or 61.9997% out of 8914105 users
+  Our cohort fitness score is 4.623759582985564e-06
+  Our cohort fitness score (HHI2, excl. singletons) is 3.1538326595275924e-05
+  Our P50 (median cohort size, non-unique users) is 10
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-Android-FPJSv2_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 8914105 total users
+ There are 5526718 unique users, or 61.9997% out of 8914105 users
+
+
+Analyzing the fingerprint distribution for All-Data (Android)-AkamaiV2_Realistic
+  There are 8914105 total users
+  There are 1517517 unique users, or 17.0238% out of 8914105 users
+  Our cohort fitness score is 5.817742407400322e-05
+  Our cohort fitness score (HHI2, excl. singletons) is 8.44703969134238e-05
+  Our P50 (median cohort size, non-unique users) is 75
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-Android-AkamaiV2_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 8914105 total users
+ There are 1517517 unique users, or 17.0238% out of 8914105 users
+
+
+Analyzing the fingerprint distribution for All-Data (Android)-Signifyd_Realistic
+  There are 8914105 total users
+  There are 5331916 unique users, or 59.8144% out of 8914105 users
+  Our cohort fitness score is 5.1122894667336464e-06
+  Our cohort fitness score (HHI2, excl. singletons) is 3.124178999041993e-05
+  Our P50 (median cohort size, non-unique users) is 11
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-Android-Signifyd_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 8914105 total users
+ There are 5331916 unique users, or 59.8144% out of 8914105 users
+
+
+Analyzing the fingerprint distribution for All-Data (Darwin)-FPJSv2_Realistic
+  There are 2040356 total users
+  There are 1685940 unique users, or 82.6297% out of 2040356 users
+  Our cohort fitness score is 1.1942183944926013e-06
+  Our cohort fitness score (HHI2, excl. singletons) is 2.6157437004705735e-05
+  Our P50 (median cohort size, non-unique users) is 4
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-Darwin-FPJSv2_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 2040356 total users
+ There are 1685940 unique users, or 82.6297% out of 2040356 users
+
+
+Analyzing the fingerprint distribution for All-Data (Darwin)-AkamaiV2_Realistic
+  There are 2040356 total users
+  There are 727685 unique users, or 35.6646% out of 2040356 users
+  Our cohort fitness score is 1.3548432203126886e-05
+  Our cohort fitness score (HHI2, excl. singletons) is 3.231094217473111e-05
+  Our P50 (median cohort size, non-unique users) is 10
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-Darwin-AkamaiV2_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 2040356 total users
+ There are 727685 unique users, or 35.6646% out of 2040356 users
+
+
+Analyzing the fingerprint distribution for All-Data (Darwin)-Signifyd_Realistic
+  There are 2040356 total users
+  There are 1613474 unique users, or 79.0781% out of 2040356 users
+  Our cohort fitness score is 1.3398081953943462e-06
+  Our cohort fitness score (HHI2, excl. singletons) is 2.175413623134755e-05
+  Our P50 (median cohort size, non-unique users) is 4
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-Darwin-Signifyd_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 2040356 total users
+ There are 1613474 unique users, or 79.0781% out of 2040356 users
+
+
+Analyzing the fingerprint distribution for All-Data (Linux)-FPJSv2_Realistic
+  There are 1844561 total users
+  There are 1598828 unique users, or 86.678% out of 1844561 users
+  Our cohort fitness score is 7.604598761438187e-06
+  Our cohort fitness score (HHI2, excl. singletons) is 0.0004020073970683194
+  Our P50 (median cohort size, non-unique users) is 4
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-Linux-FPJSv2_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 1844561 total users
+ There are 1598828 unique users, or 86.678% out of 1844561 users
+
+
+Analyzing the fingerprint distribution for All-Data (Linux)-AkamaiV2_Realistic
+  There are 1844561 total users
+  There are 683838 unique users, or 37.0732% out of 1844561 users
+  Our cohort fitness score is 4.782656781940025e-05
+  Our cohort fitness score (HHI2, excl. singletons) is 0.0001202732792379317
+  Our P50 (median cohort size, non-unique users) is 18
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-Linux-AkamaiV2_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 1844561 total users
+ There are 683838 unique users, or 37.0732% out of 1844561 users
+
+
+Analyzing the fingerprint distribution for All-Data (Linux)-Signifyd_Realistic
+  There are 1844561 total users
+  There are 1548240 unique users, or 83.9354% out of 1844561 users
+  Our cohort fitness score is 8.069977182988039e-06
+  Our cohort fitness score (HHI2, excl. singletons) is 0.00029507155721894546
+  Our P50 (median cohort size, non-unique users) is 4
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-Linux-Signifyd_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 1844561 total users
+ There are 1548240 unique users, or 83.9354% out of 1844561 users
+
+
+Analyzing the fingerprint distribution for All-Data (WINNT)-FPJSv2_Realistic
+  There are 12071991 total users
+  There are 10004655 unique users, or 82.8749% out of 12071991 users
+  Our cohort fitness score is 3.1621289275303665e-07
+  Our cohort fitness score (HHI2, excl. singletons) is 8.441510694437888e-06
+  Our P50 (median cohort size, non-unique users) is 4
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-WINNT-FPJSv2_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 12071991 total users
+ There are 10004655 unique users, or 82.8749% out of 12071991 users
+
+
+Analyzing the fingerprint distribution for All-Data (WINNT)-AkamaiV2_Realistic
+  There are 12071991 total users
+  There are 1587297 unique users, or 13.1486% out of 12071991 users
+  Our cohort fitness score is 0.0001653902817004404
+  Our cohort fitness score (HHI2, excl. singletons) is 0.0002192439770644146
+  Our P50 (median cohort size, non-unique users) is 204
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-WINNT-AkamaiV2_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 12071991 total users
+ There are 1587297 unique users, or 13.1486% out of 12071991 users
+
+
+Analyzing the fingerprint distribution for All-Data (WINNT)-Signifyd_Realistic
+  There are 12071991 total users
+  There are 6648077 unique users, or 55.0703% out of 12071991 users
+  Our cohort fitness score is 3.179842541157137e-06
+  Our cohort fitness score (HHI2, excl. singletons) is 1.552609695645211e-05
+  Our P50 (median cohort size, non-unique users) is 11
+
+  CDF graph saved to: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900/All-Data-WINNT-Signifyd_Realistic_Aggregation_of_Total_Users_Over_Cohort_Size.png
+
+ There are 12071991 total users
+ There are 6648077 unique users, or 55.0703% out of 12071991 users
+
+
+
+============================================================
+gen_metrics_output.py — 2026-04-29T04:30:11Z
+  Output dir: /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/exp_ind_final-realistic2_1777405900
+============================================================

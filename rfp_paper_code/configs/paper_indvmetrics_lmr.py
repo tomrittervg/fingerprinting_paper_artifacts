@@ -16,7 +16,7 @@ Test with 16 partitions first to verify memory usage:
   ... -w "0?" ...
 
 Note on parallelism: SMR is CPU-bound (SHA1 per user per metric, ~85 metrics
-total in FPSET_FINGERPRINTJS_V1). The GIL-free python3.14t build can saturate
+total in FPSET_FINGERPRINTJS_V1). The GIL-free python3 build can saturate
 all cores. max_procs=8 is set conservatively — increase to 16 if
 RAM allows (each worker holds ~15-20 KB/user × 43K users/partition).
 """

@@ -1,0 +1,5 @@
+  webgl2_params_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS_software (Linux)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  262144                   202  100.00%      100.00%

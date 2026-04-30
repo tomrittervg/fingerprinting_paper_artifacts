@@ -1,0 +1,5 @@
+  webgl2_renderer_software (WINNT)
+  ------------------------------------------------------------
+  Key                                                                                      Count        % Cumulative %
+  --------------------------------------------------------------------------------------------------------------------
+  ANGLE (Microsoft, Microsoft Basic Render Driver Direct3D11 vs_5_0 ps_5_0), or similar      402  100.00%      100.00%

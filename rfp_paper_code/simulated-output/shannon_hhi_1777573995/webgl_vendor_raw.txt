@@ -1,0 +1,50 @@
+  webgl_vendor_raw
+  ------------------------------------------------------------
+  Key                         Count        % Cumulative %
+  --------------------------------------------------------
+  Google Inc. (NVIDIA)          382    42.16        42.16
+  AMD                           192    21.19        63.36
+  Intel Inc.                    191    21.08        84.44
+  ARM                            96    10.60        95.03
+  Google Inc. (NVIDIA) #62        3     0.33        95.36
+  AMD #37                         2     0.22        95.58
+  Google Inc. (NVIDIA) #47        2     0.22        95.81
+  Intel Inc. #92                  1     0.11        95.92
+  Google Inc. (NVIDIA) #83        1     0.11        96.03
+  ARM #40                         1     0.11        96.14
+  Intel Inc. #85                  1     0.11        96.25
+  Intel Inc. #56                  1     0.11        96.36
+  Google Inc. (NVIDIA) #91        1     0.11        96.47
+  AMD #30                         1     0.11        96.58
+  Google Inc. (NVIDIA) #66        1     0.11        96.69
+  Google Inc. (NVIDIA) #26        1     0.11        96.80
+  Google Inc. (NVIDIA) #81        1     0.11        96.91
+  Google Inc. (NVIDIA) #98        1     0.11        97.02
+  Intel Inc. #72                  1     0.11        97.13
+  ARM #83                         1     0.11        97.24
+  Intel Inc. #91                  1     0.11        97.35
+  Intel Inc. #16                  1     0.11        97.46
+  Google Inc. (NVIDIA) #24        1     0.11        97.57
+  AMD #80                         1     0.11        97.68
+  ARM #39                         1     0.11        97.79
+  ARM #59                         1     0.11        97.90
+  Google Inc. (NVIDIA) #17        1     0.11        98.01
+  AMD #82                         1     0.11        98.12
+  Google Inc. (NVIDIA) #63        1     0.11        98.23
+  Google Inc. (NVIDIA) #82        1     0.11        98.34
+  Intel Inc. #80                  1     0.11        98.45
+  AMD #67                         1     0.11        98.57
+  Google Inc. (NVIDIA) #69        1     0.11        98.68
+  AMD #50                         1     0.11        98.79
+  Google Inc. (NVIDIA) #18        1     0.11        98.90
+  ARM #62                         1     0.11        99.01
+  Intel Inc. #29                  1     0.11        99.12
+  Google Inc. (NVIDIA) #61        1     0.11        99.23
+  AMD #64                         1     0.11        99.34
+  Google Inc. (NVIDIA) #68        1     0.11        99.45
+  Intel Inc. #97                  1     0.11        99.56
+  AMD #74                         1     0.11        99.67
+  Google Inc. (NVIDIA) #19        1     0.11        99.78
+  Intel Inc. #93                  1     0.11        99.89
+  AMD #18                         1     0.11       100.00
+

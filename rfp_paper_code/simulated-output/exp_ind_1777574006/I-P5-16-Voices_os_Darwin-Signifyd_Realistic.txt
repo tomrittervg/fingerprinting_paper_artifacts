@@ -1,0 +1,18 @@
+Analyzing the fingerprint distribution for P5-I: Voices (Darwin)-Signifyd_Realistic
+  There are 201 total users
+  There are 178 unique users, or 88.5572% out of 201 users
+  Our cohort fitness score is 0.008390881413826391
+  Our cohort fitness score (HHI2, excl. singletons) is 0.30434782608695654
+  Our P50 (median cohort size, non-unique users) is 7
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   178          |   178        |   88.56 %
+  10                 |   1            |   10         |   4.98 %
+  7                  |   1            |   7          |   3.48 %
+  2                  |   3            |   6          |   2.99 %
+
+
+ There are 201 total users
+ There are 178 unique users, or 88.5572% out of 201 users
+

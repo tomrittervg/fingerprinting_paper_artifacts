@@ -1,0 +1,15 @@
+Step,Phase,Technique,PctUnique,UniqImpr,CohortScore
+0,,Baseline,75.6549,,2.472668667552692e-06
+1,Phase 0,CPU Core Count (Expert Opinion),75.6546,0.0,2.472675031896481e-06
+2,Phase 0,WebGL Renderer String,67.639,8.02,4.313046513818061e-06
+3,Phase 0,Minor Version,63.923,3.72,9.653133871388088e-06
+4,Phase 1,Fonts,54.77,9.15,1.308065661986002e-05
+5,Phase 1,Math Functions,54.677,0.09,1.3147569126554454e-05
+6,Phase 2,CPU Core Count (Data Driven),51.4203,3.26,1.798782395663449e-05
+7,Phase 2,Available Screen Resolution,47.8863,3.53,2.2709444500716154e-05
+8,Phase 2,Font Updates,46.7943,1.09,2.4682268200723398e-05
+9,Phase 3,WebGL Vendor,45.6506,1.14,2.8311715004412055e-05
+10,Phase 3,Storage Quota,44.0424,1.61,2.960493437869665e-05
+11,Phase 4,Software Rendered Canvas,40.3712,3.67,5.567667971524952e-05
+12,Phase 4,Accept-Language,38.1798,2.19,5.806295603717166e-05
+13,Phase 4,Timezone,34.9411,3.24,6.333179940672346e-05

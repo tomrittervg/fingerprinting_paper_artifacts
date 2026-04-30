@@ -1,0 +1,58 @@
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+\begin{table}[H]
+\scriptsize
+\centering
+\begin{tabular}{r l | r l}
+\Xhline{2\arrayrulewidth}
+\multicolumn{2}{c|}{\textsf{\textcolor{red}{Windows}}} & \multicolumn{2}{c}{\textsf{\textcolor{darkgreen}{macOS}}} \\
+\Xhline{2\arrayrulewidth}
+1 & \textcolor{red}{CSS System Colors} & 1 & \textcolor{red}{CSS System Colors} \\
+2 & \textcolor{red}{FPJS Canvas Image 1} & 2 & \textcolor{red}{WebGL Renderer} \\
+3 & \textcolor{red}{WebGL Renderer} & 3 & \textcolor{red}{FPJS Canvas Image 1} \\
+4 & \textcolor{red}{CSS System Fonts} & 4 & \textcolor{red}{CSS System Fonts} \\
+5 & \textcolor{red}{Storage Quota} & 5 & \textcolor{darkgreen}{CPU Count} \\
+6 & \textcolor{darkgreen}{CPU Count} & 6 & \textcolor{red}{Storage Quota} \\
+7 & \textcolor{orange}{Accept-Language} & 7 & \textcolor{orange}{Accept-Language} \\
+8 & Pixel Ratio & 8 & WebGL Vendor Raw \\
+9 & Timezone Offset & 9 & Platform \\
+10 & Platform & 10 & FPJS Canvas Image 2 \\
+11 & FPJS Canvas Image 2 & 11 & Intl.locale \\
+12 & Intl.locale & 12 & Prefers Reduced Transparency \\
+13 & Prefers Reduced Transparency & 13 & Monochrome \\
+14 & Monochrome & 14 & OS/CPU String \\
+15 & OS/CPU String & 15 & WebGL Precision Vertex \\
+16 & WebGL Precision Vertex & 16 & Cookies Enabled \\
+17 & Cookies Enabled & 17 & Color Depth \\
+18 & Color Depth & 18 & Allowlisted FPJS Probed Fonts \\
+19 & Allowlisted FPJS Probed Fonts & 19 & Pixel Ratio \\
+20 & WebGPU Fallback Adapter & 20 & WebGPU Fallback Adapter \\
+\Xhline{2\arrayrulewidth}
+ & & & \\
+\Xhline{2\arrayrulewidth}
+\multicolumn{2}{c|}{\textsf{\textcolor{blue}{Android}}} & \multicolumn{2}{c}{\textsf{\textcolor{orange}{Linux}}} \\
+\Xhline{2\arrayrulewidth}
+1 & \textcolor{red}{CSS System Colors} & 1 & \textcolor{red}{CSS System Colors} \\
+2 & \textcolor{red}{WebGL Renderer} & 2 & \textcolor{red}{WebGL Renderer} \\
+3 & \textcolor{red}{CSS System Fonts} & 3 & \textcolor{red}{FPJS Canvas Image 1} \\
+4 & \textcolor{red}{FPJS Canvas Image 1} & 4 & \textcolor{red}{CSS System Fonts} \\
+5 & \textcolor{red}{Storage Quota} & 5 & \textcolor{orange}{Accept-Language} \\
+6 & Platform & 6 & \textcolor{darkgreen}{CPU Count} \\
+7 & FPJS Canvas Image 2 & 7 & WebGL Vendor Raw \\
+8 & Intl.locale & 8 & \textcolor{red}{Storage Quota} \\
+9 & Prefers Reduced Transparency & 9 & Platform \\
+10 & Monochrome & 10 & FPJS Canvas Image 2 \\
+11 & OS/CPU String & 11 & Intl.locale \\
+12 & WebGL Precision Vertex & 12 & Prefers Reduced Transparency \\
+13 & Cookies Enabled & 13 & Monochrome \\
+14 & Color Depth & 14 & OS/CPU String \\
+15 & Allowlisted FPJS Probed Fonts & 15 & WebGL Precision Vertex \\
+16 & Pixel Ratio & 16 & Cookies Enabled \\
+17 & WebGPU Fallback Adapter & 17 & Color Depth \\
+18 & WebAuthn Capabilities & 18 & Allowlisted FPJS Probed Fonts \\
+19 & Math Operations & 19 & Pixel Ratio \\
+20 & SDP Codec List & 20 & WebGPU Fallback Adapter \\
+\Xhline{2\arrayrulewidth}
+\end{tabular}
+\caption{Top 20 measurements by iterative incremental fingerprint construction, per operating system, for \textit{Fingerprint Pro}. Rank 1 contributes the most uniquely identifying users on its own; each subsequent rank contributes the most additional uniquely identifying users beyond those already captured by all higher-ranked metrics. Colors indicate shared top-5 metrics: \textcolor{red}{Windows}, \textcolor{blue}{Android}, \textcolor{darkgreen}{macOS}, \textcolor{orange}{Linux}.}
+\label{tab:iterative_top20_by_os}
+\end{table}

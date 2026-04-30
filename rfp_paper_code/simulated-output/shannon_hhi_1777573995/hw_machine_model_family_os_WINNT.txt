@@ -1,0 +1,6 @@
+  hw_machine_model_family (WINNT)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  Gigabyte_Desktop         301   74.88%       74.88%
+  Lenovo_ThinkStation      101   25.12%      100.00%

@@ -1,0 +1,5 @@
+  webgl2_params_SHADING_LANGUAGE_VERSION (Darwin)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  WebGL GLSL ES 3.00       201  100.00%      100.00%

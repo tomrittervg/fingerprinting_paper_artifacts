@@ -1,0 +1,19 @@
+Analyzing the fingerprint distribution for P5-C: P4, Shipping Missing Fonts, Letterboxing, Voices (Darwin)-Signifyd_Realistic
+  There are 201 total users
+  There are 132 unique users, or 65.6716% out of 201 users
+  Our cohort fitness score is 0.04447909705205316
+  Our cohort fitness score (HHI2, excl. singletons) is 0.3497164461247637
+  Our P50 (median cohort size, non-unique users) is 28
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   132          |   132        |   65.67 %
+  29                 |   1            |   29         |   14.43 %
+  28                 |   1            |   28         |   13.93 %
+  4                  |   2            |   8          |   3.98 %
+  2                  |   2            |   4          |   1.99 %
+
+
+ There are 201 total users
+ There are 132 unique users, or 65.6716% out of 201 users
+

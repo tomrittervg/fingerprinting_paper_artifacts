@@ -1,0 +1,6 @@
+  voices_nonlocal_ssdeep (Linux)
+  ------------------------------------------------------------
+  Key                                                                         Count        % Cumulative %
+  -------------------------------------------------------------------------------------------------------
+  6144:K/tWzmuwWe3GdmHreHBkuC5XSGecXBCIQPnyF5gmejXy5YE:K/C6GrHB45nHdMXy5YE      101   50.00%       50.00%
+  6144:ZTptR+0WmQUHrzfv9gS5QqOsRnJXI8Qfi/tTrJQvX5F:ZT9fvF5UuRivX5F              101   50.00%      100.00%

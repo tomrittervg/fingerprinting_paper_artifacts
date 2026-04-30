@@ -1,0 +1,21 @@
+Analyzing the fingerprint distribution for P4-I: Accept Language (Darwin)-AkamaiV2_Realistic
+  There are 201 total users
+  There are 70 unique users, or 34.8259% out of 201 users
+  Our cohort fitness score is 0.25467191406153317
+  Our cohort fitness score (HHI2, excl. singletons) is 0.595478118990735
+  Our P50 (median cohort size, non-unique users) is 100
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  100                |   1            |   100        |   49.75 %
+  1                  |   70           |   70         |   34.83 %
+  11                 |   1            |   11         |   5.47 %
+  7                  |   1            |   7          |   3.48 %
+  5                  |   1            |   5          |   2.49 %
+  2                  |   2            |   4          |   1.99 %
+  4                  |   1            |   4          |   1.99 %
+
+
+ There are 201 total users
+ There are 70 unique users, or 34.8259% out of 201 users
+

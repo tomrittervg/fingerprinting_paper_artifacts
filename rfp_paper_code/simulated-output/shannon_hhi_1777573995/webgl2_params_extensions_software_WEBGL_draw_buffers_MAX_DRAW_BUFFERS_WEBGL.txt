@@ -1,0 +1,6 @@
+  webgl2_params_extensions_software_WEBGL_draw_buffers_MAX_DRAW_BUFFERS_WEBGL
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  ---------------------------------------------------
+  None                     906   100.00       100.00
+

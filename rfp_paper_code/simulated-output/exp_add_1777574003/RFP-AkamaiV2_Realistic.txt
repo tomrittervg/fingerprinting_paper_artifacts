@@ -1,0 +1,17 @@
+Analyzing the fingerprint distribution for RFP-AkamaiV2_Realistic
+  There are 906 total users
+  There are 0 unique users, or 0.0% out of 906 users
+  Our cohort fitness score is 0.1357226047590505
+  Our cohort fitness score (HHI2, excl. singletons) is 0.1357226047590505
+  Our P50 (median cohort size, non-unique users) is 101
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  101                |   5            |   505        |   55.74 %
+  201                |   1            |   201        |   22.19 %
+  100                |   2            |   200        |   22.08 %
+
+
+ There are 906 total users
+ There are 0 unique users, or 0.0% out of 906 users
+

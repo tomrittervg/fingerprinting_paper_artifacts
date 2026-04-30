@@ -1,0 +1,5 @@
+  webgl_renderer_raw_software (Darwin)
+  ------------------------------------------------------------
+  Key                        Count        % Cumulative %
+  ------------------------------------------------------
+  Apple Software Renderer      201  100.00%      100.00%

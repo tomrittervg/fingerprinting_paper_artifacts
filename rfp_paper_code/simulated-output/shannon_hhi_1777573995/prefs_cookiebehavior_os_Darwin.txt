@@ -1,0 +1,5 @@
+  prefs_cookiebehavior (Darwin)
+  ------------------------------------------------------------
+  Key                                   Count        % Cumulative %
+  -----------------------------------------------------------------
+  Reject Tracker & Partition Foreign      201  100.00%      100.00%

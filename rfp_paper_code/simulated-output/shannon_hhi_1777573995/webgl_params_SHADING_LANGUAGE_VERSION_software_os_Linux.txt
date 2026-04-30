@@ -1,0 +1,5 @@
+  webgl_params_SHADING_LANGUAGE_VERSION_software (Linux)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  WebGL GLSL ES 1.0        202  100.00%      100.00%

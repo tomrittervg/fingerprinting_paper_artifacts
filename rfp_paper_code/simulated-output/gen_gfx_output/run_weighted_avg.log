@@ -1,0 +1,24 @@
+============================================================
+viz_minmetrics_weighted_avg — Provenance Log
+Generated: 2026-04-30T18:35:05Z
+============================================================
+
+SOURCE DIRECTORIES
+  ./simulated-output/iterative_minmetrics_fpjsV2_1777574009
+  ./simulated-output/iterative_minmetrics_akamaiV2_1777574010
+  ./simulated-output/iterative_minmetrics_signifyd_1777574011
+
+RUNS: 3
+  Fingerprint Pro (FPJSv2_Realistic):
+    users=906  baseline_unique=91.17%  K=1..52
+    source: ./simulated-output/iterative_minmetrics_fpjsV2_1777574009
+  Akamai (AkamaiV2_Realistic):
+    users=906  baseline_unique=36.09%  K=1..16
+    source: ./simulated-output/iterative_minmetrics_akamaiV2_1777574010
+  SignifyD (Signifyd_Realistic):
+    users=906  baseline_unique=85.87%  K=1..82
+    source: ./simulated-output/iterative_minmetrics_signifyd_1777574011
+
+OUTPUT
+  ./simulated-output/gen_gfx_output/viz_minmetrics_weighted_avg.png
+

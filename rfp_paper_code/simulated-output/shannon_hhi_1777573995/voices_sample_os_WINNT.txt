@@ -1,0 +1,5 @@
+  voices_sample (WINNT)
+  ------------------------------------------------------------
+  Key                                                                                                                                                                                                                                                                            Count        % Cumulative %
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  #m:Microsoft David - English (United States)?en-US,#m:Microsoft David Desktop - English (United States)?en-US,#m:Microsoft Mark - English (United States)?en-US,#m:Microsoft Zira - English (United States)?en-US,#m:Microsoft Zira Desktop - English (United States)?en-US      402  100.00%      100.00%

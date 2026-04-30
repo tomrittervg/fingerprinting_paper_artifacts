@@ -1,0 +1,26 @@
+============================================================
+viz_top_combo_by_os — Provenance Log
+Generated: 2026-04-30T15:07:42Z
+============================================================
+
+SOURCE DIRECTORIES: 10
+  ../../../sandbox-analyses/final-range/minset_top10_smr_Android_final-realistic_1776920693
+  ../../../sandbox-analyses/final-range/minset_top10_smr_Darwin_final-realistic_1776921575
+  ../../../sandbox-analyses/final-range/minset_top10_smr_Linux_final-realistic_1776921811
+  ../../../sandbox-analyses/final-range/minset_top10_smr_WINNT_final-realistic_1776922025
+  ../../../sandbox-analyses/final-range/minset_top12_smr_Android_final-realistic_1776923350
+  ../../../sandbox-analyses/final-range/minset_top12_smr_Darwin_final-realistic_1776925314
+  ../../../sandbox-analyses/final-range/minset_top12_smr_Linux_final-realistic_1776925835
+  ../../../sandbox-analyses/final-range/minset_top12_smr_WINNT_final-realistic_1776926342
+  ../../../sandbox-analyses/final-range/minset_top5_smr_final-realistic_1776919173
+  ../../../sandbox-analyses/final-range/minset_top7_smr_final-realistic_1776919617
+
+PER-OS DATA
+  Windows   baseline_unique=11,183,223  combos=637  sizes=[1, 2, 3, 4, 5]
+  macOS     baseline_unique=1,988,259  combos=637  sizes=[1, 2, 3, 4, 5]
+  Android   baseline_unique=6,710,305  combos=637  sizes=[1, 2, 3, 4, 5]
+  Linux     baseline_unique=1,728,649  combos=637  sizes=[1, 2, 3, 4, 5]
+
+OUTPUT
+  /home/user/code/gen_gfx/minset/viz_top_combo_by_os.png
+

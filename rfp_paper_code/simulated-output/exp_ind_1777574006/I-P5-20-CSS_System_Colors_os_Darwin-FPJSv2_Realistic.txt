@@ -1,0 +1,19 @@
+Analyzing the fingerprint distribution for P5-I: CSS System Colors (Darwin)-FPJSv2_Realistic
+  There are 201 total users
+  There are 155 unique users, or 77.1144% out of 201 users
+  Our cohort fitness score is 0.015024380584638994
+  Our cohort fitness score (HHI2, excl. singletons) is 0.2136105860113421
+  Our P50 (median cohort size, non-unique users) is 11
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   155          |   155        |   77.11 %
+  17                 |   1            |   17         |   8.46 %
+  2                  |   6            |   12         |   5.97 %
+  11                 |   1            |   11         |   5.47 %
+  3                  |   2            |   6          |   2.99 %
+
+
+ There are 201 total users
+ There are 155 unique users, or 77.1144% out of 201 users
+

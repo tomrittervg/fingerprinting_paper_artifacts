@@ -1,0 +1,186 @@
+Started: 04/30/26 02:33:29 PM
+Reading data from:  Database
+Command line:  /home/tom/moz/fingerprinting-data/code/analyze.py -o ./simulated-output/iterative_minmetrics_fpjsV2 -c configs/iterative_minmetrics_fpjsV2.py --cache-dir ./simulated-cache --per-os=true --force --partition-width 1
+Writing to:    ./simulated-output/iterative_minmetrics_fpjsV2_1777574009
+Git hash:      9b87688
+Date range:    2026-02-13 to 2026-05-01 (77 day(s))
+Tiny Mode:    DISABLED
+Minimize Mode:    DISABLED
+Partition width:    1 (16 partitions)
+Config file:   configs/iterative_minmetrics_fpjsV2.py
+  --per-os=true overrides config per_os_analysis
+Script config:
+  browser_modes = False
+  calculate_metric_experiment_aggregated = False
+  calculate_metrics_aggregated = False
+  correlation_analysis = False
+  experiments = False
+  fingerprint_archiving = False
+  fingerprint_buckets = False
+  fingerprints = False
+  iterative_minmetrics_fingerprinter = 'FPJSv2_Realistic'
+  iterative_minmetrics_max_k = None
+  max_procs = 2
+  max_threads_experiment_merging = 4
+  max_threads_graph_export = 1
+  max_worker_threads = None
+  metric_buckets = False
+  missing_font_sets = False
+  missing_fonts = False
+  per_os_analysis = True
+  perform_iterative_minmetrics_analysis = True
+  perform_iterative_single_metric_removal_analysis = False
+Pattern Hash: R9MNk-2FxUs= - ./simulated-cache/R9MNk-2FxUs=
+
+  perform_iterative_single_metric_replacement_analysis = False
+  perform_logical_metric_removal_analysis = False
+  perform_min_set_combo_analysis = False
+  perform_minmetrics_analysis = False
+  perform_segmentation_decision_tree = False
+  perform_segmentation_shitty = False
+  perform_single_metric_removal_analysis = False
+  print_x_by_os_aggregate_graphs = False
+  raw_rows_only = False
+684 metrics to visualize
+
+  No partition processing needed — skipping worker pool
+  Per-OS analysis enabled for: ['Android', 'Darwin', 'Linux', 'WINNT']
+  IterativeMinMetrics: FPJSv2_Realistic
+    Loaded cached numpy array (906, 52) (0.0GB) in 0.0s
+    906 users x 52 metrics (0.0GB), max_k=52
+    Greedy selection: 52 rounds, 32 eval threads
+    [14:33:29] K=  1/52: combined_css_colors_hash                 +       360 ( 39.7%) [0.0s round, 0s total]
+    K=  1: combined_css_colors_hash                      unique=       360 ( 39.7%) +       360  [0.0s]
+    [14:33:29] K=  2/52: webgl_renderer                           +       233 ( 65.5%) [0.0s round, 0s total]
+    K=  2: webgl_renderer                                unique=       593 ( 65.5%) +       233  [0.0s]
+    [14:33:29] K=  3/52: canvas_canvasdata12_fingerprintjs1       +       111 ( 77.7%) [0.0s round, 0s total]
+    K=  3: canvas_canvasdata12_fingerprintjs1            unique=       704 ( 77.7%) +       111  [0.0s]
+    [14:33:29] K=  4/52: combined_css_fonts_hash                  +        71 ( 85.5%) [0.0s round, 0s total]
+    K=  4: combined_css_fonts_hash                       unique=       775 ( 85.5%) +        71  [0.0s]
+    [14:33:29] K=  5/52: storage_quota                            +        15 ( 87.2%) [0.0s round, 0s total]
+    K=  5: storage_quota                                 unique=       790 ( 87.2%) +        15  [0.0s]
+    [14:33:29] K=  6/52: hw_processor_count                       +        14 ( 88.7%) [0.0s round, 0s total]
+    K=  6: hw_processor_count                            unique=       804 ( 88.7%) +        14  [0.0s]
+    [14:33:29] K=  7/52: locale_accept_language                   +        13 ( 90.2%) [0.0s round, 0s total]
+    K=  7: locale_accept_language                        unique=       817 ( 90.2%) +        13  [0.0s]
+    [14:33:29] K=  8/52: screen_web_pixel_ratio                   +         4 ( 90.6%) [0.0s round, 0s total]
+    K=  8: screen_web_pixel_ratio                        unique=       821 ( 90.6%) +         4  [0.0s]
+    [14:33:29] K=  9/52: webgl_vendor_raw                         +         3 ( 90.9%) [0.0s round, 0s total]
+    K=  9: webgl_vendor_raw                              unique=       824 ( 90.9%) +         3  [0.0s]
+    [14:33:29] K= 10/52: intl_timezone_offset_web                 +         2 ( 91.2%) [0.0s round, 0s total]
+    K= 10: intl_timezone_offset_web                      unique=       826 ( 91.2%) +         2  [0.0s]
+    [14:33:29] K= 11/52: platform                                 +         0 ( 91.2%) [0.0s round, 0s total]
+    K= 11: platform                                      unique=       826 ( 91.2%) +         0  [0.0s]
+  IterativeMinMetrics complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic.csv
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic.txt
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_ordering.py
+  IterativeMinMetrics [FPJSv2_Realistic][Android]: FPJSv2_Realistic (Android)
+    Loaded cached numpy array (101, 52) (0.0GB) in 0.0s
+    101 users x 52 metrics (0.0GB), max_k=52
+    Greedy selection: 52 rounds, 32 eval threads
+    [14:33:29] K=  1/52: combined_css_colors_hash                 +        45 ( 44.6%) [0.0s round, 0s total]
+    K=  1: combined_css_colors_hash                      unique=        45 ( 44.6%) +        45  [0.0s]
+    [14:33:29] K=  2/52: webgl_renderer                           +        25 ( 69.3%) [0.0s round, 0s total]
+    K=  2: webgl_renderer                                unique=        70 ( 69.3%) +        25  [0.0s]
+    [14:33:29] K=  3/52: combined_css_fonts_hash                  +         9 ( 78.2%) [0.0s round, 0s total]
+    K=  3: combined_css_fonts_hash                       unique=        79 ( 78.2%) +         9  [0.0s]
+    [14:33:29] K=  4/52: canvas_canvasdata12_fingerprintjs1       +         7 ( 85.1%) [0.0s round, 0s total]
+    K=  4: canvas_canvasdata12_fingerprintjs1            unique=        86 ( 85.1%) +         7  [0.0s]
+    [14:33:29] K=  5/52: storage_quota                            +         2 ( 87.1%) [0.0s round, 0s total]
+    K=  5: storage_quota                                 unique=        88 ( 87.1%) +         2  [0.0s]
+    [14:33:29] K=  6/52: platform                                 +         0 ( 87.1%) [0.0s round, 0s total]
+    K=  6: platform                                      unique=        88 ( 87.1%) +         0  [0.0s]
+  IterativeMinMetrics [FPJSv2_Realistic][Android] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Android.csv
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Android.txt
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Android_ordering.py
+  IterativeMinMetrics [FPJSv2_Realistic][Darwin]: FPJSv2_Realistic (Darwin)
+    Loaded cached numpy array (201, 52) (0.0GB) in 0.0s
+    201 users x 52 metrics (0.0GB), max_k=52
+    Greedy selection: 52 rounds, 32 eval threads
+    [14:33:29] K=  1/52: combined_css_colors_hash                 +        94 ( 46.8%) [0.0s round, 0s total]
+    K=  1: combined_css_colors_hash                      unique=        94 ( 46.8%) +        94  [0.0s]
+    [14:33:29] K=  2/52: webgl_renderer                           +        50 ( 71.6%) [0.0s round, 0s total]
+    K=  2: webgl_renderer                                unique=       144 ( 71.6%) +        50  [0.0s]
+    [14:33:29] K=  3/52: canvas_canvasdata12_fingerprintjs1       +        19 ( 81.1%) [0.0s round, 0s total]
+    K=  3: canvas_canvasdata12_fingerprintjs1            unique=       163 ( 81.1%) +        19  [0.0s]
+    [14:33:29] K=  4/52: combined_css_fonts_hash                  +        13 ( 87.6%) [0.0s round, 0s total]
+    K=  4: combined_css_fonts_hash                       unique=       176 ( 87.6%) +        13  [0.0s]
+    [14:33:29] K=  5/52: hw_processor_count                       +         4 ( 89.6%) [0.0s round, 0s total]
+    K=  5: hw_processor_count                            unique=       180 ( 89.6%) +         4  [0.0s]
+    [14:33:29] K=  6/52: storage_quota                            +         3 ( 91.0%) [0.0s round, 0s total]
+    K=  6: storage_quota                                 unique=       183 ( 91.0%) +         3  [0.0s]
+    [14:33:29] K=  7/52: locale_accept_language                   +         2 ( 92.0%) [0.0s round, 0s total]
+    K=  7: locale_accept_language                        unique=       185 ( 92.0%) +         2  [0.0s]
+    [14:33:29] K=  8/52: webgl_vendor_raw                         +         1 ( 92.5%) [0.0s round, 0s total]
+    K=  8: webgl_vendor_raw                              unique=       186 ( 92.5%) +         1  [0.0s]
+    [14:33:29] K=  9/52: platform                                 +         0 ( 92.5%) [0.0s round, 0s total]
+    K=  9: platform                                      unique=       186 ( 92.5%) +         0  [0.0s]
+  IterativeMinMetrics [FPJSv2_Realistic][Darwin] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Darwin.csv
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Darwin.txt
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Darwin_ordering.py
+  IterativeMinMetrics [FPJSv2_Realistic][Linux]: FPJSv2_Realistic (Linux)
+    Loaded cached numpy array (202, 52) (0.0GB) in 0.0s
+    202 users x 52 metrics (0.0GB), max_k=52
+    Greedy selection: 52 rounds, 32 eval threads
+    [14:33:29] K=  1/52: combined_css_colors_hash                 +        90 ( 44.6%) [0.0s round, 0s total]
+    K=  1: combined_css_colors_hash                      unique=        90 ( 44.6%) +        90  [0.0s]
+    [14:33:29] K=  2/52: webgl_renderer                           +        57 ( 72.8%) [0.0s round, 0s total]
+    K=  2: webgl_renderer                                unique=       147 ( 72.8%) +        57  [0.0s]
+    [14:33:29] K=  3/52: canvas_canvasdata12_fingerprintjs1       +        20 ( 82.7%) [0.0s round, 0s total]
+    K=  3: canvas_canvasdata12_fingerprintjs1            unique=       167 ( 82.7%) +        20  [0.0s]
+    [14:33:29] K=  4/52: combined_css_fonts_hash                  +        12 ( 88.6%) [0.0s round, 0s total]
+    K=  4: combined_css_fonts_hash                       unique=       179 ( 88.6%) +        12  [0.0s]
+    [14:33:29] K=  5/52: locale_accept_language                   +         4 ( 90.6%) [0.0s round, 0s total]
+    K=  5: locale_accept_language                        unique=       183 ( 90.6%) +         4  [0.0s]
+    [14:33:29] K=  6/52: hw_processor_count                       +         2 ( 91.6%) [0.0s round, 0s total]
+    K=  6: hw_processor_count                            unique=       185 ( 91.6%) +         2  [0.0s]
+    [14:33:29] K=  7/52: webgl_vendor_raw                         +         2 ( 92.6%) [0.0s round, 0s total]
+    K=  7: webgl_vendor_raw                              unique=       187 ( 92.6%) +         2  [0.0s]
+    [14:33:29] K=  8/52: storage_quota                            +         1 ( 93.1%) [0.0s round, 0s total]
+    K=  8: storage_quota                                 unique=       188 ( 93.1%) +         1  [0.0s]
+    [14:33:29] K=  9/52: platform                                 +         0 ( 93.1%) [0.0s round, 0s total]
+    K=  9: platform                                      unique=       188 ( 93.1%) +         0  [0.0s]
+  IterativeMinMetrics [FPJSv2_Realistic][Linux] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Linux.csv
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Linux.txt
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Linux_ordering.py
+  IterativeMinMetrics [FPJSv2_Realistic][WINNT]: FPJSv2_Realistic (WINNT)
+    Loaded cached numpy array (402, 52) (0.0GB) in 0.0s
+    402 users x 52 metrics (0.0GB), max_k=52
+    Greedy selection: 52 rounds, 32 eval threads
+    [14:33:29] K=  1/52: combined_css_colors_hash                 +       131 ( 32.6%) [0.0s round, 0s total]
+    K=  1: combined_css_colors_hash                      unique=       131 ( 32.6%) +       131  [0.0s]
+    [14:33:29] K=  2/52: canvas_canvasdata12_fingerprintjs1       +       102 ( 58.0%) [0.0s round, 0s total]
+    K=  2: canvas_canvasdata12_fingerprintjs1            unique=       233 ( 58.0%) +       102  [0.0s]
+    [14:33:29] K=  3/52: webgl_renderer                           +        63 ( 73.6%) [0.0s round, 0s total]
+    K=  3: webgl_renderer                                unique=       296 ( 73.6%) +        63  [0.0s]
+    [14:33:29] K=  4/52: combined_css_fonts_hash                  +        38 ( 83.1%) [0.0s round, 0s total]
+    K=  4: combined_css_fonts_hash                       unique=       334 ( 83.1%) +        38  [0.0s]
+    [14:33:29] K=  5/52: storage_quota                            +         8 ( 85.1%) [0.0s round, 0s total]
+    K=  5: storage_quota                                 unique=       342 ( 85.1%) +         8  [0.0s]
+    [14:33:29] K=  6/52: hw_processor_count                       +         8 ( 87.1%) [0.0s round, 0s total]
+    K=  6: hw_processor_count                            unique=       350 ( 87.1%) +         8  [0.0s]
+    [14:33:29] K=  7/52: locale_accept_language                   +         8 ( 89.1%) [0.0s round, 0s total]
+    K=  7: locale_accept_language                        unique=       358 ( 89.1%) +         8  [0.0s]
+    [14:33:29] K=  8/52: screen_web_pixel_ratio                   +         4 ( 90.0%) [0.0s round, 0s total]
+    K=  8: screen_web_pixel_ratio                        unique=       362 ( 90.0%) +         4  [0.0s]
+    [14:33:29] K=  9/52: intl_timezone_offset_web                 +         2 ( 90.5%) [0.0s round, 0s total]
+    K=  9: intl_timezone_offset_web                      unique=       364 ( 90.5%) +         2  [0.0s]
+    [14:33:29] K= 10/52: platform                                 +         0 ( 90.5%) [0.0s round, 0s total]
+    K= 10: platform                                      unique=       364 ( 90.5%) +         0  [0.0s]
+  IterativeMinMetrics [FPJSv2_Realistic][WINNT] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_WINNT.csv
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_WINNT.txt
+  Wrote ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_WINNT_ordering.py
+
+All analysis complete.
+Wrote to:    ./simulated-output/iterative_minmetrics_fpjsV2_1777574009
+Pattern Hash: R9MNk-2FxUs= - ./simulated-cache/R9MNk-2FxUs=
+
+Execution times (seconds):
+  iterative_minmetrics: 0.15
+Total execution time: 0.16 seconds
+

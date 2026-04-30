@@ -465,118 +465,12 @@ class DayPartitionCache:
         return total_bytes
 
 
-def query_bq_day_counts(platforms, schema, start_date, end_date, prefix_width):
-    """Run a single COUNT query covering all platforms, days, and partitions.
-    Returns a dict: {(platform, prefix, day_str): count}.
-    For prefix_width=0, prefix is None."""
-    import warnings
-    warnings.filterwarnings("ignore", message="Your application has authenticated using end user credentials")
-    from google.cloud import bigquery
-    from google.cloud.bigquery.job import QueryJobConfig
+def _bq_query_removed(*args, **kwargs):
+    raise NotImplementedError("BigQuery query functions removed — run from cache only")
 
-    results = {}
-    for platform in platforms:
-        if platform == "mobile":
-            bq_table = "fenix"
-        else:
-            bq_table = "firefox_desktop"
-
-        if prefix_width == 0:
-            prefix_expr = "'all' AS prefix"
-        else:
-            prefix_expr = f"SUBSTR(metrics.uuid.characteristics_client_identifier, 1, {prefix_width}) AS prefix"
-
-        query = f"""
-            SELECT
-                DATE(submission_timestamp) AS day,
-                {prefix_expr},
-                COUNT(*) AS n
-            FROM {bq_table}.user_characteristics
-            WHERE metrics.quantity.characteristics_submission_schema >= CAST(@schema AS INT64)
-              AND DATE(submission_timestamp) >= @start_date
-              AND DATE(submission_timestamp) < @end_date
-            GROUP BY day, prefix
-        """
-        params = [
-            bigquery.ScalarQueryParameter("schema", "STRING", schema),
-            bigquery.ScalarQueryParameter("start_date", "DATE", str(start_date)),
-            bigquery.ScalarQueryParameter("end_date", "DATE", str(end_date)),
-        ]
-        client = bigquery.Client(project='mozdata')
-        job_config = QueryJobConfig(query_parameters=params)
-        job = client.query(query, job_config=job_config)
-        for row in job.result():
-            day_str = str(row.day)
-            prefix = row.prefix if prefix_width > 0 else None
-            results[(platform, prefix, day_str)] = row.n
-
-    return results
-
-
-def query_bq_filtered_counts(platforms, schema, start_date, end_date, prefix_width):
-    """Run a COUNT query with the same validation filters as record_has_errors / parse_datavalues.
-    Returns a dict: {(platform, prefix): total_filtered_count} summed across all days.
-    This gives the expected range cache size per partition."""
-    import warnings
-    warnings.filterwarnings("ignore", message="Your application has authenticated using end user credentials")
-    from google.cloud import bigquery
-    from google.cloud.bigquery.job import QueryJobConfig
-
-    results = {}
-    for platform in platforms:
-        if platform == "mobile":
-            bq_table = "fenix"
-        else:
-            bq_table = "firefox_desktop"
-
-        if prefix_width == 0:
-            prefix_expr = "'all' AS prefix"
-        else:
-            prefix_expr = f"SUBSTR(metrics.uuid.characteristics_client_identifier, 1, {prefix_width}) AS prefix"
-
-        query = f"""
-            SELECT prefix, COUNT(*) AS n
-            FROM (
-              SELECT
-                  {prefix_expr},
-                  ROW_NUMBER() OVER (
-                    PARTITION BY d.metrics.uuid.characteristics_client_identifier
-                    ORDER BY d.submission_timestamp DESC
-                  ) AS rn
-              FROM {bq_table}.user_characteristics AS d
-              WHERE d.metrics.uuid.characteristics_client_identifier IS NOT NULL
-                AND d.metrics.quantity.characteristics_submission_schema >= CAST(@schema AS INT64)
-                AND DATE(d.submission_timestamp) >= @start_date
-                AND DATE(d.submission_timestamp) < @end_date
-                AND d.metrics.text2.characteristics_math_ops IS NOT NULL
-                AND SAFE.PARSE_JSON(d.metrics.text2.characteristics_math_ops) IS NOT NULL
-                AND d.metrics.boolean IS NOT NULL
-                AND d.metrics.text2.characteristics_screens IS NOT NULL
-                AND d.metrics.text2.characteristics_screens != ''
-                AND d.metrics.text2.characteristics_screens != '[]'
-                AND (d.metrics.text2.characteristics_errors IS NULL
-                     OR TRIM(d.metrics.text2.characteristics_errors) = '')
-                AND (d.metrics.text2.characteristics_js_errors IS NULL
-                     OR d.metrics.text2.characteristics_js_errors = '[]'
-                     OR SAFE.PARSE_JSON(d.metrics.text2.characteristics_js_errors) IS NOT NULL)
-                AND (d.normalized_channel IS NULL OR d.normalized_channel = 'release')
-            )
-            WHERE rn = 1
-            GROUP BY prefix
-        """
-        params = [
-            bigquery.ScalarQueryParameter("schema", "STRING", schema),
-            bigquery.ScalarQueryParameter("start_date", "DATE", str(start_date)),
-            bigquery.ScalarQueryParameter("end_date", "DATE", str(end_date)),
-        ]
-        client = bigquery.Client(project='mozdata')
-        job_config = QueryJobConfig(query_parameters=params)
-        job = client.query(query, job_config=job_config)
-        for row in job.result():
-            prefix = row.prefix if prefix_width > 0 else None
-            results[(platform, prefix)] = row.n
-
-    return results
+query_bq_day_counts = _bq_query_removed
+query_bq_filtered_counts = _bq_query_removed
+query_single_partition = _bq_query_removed
 
 
 def get_database_partitions(platforms, patterns, width=2):
@@ -601,58 +495,6 @@ def get_hash(items):
     key = "\n".join(sorted(str(s) for s in items)).encode("utf-8")
     return base64.urlsafe_b64encode(hashlib.sha256(key).digest()[:8]).decode("ascii")
 
-def query_single_partition(tiny_mode, datagroup, start_date, end_date, schema="30"):
-  """Query BigQuery for a single (table, dataset) tuple over a date range.
-  start_date is inclusive, end_date is exclusive. Returns list of row dicts.
-  No dedup — returns ALL rows in the date range."""
-  import warnings
-  warnings.filterwarnings("ignore", message="Your application has authenticated using end user credentials")
-  from google.cloud import bigquery
-  from google.cloud.bigquery.job import QueryJobConfig
-
-  table, dataset = datagroup
-
-  project_id = 'mozdata'
-  params = [
-    bigquery.ScalarQueryParameter("start_date", "DATE", str(start_date)),
-    bigquery.ScalarQueryParameter("end_date", "DATE", str(end_date)),
-    bigquery.ScalarQueryParameter("schema", "STRING", schema),
-  ]
-  if dataset is not None:
-    params.append(bigquery.ScalarQueryParameter("set", "STRING", dataset))
-  partition_filter = "AND STARTS_WITH(metrics.uuid.characteristics_client_identifier, @set)" if dataset is not None else ""
-
-  if table == "mobile":
-    table = "fenix"
-    app_id = 'normalized_app_id'
-  else:
-    table = "firefox_desktop"
-    app_id = "'desktop' as normalized_app_id"
-
-  client = bigquery.Client(project=project_id)
-
-  query = f"""
-    SELECT
-      metrics
-      , {app_id}
-      , normalized_country_code
-      , normalized_channel
-      , d.submission_timestamp
-    FROM
-      {table}.user_characteristics AS d
-    WHERE
-      d.metrics.quantity.characteristics_submission_schema >= CAST(@schema as INT64)
-      AND DATE(d.submission_timestamp) >= @start_date
-      AND DATE(d.submission_timestamp) < @end_date
-      {partition_filter}
-  """
-
-  if tiny_mode:
-    query += "ORDER BY d.submission_timestamp LIMIT 1000 "
-
-  job_config = QueryJobConfig(query_parameters=params)
-  query_job = client.query(query, job_config=job_config)
-  return [dict(r) for r in query_job.result()]
 
 
 def load_partition_data(partition, all_days, start_day, end_day,
@@ -1090,7 +932,7 @@ def check_gil_status():
   if hasattr(sys, '_is_gil_enabled') and sys._is_gil_enabled():
     print("WARNING: GIL is enabled. A C extension may have re-enabled it.")
     print("  ThreadPoolExecutor will not achieve true CPU parallelism.")
-    print("  Run with python3.14t and check extension compatibility.")
+    print("  Run with free-threaded Python and check extension compatibility.")
 
 
 def write_progress(tty, label, completed, total, start_time):
@@ -1135,10 +977,6 @@ diagnostic_pattern = re.compile(  # (as above)
 )
 
 def record_has_errors(expected_errors, obj):
-  if getattr(obj, 'normalized_channel', None) and obj.normalized_channel != 'release':
-    expected_errors['non-release channel'] += 1
-    return True
-
   tz = obj.metrics['string']['characteristics_timezone']
   #try:
   #  zoneinfo.ZoneInfo(tz)

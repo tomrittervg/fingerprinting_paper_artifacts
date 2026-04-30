@@ -1,0 +1,17 @@
+Analyzing the fingerprint distribution for P2-C: P1, Processor Count, Screen Availability (Android)-Signifyd_Realistic
+  There are 101 total users
+  There are 78 unique users, or 77.2277% out of 101 users
+  Our cohort fitness score is 0.05126948338398196
+  Our cohort fitness score (HHI2, excl. singletons) is 0.8412098298676747
+  Our P50 (median cohort size, non-unique users) is 21
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   78           |   78         |   77.23 %
+  21                 |   1            |   21         |   20.79 %
+  2                  |   1            |   2          |   1.98 %
+
+
+ There are 101 total users
+ There are 78 unique users, or 77.2277% out of 101 users
+

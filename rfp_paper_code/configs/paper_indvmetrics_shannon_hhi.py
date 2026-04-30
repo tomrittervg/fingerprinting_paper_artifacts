@@ -19,7 +19,7 @@ script_config = {
     'per_os_analysis':              True,
     'print_x_by_os_aggregate_graphs':                    False,
     'raw_rows_only':                 False,
-    'max_procs':               10,
+    'max_procs':               2,
     'max_worker_threads':    None,  # threads per worker for parallelizing operations; None = auto (floor(100 / max_procs))
     'max_threads_graph_export':      16,
     'max_threads_experiment_merging': 4,

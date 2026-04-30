@@ -1,0 +1,5 @@
+  wgpu_maxdynamicstoragebuffersperpipelinelayout (Linux)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  8                        202  100.00%      100.00%

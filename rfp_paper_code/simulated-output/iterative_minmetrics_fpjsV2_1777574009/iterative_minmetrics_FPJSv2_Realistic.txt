@@ -1,0 +1,60 @@
+Iterative MinMetrics (Greedy): FPJSv2_Realistic
+=====================================================================================
+Total users: 906
+Baseline unique (all metrics): 826 (91.17%)
+Max K: 52
+
+    K  Metric added                                        Unique  % unique          +New
+  -------------------------------------------------------------------------------------
+    1  combined_css_colors_hash                               360   39.735%          +360
+    2  webgl_renderer                                         593   65.453%          +233
+    3  canvas_canvasdata12_fingerprintjs1                     704   77.704%          +111
+    4  combined_css_fonts_hash                                775   85.541%           +71
+    5  storage_quota                                          790   87.196%           +15
+    6  hw_processor_count                                     804   88.742%           +14
+    7  locale_accept_language                                 817   90.177%           +13
+    8  screen_web_pixel_ratio                                 821   90.618%            +4
+    9  webgl_vendor_raw                                       824   90.949%            +3
+   10  intl_timezone_offset_web                               826   91.170%            +2
+   11  platform                                               826   91.170%            +0
+   12  canvas_canvasdata13_fingerprintjs2                     826   91.170%            +0
+   13  intl_intl_locale                                       826   91.170%            +0
+   14  screen_prefers_reduced_transparency                    826   91.170%            +0
+   15  screen_monochrome                                      826   91.170%            +0
+   16  hw_oscpu                                               826   91.170%            +0
+   17  webgl_precision_vertex                                 826   91.170%            +0
+   18  prefs_cookiesenabled                                   826   91.170%            +0
+   19  screen_primary_color_depth                             826   91.170%            +0
+   20  fonts_fpjs_allowlisted                                 826   91.170%            +0
+   21  wgpu_is_fallback_adapter                               826   91.170%            +0
+   22  webauthn_capabilities                                  826   91.170%            +0
+   23  combined_math_ops_hash                                 826   91.170%            +0
+   24  sdp_codec_list                                         826   91.170%            +0
+   25  voices_sha1                                            826   91.170%            +0
+   26  wgpu_missing_features                                  826   91.170%            +0
+   27  hw_max_touch_points                                    826   91.170%            +0
+   28  user_agent                                             826   91.170%            +0
+   29  prefs_pdf_viewer                                       826   91.170%            +0
+   30  screen_inverted_colors                                 826   91.170%            +0
+   31  intl_timezone_web                                      826   91.170%            +0
+   32  combined_mathml_hash                                   826   91.170%            +0
+   33  combined_wgpu_hash                                     826   91.170%            +0
+   34  screen_web_avail_left                                  826   91.170%            +0
+   35  combined_webgl_extensions_hash                         826   91.170%            +0
+   36  prefs_eme_enabled                                      826   91.170%            +0
+   37  fonts_fpjs_nonallowlisted                              826   91.170%            +0
+   38  combined_media_capabilities_hash                       826   91.170%            +0
+   39  screen_primary_resolution                              826   91.170%            +0
+   40  screen_prefers_contrast                                826   91.170%            +0
+   41  combined_webgl1_params_hash                            826   91.170%            +0
+   42  audio_fingerprint                                      826   91.170%            +0
+   43  screen_primary_video_dynamic_range                     826   91.170%            +0
+   44  screen_web_avail_top                                   826   91.170%            +0
+   45  prefs_use_document_colors                              826   91.170%            +0
+   46  canvas_canvasdata11_webgl                              826   91.170%            +0
+   47  webgl_vendor                                           826   91.170%            +0
+   48  webgl_extensions                                       826   91.170%            +0
+   49  screen_color_scheme                                    826   91.170%            +0
+   50  screen_prefers_reduced_motion                          826   91.170%            +0
+   51  screen_primary_avail                                   826   91.170%            +0
+   52  webgl_precision_fragment                               826   91.170%            +0

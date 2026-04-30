@@ -1,0 +1,233 @@
+Started: 04/25/26 10:03:50 AM
+Reading data from:  Database
+Command line:  /home/tom/moz/fingerprinting-data/code/analyze.py -o /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic -c configs/iterative_minmetrics_akamaiV2.py --cache-dir /home/tom/moz/fingerprinting-data/sandbox-cache --per-os=true --force
+Writing to:    /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830
+Git hash:      7c24c3e
+Date range:    2026-03-25 to 2026-04-17 (23 day(s))
+Tiny Mode:    DISABLED
+Minimize Mode:    DISABLED
+Partition width:    2 (256 partitions)
+Config file:   configs/iterative_minmetrics_akamaiV2.py
+  --per-os=true overrides config per_os_analysis
+Script config:
+  browser_modes = False
+  calculate_metric_experiment_aggregated = False
+  calculate_metrics_aggregated = False
+  correlation_analysis = False
+  experiments = False
+  fingerprint_archiving = False
+  fingerprint_buckets = False
+  fingerprints = False
+  iterative_minmetrics_fingerprinter = 'AkamaiV2_Realistic'
+  iterative_minmetrics_max_k = None
+  max_procs = 16
+  max_threads_experiment_merging = 4
+  max_threads_graph_export = 1
+  max_worker_threads = None
+  metric_buckets = False
+  missing_font_sets = False
+  missing_fonts = False
+  per_os_analysis = True
+  perform_iterative_minmetrics_analysis = True
+  perform_iterative_single_metric_removal_analysis = False
+  perform_iterative_single_metric_replacement_analysis = False
+  perform_logical_metric_removal_analysis = False
+  perform_min_set_combo_analysis = False
+  perform_minmetrics_analysis = False
+  perform_segmentation_decision_tree = False
+  perform_segmentation_shitty = False
+  perform_single_metric_removal_analysis = False
+  print_x_by_os_aggregate_graphs = False
+  raw_rows_only = False
+Pattern Hash: 8loOOxf7c8E= - /home/tom/moz/fingerprinting-data/sandbox-cache/8loOOxf7c8E=
+
+684 metrics to visualize
+
+Fetching BQ row counts for cache validation...
+  BQ row counts: 11778 day-partition entries, 512 filtered partition entries in 8.7s
+  No partition processing needed — skipping worker pool
+  Per-OS analysis enabled for: ['Android', 'Darwin', 'Linux', 'WINNT']
+  IterativeMinMetrics: AkamaiV2_Realistic
+    Loaded cached numpy array (24871013, 16) (3.2GB) in 0.2s
+    24,871,013 users x 16 metrics (3.2GB), max_k=16
+    Greedy selection: 16 rounds, 32 eval threads
+    [10:04:00] K=  1/16: locale_accept_language                   +    91,130 (  0.4%) [1.1s round, 1s total]
+    K=  1: locale_accept_language                        unique=    91,130 (  0.4%) +    91,130  [1.1s]
+    [10:04:01] K=  2/16: canvas_canvasdata12_fingerprintjs1       +   537,691 (  2.5%) [1.3s round, 2s total]
+    K=  2: canvas_canvasdata12_fingerprintjs1            unique=   628,821 (  2.5%) +   537,691  [1.3s]
+    [10:04:03] K=  3/16: screen_primary_avail                     + 1,085,284 (  6.9%) [1.6s round, 4s total]
+    K=  3: screen_primary_avail                          unique= 1,714,105 (  6.9%) + 1,085,284  [1.6s]
+    [10:04:04] K=  4/16: intl_timezone_offset_web                 +   707,927 (  9.7%) [1.7s round, 6s total]
+    K=  4: intl_timezone_offset_web                      unique= 2,422,032 (  9.7%) +   707,927  [1.7s]
+    [10:04:06] K=  5/16: hw_processor_count                       +   800,661 ( 13.0%) [1.9s round, 8s total]
+    K=  5: hw_processor_count                            unique= 3,222,693 ( 13.0%) +   800,661  [1.9s]
+    [10:04:08] K=  6/16: user_agent                               +   837,040 ( 16.3%) [1.8s round, 9s total]
+    K=  6: user_agent                                    unique= 4,059,733 ( 16.3%) +   837,040  [1.8s]
+    [10:04:10] K=  7/16: hw_max_touch_points                      +   238,545 ( 17.3%) [1.8s round, 11s total]
+    K=  7: hw_max_touch_points                           unique= 4,298,278 ( 17.3%) +   238,545  [1.8s]
+    [10:04:12] K=  8/16: prefs_general_donottrack_enabled         +   156,101 ( 17.9%) [1.8s round, 13s total]
+    K=  8: prefs_general_donottrack_enabled              unique= 4,454,379 ( 17.9%) +   156,101  [1.8s]
+    [10:04:13] K=  9/16: canvas_canvasdata13_fingerprintjs2       +    52,220 ( 18.1%) [1.8s round, 15s total]
+    K=  9: canvas_canvasdata13_fingerprintjs2            unique= 4,506,599 ( 18.1%) +    52,220  [1.8s]
+    [10:04:15] K= 10/16: screen_primary_resolution                +     8,459 ( 18.2%) [1.7s round, 16s total]
+    K= 10: screen_primary_resolution                     unique= 4,515,058 ( 18.2%) +     8,459  [1.7s]
+    [10:04:17] K= 11/16: prefs_cookiesenabled                     +       699 ( 18.2%) [1.8s round, 18s total]
+    K= 11: prefs_cookiesenabled                          unique= 4,515,757 ( 18.2%) +       699  [1.8s]
+    [10:04:19] K= 12/16: locale_languages                         +       489 ( 18.2%) [1.7s round, 20s total]
+    K= 12: locale_languages                              unique= 4,516,246 ( 18.2%) +       489  [1.7s]
+    [10:04:20] K= 13/16: screen_primary_color_depth               +        82 ( 18.2%) [1.7s round, 22s total]
+    K= 13: screen_primary_color_depth                    unique= 4,516,328 ( 18.2%) +        82  [1.7s]
+    [10:04:22] K= 14/16: platform                                 +         9 ( 18.2%) [1.6s round, 23s total]
+    K= 14: platform                                      unique= 4,516,337 ( 18.2%) +         9  [1.6s]
+    [10:04:23] K= 15/16: hw_oscpu                                 +         0 ( 18.2%) [1.6s round, 25s total]
+    K= 15: hw_oscpu                                      unique= 4,516,337 ( 18.2%) +         0  [1.6s]
+  IterativeMinMetrics complete [25.2s]
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic.csv
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic.txt
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_ordering.py
+  IterativeMinMetrics [AkamaiV2_Realistic][Android]: AkamaiV2_Realistic (Android)
+    Loaded cached numpy array (8914105, 16) (1.1GB) in 0.2s
+    8,914,105 users x 16 metrics (1.1GB), max_k=16
+    Greedy selection: 16 rounds, 32 eval threads
+    [10:04:24] K=  1/16: locale_accept_language                   +    80,989 (  0.9%) [0.4s round, 0s total]
+    K=  1: locale_accept_language                        unique=    80,989 (  0.9%) +    80,989  [0.4s]
+    [10:04:25] K=  2/16: canvas_canvasdata12_fingerprintjs1       +   371,494 (  5.1%) [0.5s round, 1s total]
+    K=  2: canvas_canvasdata12_fingerprintjs1            unique=   452,483 (  5.1%) +   371,494  [0.5s]
+    [10:04:25] K=  3/16: screen_primary_avail                     +   289,390 (  8.3%) [0.6s round, 1s total]
+    K=  3: screen_primary_avail                          unique=   741,873 (  8.3%) +   289,390  [0.6s]
+    [10:04:26] K=  4/16: user_agent                               +   407,203 ( 12.9%) [0.6s round, 2s total]
+    K=  4: user_agent                                    unique= 1,149,076 ( 12.9%) +   407,203  [0.6s]
+    [10:04:26] K=  5/16: intl_timezone_offset_web                 +   317,635 ( 16.5%) [0.6s round, 3s total]
+    K=  5: intl_timezone_offset_web                      unique= 1,466,711 ( 16.5%) +   317,635  [0.6s]
+    [10:04:27] K=  6/16: hw_processor_count                       +    22,347 ( 16.7%) [0.6s round, 3s total]
+    K=  6: hw_processor_count                            unique= 1,489,058 ( 16.7%) +    22,347  [0.6s]
+    [10:04:28] K=  7/16: hw_max_touch_points                      +    18,843 ( 16.9%) [0.6s round, 4s total]
+    K=  7: hw_max_touch_points                           unique= 1,507,901 ( 16.9%) +    18,843  [0.6s]
+    [10:04:28] K=  8/16: canvas_canvasdata13_fingerprintjs2       +     8,511 ( 17.0%) [0.6s round, 4s total]
+    K=  8: canvas_canvasdata13_fingerprintjs2            unique= 1,516,412 ( 17.0%) +     8,511  [0.6s]
+    [10:04:29] K=  9/16: prefs_general_donottrack_enabled         +       832 ( 17.0%) [0.6s round, 5s total]
+    K=  9: prefs_general_donottrack_enabled              unique= 1,517,244 ( 17.0%) +       832  [0.6s]
+    [10:04:29] K= 10/16: prefs_cookiesenabled                     +       269 ( 17.0%) [0.6s round, 6s total]
+    K= 10: prefs_cookiesenabled                          unique= 1,517,513 ( 17.0%) +       269  [0.6s]
+    [10:04:30] K= 11/16: locale_languages                         +         4 ( 17.0%) [0.6s round, 6s total]
+    K= 11: locale_languages                              unique= 1,517,517 ( 17.0%) +         4  [0.6s]
+    [10:04:31] K= 12/16: platform                                 +         0 ( 17.0%) [0.6s round, 7s total]
+    K= 12: platform                                      unique= 1,517,517 ( 17.0%) +         0  [0.6s]
+  IterativeMinMetrics [AkamaiV2_Realistic][Android] complete [7.2s]
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_Android.csv
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_Android.txt
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_Android_ordering.py
+  IterativeMinMetrics [AkamaiV2_Realistic][Darwin]: AkamaiV2_Realistic (Darwin)
+    Loaded cached numpy array (2040356, 16) (0.3GB) in 0.0s
+    2,040,356 users x 16 metrics (0.3GB), max_k=16
+    Greedy selection: 16 rounds, 32 eval threads
+    [10:04:31] K=  1/16: screen_primary_avail                     +     6,708 (  0.3%) [0.1s round, 0s total]
+    K=  1: screen_primary_avail                          unique=     6,708 (  0.3%) +     6,708  [0.1s]
+    [10:04:31] K=  2/16: canvas_canvasdata12_fingerprintjs1       +    72,370 (  3.9%) [0.1s round, 0s total]
+    K=  2: canvas_canvasdata12_fingerprintjs1            unique=    79,078 (  3.9%) +    72,370  [0.1s]
+    [10:04:31] K=  3/16: locale_accept_language                   +   169,778 ( 12.2%) [0.1s round, 0s total]
+    K=  3: locale_accept_language                        unique=   248,856 ( 12.2%) +   169,778  [0.1s]
+    [10:04:31] K=  4/16: intl_timezone_offset_web                 +   151,467 ( 19.6%) [0.1s round, 0s total]
+    K=  4: intl_timezone_offset_web                      unique=   400,323 ( 19.6%) +   151,467  [0.1s]
+    [10:04:31] K=  5/16: hw_processor_count                       +   143,757 ( 26.7%) [0.1s round, 1s total]
+    K=  5: hw_processor_count                            unique=   544,080 ( 26.7%) +   143,757  [0.1s]
+    [10:04:32] K=  6/16: user_agent                               +   116,306 ( 32.4%) [0.1s round, 1s total]
+    K=  6: user_agent                                    unique=   660,386 ( 32.4%) +   116,306  [0.1s]
+    [10:04:32] K=  7/16: prefs_general_donottrack_enabled         +    46,722 ( 34.7%) [0.1s round, 1s total]
+    K=  7: prefs_general_donottrack_enabled              unique=   707,108 ( 34.7%) +    46,722  [0.1s]
+    [10:04:32] K=  8/16: canvas_canvasdata13_fingerprintjs2       +    12,977 ( 35.3%) [0.1s round, 1s total]
+    K=  8: canvas_canvasdata13_fingerprintjs2            unique=   720,085 ( 35.3%) +    12,977  [0.1s]
+    [10:04:32] K=  9/16: screen_primary_resolution                +     7,492 ( 35.7%) [0.1s round, 1s total]
+    K=  9: screen_primary_resolution                     unique=   727,577 ( 35.7%) +     7,492  [0.1s]
+    [10:04:32] K= 10/16: prefs_cookiesenabled                     +        95 ( 35.7%) [0.1s round, 1s total]
+    K= 10: prefs_cookiesenabled                          unique=   727,672 ( 35.7%) +        95  [0.1s]
+    [10:04:32] K= 11/16: locale_languages                         +        13 ( 35.7%) [0.1s round, 1s total]
+    K= 11: locale_languages                              unique=   727,685 ( 35.7%) +        13  [0.1s]
+    [10:04:32] K= 12/16: platform                                 +         0 ( 35.7%) [0.1s round, 1s total]
+    K= 12: platform                                      unique=   727,685 ( 35.7%) +         0  [0.1s]
+  IterativeMinMetrics [AkamaiV2_Realistic][Darwin] complete [1.5s]
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_Darwin.csv
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_Darwin.txt
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_Darwin_ordering.py
+  IterativeMinMetrics [AkamaiV2_Realistic][Linux]: AkamaiV2_Realistic (Linux)
+    Loaded cached numpy array (1844561, 16) (0.2GB) in 0.0s
+    1,844,561 users x 16 metrics (0.2GB), max_k=16
+    Greedy selection: 16 rounds, 32 eval threads
+    [10:04:33] K=  1/16: screen_primary_avail                     +    21,158 (  1.1%) [0.1s round, 0s total]
+    K=  1: screen_primary_avail                          unique=    21,158 (  1.1%) +    21,158  [0.1s]
+    [10:04:33] K=  2/16: canvas_canvasdata12_fingerprintjs1       +    99,784 (  6.6%) [0.1s round, 0s total]
+    K=  2: canvas_canvasdata12_fingerprintjs1            unique=   120,942 (  6.6%) +    99,784  [0.1s]
+    [10:04:33] K=  3/16: locale_accept_language                   +   134,775 ( 13.9%) [0.1s round, 0s total]
+    K=  3: locale_accept_language                        unique=   255,717 ( 13.9%) +   134,775  [0.1s]
+    [10:04:33] K=  4/16: hw_processor_count                       +   125,668 ( 20.7%) [0.1s round, 0s total]
+    K=  4: hw_processor_count                            unique=   381,385 ( 20.7%) +   125,668  [0.1s]
+    [10:04:33] K=  5/16: intl_timezone_offset_web                 +   140,125 ( 28.3%) [0.1s round, 0s total]
+    K=  5: intl_timezone_offset_web                      unique=   521,510 ( 28.3%) +   140,125  [0.1s]
+    [10:04:33] K=  6/16: user_agent                               +   111,714 ( 34.3%) [0.1s round, 1s total]
+    K=  6: user_agent                                    unique=   633,224 ( 34.3%) +   111,714  [0.1s]
+    [10:04:33] K=  7/16: canvas_canvasdata13_fingerprintjs2       +    27,730 ( 35.8%) [0.1s round, 1s total]
+    K=  7: canvas_canvasdata13_fingerprintjs2            unique=   660,954 ( 35.8%) +    27,730  [0.1s]
+    [10:04:33] K=  8/16: prefs_general_donottrack_enabled         +    22,272 ( 37.0%) [0.1s round, 1s total]
+    K=  8: prefs_general_donottrack_enabled              unique=   683,226 ( 37.0%) +    22,272  [0.1s]
+    [10:04:33] K=  9/16: screen_primary_resolution                +       433 ( 37.1%) [0.1s round, 1s total]
+    K=  9: screen_primary_resolution                     unique=   683,659 ( 37.1%) +       433  [0.1s]
+    [10:04:33] K= 10/16: screen_primary_color_depth               +        82 ( 37.1%) [0.1s round, 1s total]
+    K= 10: screen_primary_color_depth                    unique=   683,741 ( 37.1%) +        82  [0.1s]
+    [10:04:34] K= 11/16: prefs_cookiesenabled                     +        52 ( 37.1%) [0.1s round, 1s total]
+    K= 11: prefs_cookiesenabled                          unique=   683,793 ( 37.1%) +        52  [0.1s]
+    [10:04:34] K= 12/16: locale_languages                         +        39 ( 37.1%) [0.1s round, 1s total]
+    K= 12: locale_languages                              unique=   683,832 ( 37.1%) +        39  [0.1s]
+    [10:04:34] K= 13/16: platform                                 +         6 ( 37.1%) [0.1s round, 1s total]
+    K= 13: platform                                      unique=   683,838 ( 37.1%) +         6  [0.1s]
+    [10:04:34] K= 14/16: hw_max_touch_points                      +         0 ( 37.1%) [0.1s round, 1s total]
+    K= 14: hw_max_touch_points                           unique=   683,838 ( 37.1%) +         0  [0.1s]
+  IterativeMinMetrics [AkamaiV2_Realistic][Linux] complete [1.6s]
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_Linux.csv
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_Linux.txt
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_Linux_ordering.py
+  IterativeMinMetrics [AkamaiV2_Realistic][WINNT]: AkamaiV2_Realistic (WINNT)
+    Loaded cached numpy array (12071991, 16) (1.5GB) in 0.3s
+    12,071,991 users x 16 metrics (1.5GB), max_k=16
+    Greedy selection: 16 rounds, 32 eval threads
+    [10:04:35] K=  1/16: screen_primary_avail                     +    16,800 (  0.1%) [0.4s round, 0s total]
+    K=  1: screen_primary_avail                          unique=    16,800 (  0.1%) +    16,800  [0.4s]
+    [10:04:35] K=  2/16: canvas_canvasdata12_fingerprintjs1       +   138,492 (  1.3%) [0.5s round, 1s total]
+    K=  2: canvas_canvasdata12_fingerprintjs1            unique=   155,292 (  1.3%) +   138,492  [0.5s]
+    [10:04:36] K=  3/16: locale_accept_language                   +   313,355 (  3.9%) [0.7s round, 2s total]
+    K=  3: locale_accept_language                        unique=   468,647 (  3.9%) +   313,355  [0.7s]
+    [10:04:37] K=  4/16: hw_processor_count                       +   336,767 (  6.7%) [0.7s round, 2s total]
+    K=  4: hw_processor_count                            unique=   805,414 (  6.7%) +   336,767  [0.7s]
+    [10:04:37] K=  5/16: intl_timezone_offset_web                 +   381,143 (  9.8%) [0.8s round, 3s total]
+    K=  5: intl_timezone_offset_web                      unique= 1,186,557 (  9.8%) +   381,143  [0.8s]
+    [10:04:38] K=  6/16: hw_max_touch_points                      +   211,588 ( 11.6%) [0.8s round, 4s total]
+    K=  6: hw_max_touch_points                           unique= 1,398,145 ( 11.6%) +   211,588  [0.8s]
+    [10:04:39] K=  7/16: user_agent                               +    98,622 ( 12.4%) [0.8s round, 5s total]
+    K=  7: user_agent                                    unique= 1,496,767 ( 12.4%) +    98,622  [0.8s]
+    [10:04:40] K=  8/16: prefs_general_donottrack_enabled         +    86,533 ( 13.1%) [0.8s round, 6s total]
+    K=  8: prefs_general_donottrack_enabled              unique= 1,583,300 ( 13.1%) +    86,533  [0.8s]
+    [10:04:41] K=  9/16: canvas_canvasdata13_fingerprintjs2       +     2,744 ( 13.1%) [0.8s round, 6s total]
+    K=  9: canvas_canvasdata13_fingerprintjs2            unique= 1,586,044 ( 13.1%) +     2,744  [0.8s]
+    [10:04:41] K= 10/16: screen_primary_resolution                +       534 ( 13.1%) [0.8s round, 7s total]
+    K= 10: screen_primary_resolution                     unique= 1,586,578 ( 13.1%) +       534  [0.8s]
+    [10:04:42] K= 11/16: locale_languages                         +       433 ( 13.1%) [0.8s round, 8s total]
+    K= 11: locale_languages                              unique= 1,587,011 ( 13.1%) +       433  [0.8s]
+    [10:04:43] K= 12/16: prefs_cookiesenabled                     +       283 ( 13.1%) [0.8s round, 9s total]
+    K= 12: prefs_cookiesenabled                          unique= 1,587,294 ( 13.1%) +       283  [0.8s]
+    [10:04:44] K= 13/16: platform                                 +         3 ( 13.1%) [0.8s round, 10s total]
+    K= 13: platform                                      unique= 1,587,297 ( 13.1%) +         3  [0.8s]
+    [10:04:45] K= 14/16: screen_primary_color_depth               +         0 ( 13.1%) [0.8s round, 10s total]
+    K= 14: screen_primary_color_depth                    unique= 1,587,297 ( 13.1%) +         0  [0.8s]
+  IterativeMinMetrics [AkamaiV2_Realistic][WINNT] complete [10.8s]
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_WINNT.csv
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_WINNT.txt
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830/iterative_minmetrics_AkamaiV2_Realistic_os_WINNT_ordering.py
+
+All analysis complete.
+Wrote to:    /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_akamaiV2_final-realistic_1777125830
+Pattern Hash: 8loOOxf7c8E= - /home/tom/moz/fingerprinting-data/sandbox-cache/8loOOxf7c8E=
+
+Execution times (seconds):
+  bq_row_counts: 8.72
+  iterative_minmetrics: 46.35
+Total execution time: 55.09 seconds
+

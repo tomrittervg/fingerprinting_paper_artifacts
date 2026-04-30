@@ -1,0 +1,90 @@
+
+[desktop/0] loading 2026-02-13..2026-04-30 (77 days)
+[desktop/0]   range cache hit: ./simulated-cache/njK4NwhopBM=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 57 users, 3 MB
+[desktop/0]   loaded 57 users from range cache  [unpickle 0.01s]
+[desktop/0]   phase times (s): corrections=0.01  fingerprints=0.01  buckets_compute=0.01  buckets_spill=0.00
+
+[mobile/1] loading 2026-02-13..2026-04-30 (77 days)
+[mobile/1]   range cache hit: ./simulated-cache/m1bzhJXSQfU=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 4 users, 0 MB
+[mobile/1]   loaded 4 users from range cache  [unpickle 0.00s]
+[mobile/1]   phase times (s): corrections=0.00  fingerprints=0.00  buckets_compute=0.00  buckets_spill=0.00
+
+[desktop/2] loading 2026-02-13..2026-04-30 (77 days)
+[desktop/2]   range cache hit: ./simulated-cache/ALWpSwJrbbI=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 62 users, 3 MB
+[desktop/2]   loaded 62 users from range cache  [unpickle 0.01s]
+[desktop/2]   phase times (s): corrections=0.00  fingerprints=0.01  buckets_compute=0.01  buckets_spill=0.00
+
+[mobile/4] loading 2026-02-13..2026-04-30 (77 days)
+[mobile/4]   range cache hit: ./simulated-cache/mB0AP6Mj7IE=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 6 users, 0 MB
+[mobile/4]   loaded 6 users from range cache  [unpickle 0.00s]
+[mobile/4]   phase times (s): corrections=0.00  fingerprints=0.00  buckets_compute=0.00  buckets_spill=0.00
+
+[desktop/5] loading 2026-02-13..2026-04-30 (77 days)
+[desktop/5]   range cache hit: ./simulated-cache/U3PLcmBrRxE=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 52 users, 2 MB
+[desktop/5]   loaded 52 users from range cache  [unpickle 0.01s]
+[desktop/5]   phase times (s): corrections=0.00  fingerprints=0.01  buckets_compute=0.01  buckets_spill=0.00
+
+[mobile/6] loading 2026-02-13..2026-04-30 (77 days)
+[mobile/6]   range cache hit: ./simulated-cache/ZtOUnXPh2jo=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 6 users, 0 MB
+[mobile/6]   loaded 6 users from range cache  [unpickle 0.00s]
+[mobile/6]   phase times (s): corrections=0.00  fingerprints=0.00  buckets_compute=0.00  buckets_spill=0.00
+
+[desktop/7] loading 2026-02-13..2026-04-30 (77 days)
+[desktop/7]   range cache hit: ./simulated-cache/B6fBI3qkU78=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 47 users, 2 MB
+[desktop/7]   loaded 47 users from range cache  [unpickle 0.01s]
+[desktop/7]   phase times (s): corrections=0.00  fingerprints=0.01  buckets_compute=0.01  buckets_spill=0.00
+
+[mobile/8] loading 2026-02-13..2026-04-30 (77 days)
+[mobile/8]   range cache hit: ./simulated-cache/9Xj160Lu5UY=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 7 users, 0 MB
+[mobile/8]   loaded 7 users from range cache  [unpickle 0.00s]
+[mobile/8]   phase times (s): corrections=0.00  fingerprints=0.00  buckets_compute=0.00  buckets_spill=0.00
+
+[desktop/9] loading 2026-02-13..2026-04-30 (77 days)
+[desktop/9]   range cache hit: ./simulated-cache/on69kX5JtZ0=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 41 users, 2 MB
+[desktop/9]   loaded 41 users from range cache  [unpickle 0.01s]
+[desktop/9]   phase times (s): corrections=0.00  fingerprints=0.01  buckets_compute=0.00  buckets_spill=0.00
+
+[mobile/a] loading 2026-02-13..2026-04-30 (77 days)
+[mobile/a]   range cache hit: ./simulated-cache/bOFIw53E8MQ=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 7 users, 0 MB
+[mobile/a]   loaded 7 users from range cache  [unpickle 0.00s]
+[mobile/a]   phase times (s): corrections=0.00  fingerprints=0.00  buckets_compute=0.00  buckets_spill=0.00
+
+[desktop/b] loading 2026-02-13..2026-04-30 (77 days)
+[desktop/b]   range cache hit: ./simulated-cache/x_m11lYHsxY=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 52 users, 2 MB
+[desktop/b]   loaded 52 users from range cache  [unpickle 0.01s]
+[desktop/b]   phase times (s): corrections=0.00  fingerprints=0.01  buckets_compute=0.01  buckets_spill=0.00
+
+[mobile/c] loading 2026-02-13..2026-04-30 (77 days)
+[mobile/c]   range cache hit: ./simulated-cache/C2MvR_NddZ8=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 5 users, 0 MB
+[mobile/c]   loaded 5 users from range cache  [unpickle 0.00s]
+[mobile/c]   phase times (s): corrections=0.00  fingerprints=0.00  buckets_compute=0.00  buckets_spill=0.00
+
+[desktop/d] loading 2026-02-13..2026-04-30 (77 days)
+[desktop/d]   range cache hit: ./simulated-cache/RQPehhrZHqQ=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 55 users, 3 MB
+[desktop/d]   loaded 55 users from range cache  [unpickle 0.01s]
+[desktop/d]   phase times (s): corrections=0.00  fingerprints=0.01  buckets_compute=0.01  buckets_spill=0.00
+
+[mobile/e] loading 2026-02-13..2026-04-30 (77 days)
+[mobile/e]   range cache hit: ./simulated-cache/L9HiUMf7Kvo=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 3 users, 0 MB
+[mobile/e]   loaded 3 users from range cache  [unpickle 0.00s]
+[mobile/e]   phase times (s): corrections=0.00  fingerprints=0.00  buckets_compute=0.00  buckets_spill=0.00
+
+[desktop/f] loading 2026-02-13..2026-04-30 (77 days)
+[desktop/f]   range cache hit: ./simulated-cache/i3uhShKB5VI=/ranges/schema37/0F9vap1727Y=/all_data_values.bin
+  range cache: chunked v1, 1 chunks, 55 users, 2 MB
+[desktop/f]   loaded 55 users from range cache  [unpickle 0.01s]
+[desktop/f]   phase times (s): corrections=0.00  fingerprints=0.01  buckets_compute=0.01  buckets_spill=0.00

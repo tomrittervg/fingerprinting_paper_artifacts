@@ -1,0 +1,6 @@
+  voices_all_ssdeep (Linux)
+  ------------------------------------------------------------
+  Key                                                                         Count        % Cumulative %
+  -------------------------------------------------------------------------------------------------------
+  6144:giz7RQPTiBh+yQXJaLjqK1kn+6ccjZEKbQOTEiEJj9Ra5g+:giww+ELjBkTvVGRa5g+      101   50.00%       50.00%
+  6144:jiPiPwqiJ/CogFzRTAxCCuyez39rKXL2Hya7DjM9t5p:jiyzROCSEpw9t5p              101   50.00%      100.00%

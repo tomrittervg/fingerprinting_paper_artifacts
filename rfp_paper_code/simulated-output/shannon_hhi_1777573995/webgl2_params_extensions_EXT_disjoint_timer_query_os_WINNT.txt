@@ -1,0 +1,5 @@
+  webgl2_params_extensions_EXT_disjoint_timer_query (WINNT)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  None                     402  100.00%      100.00%

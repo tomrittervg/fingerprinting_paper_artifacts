@@ -1,0 +1,6 @@
+  hw_cpu_model (Linux)
+  ------------------------------------------------------------
+  Key                                           Count        % Cumulative %
+  -------------------------------------------------------------------------
+  AMD Ryzen Threadripper PRO 7975WX 32-Cores      101   50.00%       50.00%
+  AMD Ryzen Threadripper PRO 3975WX 32-Cores      101   50.00%      100.00%

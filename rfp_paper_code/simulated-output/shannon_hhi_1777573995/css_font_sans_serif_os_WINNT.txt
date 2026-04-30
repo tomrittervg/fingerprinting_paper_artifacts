@@ -1,0 +1,11 @@
+  css_font_sans_serif (WINNT)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  16px sans-serif          386   96.02%       96.02%
+  None                       8    1.99%       98.01%
+  16px  sans-serif           3    0.75%       98.76%
+   16px sans-serif           2    0.50%       99.25%
+  1 6px sans-serif           1    0.25%       99.50%
+  16px sans-se rif           1    0.25%       99.75%
+  16p x sans-serif           1    0.25%      100.00%

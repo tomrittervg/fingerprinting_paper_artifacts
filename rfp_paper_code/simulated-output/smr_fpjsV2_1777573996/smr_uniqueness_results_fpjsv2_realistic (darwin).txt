@@ -1,0 +1,9 @@
+  Uniqueness Results (FPJSv2_Realistic (Darwin)):
+    31 fewer unique users when ignoring combined_css_colors_hash
+    18 fewer unique users when ignoring webgl_renderer
+    8 fewer unique users when ignoring canvas_canvasdata12_fingerprintjs1
+    6 fewer unique users when ignoring combined_css_fonts_hash
+    4 fewer unique users when ignoring hw_processor_count
+    3 fewer unique users when ignoring storage_quota
+    2 fewer unique users when ignoring locale_accept_language
+    1 fewer unique users when ignoring webgl_vendor_raw

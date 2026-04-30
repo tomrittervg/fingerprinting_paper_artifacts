@@ -156,9 +156,7 @@ FPSET_AKAMAI_V2 = set([
     "locale_languages",
 ])
 
-FPSET_AKAMAI_V2_INOUT = (FPSET_AKAMAI_V2 - {"screen_web_inner", "screen_web_outer"}) | {
-    "screen_web_outer_inner_diff",
-}
+FPSET_AKAMAI_V2_REALISTIC = FPSET_AKAMAI_V2 - {"screen_web_inner", "screen_web_outer"}
 
 """
 Akamai Bot Manager v2 — Web APIs queried
@@ -741,9 +739,7 @@ FPSET_FINGERPRINTJS_V2 = set([
     "storage_quota",
 ])
 
-FPSET_FINGERPRINTJS_V2_INOUT = (FPSET_FINGERPRINTJS_V2 - {"screen_web_inner", "screen_web_outer"}) | {
-    "screen_web_outer_inner_diff",
-}
+FPSET_FINGERPRINTJS_V2_REALISTIC = FPSET_FINGERPRINTJS_V2 - {"screen_web_inner", "screen_web_outer"}
 
 """
 FingerprintJS Pro v3.12.6 — Web APIs queried
@@ -1293,6 +1289,8 @@ FPSET_SIGNIFYD = set([
     # unlike CreepJS which includes a MathML module)
 ])
 
+FPSET_SIGNIFYD_REALISTIC = FPSET_SIGNIFYD - {"screen_web_inner", "screen_web_outer"}
+
 """
 Signifyd lite.js — Web APIs queried
 Source: deobfuscated lite.js (CreepJS fork from May 20, 2023 commit c17490f)
@@ -1520,8 +1518,9 @@ ALL_FINGERPRINTERS = {
   "Signifyd": FPSET_SIGNIFYD,
   "FPJSv1": FPSET_FINGERPRINTJS_V1,
   "FPJSv2": FPSET_FINGERPRINTJS_V2,
-  "AkamaiV2_InOut": FPSET_AKAMAI_V2_INOUT,
-  "FPJSv2_InOut": FPSET_FINGERPRINTJS_V2_INOUT,
+  "AkamaiV2_Realistic": FPSET_AKAMAI_V2_REALISTIC,
+  "Signifyd_Realistic": FPSET_SIGNIFYD_REALISTIC,
+  "FPJSv2_Realistic": FPSET_FINGERPRINTJS_V2_REALISTIC,
   "AllFingerprinters": ALL_FINGERPRINTERS_UNION,
 }
 

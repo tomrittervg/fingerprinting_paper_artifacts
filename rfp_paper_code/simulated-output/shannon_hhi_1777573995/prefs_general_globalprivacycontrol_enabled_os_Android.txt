@@ -1,0 +1,5 @@
+  prefs_general_globalprivacycontrol_enabled (Android)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  False                    101  100.00%      100.00%

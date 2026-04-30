@@ -1,0 +1,18 @@
+Analyzing the fingerprint distribution for P3-C: P2, WebGL Vendor (Darwin)-AkamaiV2_Realistic
+  There are 201 total users
+  There are 68 unique users, or 33.8308% out of 201 users
+  Our cohort fitness score is 0.30407663176654043
+  Our cohort fitness score (HHI2, excl. singletons) is 0.6906552094522019
+  Our P50 (median cohort size, non-unique users) is 109
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  109                |   1            |   109        |   54.23 %
+  1                  |   68           |   68         |   33.83 %
+  18                 |   1            |   18         |   8.96 %
+  2                  |   3            |   6          |   2.99 %
+
+
+ There are 201 total users
+ There are 68 unique users, or 33.8308% out of 201 users
+

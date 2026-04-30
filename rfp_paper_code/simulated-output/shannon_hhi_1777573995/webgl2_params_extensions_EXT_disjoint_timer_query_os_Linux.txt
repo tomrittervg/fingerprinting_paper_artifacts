@@ -1,0 +1,5 @@
+  webgl2_params_extensions_EXT_disjoint_timer_query (Linux)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  None                     202  100.00%      100.00%

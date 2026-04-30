@@ -1,0 +1,3 @@
+SMR fingerprinter: AkamaiV2_Realistic
+SMR metric count: 16
+SMR metrics: canvas_canvasdata12_fingerprintjs1, canvas_canvasdata13_fingerprintjs2, hw_max_touch_points, hw_oscpu, hw_processor_count, intl_timezone_offset_web, locale_accept_language, locale_languages, platform, prefs_cookiesenabled, prefs_general_donottrack_enabled, screen_primary_avail, screen_primary_color_depth, screen_primary_pixel_depth, screen_primary_resolution, user_agent

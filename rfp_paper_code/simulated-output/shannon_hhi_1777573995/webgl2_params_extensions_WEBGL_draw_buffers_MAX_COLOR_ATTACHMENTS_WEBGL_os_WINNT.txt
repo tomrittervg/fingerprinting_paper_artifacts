@@ -1,0 +1,5 @@
+  webgl2_params_extensions_WEBGL_draw_buffers_MAX_COLOR_ATTACHMENTS_WEBGL (WINNT)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  None                     402  100.00%      100.00%

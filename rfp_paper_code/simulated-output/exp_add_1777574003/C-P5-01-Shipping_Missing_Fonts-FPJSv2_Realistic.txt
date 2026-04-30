@@ -1,0 +1,26 @@
+Analyzing the fingerprint distribution for P5-C: P4, Shipping Missing Fonts-FPJSv2_Realistic
+  There are 906 total users
+  There are 606 unique users, or 66.8874% out of 906 users
+  Our cohort fitness score is 0.009760780472591359
+  Our cohort fitness score (HHI2, excl. singletons) is 0.08228888888888888
+  Our P50 (median cohort size, non-unique users) is 28
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   606          |   606        |   66.89 %
+  29                 |   2            |   58         |   6.4 %
+  28                 |   2            |   56         |   6.18 %
+  35                 |   1            |   35         |   3.86 %
+  31                 |   1            |   31         |   3.42 %
+  27                 |   1            |   27         |   2.98 %
+  25                 |   1            |   25         |   2.76 %
+  2                  |   12           |   24         |   2.65 %
+  22                 |   1            |   22         |   2.43 %
+  3                  |   3            |   9          |   0.99 %
+  4                  |   2            |   8          |   0.88 %
+  5                  |   1            |   5          |   0.55 %
+
+
+ There are 906 total users
+ There are 606 unique users, or 66.8874% out of 906 users
+

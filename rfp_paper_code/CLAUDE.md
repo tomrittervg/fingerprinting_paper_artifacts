@@ -13,7 +13,7 @@ A Firefox browser fingerprinting analysis toolkit. It processes telemetry data (
   -o <output-dir> --cache-dir <cache-dir> [options]
 ```
 
-The shebang (`#!/home/sandbox/venv314t/bin/python3.14t`) invokes the free-threaded Python 3.14t build via a venv that has all required packages. Always use `./analyze.py` (not `python3 analyze.py`) to get GIL-free execution with all dependencies available.
+The shebang (`#!/usr/bin/env python3`) invokes the free-threaded Python 3.14t build via a venv that has all required packages. Always use `./analyze.py` (not `python3 analyze.py`) to get GIL-free execution with all dependencies available.
 
 **The venv at `/home/sandbox/venv314t` is ephemeral** — `/home/sandbox` is not persisted across sandbox restarts. If it is missing, recreate it:
 

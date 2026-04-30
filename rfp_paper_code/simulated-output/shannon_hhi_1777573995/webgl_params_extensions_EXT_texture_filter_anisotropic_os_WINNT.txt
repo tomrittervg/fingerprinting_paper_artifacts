@@ -1,0 +1,5 @@
+  webgl_params_extensions_EXT_texture_filter_anisotropic (WINNT)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  [16]                     402  100.00%      100.00%

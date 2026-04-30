@@ -1,0 +1,6 @@
+  webgl2_renderer_raw_software (WINNT)
+  ------------------------------------------------------------
+  Key                                                                                                 Count        % Cumulative %
+  -------------------------------------------------------------------------------------------------------------------------------
+  ANGLE (Microsoft, Microsoft Basic Render Driver Direct3D11 vs_5_0 ps_5_0, D3D11-10.0.26100.7309)      301   74.88%       74.88%
+  ANGLE (Microsoft, Microsoft Basic Render Driver Direct3D11 vs_5_0 ps_5_0, D3D11-10.0.19041.5794)      101   25.12%      100.00%

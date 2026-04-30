@@ -1,0 +1,19 @@
+Analyzing the fingerprint distribution for P2-C: P1, Processor Count, Screen Availability, Font List Updates (WINNT)-FPJSv2_Realistic
+  There are 402 total users
+  There are 344 unique users, or 85.5721% out of 402 users
+  Our cohort fitness score is 0.0064973639266354775
+  Our cohort fitness score (HHI2, excl. singletons) is 0.20986920332936984
+  Our P50 (median cohort size, non-unique users) is 15
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   344          |   344        |   85.57 %
+  15                 |   2            |   30         |   7.46 %
+  12                 |   1            |   12         |   2.99 %
+  10                 |   1            |   10         |   2.49 %
+  2                  |   3            |   6          |   1.49 %
+
+
+ There are 402 total users
+ There are 344 unique users, or 85.5721% out of 402 users
+

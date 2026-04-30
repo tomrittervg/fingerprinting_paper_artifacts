@@ -1,0 +1,86 @@
+  webgl_renderer_raw (Linux)
+  ------------------------------------------------------------
+  Key                                                                                          Count        % Cumulative %
+  ------------------------------------------------------------------------------------------------------------------------
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo)                  51   25.25%       25.25%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic)           51   25.25%       50.50%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #58               3    1.49%       51.98%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #91               3    1.49%       53.47%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #41        3    1.49%       54.95%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #44               2    0.99%       55.94%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #20               2    0.99%       56.93%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #30               2    0.99%       57.92%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #39               2    0.99%       58.91%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #81        2    0.99%       59.90%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #38        2    0.99%       60.89%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #99        2    0.99%       61.88%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #68        2    0.99%       62.87%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #97               2    0.99%       63.86%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #47               2    0.99%       64.85%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #69        2    0.99%       65.84%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #56               2    0.99%       66.83%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #78               2    0.99%       67.82%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #28        2    0.99%       68.81%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #34               1    0.50%       69.31%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #34        1    0.50%       69.80%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #89               1    0.50%       70.30%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #16        1    0.50%       70.79%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #83        1    0.50%       71.29%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #87               1    0.50%       71.78%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #15               1    0.50%       72.28%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #86        1    0.50%       72.77%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #98               1    0.50%       73.27%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #68               1    0.50%       73.76%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #40        1    0.50%       74.26%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #13        1    0.50%       74.75%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #75        1    0.50%       75.25%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #80               1    0.50%       75.74%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #23        1    0.50%       76.24%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #21        1    0.50%       76.73%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #19        1    0.50%       77.23%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #52        1    0.50%       77.72%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #25        1    0.50%       78.22%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #73        1    0.50%       78.71%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #59        1    0.50%       79.21%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #27        1    0.50%       79.70%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #83               1    0.50%       80.20%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #63        1    0.50%       80.69%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #70        1    0.50%       81.19%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #90               1    0.50%       81.68%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #69               1    0.50%       82.18%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #76        1    0.50%       82.67%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #94               1    0.50%       83.17%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #61        1    0.50%       83.66%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #88        1    0.50%       84.16%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #18               1    0.50%       84.65%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #25               1    0.50%       85.15%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #81               1    0.50%       85.64%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #92               1    0.50%       86.14%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #51               1    0.50%       86.63%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #38               1    0.50%       87.13%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #32        1    0.50%       87.62%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #89        1    0.50%       88.12%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #77        1    0.50%       88.61%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #36               1    0.50%       89.11%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #55               1    0.50%       89.60%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #98        1    0.50%       90.10%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #95        1    0.50%       90.59%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #15        1    0.50%       91.09%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #93        1    0.50%       91.58%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #91        1    0.50%       92.08%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #41               1    0.50%       92.57%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #99               1    0.50%       93.07%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #57               1    0.50%       93.56%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #45               1    0.50%       94.06%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #95               1    0.50%       94.55%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #49        1    0.50%       95.05%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #19               1    0.50%       95.54%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #17               1    0.50%       96.04%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #64        1    0.50%       96.53%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #90        1    0.50%       97.03%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #35        1    0.50%       97.52%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #22               1    0.50%       98.02%
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #31               1    0.50%       98.51%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #96        1    0.50%       99.01%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #10        1    0.50%       99.50%
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #94        1    0.50%      100.00%

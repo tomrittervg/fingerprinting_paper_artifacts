@@ -1,0 +1,5 @@
+  voices_all_ssdeep (Android)
+  ------------------------------------------------------------
+  Key                                                                                                   Count        % Cumulative %
+  ---------------------------------------------------------------------------------------------------------------------------------
+  12:b721wGT7G5ZjD/uwWZdZf4soGUwZZGI5o4QvI1GI5Pq0UuIaKhNI5YGf8CSfq5:baOu7GfD/fWZ7dZZrRQvGGB0UjGfUfq5      101  100.00%      100.00%

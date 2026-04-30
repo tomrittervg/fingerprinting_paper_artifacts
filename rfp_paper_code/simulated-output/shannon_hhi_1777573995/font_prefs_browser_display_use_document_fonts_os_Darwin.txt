@@ -1,0 +1,5 @@
+  font_prefs_browser_display_use_document_fonts (Darwin)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  True                     201  100.00%      100.00%

@@ -1556,3 +1556,128 @@ def min_set_combo_worker(worker_id, all_cache_paths, combo_list, spill_dir, slot
         't_spill': _t_spill,
     }
 
+
+# =============================================================================
+# MinMetrics prefix worker
+# =============================================================================
+
+def minmetrics_prefix_worker(worker_id, all_cache_paths, metric_order, spill_dir, slot_idx=None):
+    """Worker for MinMetrics analysis with incremental XOR fingerprinting.
+
+    For each K from 1..len(metric_order), the fingerprint is the XOR of
+    per-attribute hashes for the first K metrics. Uses the incremental trick:
+    fp_K = fp_{K-1} XOR attr_hash(metric_K). Total XOR work per user is O(N),
+    not O(N^2).
+
+    Memory strategy: spill per-partition per-K as compact (values, counts)
+    numpy arrays immediately. Worker memory peaks at one partition's
+    per_attr matrix (max_k × n_users × 8 bytes) — not 52 growing dicts.
+    Main process merges all partition spills per K with np.unique + bincount.
+    """
+    import time as _time
+    import numpy as np
+
+    progress_queue = _W.get('progress_queue')
+    n_threads = _W['max_worker_threads']
+    n_workers_total = _W.get('_ismr_num_workers', 16)
+    max_k = len(metric_order)
+    my_partition_count = len(all_cache_paths[worker_id::n_workers_total])
+
+    # Announce the worker slot BEFORE loading partitions so the user sees
+    # "Loading" progress during cache read. total_phases counts Loading
+    # + one phase per partition.
+    if slot_idx is not None:
+        _send(progress_queue, slot_idx, 'start', f"W{worker_id}", my_partition_count + 1)
+        _send(progress_queue, slot_idx, 'advance', 'Loading', 0)
+
+    _t_load_start = _time.monotonic()
+    _keep = _W.get('_minmetrics_keep_metrics')
+    _ismr_ensure_loaded(worker_id, all_cache_paths, keep_metrics=_keep)
+    _t_load = _time.monotonic() - _t_load_start
+
+    n_partitions = len(_ismr_partitions)
+    part_ids = []
+
+    _wid = f"w{worker_id}"
+    # Pre-create per-K spill directories (cheap, done once)
+    for k in range(1, max_k + 1):
+        os.makedirs(os.path.join(spill_dir, f"k{k:03d}"), exist_ok=True)
+
+    _t_hash_total = 0.0
+    _t_xor_total = 0.0
+    _t_spill_total = 0.0
+    for _pi, (part_id, attrs, rows) in enumerate(_ismr_partitions):
+        part_ids.append(part_id)
+        n_users = len(rows)
+        attr_set = set(attrs)
+
+        if slot_idx is not None:
+            _send(progress_queue, slot_idx, 'advance', 'Hashing', max_k)
+
+        _missing = [m for m in metric_order if m not in attr_set]
+        if _missing:
+            raise RuntimeError(
+                f"MinMetrics w{worker_id} part {part_id}: missing metrics "
+                f"{_missing[:5]}{'...' if len(_missing) > 5 else ''}")
+
+        # Pre-hash each metric column into a uint64 numpy array (threaded)
+        _t_hash_start = _time.monotonic()
+        per_attr = {}
+        _hash_q = queue.Queue()
+        for a in metric_order:
+            _hash_q.put(a)
+        _hash_lock = threading.Lock()
+
+        def _hash_worker(_q=_hash_q, _rows=rows, _n=n_users, _res=per_attr, _lk=_hash_lock):
+            while True:
+                try:
+                    a = _q.get_nowait()
+                except queue.Empty:
+                    return
+                col = np.empty(_n, dtype=np.uint64)
+                for u, row in enumerate(_rows):
+                    col[u] = _attr_hash(a, row[a])
+                with _lk:
+                    _res[a] = col
+
+        _hash_threads = [threading.Thread(target=_hash_worker) for _ in range(n_threads)]
+        for t in _hash_threads:
+            t.start()
+        for t in _hash_threads:
+            t.join()
+        _t_hash_total += _time.monotonic() - _t_hash_start
+
+        # Incremental XOR (vectorized) + per-K spill of (values, counts)
+        fp = np.zeros(n_users, dtype=np.uint64)
+        for k, a in enumerate(metric_order, start=1):
+            _t_xor_start = _time.monotonic()
+            fp ^= per_attr[a]                                   # vectorized XOR
+            values, counts = np.unique(fp, return_counts=True)  # per-partition tally
+            _t_xor_total += _time.monotonic() - _t_xor_start
+
+            _t_sp = _time.monotonic()
+            _spill_path = os.path.join(spill_dir, f"k{k:03d}",
+                                       f"{_wid}_p{_pi:04d}.npz")
+            np.savez(_spill_path, values=values,
+                     counts=counts.astype(np.uint32))
+            _t_spill_total += _time.monotonic() - _t_sp
+
+            if slot_idx is not None:
+                _send(progress_queue, slot_idx, 'rename', f'K={k}')
+                _send(progress_queue, slot_idx, 'update', k)
+
+        del per_attr, fp
+        # Signal partition completion to drive the overall progress bar.
+        _send(progress_queue, 0, 'part_done')
+
+    if slot_idx is not None:
+        _send(progress_queue, slot_idx, 'finish')
+    return {
+        'part_ids': part_ids,
+        'worker_id': worker_id,
+        't_load': _t_load,
+        't_hash': _t_hash_total,
+        't_xor': _t_xor_total,
+        't_spill': _t_spill_total,
+    }
+

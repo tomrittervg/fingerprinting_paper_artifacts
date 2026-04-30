@@ -1,0 +1,26 @@
+Analyzing the fingerprint distribution for P0-C: Processor Count, WebGL Renderer Sanitizing-AkamaiV2_Realistic
+  There are 906 total users
+  There are 327 unique users, or 36.0927% out of 906 users
+  Our cohort fitness score is 0.04369935041835396
+  Our cohort fitness score (HHI2, excl. singletons) is 0.10602223475052278
+  Our P50 (median cohort size, non-unique users) is 54
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   327          |   327        |   36.09 %
+  54                 |   3            |   162        |   17.88 %
+  104                |   1            |   104        |   11.48 %
+  52                 |   2            |   104        |   11.48 %
+  100                |   1            |   100        |   11.04 %
+  4                  |   7            |   28         |   3.09 %
+  7                  |   3            |   21         |   2.32 %
+  2                  |   8            |   16         |   1.77 %
+  3                  |   5            |   15         |   1.66 %
+  11                 |   1            |   11         |   1.21 %
+  5                  |   2            |   10         |   1.1 %
+  8                  |   1            |   8          |   0.88 %
+
+
+ There are 906 total users
+ There are 327 unique users, or 36.0927% out of 906 users
+

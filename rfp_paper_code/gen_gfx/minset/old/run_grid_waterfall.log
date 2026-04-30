@@ -1,0 +1,53 @@
+============================================================
+grid_waterfall — Provenance Log
+Generated: 2026-04-30T15:11:46Z
+============================================================
+
+METADATA SOURCE
+  ../../../sandbox-analyses/final-range/shannon_hhi_canvasfillin_final_1776808022
+  Total users: 24,871,013
+    Android      8,914,105
+    Darwin       2,040,356
+    Linux        1,844,561
+    WINNT       12,071,991
+
+DATA DIRECTORIES
+  top10     ../../../sandbox-analyses/final-range/xx-minset_top10_smr_Android_final_1776513899
+  top10     ../../../sandbox-analyses/final-range/xx-minset_top10_smr_Darwin_final_1776513586
+  top10     ../../../sandbox-analyses/final-range/xx-minset_top10_smr_Darwin_final_1776513586.png
+  top10     ../../../sandbox-analyses/final-range/xx-minset_top10_smr_Linux_final_1776513323
+  top10     ../../../sandbox-analyses/final-range/xx-minset_top10_smr_WINNT_final_1776515045
+  top11     ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Android_final_1776575687
+  top11     ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Android_final_1776860685
+  top11     ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Darwin_final_1776577457
+  top11     ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Darwin_final_1776862437
+  top11     ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Linux_final_1776577942
+  top11     ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Linux_final_1776860278
+  top11     ../../../sandbox-analyses/final-range/xx-minset_top11_smr_WINNT_final_1776578353
+  top11     ../../../sandbox-analyses/final-range/xx-minset_top11_smr_WINNT_final_1776862925
+  top12     ../../../sandbox-analyses/final-range/xx-minset_top12_smr_Android_final_1776580814
+  top12     ../../../sandbox-analyses/final-range/xx-minset_top12_smr_Darwin_final_1776583386
+  top12     ../../../sandbox-analyses/final-range/xx-minset_top12_smr_Linux_final_1776584102
+  top12     ../../../sandbox-analyses/final-range/xx-minset_top12_smr_WINNT_final_1776584707
+  top13     ../../../sandbox-analyses/final-range/xx-minset_top13_smr_Android_final_1776588328
+  top13     ../../../sandbox-analyses/final-range/xx-minset_top13_smr_Darwin_final_1776589692
+  top13     ../../../sandbox-analyses/final-range/xx-minset_top13_smr_Linux_final_1776590086
+  top13     ../../../sandbox-analyses/final-range/xx-minset_top13_smr_WINNT_final_1776590419
+  top14     ../../../sandbox-analyses/final-range/xx-minset_top14_smr_Android_final_1776592215
+  top14     ../../../sandbox-analyses/final-range/xx-minset_top14_smr_Darwin_final_1776593981
+  top14     ../../../sandbox-analyses/final-range/xx-minset_top14_smr_Linux_final_1776594484
+  top14     ../../../sandbox-analyses/final-range/xx-minset_top14_smr_WINNT_final_1776594918
+  top5      ../../../sandbox-analyses/final-range/xx-minset_top5_smr_final_1776478478
+  top7      ../../../sandbox-analyses/final-range/xx-minset_top7_smr_final_1776479067
+  top8      ../../../sandbox-analyses/final-range/xx-minset_top8_smr_Android_final_1776572140
+  top8      ../../../sandbox-analyses/final-range/xx-minset_top8_smr_Darwin_final_1776572599
+  top8      ../../../sandbox-analyses/final-range/xx-minset_top8_smr_Linux_final_1776572717
+  top8      ../../../sandbox-analyses/final-range/xx-minset_top8_smr_WINNT_final_1776572825
+  top9      ../../../sandbox-analyses/final-range/xx-minset_top9_smr_Android_final_1776573607
+  top9      ../../../sandbox-analyses/final-range/xx-minset_top9_smr_Darwin_final_1776574320
+  top9      ../../../sandbox-analyses/final-range/xx-minset_top9_smr_Linux_final_1776574517
+  top9      ../../../sandbox-analyses/final-range/xx-minset_top9_smr_WINNT_final_1776574684
+
+OUTPUT
+  /home/user/code/gen_gfx/minset/minset_waterfall_grid.png
+

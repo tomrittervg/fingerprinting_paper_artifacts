@@ -1,0 +1,262 @@
+  Cohort Results:
+  This is sorted by the frequency of the cohort size, not by the total number of users in the cohort
+
+  Our baseline is that there are 73 unique users, or 36.14% out of 202 users
+  Our baseline cohort fitness score is 0.1364572100774427 (higher is better)
+  Our baseline HHI2 (excl. singletons) is 0.33020852112252874
+  Our baseline P50 (median cohort, non-unique) is 52
+
+  Ignoring canvas_canvasdata12_fingerprintjs1
+    --------------------
+    There are 16 unique users, or 7.92% out of 202 users
+    Our cohort fitness score is 0.27296343495735714
+    Our HHI2 (excl. singletons) is 0.3214822522835009
+    Our P50 (median cohort, non-unique) is 74
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     16           |     16         |     7.92 %
+    2                  |     4            |     8          |     3.96 %
+    74                 |     2            |     148        |     73.27 %
+    6                  |     2            |     12         |     5.94 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     2            |     10         |     4.95 %
+
+
+  Ignoring hw_processor_count
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.20571512596804237
+    Our HHI2 (excl. singletons) is 0.5000300462712577
+    Our P50 (median cohort, non-unique) is 65
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    64                 |     1            |     64         |     31.68 %
+    65                 |     1            |     65         |     32.18 %
+
+
+  Ignoring locale_accept_language
+    --------------------
+    There are 60 unique users, or 29.70% out of 202 users
+    Our cohort fitness score is 0.16071953730026467
+    Our HHI2 (excl. singletons) is 0.32225748859353304
+    Our P50 (median cohort, non-unique) is 56
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     60           |     60         |     29.70 %
+    3                  |     3            |     9          |     4.46 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     2            |     10         |     4.95 %
+    57                 |     1            |     57         |     28.22 %
+    56                 |     1            |     56         |     27.72 %
+    2                  |     1            |     2          |     0.99 %
+
+
+  Ignoring screen_primary_color_depth
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring platform
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring user_agent
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring intl_timezone_offset_web
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring prefs_cookiesenabled
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring screen_primary_pixel_depth
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring hw_oscpu
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring locale_languages
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring screen_primary_avail
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring hw_max_touch_points
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring canvas_canvasdata13_fingerprintjs2
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring prefs_general_donottrack_enabled
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+
+  Ignoring screen_primary_resolution
+    --------------------
+    There are 73 unique users, or 36.14% out of 202 users
+    Our cohort fitness score is 0.13645721007744338
+    Our HHI2 (excl. singletons) is 0.3302085211225287
+    Our P50 (median cohort, non-unique) is 52
+    cohort_size        | # of cohorts     | # of users     | % of users
+    ------------------------------------------------------------
+    1                  |     73           |     73         |     36.14 %
+    2                  |     3            |     6          |     2.97 %
+    52                 |     2            |     104        |     51.49 %
+    3                  |     2            |     6          |     2.97 %
+    4                  |     2            |     8          |     3.96 %
+    5                  |     1            |     5          |     2.48 %
+
+

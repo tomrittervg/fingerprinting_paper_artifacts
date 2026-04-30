@@ -1,0 +1,58 @@
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+\begin{table}[H]
+\scriptsize
+\centering
+\begin{tabular}{r l | r l}
+\Xhline{2\arrayrulewidth}
+\multicolumn{2}{c|}{\textsf{\textcolor{red}{Windows}}} & \multicolumn{2}{c}{\textsf{\textcolor{darkgreen}{macOS}}} \\
+\Xhline{2\arrayrulewidth}
+1 & \textcolor{red}{FPJS Probed Fonts} & 1 & \textcolor{red}{FPJS Probed Fonts} \\
+2 & \textcolor{red}{WebGL Renderer} & 2 & \textcolor{red}{Available Res.} \\
+3 & \textcolor{red}{FPJS Canvas Image 1} & 3 & \textcolor{red}{Timezone Name} \\
+4 & \textcolor{red}{Timezone Name} & 4 & \textcolor{red}{WebGL Renderer} \\
+5 & \textcolor{red}{Available Res.} & 5 & \textcolor{darkgreen}{CSS System Colors} \\
+6 & SpeechSynthesis Voices & 6 & \textcolor{red}{FPJS Canvas Image 1} \\
+7 & \textcolor{darkgreen}{CSS System Colors} & 7 & SpeechSynthesis Voices \\
+8 & CPU Count & 8 & \textcolor{blue}{User Agent} \\
+9 & Allowlisted FPJS Probed Fonts & 9 & Intl.locale \\
+10 & Intl.locale & 10 & Available Res. Top \\
+11 & Max Touch Points & 11 & \textcolor{blue}{Accept-Language} \\
+12 & \textcolor{blue}{User Agent} & 12 & CPU Count \\
+13 & Storage Quota & 13 & Color Scheme \\
+14 & Audio Fingerprint & 14 & \textcolor{orange}{MathML} \\
+15 & Prefers Reduced Motion & 15 & Available Res. Left \\
+16 & Pixel Ratio & 16 & Prefers Reduced Transparency \\
+17 & Media Capabilities & 17 & Prefers Reduced Motion \\
+18 & Prefers Reduced Transparency & 18 & Pixel Ratio \\
+19 & Available Res. Left & 19 & SDP Codec List \\
+20 & Color Scheme & 20 & Audio Fingerprint \\
+\Xhline{2\arrayrulewidth}
+ & & & \\
+\Xhline{2\arrayrulewidth}
+\multicolumn{2}{c|}{\textsf{\textcolor{blue}{Android}}} & \multicolumn{2}{c}{\textsf{\textcolor{orange}{Linux}}} \\
+\Xhline{2\arrayrulewidth}
+1 & \textcolor{blue}{Accept-Language} & 1 & \textcolor{red}{Available Res.} \\
+2 & \textcolor{darkgreen}{CSS System Colors} & 2 & \textcolor{red}{WebGL Renderer} \\
+3 & \textcolor{red}{FPJS Canvas Image 1} & 3 & \textcolor{red}{Timezone Name} \\
+4 & \textcolor{blue}{User Agent} & 4 & \textcolor{darkgreen}{CSS System Colors} \\
+5 & \textcolor{red}{Timezone Name} & 5 & \textcolor{orange}{MathML} \\
+6 & \textcolor{red}{WebGL Renderer} & 6 & \textcolor{red}{FPJS Canvas Image 1} \\
+7 & Screen Res. & 7 & \textcolor{blue}{User Agent} \\
+8 & \textcolor{orange}{MathML} & 8 & CPU Count \\
+9 & SpeechSynthesis Voices & 9 & EME Enabled \\
+10 & Pixel Ratio & 10 & \textcolor{blue}{Accept-Language} \\
+11 & Storage Quota & 11 & Storage Quota \\
+12 & Media Capabilities & 12 & SpeechSynthesis Voices \\
+13 & Prefers Reduced Motion & 13 & Pixel Ratio \\
+14 & Prefers Reduced Transparency & 14 & Color Scheme \\
+15 & WebGL Params & 15 & Available Res. Left \\
+16 & CPU Count & 16 & Intl.locale \\
+17 & Audio Fingerprint & 17 & \textcolor{red}{FPJS Probed Fonts} \\
+18 & Timezone Offset & 18 & Prefers Reduced Motion \\
+19 & Canvas WebGL Image & 19 & Available Res. Top \\
+20 & Color Scheme & 20 & Media Capabilities \\
+\Xhline{2\arrayrulewidth}
+\end{tabular}
+\caption{Top 20 measurements by iterative incremental fingerprint construction, per operating system, for \textit{Fingerprint Pro}. Rank 1 contributes the most uniquely identifying users on its own; each subsequent rank contributes the most additional uniquely identifying users beyond those already captured by all higher-ranked metrics. Colors indicate shared top-5 metrics: \textcolor{red}{Windows}, \textcolor{blue}{Android}, \textcolor{darkgreen}{macOS}, \textcolor{orange}{Linux}.}
+\label{tab:iterative_top20_by_os}
+\end{table}

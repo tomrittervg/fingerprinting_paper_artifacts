@@ -1,0 +1,5 @@
+  webgl2_extensions (Android)
+  ------------------------------------------------------------
+  Key                                                                                                                                                                                                                                                                                                           Count        % Cumulative %
+  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  EXT_color_buffer_float EXT_float_blend EXT_texture_filter_anisotropic MOZ_debug OES_draw_buffers_indexed OES_texture_float_linear OVR_multiview2 WEBGL_compressed_texture_astc WEBGL_compressed_texture_etc WEBGL_compressed_texture_etc1 WEBGL_debug_renderer_info WEBGL_debug_shaders WEBGL_lose_context      101  100.00%      100.00%

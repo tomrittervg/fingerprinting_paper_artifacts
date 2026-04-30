@@ -1,0 +1,13 @@
+  css_font_monospace (WINNT)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  13px monospace           393   97.76%       97.76%
+  None                       2    0.50%       98.26%
+  1 3px monospace            1    0.25%       98.51%
+  13p x monospace            1    0.25%       98.76%
+  13px  monospace            1    0.25%       99.00%
+  13px mon ospace            1    0.25%       99.25%
+  13px monosp ace            1    0.25%       99.50%
+  13px mo nospace            1    0.25%       99.75%
+  13px monospace             1    0.25%      100.00%

@@ -1,0 +1,180 @@
+Started: 04/30/26 02:33:31 PM
+Reading data from:  Database
+Command line:  /home/tom/moz/fingerprinting-data/code/analyze.py -o ./simulated-output/iterative_minmetrics_signifyd -c configs/iterative_minmetrics_signifyd.py --cache-dir ./simulated-cache --per-os=true --force --partition-width 1
+Writing to:    ./simulated-output/iterative_minmetrics_signifyd_1777574011
+Git hash:      9b87688
+Date range:    2026-02-13 to 2026-05-01 (77 day(s))
+Tiny Mode:    DISABLED
+Minimize Mode:    DISABLED
+Partition width:    1 (16 partitions)
+Config file:   configs/iterative_minmetrics_signifyd.py
+  --per-os=true overrides config per_os_analysis
+Script config:
+  browser_modes = False
+  calculate_metric_experiment_aggregated = False
+  calculate_metrics_aggregated = False
+  correlation_analysis = False
+  experiments = False
+  fingerprint_archiving = False
+  fingerprint_buckets = False
+  fingerprints = False
+  iterative_minmetrics_fingerprinter = 'Signifyd_Realistic'
+  iterative_minmetrics_max_k = None
+  max_procs = 2
+  max_threads_experiment_merging = 4
+  max_threads_graph_export = 1
+  max_worker_threads = None
+  metric_buckets = False
+  missing_font_sets = False
+  missing_fonts = False
+  per_os_analysis = True
+  perform_iterative_minmetrics_analysis = True
+  perform_iterative_single_metric_removal_analysis = False
+  perform_iterative_single_metric_replacement_analysis = False
+  perform_logical_metric_removal_analysis = False
+  perform_min_set_combo_analysis = False
+  perform_minmetrics_analysis = False
+  perform_segmentation_decision_tree = False
+  perform_segmentation_shitty = False
+  perform_single_metric_removal_analysis = False
+  print_x_by_os_aggregate_graphs = False
+  raw_rows_only = False
+Pattern Hash: R9MNk-2FxUs= - ./simulated-cache/R9MNk-2FxUs=
+
+684 metrics to visualize
+
+  No partition processing needed — skipping worker pool
+  Per-OS analysis enabled for: ['Android', 'Darwin', 'Linux', 'WINNT']
+  IterativeMinMetrics: Signifyd_Realistic
+    Loaded cached numpy array (906, 82) (0.0GB) in 0.0s
+    906 users x 82 metrics (0.0GB), max_k=82
+    Greedy selection: 82 rounds, 32 eval threads
+    [14:33:31] K=  1/82: combined_css_colors_hash                 +       360 ( 39.7%) [0.0s round, 0s total]
+    K=  1: combined_css_colors_hash                      unique=       360 ( 39.7%) +       360  [0.0s]
+    [14:33:31] K=  2/82: webgl_renderer                           +       233 ( 65.5%) [0.0s round, 0s total]
+    K=  2: webgl_renderer                                unique=       593 ( 65.5%) +       233  [0.0s]
+    [14:33:31] K=  3/82: combined_css_fonts_hash                  +       102 ( 76.7%) [0.0s round, 0s total]
+    K=  3: combined_css_fonts_hash                       unique=       695 ( 76.7%) +       102  [0.0s]
+    [14:33:31] K=  4/82: storage_quota                            +        28 ( 79.8%) [0.0s round, 0s total]
+    K=  4: storage_quota                                 unique=       723 ( 79.8%) +        28  [0.0s]
+    [14:33:31] K=  5/82: hw_processor_count                       +        26 ( 82.7%) [0.0s round, 0s total]
+    K=  5: hw_processor_count                            unique=       749 ( 82.7%) +        26  [0.0s]
+    [14:33:31] K=  6/82: locale_accept_language                   +        17 ( 84.5%) [0.0s round, 0s total]
+    K=  6: locale_accept_language                        unique=       766 ( 84.5%) +        17  [0.0s]
+    [14:33:31] K=  7/82: screen_web_pixel_ratio                   +         6 ( 85.2%) [0.0s round, 0s total]
+    K=  7: screen_web_pixel_ratio                        unique=       772 ( 85.2%) +         6  [0.0s]
+    [14:33:31] K=  8/82: webgl_vendor_raw                         +         4 ( 85.7%) [0.0s round, 0s total]
+    K=  8: webgl_vendor_raw                              unique=       776 ( 85.7%) +         4  [0.0s]
+    [14:33:31] K=  9/82: intl_timezone_offset_web                 +         2 ( 85.9%) [0.0s round, 0s total]
+    K=  9: intl_timezone_offset_web                      unique=       778 ( 85.9%) +         2  [0.0s]
+    [14:33:31] K= 10/82: wgpu_is_fallback_adapter                 +         0 ( 85.9%) [0.0s round, 0s total]
+    K= 10: wgpu_is_fallback_adapter                      unique=       778 ( 85.9%) +         0  [0.0s]
+  IterativeMinMetrics complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic.csv
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic.txt
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_ordering.py
+  IterativeMinMetrics [Signifyd_Realistic][Android]: Signifyd_Realistic (Android)
+    Loaded cached numpy array (101, 82) (0.0GB) in 0.0s
+    101 users x 82 metrics (0.0GB), max_k=82
+    Greedy selection: 82 rounds, 32 eval threads
+    [14:33:31] K=  1/82: combined_css_colors_hash                 +        45 ( 44.6%) [0.0s round, 0s total]
+    K=  1: combined_css_colors_hash                      unique=        45 ( 44.6%) +        45  [0.0s]
+    [14:33:31] K=  2/82: webgl_renderer                           +        25 ( 69.3%) [0.0s round, 0s total]
+    K=  2: webgl_renderer                                unique=        70 ( 69.3%) +        25  [0.0s]
+    [14:33:31] K=  3/82: combined_css_fonts_hash                  +         9 ( 78.2%) [0.0s round, 0s total]
+    K=  3: combined_css_fonts_hash                       unique=        79 ( 78.2%) +         9  [0.0s]
+    [14:33:31] K=  4/82: storage_quota                            +         3 ( 81.2%) [0.0s round, 0s total]
+    K=  4: storage_quota                                 unique=        82 ( 81.2%) +         3  [0.0s]
+    [14:33:31] K=  5/82: webgl_vendor_raw                         +         1 ( 82.2%) [0.0s round, 0s total]
+    K=  5: webgl_vendor_raw                              unique=        83 ( 82.2%) +         1  [0.0s]
+    [14:33:31] K=  6/82: hw_processor_count                       +         1 ( 83.2%) [0.0s round, 0s total]
+    K=  6: hw_processor_count                            unique=        84 ( 83.2%) +         1  [0.0s]
+    [14:33:31] K=  7/82: wgpu_is_fallback_adapter                 +         0 ( 83.2%) [0.0s round, 0s total]
+    K=  7: wgpu_is_fallback_adapter                      unique=        84 ( 83.2%) +         0  [0.0s]
+  IterativeMinMetrics [Signifyd_Realistic][Android] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Android.csv
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Android.txt
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Android_ordering.py
+  IterativeMinMetrics [Signifyd_Realistic][Darwin]: Signifyd_Realistic (Darwin)
+    Loaded cached numpy array (201, 82) (0.0GB) in 0.0s
+    201 users x 82 metrics (0.0GB), max_k=82
+    Greedy selection: 82 rounds, 32 eval threads
+    [14:33:31] K=  1/82: combined_css_colors_hash                 +        94 ( 46.8%) [0.0s round, 0s total]
+    K=  1: combined_css_colors_hash                      unique=        94 ( 46.8%) +        94  [0.0s]
+    [14:33:31] K=  2/82: webgl_renderer                           +        50 ( 71.6%) [0.0s round, 0s total]
+    K=  2: webgl_renderer                                unique=       144 ( 71.6%) +        50  [0.0s]
+    [14:33:31] K=  3/82: combined_css_fonts_hash                  +        16 ( 79.6%) [0.0s round, 0s total]
+    K=  3: combined_css_fonts_hash                       unique=       160 ( 79.6%) +        16  [0.0s]
+    [14:33:31] K=  4/82: hw_processor_count                       +         8 ( 83.6%) [0.0s round, 0s total]
+    K=  4: hw_processor_count                            unique=       168 ( 83.6%) +         8  [0.0s]
+    [14:33:31] K=  5/82: storage_quota                            +         7 ( 87.1%) [0.0s round, 0s total]
+    K=  5: storage_quota                                 unique=       175 ( 87.1%) +         7  [0.0s]
+    [14:33:31] K=  6/82: locale_accept_language                   +         2 ( 88.1%) [0.0s round, 0s total]
+    K=  6: locale_accept_language                        unique=       177 ( 88.1%) +         2  [0.0s]
+    [14:33:31] K=  7/82: webgl_vendor_raw                         +         1 ( 88.6%) [0.0s round, 0s total]
+    K=  7: webgl_vendor_raw                              unique=       178 ( 88.6%) +         1  [0.0s]
+    [14:33:31] K=  8/82: wgpu_is_fallback_adapter                 +         0 ( 88.6%) [0.0s round, 0s total]
+    K=  8: wgpu_is_fallback_adapter                      unique=       178 ( 88.6%) +         0  [0.0s]
+  IterativeMinMetrics [Signifyd_Realistic][Darwin] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Darwin.csv
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Darwin.txt
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Darwin_ordering.py
+  IterativeMinMetrics [Signifyd_Realistic][Linux]: Signifyd_Realistic (Linux)
+    Loaded cached numpy array (202, 82) (0.0GB) in 0.0s
+    202 users x 82 metrics (0.0GB), max_k=82
+    Greedy selection: 82 rounds, 32 eval threads
+    [14:33:31] K=  1/82: combined_css_colors_hash                 +        90 ( 44.6%) [0.0s round, 0s total]
+    K=  1: combined_css_colors_hash                      unique=        90 ( 44.6%) +        90  [0.0s]
+    [14:33:31] K=  2/82: webgl_renderer                           +        57 ( 72.8%) [0.0s round, 0s total]
+    K=  2: webgl_renderer                                unique=       147 ( 72.8%) +        57  [0.0s]
+    [14:33:31] K=  3/82: combined_css_fonts_hash                  +        16 ( 80.7%) [0.0s round, 0s total]
+    K=  3: combined_css_fonts_hash                       unique=       163 ( 80.7%) +        16  [0.0s]
+    [14:33:31] K=  4/82: locale_accept_language                   +         7 ( 84.2%) [0.0s round, 0s total]
+    K=  4: locale_accept_language                        unique=       170 ( 84.2%) +         7  [0.0s]
+    [14:33:31] K=  5/82: storage_quota                            +         3 ( 85.6%) [0.0s round, 0s total]
+    K=  5: storage_quota                                 unique=       173 ( 85.6%) +         3  [0.0s]
+    [14:33:31] K=  6/82: hw_processor_count                       +         3 ( 87.1%) [0.0s round, 0s total]
+    K=  6: hw_processor_count                            unique=       176 ( 87.1%) +         3  [0.0s]
+    [14:33:31] K=  7/82: webgl_vendor_raw                         +         2 ( 88.1%) [0.0s round, 0s total]
+    K=  7: webgl_vendor_raw                              unique=       178 ( 88.1%) +         2  [0.0s]
+    [14:33:31] K=  8/82: wgpu_is_fallback_adapter                 +         0 ( 88.1%) [0.0s round, 0s total]
+    K=  8: wgpu_is_fallback_adapter                      unique=       178 ( 88.1%) +         0  [0.0s]
+  IterativeMinMetrics [Signifyd_Realistic][Linux] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Linux.csv
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Linux.txt
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Linux_ordering.py
+  IterativeMinMetrics [Signifyd_Realistic][WINNT]: Signifyd_Realistic (WINNT)
+    Loaded cached numpy array (402, 82) (0.0GB) in 0.0s
+    402 users x 82 metrics (0.0GB), max_k=82
+    Greedy selection: 82 rounds, 32 eval threads
+    [14:33:31] K=  1/82: combined_css_colors_hash                 +       131 ( 32.6%) [0.0s round, 0s total]
+    K=  1: combined_css_colors_hash                      unique=       131 ( 32.6%) +       131  [0.0s]
+    [14:33:31] K=  2/82: webgl_renderer                           +       101 ( 57.7%) [0.0s round, 0s total]
+    K=  2: webgl_renderer                                unique=       232 ( 57.7%) +       101  [0.0s]
+    [14:33:31] K=  3/82: combined_css_fonts_hash                  +        61 ( 72.9%) [0.0s round, 0s total]
+    K=  3: combined_css_fonts_hash                       unique=       293 ( 72.9%) +        61  [0.0s]
+    [14:33:31] K=  4/82: storage_quota                            +        14 ( 76.4%) [0.0s round, 0s total]
+    K=  4: storage_quota                                 unique=       307 ( 76.4%) +        14  [0.0s]
+    [14:33:31] K=  5/82: locale_accept_language                   +        13 ( 79.6%) [0.0s round, 0s total]
+    K=  5: locale_accept_language                        unique=       320 ( 79.6%) +        13  [0.0s]
+    [14:33:31] K=  6/82: hw_processor_count                       +        10 ( 82.1%) [0.0s round, 0s total]
+    K=  6: hw_processor_count                            unique=       330 ( 82.1%) +        10  [0.0s]
+    [14:33:31] K=  7/82: screen_web_pixel_ratio                   +         6 ( 83.6%) [0.0s round, 0s total]
+    K=  7: screen_web_pixel_ratio                        unique=       336 ( 83.6%) +         6  [0.0s]
+    [14:33:31] K=  8/82: intl_timezone_offset_web                 +         2 ( 84.1%) [0.0s round, 0s total]
+    K=  8: intl_timezone_offset_web                      unique=       338 ( 84.1%) +         2  [0.0s]
+    [14:33:31] K=  9/82: wgpu_is_fallback_adapter                 +         0 ( 84.1%) [0.0s round, 0s total]
+    K=  9: wgpu_is_fallback_adapter                      unique=       338 ( 84.1%) +         0  [0.0s]
+  IterativeMinMetrics [Signifyd_Realistic][WINNT] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_WINNT.csv
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_WINNT.txt
+  Wrote ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_WINNT_ordering.py
+
+All analysis complete.
+Wrote to:    ./simulated-output/iterative_minmetrics_signifyd_1777574011
+Pattern Hash: R9MNk-2FxUs= - ./simulated-cache/R9MNk-2FxUs=
+
+Execution times (seconds):
+  iterative_minmetrics: 0.18
+Total execution time: 0.18 seconds
+

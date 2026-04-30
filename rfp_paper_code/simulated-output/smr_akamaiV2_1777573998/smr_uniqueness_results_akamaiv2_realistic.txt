@@ -1,0 +1,5 @@
+  Uniqueness Results (AkamaiV2_Realistic):
+    252 fewer unique users when ignoring canvas_canvasdata12_fingerprintjs1
+    58 fewer unique users when ignoring locale_accept_language
+    9 fewer unique users when ignoring hw_processor_count
+    4 fewer unique users when ignoring intl_timezone_offset_web

@@ -150,6 +150,21 @@ CONFIG_DEPENDENCIES = {
         'perform_single_metric_removal_analysis_override_set',
     ],
 
+    # ── MinMetrics (prefix uniqueness curve) ─────────────────────────
+    'perform_minmetrics_analysis': [
+        'minmetrics_fingerprinter',
+        'minmetrics_metric_source',            # 'smr' or 'ismr'
+        'minmetrics_max_k',                    # int or None (None = len(ordering))
+        'minmetrics_per_os_use_overall_metrics',  # True = use overall ordering for per-OS runs
+        'smr_fingerprinters',
+        'perform_single_metric_removal_analysis_exclude_set',
+        'perform_single_metric_removal_analysis_override_set',
+    ],
+    'perform_iterative_minmetrics_analysis': [
+        'iterative_minmetrics_fingerprinter',  # str or list of str
+        'iterative_minmetrics_max_k',          # int or None
+    ],
+
     # ── Correlation analysis ──────────────────────────────────────────
     'correlation_analysis': [
         'correlation_cache_only',

@@ -1,0 +1,3 @@
+  Uniqueness Results (AkamaiV2_Realistic (Linux)):
+    57 fewer unique users when ignoring canvas_canvasdata12_fingerprintjs1
+    13 fewer unique users when ignoring locale_accept_language

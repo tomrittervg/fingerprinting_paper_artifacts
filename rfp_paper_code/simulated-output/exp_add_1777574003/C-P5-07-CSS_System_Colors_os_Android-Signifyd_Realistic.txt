@@ -1,0 +1,18 @@
+Analyzing the fingerprint distribution for P5-C: P4, Shipping Missing Fonts, Letterboxing, Voices, ClientRects Round 2dp, ClientRects Round 1dp, ClientRects Round 0dp, CSS System Colors (Android)-Signifyd_Realistic
+  There are 101 total users
+  There are 30 unique users, or 29.703% out of 101 users
+  Our cohort fitness score is 0.33869228507009114
+  Our cohort fitness score (HHI2, excl. singletons) is 0.6794286847847649
+  Our P50 (median cohort size, non-unique users) is 58
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  58                 |   1            |   58         |   57.43 %
+  1                  |   30           |   30         |   29.7 %
+  7                  |   1            |   7          |   6.93 %
+  2                  |   3            |   6          |   5.94 %
+
+
+ There are 101 total users
+ There are 30 unique users, or 29.703% out of 101 users
+

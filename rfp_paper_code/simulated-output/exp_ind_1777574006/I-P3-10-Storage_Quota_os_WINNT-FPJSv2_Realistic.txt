@@ -1,0 +1,20 @@
+Analyzing the fingerprint distribution for P3-I: Storage Quota (WINNT)-FPJSv2_Realistic
+  There are 402 total users
+  There are 360 unique users, or 89.5522% out of 402 users
+  Our cohort fitness score is 0.003997425806291924
+  Our cohort fitness score (HHI2, excl. singletons) is 0.1621315192743764
+  Our P50 (median cohort size, non-unique users) is 7
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   360          |   360        |   89.55 %
+  2                  |   5            |   10         |   2.49 %
+  10                 |   1            |   10         |   2.49 %
+  9                  |   1            |   9          |   2.24 %
+  7                  |   1            |   7          |   1.74 %
+  6                  |   1            |   6          |   1.49 %
+
+
+ There are 402 total users
+ There are 360 unique users, or 89.5522% out of 402 users
+

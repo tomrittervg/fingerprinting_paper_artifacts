@@ -1,0 +1,122 @@
+============================================================
+viz_minset — Provenance Log
+Generated: 2026-04-30T15:11:58Z
+============================================================
+
+METADATA SOURCE
+  ../../../sandbox-analyses/final-range/shannon_hhi_canvasfillin_final_1776808022
+  Total users: 24,871,013
+    Android      8,914,105
+    Darwin       2,040,356
+    Linux        1,844,561
+    WINNT       12,071,991
+
+DATA DIRECTORIES: 34
+  ../../../sandbox-analyses/final-range/xx-minset_top10_smr_Android_final_1776513899
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Android   baseline_unique=6,710,305  combos=637
+  ../../../sandbox-analyses/final-range/xx-minset_top10_smr_Darwin_final_1776513586
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Darwin    baseline_unique=1,988,259  combos=637
+  ../../../sandbox-analyses/final-range/xx-minset_top10_smr_Linux_final_1776513323
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Linux     baseline_unique=1,728,649  combos=637
+  ../../../sandbox-analyses/final-range/xx-minset_top10_smr_WINNT_final_1776515045
+    fingerprinter=unknown  unique=unknown  total=unknown
+    WINNT     baseline_unique=11,183,223  combos=637
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Android_final_1776575687
+    fingerprinter=unknown  unique=unknown  total=unknown
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Android_final_1776860685
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Android   baseline_unique=6,710,305  combos=1023
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Darwin_final_1776577457
+    fingerprinter=unknown  unique=unknown  total=unknown
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Darwin_final_1776862437
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Darwin    baseline_unique=1,988,259  combos=1023
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Linux_final_1776577942
+    fingerprinter=unknown  unique=unknown  total=unknown
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Linux_final_1776860278
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Linux     baseline_unique=1,728,649  combos=1023
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_WINNT_final_1776578353
+    fingerprinter=unknown  unique=unknown  total=unknown
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_WINNT_final_1776862925
+    fingerprinter=unknown  unique=unknown  total=unknown
+    WINNT     baseline_unique=11,183,223  combos=1023
+  ../../../sandbox-analyses/final-range/xx-minset_top12_smr_Android_final_1776580814
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Android   baseline_unique=6,710,305  combos=1585
+  ../../../sandbox-analyses/final-range/xx-minset_top12_smr_Darwin_final_1776583386
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Darwin    baseline_unique=1,988,259  combos=1585
+  ../../../sandbox-analyses/final-range/xx-minset_top12_smr_Linux_final_1776584102
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Linux     baseline_unique=1,728,649  combos=1585
+  ../../../sandbox-analyses/final-range/xx-minset_top12_smr_WINNT_final_1776584707
+    fingerprinter=unknown  unique=unknown  total=unknown
+    WINNT     baseline_unique=11,183,223  combos=1585
+  ../../../sandbox-analyses/final-range/xx-minset_top13_smr_Android_final_1776588328
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Android   baseline_unique=6,710,305  combos=1092
+  ../../../sandbox-analyses/final-range/xx-minset_top13_smr_Darwin_final_1776589692
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Darwin    baseline_unique=1,988,259  combos=1092
+  ../../../sandbox-analyses/final-range/xx-minset_top13_smr_Linux_final_1776590086
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Linux     baseline_unique=1,728,649  combos=1092
+  ../../../sandbox-analyses/final-range/xx-minset_top13_smr_WINNT_final_1776590419
+    fingerprinter=unknown  unique=unknown  total=unknown
+    WINNT     baseline_unique=11,183,223  combos=1092
+  ../../../sandbox-analyses/final-range/xx-minset_top14_smr_Android_final_1776592215
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Android   baseline_unique=6,710,305  combos=1470
+  ../../../sandbox-analyses/final-range/xx-minset_top14_smr_Darwin_final_1776593981
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Darwin    baseline_unique=1,988,259  combos=1470
+  ../../../sandbox-analyses/final-range/xx-minset_top14_smr_Linux_final_1776594484
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Linux     baseline_unique=1,728,649  combos=1470
+  ../../../sandbox-analyses/final-range/xx-minset_top14_smr_WINNT_final_1776594918
+    fingerprinter=unknown  unique=unknown  total=unknown
+    WINNT     baseline_unique=11,183,223  combos=1470
+  ../../../sandbox-analyses/final-range/xx-minset_top5_smr_final_1776478478
+    fingerprinter=unknown  unique=21,610,436  total=unknown
+    Android   baseline_unique=6,710,305  combos=31
+    Darwin    baseline_unique=1,988,259  combos=31
+    Linux     baseline_unique=1,728,649  combos=31
+    WINNT     baseline_unique=11,183,223  combos=31
+  ../../../sandbox-analyses/final-range/xx-minset_top7_smr_final_1776479067
+    fingerprinter=unknown  unique=21,610,436  total=unknown
+    Android   baseline_unique=6,710,305  combos=119
+    Darwin    baseline_unique=1,988,259  combos=119
+    Linux     baseline_unique=1,728,649  combos=119
+    WINNT     baseline_unique=11,183,223  combos=119
+  ../../../sandbox-analyses/final-range/xx-minset_top8_smr_Android_final_1776572140
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Android   baseline_unique=6,710,305  combos=218
+  ../../../sandbox-analyses/final-range/xx-minset_top8_smr_Darwin_final_1776572599
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Darwin    baseline_unique=1,988,259  combos=218
+  ../../../sandbox-analyses/final-range/xx-minset_top8_smr_Linux_final_1776572717
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Linux     baseline_unique=1,728,649  combos=218
+  ../../../sandbox-analyses/final-range/xx-minset_top8_smr_WINNT_final_1776572825
+    fingerprinter=unknown  unique=unknown  total=unknown
+    WINNT     baseline_unique=11,183,223  combos=218
+  ../../../sandbox-analyses/final-range/xx-minset_top9_smr_Android_final_1776573607
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Android   baseline_unique=6,710,305  combos=381
+  ../../../sandbox-analyses/final-range/xx-minset_top9_smr_Darwin_final_1776574320
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Darwin    baseline_unique=1,988,259  combos=381
+  ../../../sandbox-analyses/final-range/xx-minset_top9_smr_Linux_final_1776574517
+    fingerprinter=unknown  unique=unknown  total=unknown
+    Linux     baseline_unique=1,728,649  combos=381
+  ../../../sandbox-analyses/final-range/xx-minset_top9_smr_WINNT_final_1776574684
+    fingerprinter=unknown  unique=unknown  total=unknown
+    WINNT     baseline_unique=11,183,223  combos=381
+
+OUTPUT DIRECTORY
+  /home/user/code/gen_gfx/minset
+

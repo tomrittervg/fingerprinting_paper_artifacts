@@ -1,0 +1,18 @@
+  css_font_cursive
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  ---------------------------------------------------
+  16px cursive             880    97.13        97.13
+  None                       8     0.88        98.01
+  16 px cursive              3     0.33        98.34
+  16px cursi ve              3     0.33        98.68
+  16px cur sive              2     0.22        98.90
+  16px cursive               2     0.22        99.12
+   16px cursive              2     0.22        99.34
+  16px cursiv e              1     0.11        99.45
+  16px cu rsive              1     0.11        99.56
+  16px  cursive              1     0.11        99.67
+  16p x cursive              1     0.11        99.78
+  16px c ursive              1     0.11        99.89
+  1 6px cursive              1     0.11       100.00
+

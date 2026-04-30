@@ -168,16 +168,9 @@ def generate_experiments(csv_path, resolve=True):
         if 'i' in r['ic']:
             key = f"P{r['phase']}-I: {r['short_name']}"
             long = f"P{r['phase']}-I: {r['long_name']}"
-            equiv_key = f"P{r['phase']}-C: {r['short_name']}"
             _slug_etr(key, 'i', r['phase'], r['short_name'])
-            if r['phase'] == '1' and r['short_name'] == first_in_phase.get('1'):
-                commented_out.append((key, list(r['filters']), long,
-                                      f"identical to P{r['phase']}-C: {r['short_name']}",
-                                      equiv_key))
-                equivalents[key] = equiv_key
-            else:
-                experiments_to_run[key] = list(r['filters'])
-                long_names[key] = long
+            experiments_to_run[key] = list(r['filters'])
+            long_names[key] = long
 
     # ── Phase Z individual ──
     for r in pz_rows:

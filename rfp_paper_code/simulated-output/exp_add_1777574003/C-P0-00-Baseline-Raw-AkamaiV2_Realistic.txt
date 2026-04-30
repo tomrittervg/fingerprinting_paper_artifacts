@@ -1,0 +1,11 @@
+Analyzing the fingerprint distribution for Baseline-Raw-AkamaiV2_Realistic
+  There are 906 total users
+  There are 327 unique users, or 36.0927% out of 906 users
+  Our cohort fitness score is 0.04369935041835385
+  Our cohort fitness score (HHI2, excl. singletons) is 0.10602223475052275
+  Our P50 (median cohort size, non-unique users) is 54
+
+
+ There are 906 total users
+ There are 327 unique users, or 36.0927% out of 906 users
+

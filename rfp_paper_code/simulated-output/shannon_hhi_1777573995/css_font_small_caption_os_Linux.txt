@@ -1,0 +1,8 @@
+  css_font_small_caption (Linux)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  16px small-caption       199   98.51%       98.51%
+  16px small-capt ion        1    0.50%       99.01%
+  16px small- caption        1    0.50%       99.50%
+  16px small-caption         1    0.50%      100.00%

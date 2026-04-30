@@ -1,0 +1,19 @@
+Analyzing the fingerprint distribution for P5-I: Letterboxing (Linux)-Signifyd_Realistic
+  There are 202 total users
+  There are 178 unique users, or 88.1188% out of 202 users
+  Our cohort fitness score is 0.009214782864425057
+  Our cohort fitness score (HHI2, excl. singletons) is 0.34374999999999994
+  Our P50 (median cohort size, non-unique users) is 8
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   178          |   178        |   88.12 %
+  11                 |   1            |   11         |   5.45 %
+  8                  |   1            |   8          |   3.96 %
+  3                  |   1            |   3          |   1.49 %
+  2                  |   1            |   2          |   0.99 %
+
+
+ There are 202 total users
+ There are 178 unique users, or 88.1188% out of 202 users
+

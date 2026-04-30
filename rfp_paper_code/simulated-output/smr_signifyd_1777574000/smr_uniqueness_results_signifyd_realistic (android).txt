@@ -1,0 +1,7 @@
+  Uniqueness Results (Signifyd_Realistic (Android)):
+    19 fewer unique users when ignoring combined_css_colors_hash
+    14 fewer unique users when ignoring webgl_renderer
+    7 fewer unique users when ignoring combined_css_fonts_hash
+    2 fewer unique users when ignoring storage_quota
+    1 fewer unique users when ignoring hw_processor_count
+    1 fewer unique users when ignoring webgl_vendor_raw

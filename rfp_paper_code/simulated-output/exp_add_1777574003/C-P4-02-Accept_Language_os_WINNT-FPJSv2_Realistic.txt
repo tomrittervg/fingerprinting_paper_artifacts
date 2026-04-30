@@ -1,0 +1,21 @@
+Analyzing the fingerprint distribution for P4-C: P3, Software Canvas, Accept Language (WINNT)-FPJSv2_Realistic
+  There are 402 total users
+  There are 276 unique users, or 68.6567% out of 402 users
+  Our cohort fitness score is 0.021447488923541497
+  Our cohort fitness score (HHI2, excl. singletons) is 0.2009322247417485
+  Our P50 (median cohort size, non-unique users) is 27
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   276          |   276        |   68.66 %
+  31                 |   1            |   31         |   7.71 %
+  29                 |   1            |   29         |   7.21 %
+  27                 |   1            |   27         |   6.72 %
+  25                 |   1            |   25         |   6.22 %
+  2                  |   4            |   8          |   1.99 %
+  3                  |   2            |   6          |   1.49 %
+
+
+ There are 402 total users
+ There are 276 unique users, or 68.6567% out of 402 users
+

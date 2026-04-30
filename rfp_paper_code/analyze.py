@@ -1,10 +1,9 @@
-#!python3.14t
+#!/usr/bin/env python3
 
 import os
 import sys
 if not os.environ.get('ANALYZE_VIA_WRAPPER'):
-    print("ERROR: analyze.py must be run via ./run.sh (ensures PYTHON_GIL=0).", file=sys.stderr)
-    sys.exit(1)
+    print("NOTE: For best performance, run via ./run.sh (disables the GIL on free-threaded Python).", file=sys.stderr)
 
 import gc
 import hashlib
@@ -47,7 +46,7 @@ from graphing import *
 from calculations import *
 from segmentation import *
 from smr import output_smr, output_ismr, output_ismrp, run_lmr_analysis, LMR_FINGERPRINTERS_DEFAULT, build_lmr_unit_lists
-from partition_worker import ismr_iteration_worker, ismrp_iteration_worker, min_set_combo_worker  # pinned workers
+from partition_worker import ismr_iteration_worker, ismrp_iteration_worker, min_set_combo_worker, minmetrics_prefix_worker, _attr_hash  # pinned workers
 from output import (
     visualize_metrics_aggregated, visualize_metrics_by_os,
     process_fingerprint_archiving, print_fingerprint_results,
@@ -237,13 +236,13 @@ def parse_args():
     )
     p.add_argument(
         "--start-day",
-        default="2026-03-25",
-        help="Start date inclusive (YYYY-MM-DD) [default: 2026-03-25]"
+        default="2026-02-13",
+        help="Start date inclusive (YYYY-MM-DD) [default: 2026-02-13]"
     )
     p.add_argument(
         "--end-day",
-        default="2026-04-17",
-        help="End date exclusive (YYYY-MM-DD) [default: 2026-04-17]"
+        default="2026-05-01",
+        help="End date exclusive (YYYY-MM-DD) [default: 2026-05-01]"
     )
     p.add_argument(
         "--skip-progress-bars",
@@ -267,7 +266,7 @@ def parse_args():
         "--cache-dir",
         default=None,
         metavar="DIR",
-        help="Data/cache directory (default: settings.DEFAULT_CACHE_DIR if it exists, else /work/sandbox-cache)"
+        help="Data/cache directory (default: settings.DEFAULT_CACHE_DIR)"
     )
     p.add_argument(
         "--schema",
@@ -344,56 +343,12 @@ def main():
     # Safeguards
     # =============================================================================
 
-    # 1. Schema must be 37
-    if args.schema != "37":
-        print(f"ERROR: --schema must be 37 (got {args.schema!r}). "
-              f"Omit --schema to use the default.", file=sys.stderr)
-        sys.exit(1)
-
-    # 2. No other python3.14t processes running
-    if not args.force:
-        _my_pid = os.getpid()
-        _other_procs = []
-        try:
-            for _pid_str in os.listdir('/proc'):
-                if not _pid_str.isdigit():
-                    continue
-                _pid = int(_pid_str)
-                if _pid == _my_pid:
-                    continue
-                try:
-                    with open(f'/proc/{_pid}/cmdline', 'rb') as _f:
-                        _cmdline = _f.read().replace(b'\x00', b' ').decode('utf-8', errors='replace').strip()
-                    if 'python3.14t' in _cmdline:
-                        _other_procs.append((_pid, _cmdline))
-                except (PermissionError, FileNotFoundError):
-                    continue
-        except FileNotFoundError:
-            pass  # /proc not available — skip check
-        if _other_procs:
-            print("ERROR: other python3.14t process(es) are running:", file=sys.stderr)
-            for _pid, _cmd in _other_procs:
-                print(f"  PID {_pid}: {_cmd[:120]}", file=sys.stderr)
-            print("Use --force to bypass this check.", file=sys.stderr)
-            sys.exit(1)
-
-    # 3. Cache must contain day data for 2026-03-30 (schema37) — confirms cache is populated
-    _cache_check_dir = args.cache_dir or next(
-        (p for p in [
-            DEFAULT_CACHE_DIR,
-            "/work/sandbox-cache",
-        ] if os.path.isdir(p)),
-        None,
-    )
+    # Cache directory check
+    _cache_check_dir = args.cache_dir or DEFAULT_CACHE_DIR
     if not _cache_check_dir or not os.path.isdir(_cache_check_dir):
-        print("ERROR: no cache directory found.", file=sys.stderr)
+        print(f"ERROR: cache directory not found: {_cache_check_dir!r}", file=sys.stderr)
+        print(f"  Use --cache-dir to specify location.", file=sys.stderr)
         sys.exit(1)
-    import glob as _glob
-    _day_sentinel = os.path.join(_cache_check_dir, "*", "days", "schema37", "2026-03-30")
-    if not _glob.glob(_day_sentinel):
-        print(f"WARNING: cache directory {_cache_check_dir!r} has no day data for "
-              f"2026-03-30 (schema37). Day caches will be fetched from BQ.", file=sys.stderr)
-        print(f"  Searched: {_day_sentinel}", file=sys.stderr)
 
     # =============================================================================
 
@@ -448,13 +403,6 @@ def main():
     if end_day <= start_day:
         print(f"ERROR: --end-day ({end_day}) must be after --start-day ({start_day})", file=sys.stderr)
         sys.exit(1)
-    _CANONICAL_START = date(2026, 3, 25)
-    _CANONICAL_END   = date(2026, 4, 17)
-    assert start_day == _CANONICAL_START, \
-        f"--start-day must be {_CANONICAL_START}, got {start_day}"
-    assert end_day == _CANONICAL_END, \
-        f"--end-day must be {_CANONICAL_END}, got {end_day}"
-
     all_days = []
     d = start_day
     while d < end_day:
@@ -472,12 +420,7 @@ def main():
     # --------------------------------------------------------------------------
     # Monkey-patch our modules so they use the right folders
     # --------------------------------------------------------------------------
-    _default_cache = next(
-        p for p in [
-            DEFAULT_CACHE_DIR,
-            "/work/sandbox-cache",
-        ] if os.path.isdir(p)
-    ) if not args.cache_dir else args.cache_dir
+    _default_cache = args.cache_dir or DEFAULT_CACHE_DIR
     config.ANALYSIS_FOLDER = _default_cache
     config.OUTPUT_FOLDER = args.output_folder
     set_unknown_extensions_path(config.OUTPUT_FOLDER)
@@ -930,18 +873,6 @@ def main():
         max_worker_threads = _raw_mwt
 
     # ----------------------------------------------------------
-    # Pre-fetch BQ row counts for cache validation (single query)
-    # ----------------------------------------------------------
-    if not args.no_cache and not args.rebuild_cache and not args.tiny:
-        print("Fetching BQ row counts for cache validation...")
-        t0_bq = time.time()
-        _bq_counts = query_bq_day_counts(platforms, args.schema, start_day, end_day, partition_width)
-        _bq_filtered_counts = query_bq_filtered_counts(platforms, args.schema, start_day, end_day, partition_width)
-        _bq_elapsed = time.time() - t0_bq
-        print(f"  BQ row counts: {len(_bq_counts)} day-partition entries, {len(_bq_filtered_counts)} filtered partition entries in {_bq_elapsed:.1f}s")
-        execution_time['bq_row_counts'] = _bq_elapsed
-
-    # ----------------------------------------------------------
     # Worker config: everything partition_worker() needs, as plain picklable
     # values.  Sent once to each worker process via the pool initializer.
     # ----------------------------------------------------------
@@ -1246,16 +1177,6 @@ def main():
       print(f"  Load breakdown (worker-seconds):    {_fmt_timings(load_keys)}")
       print(f"  Compute breakdown (worker-seconds): {_fmt_timings(compute_keys)}\n")
 
-      # Frozen dataset assertion — data range is locked, user count must not change
-      _EXPECTED_USERS = 24_871_013
-      if total_data_count != _EXPECTED_USERS:
-          print(f"\n{'='*60}", file=sys.stderr)
-          print(f"ABORT: Expected {_EXPECTED_USERS:,} users but got {total_data_count:,}.", file=sys.stderr)
-          print(f"The dataset (2026-03-25 to 2026-04-17) is frozen.", file=sys.stderr)
-          print(f"If the data has legitimately changed, update _EXPECTED_USERS in analyze.py.", file=sys.stderr)
-          print(f"{'='*60}", file=sys.stderr)
-          sys.exit(1)
-
       if total_data_count == 0:
           print("All partitions empty — nothing to process.")
 
@@ -1384,10 +1305,37 @@ def main():
             for _h, _c in _os_dict.items():
                 fingerprints[_fpn][_h] += _c
 
-    # Discover OS values from fingerprint data, or from ISMR cache metadata
+    # Discover OS values from fingerprint data, or from ISMR cache metadata,
+    # or from per-OS ISMR cache directories on disk (for minmetrics-only runs)
     _os_values = sorted(set().union(*(d.keys() for d in fingerprints_by_os.values()))) if fingerprints_by_os else []
     if not _os_values and _do_per_os and _ismr_cache_baselines_by_os:
         _os_values = sorted(set().union(*(d.keys() for d in _ismr_cache_baselines_by_os.values())))
+    if not _os_values and _do_per_os and script_config.get('perform_minmetrics_analysis'):
+        _mm_fp_disco = script_config.get('minmetrics_fingerprinter', '')
+        _mm_fp_disco_list = _mm_fp_disco if isinstance(_mm_fp_disco, (list, tuple)) else [_mm_fp_disco]
+        _disco_os = set()
+        for _fp_d in _mm_fp_disco_list:
+            _fp_safe_disco = safe_filename(_fp_d)
+            _disco_os.update(
+                d.split(f'{_fp_safe_disco}_os_')[1]
+                for d in os.listdir(_ismr_cache_base)
+                if d.startswith(f'{_fp_safe_disco}_os_')
+                   and os.path.isdir(os.path.join(_ismr_cache_base, d))
+            )
+        _os_values = sorted(_disco_os)
+    if not _os_values and _do_per_os and script_config.get('perform_iterative_minmetrics_analysis'):
+        _imm_fp_disco = script_config.get('iterative_minmetrics_fingerprinter', '')
+        _imm_fp_disco_list = _imm_fp_disco if isinstance(_imm_fp_disco, (list, tuple)) else [_imm_fp_disco]
+        _disco_os = set()
+        for _fp_d in _imm_fp_disco_list:
+            _fp_safe_disco = safe_filename(_fp_d)
+            _disco_os.update(
+                d.split(f'{_fp_safe_disco}_os_')[1]
+                for d in os.listdir(_ismr_cache_base)
+                if d.startswith(f'{_fp_safe_disco}_os_')
+                   and os.path.isdir(os.path.join(_ismr_cache_base, d))
+            )
+        _os_values = sorted(_disco_os)
     if _do_per_os and _os_values:
         config.log(f"  Per-OS analysis enabled for: {_os_values}")
 
@@ -2973,6 +2921,664 @@ def main():
                     metric_order=_os_metric_order)
 
         execution_time['min_set_combo'] = _combo_total_elapsed
+        gc.collect()
+
+    # =============================================================================
+    # MinMetrics — prefix uniqueness curve (K=1..N of SMR/ISMR ordering)
+    # =============================================================================
+    if script_config.get('perform_minmetrics_analysis'):
+        from min_set_per_user import (ISMR_TOP_METRICS, ISMR_TOP_METRICS_BY_OS,
+                                      SMR_TOP_METRICS, SMR_TOP_METRICS_BY_OS,
+                                      SMR_TOP_METRICS_AKAMAIV2, SMR_TOP_METRICS_BY_OS_AKAMAIV2,
+                                      SMR_TOP_METRICS_SIGNIFYD, SMR_TOP_METRICS_BY_OS_SIGNIFYD,
+                                      MINMETRICS_TOP_METRICS_FPJSV2, MINMETRICS_TOP_METRICS_BY_OS_FPJSV2,
+                                      MINMETRICS_TOP_METRICS_AKAMAIV2, MINMETRICS_TOP_METRICS_BY_OS_AKAMAIV2,
+                                      MINMETRICS_TOP_METRICS_SIGNIFYD, MINMETRICS_TOP_METRICS_BY_OS_SIGNIFYD)
+        import json as _json
+
+        _mm_source = script_config.get('minmetrics_metric_source', 'smr')
+        # Support single fingerprinter (string) or list of fingerprinters
+        _mm_fp_cfg = script_config['minmetrics_fingerprinter']
+        _mm_fp_list = _mm_fp_cfg if isinstance(_mm_fp_cfg, (list, tuple)) else [_mm_fp_cfg]
+        _mm_max_k_cfg = script_config.get('minmetrics_max_k')  # may be None
+
+        def _run_minmetrics(cache_dir, fp_label, file_suffix='', label='', metric_order=None, default_order=None):
+            if metric_order is None:
+                metric_order = default_order
+            _max_k = len(metric_order) if _mm_max_k_cfg is None else min(_mm_max_k_cfg, len(metric_order))
+            _prefix_metrics = metric_order[:_max_k]
+            _tag = f"MinMetrics{label}"
+
+            _cache_files = sorted(
+                os.path.join(cache_dir, f)
+                for f in os.listdir(cache_dir) if f.endswith('.pkl')
+            )
+
+            with open(os.path.join(cache_dir, '_meta.json')) as _mf:
+                _meta = _json.load(_mf)
+            _total_users = _meta.get('baseline_num_users', 0)
+            _baseline_unique = _meta.get('baseline_num_unique', 0)
+            _cache_metrics = set(_meta['metric_list'])
+            _missing = [m for m in _prefix_metrics if m not in _cache_metrics]
+            if _missing:
+                config.log(f"  {_tag}: metrics not in cache: {_missing}, skipping")
+                return 0
+
+            config.log_and_print(f"  {_tag}: {fp_label}, K=1..{_max_k}, "
+                                 f"{len(_cache_files)} partitions")
+
+            _start = time.time()
+
+            _mp_ctx = multiprocessing.get_context('forkserver')
+            _num_workers = min(parallel_workers, len(_cache_files))
+            _worker_config['_ismr_num_workers'] = _num_workers
+            _worker_config['_minmetrics_keep_metrics'] = set(_prefix_metrics)
+            _progress_queue = _mp_ctx.Queue()
+            _worker_config['progress_queue'] = _progress_queue
+            _executor = concurrent.futures.ProcessPoolExecutor(
+                max_workers=_num_workers, mp_context=_mp_ctx,
+                initializer=worker_init, initargs=(_worker_config,))
+
+            _spill = os.path.join(config.ANALYSIS_FOLDER, '_minmetrics_spill')
+            if os.path.isdir(_spill):
+                shutil.rmtree(_spill)
+            os.makedirs(_spill, exist_ok=True)
+
+            _t_workers = 0.0
+            _t_merge = 0.0
+            _k_unique = [0] * (_max_k + 1)
+
+            try:
+                _display = ProgressDisplay(
+                    tty=sys.__stderr__, total_partitions=len(_cache_files),
+                    enabled=False if args.skip_progress_bars else None)
+                _display.start()
+
+                # Custom bridge that also increments display.completed on
+                # 'part_done' events from workers so the outer bar tracks
+                # actual partition progress (not worker completions).
+                def _mm_bridge(q, display, slots, stop_event):
+                    import queue as _queue_mod
+                    while not stop_event.is_set() or not q.empty():
+                        try:
+                            msg = q.get(timeout=0.05)
+                        except _queue_mod.Empty:
+                            continue
+                        except Exception:
+                            continue
+                        slot_idx, event, *args = msg
+                        if event == 'part_done':
+                            display.completed += 1
+                            continue
+                        if slot_idx >= len(slots):
+                            continue
+                        slot = slots[slot_idx]
+                        if event == 'start':
+                            slot._start(*args)
+                        elif event == 'advance':
+                            slot.advance_phase(*args)
+                        elif event == 'rename':
+                            slot.rename_phase(*args)
+                        elif event == 'update':
+                            slot.update_progress(args[0])
+                        elif event == 'rss':
+                            slot.rss_mb = args[0]
+                        elif event == 'finish':
+                            slot.finish()
+
+                _bridge_stop = threading.Event()
+                _bridge_thread = threading.Thread(
+                    target=_mm_bridge,
+                    args=(_progress_queue, _display, _display.slots, _bridge_stop),
+                    daemon=True, name='minmetrics-progress-bridge',
+                )
+                _bridge_thread.start()
+
+                _futures = [
+                    _executor.submit(
+                        minmetrics_prefix_worker, wid, _cache_files,
+                        _prefix_metrics, _spill, slot_idx=wid
+                    )
+                    for wid in range(_num_workers)
+                ]
+
+                _timings = []
+                for fut in concurrent.futures.as_completed(_futures):
+                    _res = fut.result()
+                    if isinstance(_res, dict):
+                        _timings.append(_res)
+
+                _bridge_stop.set()
+                _bridge_thread.join(timeout=2)
+                _display.stop()
+
+                if _timings:
+                    _avg = lambda k: sum(t[k] for t in _timings) / len(_timings)
+                    _mx = lambda k: max(t[k] for t in _timings)
+                    config.log(f"      workers: load={_avg('t_load'):.1f}s "
+                               f"hash={_avg('t_hash'):.1f}s "
+                               f"xor={_avg('t_xor'):.1f}s "
+                               f"spill={_avg('t_spill'):.1f}s (avg) | "
+                               f"max xor={_mx('t_xor'):.1f}s")
+
+                _t_workers = time.time() - _start
+
+                # Merge per-K from disk (threaded over K values)
+                _t_merge_start = time.time()
+
+                import numpy as _np
+
+                def _merge_k(_k, _sp=_spill):
+                    """Sum counts for all (partition, K) spill files; return
+                    the number of fingerprints whose total count == 1."""
+                    _k_dir = os.path.join(_sp, f"k{_k:03d}")
+                    if not os.path.isdir(_k_dir):
+                        return (_k, 0)
+                    _all_vals = []
+                    _all_cnts = []
+                    for _pf in os.listdir(_k_dir):
+                        if _pf.endswith('.npz'):
+                            with _np.load(os.path.join(_k_dir, _pf)) as _d:
+                                _all_vals.append(_d['values'])
+                                _all_cnts.append(_d['counts'])
+                    if not _all_vals:
+                        return (_k, 0)
+                    values = _np.concatenate(_all_vals)
+                    counts = _np.concatenate(_all_cnts).astype(_np.int64)
+                    # Group by value; sum counts per group.
+                    _unique_vals, _inv = _np.unique(values, return_inverse=True)
+                    _summed = _np.bincount(_inv, weights=counts).astype(_np.int64)
+                    return (_k, int((_summed == 1).sum()))
+
+                _k_values = list(range(1, _max_k + 1))
+                _merge_pbar = tqdm.tqdm(total=len(_k_values),
+                                        desc=f"    Merging MinMetrics",
+                                        unit="K", file=config.terminal)
+                # Serial merge — np.unique on concatenated partition arrays
+                # can peak at a few hundred MB per K; don't multiply by parallel.
+                for _k in _k_values:
+                    _k2, _unique = _merge_k(_k)
+                    _k_unique[_k2] = _unique
+                    _merge_pbar.update(1)
+                _merge_pbar.close()
+                _t_merge = time.time() - _t_merge_start
+
+                shutil.rmtree(_spill, ignore_errors=True)
+            finally:
+                _executor.shutdown(wait=False)
+
+            _elapsed = time.time() - _start
+            config.log_and_print(
+                f"  {_tag} complete [{_elapsed:.1f}s: "
+                f"workers={_t_workers:.1f}s merge={_t_merge:.1f}s]")
+
+            # Write CSV + txt output
+            _sfx = file_suffix
+            _txt_path = os.path.join(config.OUTPUT_FOLDER, f"minmetrics{_sfx}.txt")
+            _csv_path = os.path.join(config.OUTPUT_FOLDER, f"minmetrics{_sfx}.csv")
+
+            with open(_csv_path, 'w', newline='') as _cf:
+                writer = csv.writer(_cf)
+                writer.writerow(['K', 'MetricAdded', 'UniqueFingerprints',
+                                 'PercentUnique', 'NewlyUnique', 'CumulativeNewlyUnique'])
+                _prev = 0
+                _cumul = 0
+                for _k in range(1, _max_k + 1):
+                    _unique = _k_unique[_k]
+                    _pct = (_unique / _total_users * 100) if _total_users else 0
+                    _new = _unique - _prev
+                    _cumul += _new
+                    writer.writerow([_k, _prefix_metrics[_k-1], _unique,
+                                     f"{_pct:.4f}", _new, _cumul])
+                    _prev = _unique
+
+            with open(_txt_path, 'w') as _of:
+                _of.write(f"MinMetrics: {fp_label} ({_mm_source.upper()} ordering)\n")
+                _of.write(f"{'=' * 72}\n")
+                _of.write(f"Total users: {_total_users:,}\n")
+                if _total_users:
+                    _of.write(f"Baseline unique (all fingerprinter metrics): "
+                              f"{_baseline_unique:,} "
+                              f"({_baseline_unique / _total_users * 100:.2f}%)\n")
+                _of.write(f"Max K: {_max_k}\n")
+                _of.write(f"Elapsed: {_elapsed:.1f}s\n\n")
+                _of.write(f"{'K':>3}  {'Metric added':<40}  {'Unique':>12}  "
+                          f"{'% unique':>9}  {'+New':>10}\n")
+                _of.write(f"{'-' * 85}\n")
+                _prev = 0
+                for _k in range(1, _max_k + 1):
+                    _unique = _k_unique[_k]
+                    _pct = (_unique / _total_users * 100) if _total_users else 0
+                    _new = _unique - _prev
+                    _metric_name = _prefix_metrics[_k-1][:40]
+                    _of.write(f"{_k:>3}  {_metric_name:<40}  {_unique:>12,}  "
+                              f"{_pct:>8.3f}%  {_new:>10,}\n")
+                    _prev = _unique
+
+            config.log(f"  Wrote {_txt_path}")
+            config.log(f"  Wrote {_csv_path}")
+            return _elapsed
+
+        _mm_total_elapsed = 0
+
+        for _mm_fp in _mm_fp_list:
+            # Select ordering for this fingerprinter
+            if _mm_source == 'minmetrics':
+                if 'Signifyd' in _mm_fp:
+                    _MM_TOP = MINMETRICS_TOP_METRICS_SIGNIFYD
+                    _MM_TOP_BY_OS = MINMETRICS_TOP_METRICS_BY_OS_SIGNIFYD
+                elif 'AkamaiV2' in _mm_fp:
+                    _MM_TOP = MINMETRICS_TOP_METRICS_AKAMAIV2
+                    _MM_TOP_BY_OS = MINMETRICS_TOP_METRICS_BY_OS_AKAMAIV2
+                else:
+                    _MM_TOP = MINMETRICS_TOP_METRICS_FPJSV2
+                    _MM_TOP_BY_OS = MINMETRICS_TOP_METRICS_BY_OS_FPJSV2
+                config.log(f"  MinMetrics [{_mm_fp}]: minmetrics (marginal contribution) ordering ({len(_MM_TOP)} metrics)")
+            elif _mm_source == 'smr':
+                if 'Signifyd' in _mm_fp:
+                    _MM_TOP = SMR_TOP_METRICS_SIGNIFYD
+                    _MM_TOP_BY_OS = SMR_TOP_METRICS_BY_OS_SIGNIFYD
+                elif 'AkamaiV2' in _mm_fp:
+                    _MM_TOP = SMR_TOP_METRICS_AKAMAIV2
+                    _MM_TOP_BY_OS = SMR_TOP_METRICS_BY_OS_AKAMAIV2
+                else:
+                    _MM_TOP = SMR_TOP_METRICS
+                    _MM_TOP_BY_OS = SMR_TOP_METRICS_BY_OS
+                config.log(f"  MinMetrics [{_mm_fp}]: SMR ordering ({len(_MM_TOP)} metrics)")
+            else:
+                _MM_TOP = ISMR_TOP_METRICS
+                _MM_TOP_BY_OS = ISMR_TOP_METRICS_BY_OS
+                config.log(f"  MinMetrics [{_mm_fp}]: ISMR ordering")
+
+            # Find global ISMR cache
+            _mm_cache_dir = _valid_ismr_caches.get(_mm_fp)
+            if not _mm_cache_dir:
+                _mm_cache_dir = os.path.join(config.ANALYSIS_FOLDER, '_ismr_cache', safe_filename(_mm_fp))
+            if not os.path.isdir(_mm_cache_dir):
+                print(f"ERROR: No ISMR cache for {_mm_fp}", file=sys.stderr)
+                sys.exit(1)
+
+            _fp_sfx = f"_{safe_filename(_mm_fp)}"
+
+            if _os_filter:
+                _fp_safe = safe_filename(_mm_fp)
+                _os_cache_dir = os.path.join(
+                    _ismr_cache_base, f"{_fp_safe}_os_{safe_filename(_os_filter)}")
+                if not os.path.isdir(_os_cache_dir):
+                    print(f"ERROR: No per-OS ISMR cache for {_mm_fp} ({_os_filter})",
+                          file=sys.stderr)
+                    sys.exit(1)
+                _os_sfx = f"{_fp_sfx}_os_{safe_filename(_os_filter)}"
+                _os_metric_order = _MM_TOP_BY_OS.get(_os_filter)
+                if _os_metric_order:
+                    config.log(f"  MinMetrics [{_mm_fp}][{_os_filter}]: per-OS ordering "
+                               f"({len(_os_metric_order)})")
+                else:
+                    config.log(f"  MinMetrics [{_mm_fp}][{_os_filter}]: no per-OS ordering, "
+                               f"using global")
+                _mm_total_elapsed += _run_minmetrics(
+                    _os_cache_dir, f"{_mm_fp} ({_os_filter})",
+                    file_suffix=_os_sfx, label=f" [{_mm_fp}][{_os_filter}]",
+                    metric_order=_os_metric_order, default_order=_MM_TOP)
+            elif _do_global:
+                _mm_total_elapsed += _run_minmetrics(
+                    _mm_cache_dir, _mm_fp,
+                    file_suffix=_fp_sfx, default_order=_MM_TOP)
+
+            if not _os_filter and _do_per_os:
+                _fp_safe = safe_filename(_mm_fp)
+                for _os_val in _os_values:
+                    _os_cache_dir = os.path.join(
+                        _ismr_cache_base, f"{_fp_safe}_os_{safe_filename(_os_val)}")
+                    if not os.path.isdir(_os_cache_dir):
+                        config.log(f"  MinMetrics [{_mm_fp}]: no per-OS cache for {_os_val}, skipping")
+                        continue
+                    _os_sfx = f"{_fp_sfx}_os_{safe_filename(_os_val)}"
+                    if script_config.get('minmetrics_per_os_use_overall_metrics'):
+                        _os_metric_order = None
+                        config.log(f"  MinMetrics [{_mm_fp}][{_os_val}]: using overall ordering")
+                    else:
+                        _os_metric_order = _MM_TOP_BY_OS.get(_os_val)
+                        if _os_metric_order:
+                            config.log(f"  MinMetrics [{_mm_fp}][{_os_val}]: per-OS ordering "
+                                       f"({len(_os_metric_order)})")
+                        else:
+                            config.log(f"  MinMetrics [{_mm_fp}][{_os_val}]: no per-OS ordering, "
+                                       f"using global")
+                    _mm_total_elapsed += _run_minmetrics(
+                        _os_cache_dir, f"{_mm_fp} ({_os_val})",
+                        file_suffix=_os_sfx, label=f" [{_mm_fp}][{_os_val}]",
+                        metric_order=_os_metric_order, default_order=_MM_TOP)
+
+        execution_time['minmetrics'] = _mm_total_elapsed
+        gc.collect()
+
+    # =============================================================================
+    # Iterative MinMetrics — greedy forward selection (K=1..N)
+    # =============================================================================
+    if script_config.get('perform_iterative_minmetrics_analysis'):
+        import numpy as _np
+        import json as _imm_json
+
+        _imm_fp_cfg = script_config['iterative_minmetrics_fingerprinter']
+        _imm_fp_list = _imm_fp_cfg if isinstance(_imm_fp_cfg, (list, tuple)) else [_imm_fp_cfg]
+        _imm_max_k_cfg = script_config.get('iterative_minmetrics_max_k')
+
+        _IMM_CACHE_FILENAME = '_iterative_minmetrics.npy'
+        _IMM_META_FILENAME = '_iterative_minmetrics_meta.json'
+
+        def _load_ismr_as_numpy(cache_dir):
+            """Load ISMR cache as a (n_users, n_metrics) uint64 array.
+
+            Uses a cached .npy file if available; otherwise loads from .pkl
+            files, hashes distinct values per column (fast), and saves the
+            .npy cache for next time.
+            """
+            with open(os.path.join(cache_dir, '_meta.json')) as _mf:
+                _meta = _imm_json.load(_mf)
+            _metric_names = _meta['metric_list']
+            _n_metrics = len(_metric_names)
+
+            # Check for pre-built numpy cache
+            _npy_path = os.path.join(cache_dir, _IMM_CACHE_FILENAME)
+            _npy_meta_path = os.path.join(cache_dir, _IMM_META_FILENAME)
+            if os.path.exists(_npy_path) and os.path.exists(_npy_meta_path):
+                with open(_npy_meta_path) as _nmf:
+                    _npy_meta = _imm_json.load(_nmf)
+                if _npy_meta.get('metric_list') == _metric_names:
+                    _t0 = time.time()
+                    _data = _np.load(_npy_path)
+                    config.log_and_print(
+                        f"    Loaded cached numpy array {_data.shape} "
+                        f"({_data.nbytes / 1e9:.1f}GB) in {time.time()-_t0:.1f}s")
+                    return _metric_names, _data, _meta
+
+            # No cache — build from .pkl files
+            _pkl_files = sorted(
+                os.path.join(cache_dir, f)
+                for f in os.listdir(cache_dir) if f.endswith('.pkl')
+            )
+
+            # Phase 1: Load partition rows
+            _all_rows = []
+            _t0 = time.time()
+            for _pi, _pf in enumerate(_pkl_files):
+                with open(_pf, 'rb') as _f:
+                    _cached = pickle.load(_f)
+                _all_rows.extend(_cached['rows'])
+                _prev_pct = _pi * 100 // len(_pkl_files)
+                _curr_pct = (_pi + 1) * 100 // len(_pkl_files)
+                if _curr_pct // 20 > _prev_pct // 20 or _pi == len(_pkl_files) - 1:
+                    _ts = time.strftime("%H:%M:%S")
+                    print(f"    [{_ts}] Loading: {_pi+1}/{len(_pkl_files)} partitions "
+                          f"({_curr_pct}%), {len(_all_rows):,} users")
+            _n_users = len(_all_rows)
+            config.log_and_print(f"    Loaded {_n_users:,} users from "
+                                 f"{len(_pkl_files)} partitions in {time.time()-_t0:.1f}s")
+
+            # Phase 2: Hash columns — distinct-value optimization
+            # For each column, hash only distinct values then map via lookup.
+            _data = _np.zeros((_n_users, _n_metrics), dtype=_np.uint64)
+            _t0 = time.time()
+            _max_threads = min(64, (os.cpu_count() or 8) * 4)
+
+            # Track per-column progress: 0=queued, 1=collecting, 2=hashing, 3=mapping, 4=done
+            _col_status = {}  # {j: (phase_str, n_distinct)}
+            _col_lock = threading.Lock()
+
+            def _hash_col_fast(_args):
+                _j, _m = _args
+                with _col_lock:
+                    _col_status[_j] = ('collect', 0)
+                _vals = [_all_rows[_i].get(_m, '') for _i in range(_n_users)]
+                _distinct = set(_vals)
+                with _col_lock:
+                    _col_status[_j] = ('hash', len(_distinct))
+                _lookup = {v: _attr_hash(_m, v) for v in _distinct}
+                with _col_lock:
+                    _col_status[_j] = ('map', len(_distinct))
+                _col = _np.array([_lookup[v] for v in _vals], dtype=_np.uint64)
+                return _j, _col, len(_distinct)
+
+            config.log_and_print(f"    Hashing {_n_metrics} columns x {_n_users:,} users "
+                                 f"({_max_threads} threads, distinct-value optimization)...")
+            _hash_done = 0
+            _total_distinct = 0
+            _hash_t_last = time.time()
+            with concurrent.futures.ThreadPoolExecutor(max_workers=_max_threads) as _tp:
+                _hash_futs = {_tp.submit(_hash_col_fast, (_j, _m)): _j
+                              for _j, _m in enumerate(_metric_names)}
+                for _fut in concurrent.futures.as_completed(_hash_futs):
+                    _j, _col, _n_dist = _fut.result()
+                    _data[:, _j] = _col
+                    _hash_done += 1
+                    _total_distinct += _n_dist
+                    _now = time.time()
+                    # Report every completion or every 5s
+                    if _now - _hash_t_last >= 5 or _hash_done == _n_metrics:
+                        _hash_t_last = _now
+                        with _col_lock:
+                            _active = sum(1 for s, _ in _col_status.values() if s != 'done')
+                        _ts = time.strftime("%H:%M:%S")
+                        _elapsed = _now - _t0
+                        print(f"    [{_ts}] Hashing: {_hash_done}/{_n_metrics} done, "
+                              f"{_active} active [{_elapsed:.0f}s]")
+                    with _col_lock:
+                        _col_status[_j] = ('done', _n_dist)
+            config.log_and_print(
+                f"    Hashed {_n_metrics} columns in {time.time()-_t0:.1f}s "
+                f"({_data.nbytes / 1e9:.1f}GB, {_total_distinct:,} distinct values "
+                f"vs {_n_users * _n_metrics:,} total)")
+            del _all_rows
+
+            # Save numpy cache for future runs
+            try:
+                _np.save(_npy_path, _data)
+                with open(_npy_meta_path, 'w') as _nmf:
+                    _imm_json.dump({'metric_list': _metric_names}, _nmf)
+                config.log_and_print(f"    Saved numpy cache: {_npy_path}")
+            except OSError as _e:
+                config.log(f"    Warning: could not save numpy cache: {_e}")
+
+            return _metric_names, _data, _meta
+
+        def _greedy_select(_metric_names, _data, _max_k):
+            """Greedy forward selection with threaded candidate evaluation."""
+            _n_users, _n_metrics = _data.shape
+            _max_k = min(_max_k or _n_metrics, _n_metrics)
+            _current_xor = _np.zeros(_n_users, dtype=_np.uint64)
+            _remaining = set(range(_n_metrics))
+            _results = []
+            _prev_unique = 0
+            _greedy_threads = min(32, (os.cpu_count() or 8) * 2)
+
+            _cand_done = 0
+            _cand_lock = threading.Lock()
+
+            def _eval_candidate(_idx):
+                """Evaluate one candidate — count singleton fingerprints."""
+                nonlocal _cand_done
+                _tentative = _current_xor ^ _data[:, _idx]
+                _, _counts = _np.unique(_tentative, return_counts=True)
+                _result = (_idx, int((_counts == 1).sum()))
+                with _cand_lock:
+                    _cand_done += 1
+                return _result
+
+            config.log_and_print(f"    Greedy selection: {_max_k} rounds, "
+                                 f"{_greedy_threads} eval threads")
+            _greedy_t0 = time.time()
+
+            for _step in range(_max_k):
+                _t0 = time.time()
+                _n_remaining = len(_remaining)
+                _cand_done = 0
+
+                # Progress reporter thread for this round
+                _round_stop = threading.Event()
+                def _report_round_progress():
+                    while not _round_stop.wait(3.0):
+                        with _cand_lock:
+                            _d = _cand_done
+                        if _d > 0 and _d < _n_remaining:
+                            _ts = time.strftime("%H:%M:%S")
+                            _elapsed = time.time() - _t0
+                            _rate = _d / _elapsed if _elapsed > 0 else 0
+                            _eta = (_n_remaining - _d) / _rate if _rate > 0 else 0
+                            print(f"      [{_ts}] K={_step+1}: "
+                                  f"{_d}/{_n_remaining} candidates "
+                                  f"({_rate:.1f}/s, ~{_eta:.0f}s left)", flush=True)
+                _report_thread = threading.Thread(target=_report_round_progress, daemon=True)
+                _report_thread.start()
+
+                # Evaluate all remaining candidates in parallel
+                _best_idx = -1
+                _best_unique = -1
+                with concurrent.futures.ThreadPoolExecutor(
+                        max_workers=_greedy_threads) as _tp:
+                    for _idx, _n_unique in _tp.map(
+                            _eval_candidate, _remaining):
+                        if _n_unique > _best_unique:
+                            _best_unique = _n_unique
+                            _best_idx = _idx
+
+                _round_stop.set()
+
+                _newly = _best_unique - _prev_unique
+                _results.append((_metric_names[_best_idx], _best_unique, _newly))
+                _current_xor ^= _data[:, _best_idx]
+                _remaining.remove(_best_idx)
+                _prev_unique = _best_unique
+                _elapsed_step = time.time() - _t0
+                _total_elapsed = time.time() - _greedy_t0
+
+                _pct = 100 * _best_unique / _n_users
+                _ts = time.strftime("%H:%M:%S")
+                print(f"    [{_ts}] K={_step+1:3d}/{_max_k}: "
+                      f"{_metric_names[_best_idx]:40s} "
+                      f"+{_newly:>10,} ({_pct:5.1f}%) "
+                      f"[{_elapsed_step:.1f}s round, {_total_elapsed:.0f}s total]")
+                config.log(f"    K={_step+1:3d}: {_metric_names[_best_idx]:45s} "
+                           f"unique={_best_unique:>10,} ({_pct:5.1f}%) "
+                           f"+{_newly:>10,}  [{_elapsed_step:.1f}s]")
+
+                if _newly == 0 or not _remaining:
+                    for _idx in sorted(_remaining):
+                        _results.append((_metric_names[_idx], _best_unique, 0))
+                    break
+
+            return _results
+
+        def _run_iterative_mm(_cache_dir, _fp_label, file_suffix='', label=''):
+            _tag = f"IterativeMinMetrics{label}"
+            config.log_and_print(f"  {_tag}: {_fp_label}")
+            _start = time.time()
+
+            _metric_names, _data, _meta = _load_ismr_as_numpy(_cache_dir)
+            _mk = _imm_max_k_cfg or len(_metric_names)
+            _total_users = _meta.get('baseline_num_users', 0)
+            _baseline_unique = _meta.get('baseline_num_unique', 0)
+
+            config.log(f"    {_data.shape[0]:,} users x {_data.shape[1]} metrics "
+                       f"({_data.nbytes / 1e9:.1f}GB), max_k={_mk}")
+
+            _results = _greedy_select(_metric_names, _data, _mk)
+            del _data
+            gc.collect()
+
+            # Write CSV
+            _csv_path = os.path.join(config.OUTPUT_FOLDER,
+                                     f"iterative_minmetrics{file_suffix}.csv")
+            with open(_csv_path, 'w', newline='') as _cf:
+                _w = csv.writer(_cf)
+                _w.writerow(['K', 'MetricAdded', 'UniqueFingerprints',
+                             'PercentUnique', 'NewlyUnique', 'CumulativeNewlyUnique'])
+                _cumul = 0
+                for _k, (_metric, _unique, _newly) in enumerate(_results, 1):
+                    _pct = (100 * _unique / _total_users) if _total_users else 0
+                    _cumul += _newly
+                    _w.writerow([_k, _metric, _unique, f"{_pct:.4f}", _newly, _cumul])
+
+            # Write TXT
+            _txt_path = os.path.join(config.OUTPUT_FOLDER,
+                                     f"iterative_minmetrics{file_suffix}.txt")
+            with open(_txt_path, 'w') as _of:
+                _of.write(f"Iterative MinMetrics (Greedy): {_fp_label}\n")
+                _of.write(f"{'=' * 85}\n")
+                _of.write(f"Total users: {_total_users:,}\n")
+                if _total_users:
+                    _of.write(f"Baseline unique (all metrics): {_baseline_unique:,} "
+                              f"({100 * _baseline_unique / _total_users:.2f}%)\n")
+                _of.write(f"Max K: {len(_results)}\n\n")
+                _of.write(f"  {'K':>3s}  {'Metric added':45s} {'Unique':>12s} "
+                          f"{'% unique':>9s}  {'+New':>12s}\n")
+                _of.write(f"  {'-' * 85}\n")
+                for _k, (_metric, _unique, _newly) in enumerate(_results, 1):
+                    _pct = (100 * _unique / _total_users) if _total_users else 0
+                    _of.write(f"  {_k:3d}  {_metric:45s} {_unique:>12,} "
+                              f"{_pct:>8.3f}%  {_newly:>+12,}\n")
+
+            # Write Python ordering
+            _py_path = os.path.join(config.OUTPUT_FOLDER,
+                                    f"iterative_minmetrics{file_suffix}_ordering.py")
+            with open(_py_path, 'w') as _pf:
+                _pf.write(f"# Iterative greedy MinMetrics ordering for {_fp_label}\n")
+                _pf.write(f"# Generated {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+                _pf.write(f"ITERATIVE_MINMETRICS_TOP_METRICS = [\n")
+                for _metric, _unique, _newly in _results:
+                    _pf.write(f"    '{_metric}',  # +{_newly:,}\n")
+                _pf.write(f"]\n")
+
+            _elapsed = time.time() - _start
+            config.log_and_print(f"  {_tag} complete [{_elapsed:.1f}s]")
+            config.log(f"  Wrote {_csv_path}")
+            config.log(f"  Wrote {_txt_path}")
+            config.log(f"  Wrote {_py_path}")
+            return _elapsed
+
+        _imm_total_elapsed = 0
+
+        for _imm_fp in _imm_fp_list:
+            _imm_cache_dir = _valid_ismr_caches.get(_imm_fp)
+            if not _imm_cache_dir:
+                _imm_cache_dir = os.path.join(_ismr_cache_base, safe_filename(_imm_fp))
+            if not os.path.isdir(_imm_cache_dir):
+                print(f"ERROR: No ISMR cache for {_imm_fp}", file=sys.stderr)
+                sys.exit(1)
+
+            _fp_sfx = f"_{safe_filename(_imm_fp)}"
+
+            if _os_filter:
+                _fp_safe = safe_filename(_imm_fp)
+                _os_cache_dir = os.path.join(
+                    _ismr_cache_base, f"{_fp_safe}_os_{safe_filename(_os_filter)}")
+                if not os.path.isdir(_os_cache_dir):
+                    print(f"ERROR: No per-OS ISMR cache for {_imm_fp} ({_os_filter})",
+                          file=sys.stderr)
+                    sys.exit(1)
+                _os_sfx = f"{_fp_sfx}_os_{safe_filename(_os_filter)}"
+                _imm_total_elapsed += _run_iterative_mm(
+                    _os_cache_dir, f"{_imm_fp} ({_os_filter})",
+                    file_suffix=_os_sfx, label=f" [{_imm_fp}][{_os_filter}]")
+            elif _do_global:
+                _imm_total_elapsed += _run_iterative_mm(
+                    _imm_cache_dir, _imm_fp, file_suffix=_fp_sfx)
+
+            if not _os_filter and _do_per_os:
+                _fp_safe = safe_filename(_imm_fp)
+                for _os_val in _os_values:
+                    _os_cache_dir = os.path.join(
+                        _ismr_cache_base, f"{_fp_safe}_os_{safe_filename(_os_val)}")
+                    if not os.path.isdir(_os_cache_dir):
+                        config.log(f"  IterativeMinMetrics: no per-OS cache for "
+                                   f"{_os_val}, skipping")
+                        continue
+                    _os_sfx = f"{_fp_sfx}_os_{safe_filename(_os_val)}"
+                    _imm_total_elapsed += _run_iterative_mm(
+                        _os_cache_dir, f"{_imm_fp} ({_os_val})",
+                        file_suffix=_os_sfx, label=f" [{_imm_fp}][{_os_val}]")
+
+        execution_time['iterative_minmetrics'] = _imm_total_elapsed
         gc.collect()
 
     if script_config['perform_logical_metric_removal_analysis'] and LMR_FP_NAMES:

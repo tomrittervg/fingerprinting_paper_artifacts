@@ -1,0 +1,46 @@
+============================================================
+viz_top_combo_by_os — Provenance Log
+Generated: 2026-04-30T15:12:10Z
+============================================================
+
+SOURCE DIRECTORIES: 30
+  ../../../sandbox-analyses/final-range/xx-minset_top10_smr_Android_final_1776513899
+  ../../../sandbox-analyses/final-range/xx-minset_top10_smr_Darwin_final_1776513586
+  ../../../sandbox-analyses/final-range/xx-minset_top10_smr_Linux_final_1776513323
+  ../../../sandbox-analyses/final-range/xx-minset_top10_smr_WINNT_final_1776515045
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Android_final_1776860685
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Darwin_final_1776862437
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_Linux_final_1776860278
+  ../../../sandbox-analyses/final-range/xx-minset_top11_smr_WINNT_final_1776862925
+  ../../../sandbox-analyses/final-range/xx-minset_top12_smr_Android_final_1776580814
+  ../../../sandbox-analyses/final-range/xx-minset_top12_smr_Darwin_final_1776583386
+  ../../../sandbox-analyses/final-range/xx-minset_top12_smr_Linux_final_1776584102
+  ../../../sandbox-analyses/final-range/xx-minset_top12_smr_WINNT_final_1776584707
+  ../../../sandbox-analyses/final-range/xx-minset_top13_smr_Android_final_1776588328
+  ../../../sandbox-analyses/final-range/xx-minset_top13_smr_Darwin_final_1776589692
+  ../../../sandbox-analyses/final-range/xx-minset_top13_smr_Linux_final_1776590086
+  ../../../sandbox-analyses/final-range/xx-minset_top13_smr_WINNT_final_1776590419
+  ../../../sandbox-analyses/final-range/xx-minset_top14_smr_Android_final_1776592215
+  ../../../sandbox-analyses/final-range/xx-minset_top14_smr_Darwin_final_1776593981
+  ../../../sandbox-analyses/final-range/xx-minset_top14_smr_Linux_final_1776594484
+  ../../../sandbox-analyses/final-range/xx-minset_top14_smr_WINNT_final_1776594918
+  ../../../sandbox-analyses/final-range/xx-minset_top5_smr_final_1776478478
+  ../../../sandbox-analyses/final-range/xx-minset_top7_smr_final_1776479067
+  ../../../sandbox-analyses/final-range/xx-minset_top8_smr_Android_final_1776572140
+  ../../../sandbox-analyses/final-range/xx-minset_top8_smr_Darwin_final_1776572599
+  ../../../sandbox-analyses/final-range/xx-minset_top8_smr_Linux_final_1776572717
+  ../../../sandbox-analyses/final-range/xx-minset_top8_smr_WINNT_final_1776572825
+  ../../../sandbox-analyses/final-range/xx-minset_top9_smr_Android_final_1776573607
+  ../../../sandbox-analyses/final-range/xx-minset_top9_smr_Darwin_final_1776574320
+  ../../../sandbox-analyses/final-range/xx-minset_top9_smr_Linux_final_1776574517
+  ../../../sandbox-analyses/final-range/xx-minset_top9_smr_WINNT_final_1776574684
+
+PER-OS DATA
+  Windows   baseline_unique=11,183,223  combos=637  sizes=[1, 2, 3, 4, 5]
+  macOS     baseline_unique=1,988,259  combos=637  sizes=[1, 2, 3, 4, 5]
+  Android   baseline_unique=6,710,305  combos=637  sizes=[1, 2, 3, 4, 5]
+  Linux     baseline_unique=1,728,649  combos=637  sizes=[1, 2, 3, 4, 5]
+
+OUTPUT
+  /home/user/code/gen_gfx/minset/viz_top_combo_by_os.png
+

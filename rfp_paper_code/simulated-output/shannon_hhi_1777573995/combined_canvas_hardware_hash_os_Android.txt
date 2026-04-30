@@ -1,0 +1,33 @@
+  combined_canvas_hardware_hash (Android)
+  ------------------------------------------------------------
+  Key                                                                 Count        % Cumulative %
+  -----------------------------------------------------------------------------------------------
+  8b51e31fa02bb074f28788b1a653d8aceba439e2254289ec689edc52df5c0adb       71   70.30%       70.30%
+  62999689c8a3039bd8c50f9b761f52769527559364c8a3cb2f38a9fc10ceface        2    1.98%       72.28%
+  bccbed0abb000a27897e4653da4a010704046cc746dc647c340f1eebc6fb31cb        2    1.98%       74.26%
+  cfbea91f2b7956b98146a1c6d35fa4ced7b9a3913a2ba78fda74d507c70ad311        1    0.99%       75.25%
+  a370a3384e15146cd56d900aaca2fd2c76e970ea724b2c15f925821cf6419389        1    0.99%       76.24%
+  2de2824f1e7f1f599524c5dc4c9f7ca6417918963b48ebd11d20f035b2d9b065        1    0.99%       77.23%
+  bc3ee1e4bd169864c8dbb6ddf09eb13ae548d611e634ffca94b6732151b7a125        1    0.99%       78.22%
+  c1f5345b1b9285763dcaa27b025857054d443d07f46cf4b2d64ec685b33bb84a        1    0.99%       79.21%
+  b93ad991cc7e0f1b8974eef019d9dcb35fffea3fc6e9bef8e164f6041c3da251        1    0.99%       80.20%
+  2eeaed07e76336d35a2d99e7d72bc47be253e043df650ca581ded0ffe79d5072        1    0.99%       81.19%
+  729772fd2b373f4fc69596e4e165cfcb96e0af3a197207a3a249d38b7eb39762        1    0.99%       82.18%
+  486b17dbe1502ab5f99da08862960a63319b936db795f0b186c575e66097e643        1    0.99%       83.17%
+  a4ff75a01c4768f4d14426be682ec039928412ad4362c92f11188bf1e345179c        1    0.99%       84.16%
+  3519d3fc90ba8ecaa069469dc46660645f6d95032538140a69f15035200ba098        1    0.99%       85.15%
+  c62a9646aca19e10b97b314e8dc3e8233b435a570981b96c169e3bb644b2f94b        1    0.99%       86.14%
+  03f374e9768069c80224bdc99264e01cb3e5c689150a3543f0d2be7210b07e17        1    0.99%       87.13%
+  e0aa5cbbd4b0ead54cd8c8e43fd13d05073f0d25cd356244d457c93cc472cca7        1    0.99%       88.12%
+  d4d907b9cab2bef7e1cd079e05aa24e4ba66a26c1adeeffb2d75371a2b484353        1    0.99%       89.11%
+  0dd0573dd19642edb9034e93d849335bf1735f2a6167f1f94ec44fcacfe6ce72        1    0.99%       90.10%
+  9f22afae3a60d267d6bbc6dafd6c74f1d5b51f1d00a8953cc298fdad1f979bc2        1    0.99%       91.09%
+  f2f3a62faf2d79298ddfecdfe63e49b9fe1b78d4db5952ece8e326ded225afb3        1    0.99%       92.08%
+  31f3e573e58e3681a48fe5414082d02b5ec46c0d94775b8aa3a86db1d1ddccab        1    0.99%       93.07%
+  97d7b34f8f033bba30c11ce4922170c731e2009a528ffc8ff59b6484c8e42e66        1    0.99%       94.06%
+  4475ba0d48ef9497dab9589b8cb71dcaafc8b54cfe947031fb16efacc61897cd        1    0.99%       95.05%
+  ee3660901f9b4a1f7e54086ef405345112786da92560b3c0bb11400de8c4c96d        1    0.99%       96.04%
+  5a1b5cf2c887198040a1113d6f1578e57962b6c72cb4c0df376b4543b74e08a6        1    0.99%       97.03%
+  15af8d8cf564f8f5d3fb3e8446394624aa6b4fef82f1d722dbe26935abe9dd7b        1    0.99%       98.02%
+  c8a6df23d5fe4cc67a659277287599d3a34386685c1169ff58104921bf3b1f21        1    0.99%       99.01%
+  803510eb0e865d3c371148adb04a05ca55e3ba370db1e2fb68facb06c55d837c        1    0.99%      100.00%

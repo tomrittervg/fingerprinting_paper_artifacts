@@ -1,0 +1,18 @@
+Analyzing the fingerprint distribution for P4-C: P3, Software Canvas (Darwin)-AkamaiV2_Realistic
+  There are 201 total users
+  There are 14 unique users, or 6.9652% out of 201 users
+  Our cohort fitness score is 0.6383752877404024
+  Our cohort fitness score (HHI2, excl. singletons) is 0.7371386084817981
+  Our P50 (median cohort size, non-unique users) is 159
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  159                |   1            |   159        |   79.1 %
+  22                 |   1            |   22         |   10.95 %
+  1                  |   14           |   14         |   6.97 %
+  2                  |   3            |   6          |   2.99 %
+
+
+ There are 201 total users
+ There are 14 unique users, or 6.9652% out of 201 users
+

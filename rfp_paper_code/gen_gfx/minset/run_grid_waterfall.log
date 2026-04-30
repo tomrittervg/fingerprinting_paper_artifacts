@@ -1,0 +1,19 @@
+============================================================
+grid_waterfall — Provenance Log
+Generated: 2026-04-30T15:10:05Z
+============================================================
+
+METADATA SOURCE
+  ../../../sandbox-analyses/final-range/shannon_hhi_canvasfillin_final_1776808022
+  Total users: 24,871,013
+    Android      8,914,105
+    Darwin       2,040,356
+    Linux        1,844,561
+    WINNT       12,071,991
+
+DATA DIRECTORIES
+  minset_top  ../../../sandbox-analyses/final-range/minset_top
+
+OUTPUT
+  /home/user/code/gen_gfx/minset/minset_waterfall_grid.png
+

@@ -1,0 +1,546 @@
+Started: 04/25/26 10:09:26 AM
+Reading data from:  Database
+Command line:  /home/tom/moz/fingerprinting-data/code/analyze.py -o /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic -c configs/iterative_minmetrics_signifyd.py --cache-dir /home/tom/moz/fingerprinting-data/sandbox-cache --per-os=true --force
+Writing to:    /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166
+Git hash:      7c24c3e
+Date range:    2026-03-25 to 2026-04-17 (23 day(s))
+Tiny Mode:    DISABLED
+Minimize Mode:    DISABLED
+Partition width:    2 (256 partitions)
+Config file:   configs/iterative_minmetrics_signifyd.py
+  --per-os=true overrides config per_os_analysis
+Script config:
+  browser_modes = False
+  calculate_metric_experiment_aggregated = False
+  calculate_metrics_aggregated = False
+  correlation_analysis = False
+  experiments = False
+  fingerprint_archiving = False
+  fingerprint_buckets = False
+  fingerprints = False
+  iterative_minmetrics_fingerprinter = 'Signifyd_Realistic'
+  iterative_minmetrics_max_k = None
+  max_procs = 16
+  max_threads_experiment_merging = 4
+  max_threads_graph_export = 1
+  max_worker_threads = None
+  metric_buckets = False
+  missing_font_sets = False
+  missing_fonts = False
+  per_os_analysis = True
+  perform_iterative_minmetrics_analysis = True
+  perform_iterative_single_metric_removal_analysis = False
+  perform_iterative_single_metric_replacement_analysis = False
+  perform_logical_metric_removal_analysis = False
+  perform_min_set_combo_analysis = False
+  perform_minmetrics_analysis = False
+  perform_segmentation_decision_tree = False
+  perform_segmentation_shitty = False
+  perform_single_metric_removal_analysis = False
+  print_x_by_os_aggregate_graphs = False
+  raw_rows_only = False
+Pattern Hash: 8loOOxf7c8E= - /home/tom/moz/fingerprinting-data/sandbox-cache/8loOOxf7c8E=
+
+684 metrics to visualize
+
+Fetching BQ row counts for cache validation...
+  BQ row counts: 11778 day-partition entries, 512 filtered partition entries in 7.9s
+  No partition processing needed — skipping worker pool
+  Per-OS analysis enabled for: ['Android', 'Darwin', 'Linux', 'WINNT']
+  IterativeMinMetrics: Signifyd_Realistic
+    Loaded cached numpy array (24871013, 82) (16.3GB) in 1.0s
+    24,871,013 users x 82 metrics (16.3GB), max_k=82
+    Greedy selection: 82 rounds, 32 eval threads
+    [10:09:38] K=  1/82: locale_accept_language                   +    91,130 (  0.4%) [2.7s round, 3s total]
+    K=  1: locale_accept_language                        unique=    91,130 (  0.4%) +    91,130  [2.7s]
+      [10:09:41] K=2: 73/81 candidates (24.3/s, ~0s left)
+    [10:09:41] K=  2/82: combined_css_colors_hash                 +   544,172 (  2.6%) [3.4s round, 6s total]
+    K=  2: combined_css_colors_hash                      unique=   635,302 (  2.6%) +   544,172  [3.4s]
+      [10:09:44] K=3: 59/80 candidates (19.7/s, ~1s left)
+    [10:09:45] K=  3/82: canvas_canvasdata08                      + 1,513,610 (  8.6%) [4.1s round, 10s total]
+    K=  3: canvas_canvasdata08                           unique= 2,148,912 (  8.6%) + 1,513,610  [4.1s]
+      [10:09:48] K=4: 40/79 candidates (13.3/s, ~3s left)
+    [10:09:50] K=  4/82: webgl_renderer                           + 1,994,671 ( 16.7%) [4.8s round, 15s total]
+    K=  4: webgl_renderer                                unique= 4,143,583 ( 16.7%) + 1,994,671  [4.8s]
+      [10:09:53] K=5: 32/78 candidates (10.7/s, ~4s left)
+    [10:09:56] K=  5/82: screen_primary_avail                     + 2,741,662 ( 27.7%) [5.8s round, 21s total]
+    K=  5: screen_primary_avail                          unique= 6,885,245 ( 27.7%) + 2,741,662  [5.8s]
+      [10:09:59] K=6: 32/77 candidates (10.7/s, ~4s left)
+      [10:10:02] K=6: 75/77 candidates (12.5/s, ~0s left)
+    [10:10:02] K=  6/82: intl_timezone_web                        + 2,874,307 ( 39.2%) [6.2s round, 27s total]
+    K=  6: intl_timezone_web                             unique= 9,759,552 ( 39.2%) + 2,874,307  [6.2s]
+      [10:10:05] K=7: 32/76 candidates (10.7/s, ~4s left)
+      [10:10:08] K=7: 74/76 candidates (12.3/s, ~0s left)
+    [10:10:08] K=  7/82: user_agent                               + 1,272,049 ( 44.4%) [6.3s round, 33s total]
+    K=  7: user_agent                                    unique=11,031,601 ( 44.4%) + 1,272,049  [6.3s]
+      [10:10:11] K=8: 32/75 candidates (10.7/s, ~4s left)
+      [10:10:14] K=8: 71/75 candidates (11.8/s, ~0s left)
+    [10:10:15] K=  8/82: hw_processor_count                       +   832,061 ( 47.7%) [6.5s round, 40s total]
+    K=  8: hw_processor_count                            unique=11,863,662 ( 47.7%) +   832,061  [6.5s]
+      [10:10:18] K=9: 32/74 candidates (10.7/s, ~4s left)
+      [10:10:21] K=9: 73/74 candidates (12.2/s, ~0s left)
+    [10:10:21] K=  9/82: combined_clientrects_range_gcr_hash      +   641,724 ( 50.3%) [6.2s round, 46s total]
+    K=  9: combined_clientrects_range_gcr_hash           unique=12,505,386 ( 50.3%) +   641,724  [6.2s]
+      [10:10:24] K=10: 32/73 candidates (10.7/s, ~4s left)
+    [10:10:27] K= 10/82: screen_web_pixel_ratio                   +   431,301 ( 52.0%) [6.0s round, 52s total]
+    K= 10: screen_web_pixel_ratio                        unique=12,936,687 ( 52.0%) +   431,301  [6.0s]
+      [10:10:30] K=11: 32/72 candidates (10.7/s, ~4s left)
+    [10:10:33] K= 11/82: storage_quota                            +   393,864 ( 53.6%) [6.1s round, 58s total]
+    K= 11: storage_quota                                 unique=13,330,551 ( 53.6%) +   393,864  [6.1s]
+      [10:10:36] K=12: 31/71 candidates (10.3/s, ~4s left)
+    [10:10:39] K= 12/82: intl_intl_locale                         +   305,410 ( 54.8%) [6.1s round, 64s total]
+    K= 12: intl_intl_locale                              unique=13,635,961 ( 54.8%) +   305,410  [6.1s]
+      [10:10:42] K=13: 31/70 candidates (10.3/s, ~4s left)
+      [10:10:45] K=13: 68/70 candidates (11.3/s, ~0s left)
+    [10:10:45] K= 13/82: screen_prefers_reduced_motion            +   253,241 ( 55.8%) [6.2s round, 70s total]
+    K= 13: screen_prefers_reduced_motion                 unique=13,889,202 ( 55.8%) +   253,241  [6.2s]
+      [10:10:48] K=14: 32/69 candidates (10.7/s, ~3s left)
+    [10:10:51] K= 14/82: hw_max_touch_points                      +   239,487 ( 56.8%) [5.8s round, 76s total]
+    K= 14: hw_max_touch_points                           unique=14,128,689 ( 56.8%) +   239,487  [5.8s]
+      [10:10:54] K=15: 30/68 candidates (10.0/s, ~4s left)
+    [10:10:57] K= 15/82: fonts_variant_h_nonallowlisted           +   211,843 ( 57.7%) [5.7s round, 82s total]
+    K= 15: fonts_variant_h_nonallowlisted                unique=14,340,532 ( 57.7%) +   211,843  [5.7s]
+      [10:11:00] K=16: 31/67 candidates (10.3/s, ~3s left)
+    [10:11:02] K= 16/82: audio_float_frequency_sum                +   198,143 ( 58.5%) [5.5s round, 87s total]
+    K= 16: audio_float_frequency_sum                     unique=14,538,675 ( 58.5%) +   198,143  [5.5s]
+      [10:11:05] K=17: 32/66 candidates (10.7/s, ~3s left)
+    [10:11:08] K= 17/82: prefs_general_globalprivacycontrol_enabled +   151,046 ( 59.1%) [5.5s round, 93s total]
+    K= 17: prefs_general_globalprivacycontrol_enabled    unique=14,689,721 ( 59.1%) +   151,046  [5.5s]
+      [10:11:11] K=18: 32/65 candidates (10.7/s, ~3s left)
+    [10:11:13] K= 18/82: screen_color_scheme                      +   138,496 ( 59.6%) [5.4s round, 98s total]
+    K= 18: screen_color_scheme                           unique=14,828,217 ( 59.6%) +   138,496  [5.4s]
+      [10:11:16] K=19: 32/64 candidates (10.7/s, ~3s left)
+    [10:11:19] K= 19/82: prefs_general_donottrack_enabled         +    93,245 ( 60.0%) [5.2s round, 103s total]
+    K= 19: prefs_general_donottrack_enabled              unique=14,921,462 ( 60.0%) +    93,245  [5.2s]
+      [10:11:22] K=20: 31/63 candidates (10.3/s, ~3s left)
+    [10:11:24] K= 20/82: canvas_canvasdata07                      +    46,643 ( 60.2%) [5.3s round, 109s total]
+    K= 20: canvas_canvasdata07                           unique=14,968,105 ( 60.2%) +    46,643  [5.3s]
+      [10:11:27] K=21: 28/62 candidates (9.3/s, ~4s left)
+    [10:11:29] K= 21/82: svg_bbox                                 +    42,741 ( 60.4%) [5.5s round, 114s total]
+    K= 21: svg_bbox                                      unique=15,010,846 ( 60.4%) +    42,741  [5.5s]
+      [10:11:32] K=22: 31/61 candidates (10.3/s, ~3s left)
+    [10:11:35] K= 22/82: svg_emoji_set                            +    35,066 ( 60.5%) [5.4s round, 120s total]
+    K= 22: svg_emoji_set                                 unique=15,045,912 ( 60.5%) +    35,066  [5.4s]
+      [10:11:38] K=23: 29/60 candidates (9.7/s, ~3s left)
+    [10:11:40] K= 23/82: hw_any_pointer_type                      +    33,547 ( 60.6%) [5.2s round, 125s total]
+    K= 23: hw_any_pointer_type                           unique=15,079,459 ( 60.6%) +    33,547  [5.2s]
+      [10:11:43] K=24: 30/59 candidates (10.0/s, ~3s left)
+    [10:11:45] K= 24/82: wgpu_missing_features                    +    18,284 ( 60.7%) [5.1s round, 130s total]
+    K= 24: wgpu_missing_features                         unique=15,097,743 ( 60.7%) +    18,284  [5.1s]
+      [10:11:48] K=25: 29/58 candidates (9.7/s, ~3s left)
+    [10:11:50] K= 25/82: screen_primary_orientation               +    14,322 ( 60.8%) [5.3s round, 135s total]
+    K= 25: screen_primary_orientation                    unique=15,112,065 ( 60.8%) +    14,322  [5.3s]
+      [10:11:53] K=26: 29/57 candidates (9.7/s, ~3s left)
+    [10:11:56] K= 26/82: canvas_canvasdata13_fingerprintjs2       +     9,693 ( 60.8%) [5.3s round, 140s total]
+    K= 26: canvas_canvasdata13_fingerprintjs2            unique=15,121,758 ( 60.8%) +     9,693  [5.3s]
+      [10:11:59] K=27: 28/56 candidates (9.3/s, ~3s left)
+    [10:12:01] K= 27/82: intl_timezone_offset_web                 +     8,995 ( 60.8%) [5.0s round, 145s total]
+    K= 27: intl_timezone_offset_web                      unique=15,130,753 ( 60.8%) +     8,995  [5.0s]
+      [10:12:04] K=28: 12/55 candidates (4.0/s, ~11s left)
+    [10:12:06] K= 28/82: hw_pointer_type                          +     6,684 ( 60.9%) [5.8s round, 151s total]
+    K= 28: hw_pointer_type                               unique=15,137,437 ( 60.9%) +     6,684  [5.8s]
+      [10:12:09] K=29: 32/54 candidates (10.7/s, ~2s left)
+    [10:12:11] K= 29/82: screen_primary_resolution                +     2,407 ( 60.9%) [4.8s round, 156s total]
+    K= 29: screen_primary_resolution                     unique=15,139,844 ( 60.9%) +     2,407  [4.8s]
+      [10:12:14] K=30: 32/53 candidates (10.7/s, ~2s left)
+    [10:12:16] K= 30/82: combined_css_fonts_hash                  +       959 ( 60.9%) [4.8s round, 161s total]
+    K= 30: combined_css_fonts_hash                       unique=15,140,803 ( 60.9%) +       959  [4.8s]
+      [10:12:19] K=31: 30/52 candidates (10.0/s, ~2s left)
+    [10:12:21] K= 31/82: prefs_cookiesenabled                     +       226 ( 60.9%) [4.8s round, 166s total]
+    K= 31: prefs_cookiesenabled                          unique=15,141,029 ( 60.9%) +       226  [4.8s]
+      [10:12:24] K=32: 31/51 candidates (10.3/s, ~2s left)
+    [10:12:26] K= 32/82: screen_inverted_colors                   +       216 ( 60.9%) [4.9s round, 170s total]
+    K= 32: screen_inverted_colors                        unique=15,141,245 ( 60.9%) +       216  [4.9s]
+      [10:12:29] K=33: 31/50 candidates (10.3/s, ~2s left)
+    [10:12:30] K= 33/82: fonts_variant_i_nonallowlisted           +       139 ( 60.9%) [4.7s round, 175s total]
+    K= 33: fonts_variant_i_nonallowlisted                unique=15,141,384 ( 60.9%) +       139  [4.7s]
+      [10:12:33] K=34: 32/49 candidates (10.7/s, ~2s left)
+    [10:12:35] K= 34/82: clientrects_emoji_font_family            +        77 ( 60.9%) [4.7s round, 180s total]
+    K= 34: clientrects_emoji_font_family                 unique=15,141,461 ( 60.9%) +        77  [4.7s]
+      [10:12:38] K=35: 30/48 candidates (10.0/s, ~2s left)
+    [10:12:40] K= 35/82: fonts_variant_i_allowlisted              +        69 ( 60.9%) [4.8s round, 185s total]
+    K= 35: fonts_variant_i_allowlisted                   unique=15,141,530 ( 60.9%) +        69  [4.8s]
+      [10:12:43] K=36: 32/47 candidates (10.7/s, ~1s left)
+    [10:12:44] K= 36/82: fonts_variant_f_allowlisted              +        60 ( 60.9%) [4.5s round, 189s total]
+    K= 36: fonts_variant_f_allowlisted                   unique=15,141,590 ( 60.9%) +        60  [4.5s]
+      [10:12:47] K=37: 31/46 candidates (10.3/s, ~1s left)
+    [10:12:49] K= 37/82: canvas_canvasdata01                      +        36 ( 60.9%) [4.5s round, 194s total]
+    K= 37: canvas_canvasdata01                           unique=15,141,626 ( 60.9%) +        36  [4.5s]
+      [10:12:52] K=38: 22/45 candidates (7.3/s, ~3s left)
+    [10:12:54] K= 38/82: canvas_canvasdata02                      +        19 ( 60.9%) [5.3s round, 199s total]
+    K= 38: canvas_canvasdata02                           unique=15,141,645 ( 60.9%) +        19  [5.3s]
+      [10:12:57] K=39: 25/44 candidates (8.3/s, ~2s left)
+    [10:12:59] K= 39/82: wgpu_maxstoragebufferspershaderstage     +        18 ( 60.9%) [5.1s round, 204s total]
+    K= 39: wgpu_maxstoragebufferspershaderstage          unique=15,141,663 ( 60.9%) +        18  [5.1s]
+      [10:13:02] K=40: 32/43 candidates (10.7/s, ~1s left)
+    [10:13:04] K= 40/82: combined_clientrects_emoji_hash          +        13 ( 60.9%) [4.5s round, 208s total]
+    K= 40: combined_clientrects_emoji_hash               unique=15,141,676 ( 60.9%) +        13  [4.5s]
+      [10:13:07] K=41: 32/42 candidates (10.7/s, ~1s left)
+    [10:13:08] K= 41/82: webgl_vendor                             +        11 ( 60.9%) [4.5s round, 213s total]
+    K= 41: webgl_vendor                                  unique=15,141,687 ( 60.9%) +        11  [4.5s]
+      [10:13:11] K=42: 32/41 candidates (10.7/s, ~1s left)
+    [10:13:13] K= 42/82: canvassoftware_canvasdata13_fingerprintjs2 +         7 ( 60.9%) [4.6s round, 217s total]
+    K= 42: canvassoftware_canvasdata13_fingerprintjs2    unique=15,141,694 ( 60.9%) +         7  [4.6s]
+      [10:13:16] K=43: 32/40 candidates (10.7/s, ~1s left)
+    [10:13:17] K= 43/82: fonts_variant_h_allowlisted              +         5 ( 60.9%) [4.3s round, 222s total]
+    K= 43: fonts_variant_h_allowlisted                   unique=15,141,699 ( 60.9%) +         5  [4.3s]
+      [10:13:20] K=44: 32/39 candidates (10.7/s, ~1s left)
+    [10:13:21] K= 44/82: prefs_use_document_colors                +         5 ( 60.9%) [4.4s round, 226s total]
+    K= 44: prefs_use_document_colors                     unique=15,141,704 ( 60.9%) +         5  [4.4s]
+      [10:13:24] K=45: 32/38 candidates (10.7/s, ~1s left)
+    [10:13:26] K= 45/82: platform                                 +         2 ( 60.9%) [4.2s round, 230s total]
+    K= 45: platform                                      unique=15,141,706 ( 60.9%) +         2  [4.2s]
+      [10:13:29] K=46: 32/37 candidates (10.7/s, ~0s left)
+    [10:13:30] K= 46/82: screen_primary_color_depth               +         1 ( 60.9%) [4.0s round, 235s total]
+    K= 46: screen_primary_color_depth                    unique=15,141,707 ( 60.9%) +         1  [4.0s]
+      [10:13:33] K=47: 32/36 candidates (10.7/s, ~0s left)
+    [10:13:34] K= 47/82: wgpu_maxvertexbuffers                    +         0 ( 60.9%) [4.2s round, 239s total]
+    K= 47: wgpu_maxvertexbuffers                         unique=15,141,707 ( 60.9%) +         0  [4.2s]
+  IterativeMinMetrics complete [240.2s]
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic.csv
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic.txt
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_ordering.py
+  IterativeMinMetrics [Signifyd_Realistic][Android]: Signifyd_Realistic (Android)
+    Loaded cached numpy array (8914105, 82) (5.8GB) in 0.4s
+    8,914,105 users x 82 metrics (5.8GB), max_k=82
+    Greedy selection: 82 rounds, 32 eval threads
+    [10:13:36] K=  1/82: locale_accept_language                   +    80,989 (  0.9%) [0.9s round, 1s total]
+    K=  1: locale_accept_language                        unique=    80,989 (  0.9%) +    80,989  [0.9s]
+    [10:13:37] K=  2/82: combined_css_colors_hash                 +   462,937 (  6.1%) [1.2s round, 2s total]
+    K=  2: combined_css_colors_hash                      unique=   543,926 (  6.1%) +   462,937  [1.2s]
+    [10:13:39] K=  3/82: canvas_canvasdata08                      + 1,265,698 ( 20.3%) [1.7s round, 4s total]
+    K=  3: canvas_canvasdata08                           unique= 1,809,624 ( 20.3%) + 1,265,698  [1.7s]
+    [10:13:41] K=  4/82: user_agent                               + 1,067,578 ( 32.3%) [2.0s round, 6s total]
+    K=  4: user_agent                                    unique= 2,877,202 ( 32.3%) + 1,067,578  [2.0s]
+    [10:13:43] K=  5/82: intl_timezone_web                        +   757,361 ( 40.8%) [1.9s round, 8s total]
+    K=  5: intl_timezone_web                             unique= 3,634,563 ( 40.8%) +   757,361  [1.9s]
+    [10:13:45] K=  6/82: screen_primary_avail                     +   638,941 ( 47.9%) [2.1s round, 10s total]
+    K=  6: screen_primary_avail                          unique= 4,273,504 ( 47.9%) +   638,941  [2.1s]
+    [10:13:47] K=  7/82: combined_clientrects_range_gcr_hash      +   306,141 ( 51.4%) [2.2s round, 12s total]
+    K=  7: combined_clientrects_range_gcr_hash           unique= 4,579,645 ( 51.4%) +   306,141  [2.2s]
+    [10:13:49] K=  8/82: webgl_renderer                           +   269,733 ( 54.4%) [2.0s round, 14s total]
+    K=  8: webgl_renderer                                unique= 4,849,378 ( 54.4%) +   269,733  [2.0s]
+    [10:13:51] K=  9/82: screen_web_pixel_ratio                   +   148,185 ( 56.1%) [2.1s round, 16s total]
+    K=  9: screen_web_pixel_ratio                        unique= 4,997,563 ( 56.1%) +   148,185  [2.1s]
+    [10:13:53] K= 10/82: storage_quota                            +   118,571 ( 57.4%) [2.2s round, 18s total]
+    K= 10: storage_quota                                 unique= 5,116,134 ( 57.4%) +   118,571  [2.2s]
+    [10:13:55] K= 11/82: screen_prefers_reduced_motion            +    67,170 ( 58.1%) [2.1s round, 20s total]
+    K= 11: screen_prefers_reduced_motion                 unique= 5,183,304 ( 58.1%) +    67,170  [2.1s]
+    [10:13:57] K= 12/82: prefs_general_globalprivacycontrol_enabled +    41,306 ( 58.6%) [2.0s round, 22s total]
+    K= 12: prefs_general_globalprivacycontrol_enabled    unique= 5,224,610 ( 58.6%) +    41,306  [2.0s]
+    [10:13:59] K= 13/82: canvas_canvasdata07                      +    40,232 ( 59.1%) [2.1s round, 25s total]
+    K= 13: canvas_canvasdata07                           unique= 5,264,842 ( 59.1%) +    40,232  [2.1s]
+    [10:14:02] K= 14/82: hw_any_pointer_type                      +    31,155 ( 59.4%) [2.1s round, 27s total]
+    K= 14: hw_any_pointer_type                           unique= 5,295,997 ( 59.4%) +    31,155  [2.1s]
+    [10:14:04] K= 15/82: screen_primary_orientation               +    13,446 ( 59.6%) [2.0s round, 29s total]
+    K= 15: screen_primary_orientation                    unique= 5,309,443 ( 59.6%) +    13,446  [2.0s]
+    [10:14:06] K= 16/82: svg_bbox                                 +    10,798 ( 59.7%) [2.0s round, 31s total]
+    K= 16: svg_bbox                                      unique= 5,320,241 ( 59.7%) +    10,798  [2.0s]
+    [10:14:07] K= 17/82: hw_processor_count                       +     3,559 ( 59.7%) [1.9s round, 33s total]
+    K= 17: hw_processor_count                            unique= 5,323,800 ( 59.7%) +     3,559  [1.9s]
+    [10:14:09] K= 18/82: intl_timezone_offset_web                 +     2,350 ( 59.7%) [1.9s round, 34s total]
+    K= 18: intl_timezone_offset_web                      unique= 5,326,150 ( 59.7%) +     2,350  [1.9s]
+    [10:14:11] K= 19/82: audio_float_frequency_sum                +     1,789 ( 59.8%) [1.8s round, 36s total]
+    K= 19: audio_float_frequency_sum                     unique= 5,327,939 ( 59.8%) +     1,789  [1.8s]
+    [10:14:13] K= 20/82: screen_color_scheme                      +     1,744 ( 59.8%) [1.9s round, 38s total]
+    K= 20: screen_color_scheme                           unique= 5,329,683 ( 59.8%) +     1,744  [1.9s]
+    [10:14:15] K= 21/82: svg_emoji_set                            +       563 ( 59.8%) [1.9s round, 40s total]
+    K= 21: svg_emoji_set                                 unique= 5,330,246 ( 59.8%) +       563  [1.9s]
+    [10:14:17] K= 22/82: prefs_general_donottrack_enabled         +       458 ( 59.8%) [1.8s round, 42s total]
+    K= 22: prefs_general_donottrack_enabled              unique= 5,330,704 ( 59.8%) +       458  [1.8s]
+    [10:14:19] K= 23/82: hw_max_touch_points                      +       302 ( 59.8%) [1.8s round, 44s total]
+    K= 23: hw_max_touch_points                           unique= 5,331,006 ( 59.8%) +       302  [1.8s]
+    [10:14:20] K= 24/82: intl_intl_locale                         +       275 ( 59.8%) [1.8s round, 45s total]
+    K= 24: intl_intl_locale                              unique= 5,331,281 ( 59.8%) +       275  [1.8s]
+    [10:14:22] K= 25/82: fonts_variant_h_nonallowlisted           +       269 ( 59.8%) [1.7s round, 47s total]
+    K= 25: fonts_variant_h_nonallowlisted                unique= 5,331,550 ( 59.8%) +       269  [1.7s]
+    [10:14:24] K= 26/82: screen_inverted_colors                   +       111 ( 59.8%) [1.7s round, 49s total]
+    K= 26: screen_inverted_colors                        unique= 5,331,661 ( 59.8%) +       111  [1.7s]
+    [10:14:26] K= 27/82: prefs_cookiesenabled                     +        89 ( 59.8%) [1.7s round, 51s total]
+    K= 27: prefs_cookiesenabled                          unique= 5,331,750 ( 59.8%) +        89  [1.7s]
+    [10:14:27] K= 28/82: canvas_canvasdata13_fingerprintjs2       +        68 ( 59.8%) [1.8s round, 52s total]
+    K= 28: canvas_canvasdata13_fingerprintjs2            unique= 5,331,818 ( 59.8%) +        68  [1.8s]
+    [10:14:29] K= 29/82: combined_css_fonts_hash                  +        62 ( 59.8%) [1.7s round, 54s total]
+    K= 29: combined_css_fonts_hash                       unique= 5,331,880 ( 59.8%) +        62  [1.7s]
+    [10:14:31] K= 30/82: fonts_variant_i_nonallowlisted           +        17 ( 59.8%) [1.7s round, 56s total]
+    K= 30: fonts_variant_i_nonallowlisted                unique= 5,331,897 ( 59.8%) +        17  [1.7s]
+    [10:14:32] K= 31/82: canvas_canvasdata01                      +        10 ( 59.8%) [1.6s round, 57s total]
+    K= 31: canvas_canvasdata01                           unique= 5,331,907 ( 59.8%) +        10  [1.6s]
+    [10:14:34] K= 32/82: canvas_canvasdata02                      +         7 ( 59.8%) [1.7s round, 59s total]
+    K= 32: canvas_canvasdata02                           unique= 5,331,914 ( 59.8%) +         7  [1.7s]
+    [10:14:36] K= 33/82: wgpu_maxvertexbuffers                    +         2 ( 59.8%) [1.6s round, 61s total]
+    K= 33: wgpu_maxvertexbuffers                         unique= 5,331,916 ( 59.8%) +         2  [1.6s]
+    [10:14:37] K= 34/82: wgpu_maxbindgroups                       +         0 ( 59.8%) [1.7s round, 62s total]
+    K= 34: wgpu_maxbindgroups                            unique= 5,331,916 ( 59.8%) +         0  [1.7s]
+  IterativeMinMetrics [Signifyd_Realistic][Android] complete [62.9s]
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_Android.csv
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_Android.txt
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_Android_ordering.py
+  IterativeMinMetrics [Signifyd_Realistic][Darwin]: Signifyd_Realistic (Darwin)
+    Loaded cached numpy array (2040356, 82) (1.3GB) in 0.1s
+    2,040,356 users x 82 metrics (1.3GB), max_k=82
+    Greedy selection: 82 rounds, 32 eval threads
+    [10:14:38] K=  1/82: combined_css_colors_hash                 +    15,938 (  0.8%) [0.2s round, 0s total]
+    K=  1: combined_css_colors_hash                      unique=    15,938 (  0.8%) +    15,938  [0.2s]
+    [10:14:38] K=  2/82: screen_primary_avail                     +    83,201 (  4.9%) [0.2s round, 0s total]
+    K=  2: screen_primary_avail                          unique=    99,139 (  4.9%) +    83,201  [0.2s]
+    [10:14:38] K=  3/82: intl_timezone_web                        +   306,757 ( 19.9%) [0.3s round, 1s total]
+    K=  3: intl_timezone_web                             unique=   405,896 ( 19.9%) +   306,757  [0.3s]
+    [10:14:39] K=  4/82: canvas_canvasdata08                      +   369,404 ( 38.0%) [0.4s round, 1s total]
+    K=  4: canvas_canvasdata08                           unique=   775,300 ( 38.0%) +   369,404  [0.4s]
+    [10:14:39] K=  5/82: fonts_variant_h_nonallowlisted           +   259,566 ( 50.7%) [0.4s round, 1s total]
+    K=  5: fonts_variant_h_nonallowlisted                unique= 1,034,866 ( 50.7%) +   259,566  [0.4s]
+    [10:14:39] K=  6/82: webgl_renderer                           +   192,241 ( 60.1%) [0.4s round, 2s total]
+    K=  6: webgl_renderer                                unique= 1,227,107 ( 60.1%) +   192,241  [0.4s]
+    [10:14:40] K=  7/82: intl_intl_locale                         +   132,670 ( 66.6%) [0.4s round, 2s total]
+    K=  7: intl_intl_locale                              unique= 1,359,777 ( 66.6%) +   132,670  [0.4s]
+    [10:14:40] K=  8/82: user_agent                               +   115,337 ( 72.3%) [0.4s round, 3s total]
+    K=  8: user_agent                                    unique= 1,475,114 ( 72.3%) +   115,337  [0.4s]
+    [10:14:41] K=  9/82: prefs_general_donottrack_enabled         +    30,991 ( 73.8%) [0.5s round, 3s total]
+    K=  9: prefs_general_donottrack_enabled              unique= 1,506,105 ( 73.8%) +    30,991  [0.5s]
+    [10:14:41] K= 10/82: locale_accept_language                   +    20,403 ( 74.8%) [0.4s round, 4s total]
+    K= 10: locale_accept_language                        unique= 1,526,508 ( 74.8%) +    20,403  [0.4s]
+    [10:14:42] K= 11/82: prefs_general_globalprivacycontrol_enabled +    17,707 ( 75.7%) [0.4s round, 4s total]
+    K= 11: prefs_general_globalprivacycontrol_enabled    unique= 1,544,215 ( 75.7%) +    17,707  [0.4s]
+    [10:14:42] K= 12/82: hw_processor_count                       +    15,799 ( 76.5%) [0.4s round, 4s total]
+    K= 12: hw_processor_count                            unique= 1,560,014 ( 76.5%) +    15,799  [0.4s]
+    [10:14:42] K= 13/82: screen_web_pixel_ratio                   +    14,303 ( 77.2%) [0.4s round, 5s total]
+    K= 13: screen_web_pixel_ratio                        unique= 1,574,317 ( 77.2%) +    14,303  [0.4s]
+    [10:14:43] K= 14/82: screen_color_scheme                      +    13,676 ( 77.8%) [0.5s round, 5s total]
+    K= 14: screen_color_scheme                           unique= 1,587,993 ( 77.8%) +    13,676  [0.5s]
+    [10:14:43] K= 15/82: combined_clientrects_range_gcr_hash      +    11,004 ( 78.4%) [0.4s round, 6s total]
+    K= 15: combined_clientrects_range_gcr_hash           unique= 1,598,997 ( 78.4%) +    11,004  [0.4s]
+    [10:14:44] K= 16/82: screen_prefers_reduced_motion            +     5,348 ( 78.6%) [0.4s round, 6s total]
+    K= 16: screen_prefers_reduced_motion                 unique= 1,604,345 ( 78.6%) +     5,348  [0.4s]
+    [10:14:44] K= 17/82: svg_bbox                                 +     4,016 ( 78.8%) [0.4s round, 7s total]
+    K= 17: svg_bbox                                      unique= 1,608,361 ( 78.8%) +     4,016  [0.4s]
+    [10:14:44] K= 18/82: screen_primary_resolution                +     2,297 ( 78.9%) [0.4s round, 7s total]
+    K= 18: screen_primary_resolution                     unique= 1,610,658 ( 78.9%) +     2,297  [0.4s]
+    [10:14:45] K= 19/82: audio_float_frequency_sum                +     1,071 ( 79.0%) [0.4s round, 7s total]
+    K= 19: audio_float_frequency_sum                     unique= 1,611,729 ( 79.0%) +     1,071  [0.4s]
+    [10:14:45] K= 20/82: storage_quota                            +       765 ( 79.0%) [0.4s round, 8s total]
+    K= 20: storage_quota                                 unique= 1,612,494 ( 79.0%) +       765  [0.4s]
+    [10:14:45] K= 21/82: intl_timezone_offset_web                 +       551 ( 79.1%) [0.4s round, 8s total]
+    K= 21: intl_timezone_offset_web                      unique= 1,613,045 ( 79.1%) +       551  [0.4s]
+    [10:14:46] K= 22/82: canvas_canvasdata07                      +       169 ( 79.1%) [0.4s round, 8s total]
+    K= 22: canvas_canvasdata07                           unique= 1,613,214 ( 79.1%) +       169  [0.4s]
+    [10:14:46] K= 23/82: combined_css_fonts_hash                  +       130 ( 79.1%) [0.3s round, 9s total]
+    K= 23: combined_css_fonts_hash                       unique= 1,613,344 ( 79.1%) +       130  [0.3s]
+    [10:14:47] K= 24/82: fonts_variant_i_nonallowlisted           +        53 ( 79.1%) [0.3s round, 9s total]
+    K= 24: fonts_variant_i_nonallowlisted                unique= 1,613,397 ( 79.1%) +        53  [0.3s]
+    [10:14:47] K= 25/82: prefs_cookiesenabled                     +        21 ( 79.1%) [0.3s round, 9s total]
+    K= 25: prefs_cookiesenabled                          unique= 1,613,418 ( 79.1%) +        21  [0.3s]
+    [10:14:47] K= 26/82: svg_emoji_set                            +        21 ( 79.1%) [0.3s round, 10s total]
+    K= 26: svg_emoji_set                                 unique= 1,613,439 ( 79.1%) +        21  [0.3s]
+    [10:14:48] K= 27/82: canvas_canvasdata13_fingerprintjs2       +        10 ( 79.1%) [0.4s round, 10s total]
+    K= 27: canvas_canvasdata13_fingerprintjs2            unique= 1,613,449 ( 79.1%) +        10  [0.4s]
+    [10:14:48] K= 28/82: wgpu_maxvertexbuffers                    +         9 ( 79.1%) [0.3s round, 10s total]
+    K= 28: wgpu_maxvertexbuffers                         unique= 1,613,458 ( 79.1%) +         9  [0.3s]
+    [10:14:48] K= 29/82: screen_inverted_colors                   +         8 ( 79.1%) [0.3s round, 11s total]
+    K= 29: screen_inverted_colors                        unique= 1,613,466 ( 79.1%) +         8  [0.3s]
+    [10:14:49] K= 30/82: fonts_variant_h_allowlisted              +         3 ( 79.1%) [0.3s round, 11s total]
+    K= 30: fonts_variant_h_allowlisted                   unique= 1,613,469 ( 79.1%) +         3  [0.3s]
+    [10:14:49] K= 31/82: canvas_canvasdata02                      +         2 ( 79.1%) [0.3s round, 11s total]
+    K= 31: canvas_canvasdata02                           unique= 1,613,471 ( 79.1%) +         2  [0.3s]
+    [10:14:49] K= 32/82: clientrects_emoji_font_family            +         2 ( 79.1%) [0.3s round, 12s total]
+    K= 32: clientrects_emoji_font_family                 unique= 1,613,473 ( 79.1%) +         2  [0.3s]
+    [10:14:49] K= 33/82: canvas_canvasdata01                      +         1 ( 79.1%) [0.3s round, 12s total]
+    K= 33: canvas_canvasdata01                           unique= 1,613,474 ( 79.1%) +         1  [0.3s]
+    [10:14:50] K= 34/82: wgpu_maxbindgroups                       +         0 ( 79.1%) [0.3s round, 12s total]
+    K= 34: wgpu_maxbindgroups                            unique= 1,613,474 ( 79.1%) +         0  [0.3s]
+  IterativeMinMetrics [Signifyd_Realistic][Darwin] complete [12.5s]
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_Darwin.csv
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_Darwin.txt
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_Darwin_ordering.py
+  IterativeMinMetrics [Signifyd_Realistic][Linux]: Signifyd_Realistic (Linux)
+    Loaded cached numpy array (1844561, 82) (1.2GB) in 0.1s
+    1,844,561 users x 82 metrics (1.2GB), max_k=82
+    Greedy selection: 82 rounds, 32 eval threads
+    [10:14:50] K=  1/82: screen_primary_avail                     +    21,158 (  1.1%) [0.2s round, 0s total]
+    K=  1: screen_primary_avail                          unique=    21,158 (  1.1%) +    21,158  [0.2s]
+    [10:14:50] K=  2/82: webgl_renderer                           +   139,556 (  8.7%) [0.2s round, 0s total]
+    K=  2: webgl_renderer                                unique=   160,714 (  8.7%) +   139,556  [0.2s]
+    [10:14:51] K=  3/82: intl_timezone_web                        +   337,121 ( 27.0%) [0.3s round, 1s total]
+    K=  3: intl_timezone_web                             unique=   497,835 ( 27.0%) +   337,121  [0.3s]
+    [10:14:51] K=  4/82: combined_css_colors_hash                 +   409,262 ( 49.2%) [0.4s round, 1s total]
+    K=  4: combined_css_colors_hash                      unique=   907,097 ( 49.2%) +   409,262  [0.4s]
+    [10:14:51] K=  5/82: combined_clientrects_range_gcr_hash      +   228,028 ( 61.5%) [0.3s round, 1s total]
+    K=  5: combined_clientrects_range_gcr_hash           unique= 1,135,125 ( 61.5%) +   228,028  [0.3s]
+    [10:14:52] K=  6/82: user_agent                               +    98,355 ( 66.9%) [0.4s round, 2s total]
+    K=  6: user_agent                                    unique= 1,233,480 ( 66.9%) +    98,355  [0.4s]
+    [10:14:52] K=  7/82: canvas_canvasdata08                      +    85,090 ( 71.5%) [0.4s round, 2s total]
+    K=  7: canvas_canvasdata08                           unique= 1,318,570 ( 71.5%) +    85,090  [0.4s]
+    [10:14:53] K=  8/82: hw_processor_count                       +    70,942 ( 75.3%) [0.4s round, 3s total]
+    K=  8: hw_processor_count                            unique= 1,389,512 ( 75.3%) +    70,942  [0.4s]
+    [10:14:53] K=  9/82: locale_accept_language                   +    47,592 ( 77.9%) [0.4s round, 3s total]
+    K=  9: locale_accept_language                        unique= 1,437,104 ( 77.9%) +    47,592  [0.4s]
+    [10:14:53] K= 10/82: storage_quota                            +    36,201 ( 79.9%) [0.4s round, 3s total]
+    K= 10: storage_quota                                 unique= 1,473,305 ( 79.9%) +    36,201  [0.4s]
+    [10:14:54] K= 11/82: fonts_variant_h_nonallowlisted           +    18,377 ( 80.9%) [0.4s round, 4s total]
+    K= 11: fonts_variant_h_nonallowlisted                unique= 1,491,682 ( 80.9%) +    18,377  [0.4s]
+    [10:14:54] K= 12/82: screen_web_pixel_ratio                   +    15,558 ( 81.7%) [0.4s round, 4s total]
+    K= 12: screen_web_pixel_ratio                        unique= 1,507,240 ( 81.7%) +    15,558  [0.4s]
+    [10:14:54] K= 13/82: svg_bbox                                 +    12,545 ( 82.4%) [0.4s round, 5s total]
+    K= 13: svg_bbox                                      unique= 1,519,785 ( 82.4%) +    12,545  [0.4s]
+    [10:14:55] K= 14/82: prefs_general_globalprivacycontrol_enabled +     8,707 ( 82.9%) [0.4s round, 5s total]
+    K= 14: prefs_general_globalprivacycontrol_enabled    unique= 1,528,492 ( 82.9%) +     8,707  [0.4s]
+    [10:14:55] K= 15/82: screen_color_scheme                      +     7,261 ( 83.3%) [0.4s round, 5s total]
+    K= 15: screen_color_scheme                           unique= 1,535,753 ( 83.3%) +     7,261  [0.4s]
+    [10:14:56] K= 16/82: intl_intl_locale                         +     4,059 ( 83.5%) [0.4s round, 6s total]
+    K= 16: intl_intl_locale                              unique= 1,539,812 ( 83.5%) +     4,059  [0.4s]
+    [10:14:56] K= 17/82: prefs_general_donottrack_enabled         +     2,954 ( 83.6%) [0.4s round, 6s total]
+    K= 17: prefs_general_donottrack_enabled              unique= 1,542,766 ( 83.6%) +     2,954  [0.4s]
+    [10:14:56] K= 18/82: screen_prefers_reduced_motion            +     2,781 ( 83.8%) [0.4s round, 6s total]
+    K= 18: screen_prefers_reduced_motion                 unique= 1,545,547 ( 83.8%) +     2,781  [0.4s]
+    [10:14:57] K= 19/82: audio_float_frequency_sum                +     1,370 ( 83.9%) [0.3s round, 7s total]
+    K= 19: audio_float_frequency_sum                     unique= 1,546,917 ( 83.9%) +     1,370  [0.3s]
+    [10:14:57] K= 20/82: canvas_canvasdata07                      +       664 ( 83.9%) [0.3s round, 7s total]
+    K= 20: canvas_canvasdata07                           unique= 1,547,581 ( 83.9%) +       664  [0.3s]
+    [10:14:57] K= 21/82: intl_timezone_offset_web                 +       194 ( 83.9%) [0.3s round, 7s total]
+    K= 21: intl_timezone_offset_web                      unique= 1,547,775 ( 83.9%) +       194  [0.3s]
+    [10:14:58] K= 22/82: combined_css_fonts_hash                  +       139 ( 83.9%) [0.3s round, 8s total]
+    K= 22: combined_css_fonts_hash                       unique= 1,547,914 ( 83.9%) +       139  [0.3s]
+    [10:14:58] K= 23/82: fonts_variant_i_allowlisted              +       111 ( 83.9%) [0.3s round, 8s total]
+    K= 23: fonts_variant_i_allowlisted                   unique= 1,548,025 ( 83.9%) +       111  [0.3s]
+    [10:14:58] K= 24/82: screen_primary_resolution                +        63 ( 83.9%) [0.3s round, 8s total]
+    K= 24: screen_primary_resolution                     unique= 1,548,088 ( 83.9%) +        63  [0.3s]
+    [10:14:59] K= 25/82: wgpu_maxvertexbuffers                    +        59 ( 83.9%) [0.3s round, 9s total]
+    K= 25: wgpu_maxvertexbuffers                         unique= 1,548,147 ( 83.9%) +        59  [0.3s]
+    [10:14:59] K= 26/82: canvas_canvasdata01                      +        23 ( 83.9%) [0.3s round, 9s total]
+    K= 26: canvas_canvasdata01                           unique= 1,548,170 ( 83.9%) +        23  [0.3s]
+    [10:14:59] K= 27/82: fonts_variant_i_nonallowlisted           +        18 ( 83.9%) [0.3s round, 9s total]
+    K= 27: fonts_variant_i_nonallowlisted                unique= 1,548,188 ( 83.9%) +        18  [0.3s]
+    [10:14:59] K= 28/82: canvas_canvasdata13_fingerprintjs2       +        12 ( 83.9%) [0.3s round, 10s total]
+    K= 28: canvas_canvasdata13_fingerprintjs2            unique= 1,548,200 ( 83.9%) +        12  [0.3s]
+    [10:15:00] K= 29/82: webgl_vendor                             +        10 ( 83.9%) [0.3s round, 10s total]
+    K= 29: webgl_vendor                                  unique= 1,548,210 ( 83.9%) +        10  [0.3s]
+    [10:15:00] K= 30/82: fonts_variant_f_allowlisted              +         9 ( 83.9%) [0.3s round, 10s total]
+    K= 30: fonts_variant_f_allowlisted                   unique= 1,548,219 ( 83.9%) +         9  [0.3s]
+    [10:15:00] K= 31/82: prefs_cookiesenabled                     +         6 ( 83.9%) [0.3s round, 10s total]
+    K= 31: prefs_cookiesenabled                          unique= 1,548,225 ( 83.9%) +         6  [0.3s]
+    [10:15:01] K= 32/82: clientrects_emoji_font_family            +         6 ( 83.9%) [0.3s round, 11s total]
+    K= 32: clientrects_emoji_font_family                 unique= 1,548,231 ( 83.9%) +         6  [0.3s]
+    [10:15:01] K= 33/82: canvas_canvasdata02                      +         2 ( 83.9%) [0.3s round, 11s total]
+    K= 33: canvas_canvasdata02                           unique= 1,548,233 ( 83.9%) +         2  [0.3s]
+    [10:15:01] K= 34/82: svg_emoji_set                            +         2 ( 83.9%) [0.3s round, 11s total]
+    K= 34: svg_emoji_set                                 unique= 1,548,235 ( 83.9%) +         2  [0.3s]
+    [10:15:02] K= 35/82: fonts_variant_h_allowlisted              +         2 ( 83.9%) [0.3s round, 12s total]
+    K= 35: fonts_variant_h_allowlisted                   unique= 1,548,237 ( 83.9%) +         2  [0.3s]
+    [10:15:02] K= 36/82: screen_primary_color_depth               +         1 ( 83.9%) [0.3s round, 12s total]
+    K= 36: screen_primary_color_depth                    unique= 1,548,238 ( 83.9%) +         1  [0.3s]
+    [10:15:02] K= 37/82: platform                                 +         1 ( 83.9%) [0.3s round, 12s total]
+    K= 37: platform                                      unique= 1,548,239 ( 83.9%) +         1  [0.3s]
+    [10:15:02] K= 38/82: combined_clientrects_emoji_hash          +         1 ( 83.9%) [0.3s round, 12s total]
+    K= 38: combined_clientrects_emoji_hash               unique= 1,548,240 ( 83.9%) +         1  [0.3s]
+    [10:15:03] K= 39/82: wgpu_maxbindgroups                       +         0 ( 83.9%) [0.3s round, 13s total]
+    K= 39: wgpu_maxbindgroups                            unique= 1,548,240 ( 83.9%) +         0  [0.3s]
+  IterativeMinMetrics [Signifyd_Realistic][Linux] complete [12.9s]
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_Linux.csv
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_Linux.txt
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_Linux_ordering.py
+  IterativeMinMetrics [Signifyd_Realistic][WINNT]: Signifyd_Realistic (WINNT)
+    Loaded cached numpy array (12071991, 82) (7.9GB) in 0.7s
+    12,071,991 users x 82 metrics (7.9GB), max_k=82
+    Greedy selection: 82 rounds, 32 eval threads
+    [10:15:05] K=  1/82: screen_primary_avail                     +    16,800 (  0.1%) [1.3s round, 1s total]
+    K=  1: screen_primary_avail                          unique=    16,800 (  0.1%) +    16,800  [1.3s]
+    [10:15:06] K=  2/82: webgl_renderer                           +   322,057 (  2.8%) [1.7s round, 3s total]
+    K=  2: webgl_renderer                                unique=   338,857 (  2.8%) +   322,057  [1.7s]
+    [10:15:09] K=  3/82: intl_timezone_web                        + 1,268,157 ( 13.3%) [2.4s round, 5s total]
+    K=  3: intl_timezone_web                             unique= 1,607,014 ( 13.3%) + 1,268,157  [2.4s]
+    [10:15:11] K=  4/82: canvas_canvasdata08                      + 1,011,420 ( 21.7%) [2.7s round, 8s total]
+    K=  4: canvas_canvasdata08                           unique= 2,618,434 ( 21.7%) + 1,011,420  [2.7s]
+    [10:15:14] K=  5/82: hw_processor_count                       +   662,781 ( 27.2%) [2.7s round, 11s total]
+    K=  5: hw_processor_count                            unique= 3,281,215 ( 27.2%) +   662,781  [2.7s]
+    [10:15:17] K=  6/82: combined_css_colors_hash                 +   703,072 ( 33.0%) [2.8s round, 14s total]
+    K=  6: combined_css_colors_hash                      unique= 3,984,287 ( 33.0%) +   703,072  [2.8s]
+    [10:15:20] K=  7/82: intl_intl_locale                         +   624,672 ( 38.2%) [2.9s round, 16s total]
+    K=  7: intl_intl_locale                              unique= 4,608,959 ( 38.2%) +   624,672  [2.9s]
+    [10:15:23] K=  8/82: screen_web_pixel_ratio                   +   327,141 ( 40.9%) [2.9s round, 19s total]
+    K=  8: screen_web_pixel_ratio                        unique= 4,936,100 ( 40.9%) +   327,141  [2.9s]
+    [10:15:26] K=  9/82: hw_max_touch_points                      +   264,455 ( 43.1%) [3.0s round, 22s total]
+    K=  9: hw_max_touch_points                           unique= 5,200,555 ( 43.1%) +   264,455  [3.0s]
+    [10:15:29] K= 10/82: storage_quota                            +   237,922 ( 45.1%) [2.8s round, 25s total]
+    K= 10: storage_quota                                 unique= 5,438,477 ( 45.1%) +   237,922  [2.8s]
+    [10:15:31] K= 11/82: audio_float_frequency_sum                +   207,652 ( 46.8%) [2.9s round, 28s total]
+    K= 11: audio_float_frequency_sum                     unique= 5,646,129 ( 46.8%) +   207,652  [2.9s]
+    [10:15:34] K= 12/82: screen_prefers_reduced_motion            +   175,938 ( 48.2%) [2.8s round, 31s total]
+    K= 12: screen_prefers_reduced_motion                 unique= 5,822,067 ( 48.2%) +   175,938  [2.8s]
+    [10:15:37] K= 13/82: user_agent                               +   158,249 ( 49.5%) [2.8s round, 34s total]
+    K= 13: user_agent                                    unique= 5,980,316 ( 49.5%) +   158,249  [2.8s]
+    [10:15:40] K= 14/82: locale_accept_language                   +   142,710 ( 50.7%) [2.7s round, 36s total]
+    K= 14: locale_accept_language                        unique= 6,123,026 ( 50.7%) +   142,710  [2.7s]
+    [10:15:43] K= 15/82: screen_color_scheme                      +   124,876 ( 51.8%) [2.9s round, 39s total]
+    K= 15: screen_color_scheme                           unique= 6,247,902 ( 51.8%) +   124,876  [2.9s]
+    [10:15:45] K= 16/82: combined_clientrects_range_gcr_hash      +   113,080 ( 52.7%) [2.7s round, 42s total]
+    K= 16: combined_clientrects_range_gcr_hash           unique= 6,360,982 ( 52.7%) +   113,080  [2.7s]
+    [10:15:48] K= 17/82: prefs_general_donottrack_enabled         +    91,631 ( 53.5%) [2.6s round, 45s total]
+    K= 17: prefs_general_donottrack_enabled              unique= 6,452,613 ( 53.5%) +    91,631  [2.6s]
+    [10:15:51] K= 18/82: svg_emoji_set                            +    62,468 ( 54.0%) [2.6s round, 47s total]
+    K= 18: svg_emoji_set                                 unique= 6,515,081 ( 54.0%) +    62,468  [2.6s]
+    [10:15:53] K= 19/82: prefs_general_globalprivacycontrol_enabled +    57,783 ( 54.4%) [2.5s round, 50s total]
+    K= 19: prefs_general_globalprivacycontrol_enabled    unique= 6,572,864 ( 54.4%) +    57,783  [2.5s]
+    [10:15:56] K= 20/82: svg_bbox                                 +    20,518 ( 54.6%) [2.6s round, 52s total]
+    K= 20: svg_bbox                                      unique= 6,593,382 ( 54.6%) +    20,518  [2.6s]
+    [10:15:58] K= 21/82: wgpu_missing_features                    +    18,529 ( 54.8%) [2.4s round, 55s total]
+    K= 21: wgpu_missing_features                         unique= 6,611,911 ( 54.8%) +    18,529  [2.4s]
+    [10:16:01] K= 22/82: canvas_canvasdata13_fingerprintjs2       +     9,641 ( 54.9%) [2.5s round, 57s total]
+    K= 22: canvas_canvasdata13_fingerprintjs2            unique= 6,621,552 ( 54.9%) +     9,641  [2.5s]
+    [10:16:03] K= 23/82: hw_pointer_type                          +     9,195 ( 54.9%) [2.4s round, 60s total]
+    K= 23: hw_pointer_type                               unique= 6,630,747 ( 54.9%) +     9,195  [2.4s]
+    [10:16:06] K= 24/82: intl_timezone_offset_web                 +     5,890 ( 55.0%) [2.4s round, 62s total]
+    K= 24: intl_timezone_offset_web                      unique= 6,636,637 ( 55.0%) +     5,890  [2.4s]
+    [10:16:08] K= 25/82: canvas_canvasdata07                      +     5,479 ( 55.0%) [2.4s round, 65s total]
+    K= 25: canvas_canvasdata07                           unique= 6,642,116 ( 55.0%) +     5,479  [2.4s]
+    [10:16:10] K= 26/82: fonts_variant_h_nonallowlisted           +     3,587 ( 55.1%) [2.3s round, 67s total]
+    K= 26: fonts_variant_h_nonallowlisted                unique= 6,645,703 ( 55.1%) +     3,587  [2.3s]
+    [10:16:13] K= 27/82: screen_primary_orientation               +       734 ( 55.1%) [2.4s round, 69s total]
+    K= 27: screen_primary_orientation                    unique= 6,646,437 ( 55.1%) +       734  [2.4s]
+    [10:16:15] K= 28/82: combined_css_fonts_hash                  +       629 ( 55.1%) [2.3s round, 71s total]
+    K= 28: combined_css_fonts_hash                       unique= 6,647,066 ( 55.1%) +       629  [2.3s]
+    [10:16:17] K= 29/82: hw_any_pointer_type                      +       508 ( 55.1%) [2.3s round, 74s total]
+    K= 29: hw_any_pointer_type                           unique= 6,647,574 ( 55.1%) +       508  [2.3s]
+    [10:16:20] K= 30/82: prefs_cookiesenabled                     +       110 ( 55.1%) [2.4s round, 76s total]
+    K= 30: prefs_cookiesenabled                          unique= 6,647,684 ( 55.1%) +       110  [2.4s]
+    [10:16:22] K= 31/82: screen_inverted_colors                   +        97 ( 55.1%) [2.3s round, 79s total]
+    K= 31: screen_inverted_colors                        unique= 6,647,781 ( 55.1%) +        97  [2.3s]
+    [10:16:24] K= 32/82: fonts_variant_i_nonallowlisted           +        71 ( 55.1%) [2.3s round, 81s total]
+    K= 32: fonts_variant_i_nonallowlisted                unique= 6,647,852 ( 55.1%) +        71  [2.3s]
+    [10:16:26] K= 33/82: clientrects_emoji_font_family            +        69 ( 55.1%) [2.2s round, 83s total]
+    K= 33: clientrects_emoji_font_family                 unique= 6,647,921 ( 55.1%) +        69  [2.2s]
+    [10:16:29] K= 34/82: fonts_variant_f_allowlisted              +        51 ( 55.1%) [2.2s round, 85s total]
+    K= 34: fonts_variant_f_allowlisted                   unique= 6,647,972 ( 55.1%) +        51  [2.2s]
+    [10:16:31] K= 35/82: screen_primary_resolution                +        51 ( 55.1%) [2.2s round, 87s total]
+    K= 35: screen_primary_resolution                     unique= 6,648,023 ( 55.1%) +        51  [2.2s]
+    [10:16:33] K= 36/82: wgpu_maxstoragebufferspershaderstage     +        18 ( 55.1%) [2.1s round, 89s total]
+    K= 36: wgpu_maxstoragebufferspershaderstage          unique= 6,648,041 ( 55.1%) +        18  [2.1s]
+    [10:16:35] K= 37/82: combined_clientrects_emoji_hash          +        12 ( 55.1%) [2.2s round, 92s total]
+    K= 37: combined_clientrects_emoji_hash               unique= 6,648,053 ( 55.1%) +        12  [2.2s]
+    [10:16:37] K= 38/82: canvas_canvasdata02                      +         9 ( 55.1%) [2.2s round, 94s total]
+    K= 38: canvas_canvasdata02                           unique= 6,648,062 ( 55.1%) +         9  [2.2s]
+    [10:16:39] K= 39/82: canvassoftware_canvasdata13_fingerprintjs2 +         7 ( 55.1%) [2.1s round, 96s total]
+    K= 39: canvassoftware_canvasdata13_fingerprintjs2    unique= 6,648,069 ( 55.1%) +         7  [2.1s]
+    [10:16:42] K= 40/82: prefs_use_document_colors                +         5 ( 55.1%) [2.1s round, 98s total]
+    K= 40: prefs_use_document_colors                     unique= 6,648,074 ( 55.1%) +         5  [2.1s]
+    [10:16:44] K= 41/82: platform                                 +         1 ( 55.1%) [2.1s round, 100s total]
+    K= 41: platform                                      unique= 6,648,075 ( 55.1%) +         1  [2.1s]
+    [10:16:46] K= 42/82: webgl_vendor                             +         1 ( 55.1%) [2.1s round, 102s total]
+    K= 42: webgl_vendor                                  unique= 6,648,076 ( 55.1%) +         1  [2.1s]
+    [10:16:48] K= 43/82: canvas_canvasdata01                      +         1 ( 55.1%) [2.0s round, 104s total]
+    K= 43: canvas_canvasdata01                           unique= 6,648,077 ( 55.1%) +         1  [2.0s]
+    [10:16:50] K= 44/82: wgpu_maxvertexbuffers                    +         0 ( 55.1%) [2.0s round, 106s total]
+    K= 44: wgpu_maxvertexbuffers                         unique= 6,648,077 ( 55.1%) +         0  [2.0s]
+  IterativeMinMetrics [Signifyd_Realistic][WINNT] complete [107.4s]
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_WINNT.csv
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_
+All analysis complete.
+Wrote to:    /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166WINNT.txt
+  Wrote /home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/iterative_minmetrics_signifyd_final-realistic_1777126166/iterative_minmetrics_Signifyd_Realistic_os_WINNT_ordering.py
+
+Pattern Hash: 8loOOxf7c8E= - /home/tom/moz/fingerprinting-data/sandbox-cache/8loOOxf7c8E=
+
+Execution times (seconds):
+  bq_row_counts: 7.92
+  iterative_minmetrics: 435.90
+Total execution time: 443.83 seconds
+

@@ -1,0 +1,18 @@
+Analyzing the fingerprint distribution for P2-I: Font List Updates (Android)-AkamaiV2_Realistic
+  There are 101 total users
+  There are 37 unique users, or 36.6337% out of 101 users
+  Our cohort fitness score is 0.2930104891677287
+  Our cohort fitness score (HHI2, excl. singletons) is 0.720703125
+  Our P50 (median cohort size, non-unique users) is 54
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  54                 |   1            |   54         |   53.47 %
+  1                  |   37           |   37         |   36.63 %
+  4                  |   2            |   8          |   7.92 %
+  2                  |   1            |   2          |   1.98 %
+
+
+ There are 101 total users
+ There are 37 unique users, or 36.6337% out of 101 users
+

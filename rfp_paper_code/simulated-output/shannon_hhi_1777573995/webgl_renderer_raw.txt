@@ -1,0 +1,307 @@
+  webgl_renderer_raw
+  ------------------------------------------------------------
+  Key                                                                                            Count        % Cumulative %
+  ---------------------------------------------------------------------------------------------------------------------------
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088)          151    16.67        16.67
+  Intel(R) UHD Graphics 630                                                                        101    11.15        27.81
+  Mali-G78                                                                                          51     5.63        33.44
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180)                  51     5.63        39.07
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo)                    51     5.63        44.70
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic)             51     5.63        50.33
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #80        6     0.66        50.99
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #35        6     0.66        51.66
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #27        5     0.55        52.21
+  Intel(R) UHD Graphics 630 #19                                                                      5     0.55        52.76
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #67        4     0.44        53.20
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #88        4     0.44        53.64
+  Mali-G78 #80                                                                                       4     0.44        54.08
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #97        4     0.44        54.53
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #25        4     0.44        54.97
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #56        4     0.44        55.41
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #47        3     0.33        55.74
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #24        3     0.33        56.07
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #52        3     0.33        56.40
+  Intel(R) UHD Graphics 630 #43                                                                      3     0.33        56.73
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #21        3     0.33        57.06
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #51        3     0.33        57.40
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #65               3     0.33        57.73
+  Intel(R) UHD Graphics 630 #30                                                                      3     0.33        58.06
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #58                 3     0.33        58.39
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #91                 3     0.33        58.72
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #66        3     0.33        59.05
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #83        3     0.33        59.38
+  Intel(R) UHD Graphics 630 #79                                                                      3     0.33        59.71
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #48        3     0.33        60.04
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #38        3     0.33        60.38
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #60        3     0.33        60.71
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #41          3     0.33        61.04
+  Intel(R) UHD Graphics 630 #20                                                                      3     0.33        61.37
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #72        3     0.33        61.70
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #57        3     0.33        62.03
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #98        3     0.33        62.36
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #50        3     0.33        62.69
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #86        3     0.33        63.02
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #32        3     0.33        63.36
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #91        3     0.33        63.69
+  Mali-G78 #63                                                                                       2     0.22        63.91
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #79        2     0.22        64.13
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #19        2     0.22        64.35
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #87        2     0.22        64.57
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #41        2     0.22        64.79
+  Intel(R) UHD Graphics 630 #63                                                                      2     0.22        65.01
+  Intel(R) UHD Graphics 630 #65                                                                      2     0.22        65.23
+  Intel(R) UHD Graphics 630 #71                                                                      2     0.22        65.45
+  Intel(R) UHD Graphics 630 #80                                                                      2     0.22        65.67
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #60               2     0.22        65.89
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #37               2     0.22        66.11
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #96               2     0.22        66.34
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #44                 2     0.22        66.56
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #20                 2     0.22        66.78
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #30                 2     0.22        67.00
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #95        2     0.22        67.22
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #43        2     0.22        67.44
+  Intel(R) UHD Graphics 630 #91                                                                      2     0.22        67.66
+  Intel(R) UHD Graphics 630 #86                                                                      2     0.22        67.88
+  Intel(R) UHD Graphics 630 #93                                                                      2     0.22        68.10
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #95               2     0.22        68.32
+  Intel(R) UHD Graphics 630 #11                                                                      2     0.22        68.54
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #39                 2     0.22        68.76
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #81          2     0.22        68.98
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #38          2     0.22        69.21
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #75        2     0.22        69.43
+  Intel(R) UHD Graphics 630 #73                                                                      2     0.22        69.65
+  Intel(R) UHD Graphics 630 #56                                                                      2     0.22        69.87
+  Intel(R) UHD Graphics 630 #97                                                                      2     0.22        70.09
+  Intel(R) UHD Graphics 630 #58                                                                      2     0.22        70.31
+  Intel(R) UHD Graphics 630 #22                                                                      2     0.22        70.53
+  Intel(R) UHD Graphics 630 #50                                                                      2     0.22        70.75
+  Mali-G78 #29                                                                                       2     0.22        70.97
+  Mali-G78 #71                                                                                       2     0.22        71.19
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #77        2     0.22        71.41
+  Intel(R) UHD Graphics 630 #74                                                                      2     0.22        71.63
+  Intel(R) UHD Graphics 630 #53                                                                      2     0.22        71.85
+  Intel(R) UHD Graphics 630 #46                                                                      2     0.22        72.08
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #10               2     0.22        72.30
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #15               2     0.22        72.52
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #19               2     0.22        72.74
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #99          2     0.22        72.96
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #68          2     0.22        73.18
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #99        2     0.22        73.40
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #68        2     0.22        73.62
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #71        2     0.22        73.84
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #97                 2     0.22        74.06
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #47                 2     0.22        74.28
+  Mali-G78 #75                                                                                       2     0.22        74.50
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #69          2     0.22        74.72
+  Mali-G78 #44                                                                                       2     0.22        74.94
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #58        2     0.22        75.17
+  Intel(R) UHD Graphics 630 #78                                                                      2     0.22        75.39
+  Intel(R) UHD Graphics 630 #31                                                                      2     0.22        75.61
+  Intel(R) UHD Graphics 630 #99                                                                      2     0.22        75.83
+  Intel(R) UHD Graphics 630 #88                                                                      2     0.22        76.05
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #73        2     0.22        76.27
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #24               2     0.22        76.49
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #18        2     0.22        76.71
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #78        2     0.22        76.93
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #82        2     0.22        77.15
+  Intel(R) UHD Graphics 630 #12                                                                      2     0.22        77.37
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #56                 2     0.22        77.59
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #37        2     0.22        77.81
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #29        2     0.22        78.04
+  Intel(R) UHD Graphics 630 #59                                                                      2     0.22        78.26
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #78                 2     0.22        78.48
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #28          2     0.22        78.70
+  Mali-G78 #78                                                                                       1     0.11        78.81
+  Mali-G78 #94                                                                                       1     0.11        78.92
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #10        1     0.11        79.03
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #89        1     0.11        79.14
+  Intel(R) UHD Graphics 630 #18                                                                      1     0.11        79.25
+  Intel(R) UHD Graphics 630 #82                                                                      1     0.11        79.36
+  Intel(R) UHD Graphics 630 #49                                                                      1     0.11        79.47
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #32               1     0.11        79.58
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #42               1     0.11        79.69
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #81               1     0.11        79.80
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #54               1     0.11        79.91
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #34                 1     0.11        80.02
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #34          1     0.11        80.13
+  Mali-G78 #68                                                                                       1     0.11        80.24
+  Intel(R) UHD Graphics 630 #75                                                                      1     0.11        80.35
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #89                 1     0.11        80.46
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #16          1     0.11        80.57
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #83          1     0.11        80.68
+  Mali-G78 #41                                                                                       1     0.11        80.79
+  Mali-G78 #72                                                                                       1     0.11        80.91
+  Mali-G78 #11                                                                                       1     0.11        81.02
+  Mali-G78 #21                                                                                       1     0.11        81.13
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #47               1     0.11        81.24
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #87                 1     0.11        81.35
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #15                 1     0.11        81.46
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #86          1     0.11        81.57
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #26        1     0.11        81.68
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #76        1     0.11        81.79
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #74        1     0.11        81.90
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #23        1     0.11        82.01
+  Intel(R) UHD Graphics 630 #15                                                                      1     0.11        82.12
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #46               1     0.11        82.23
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #73               1     0.11        82.34
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #63               1     0.11        82.45
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #98                 1     0.11        82.56
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #68                 1     0.11        82.67
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #40          1     0.11        82.78
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #13          1     0.11        82.89
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #75          1     0.11        83.00
+  Mali-G78 #84                                                                                       1     0.11        83.11
+  Mali-G78 #30                                                                                       1     0.11        83.22
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #17        1     0.11        83.33
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #20        1     0.11        83.44
+  Intel(R) UHD Graphics 630 #61                                                                      1     0.11        83.55
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #38               1     0.11        83.66
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #66               1     0.11        83.77
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #80                 1     0.11        83.89
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #23          1     0.11        84.00
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #21          1     0.11        84.11
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #19          1     0.11        84.22
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #46        1     0.11        84.33
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #45        1     0.11        84.44
+  Intel(R) UHD Graphics 630 #26                                                                      1     0.11        84.55
+  Intel(R) UHD Graphics 630 #83                                                                      1     0.11        84.66
+  Intel(R) UHD Graphics 630 #36                                                                      1     0.11        84.77
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #58               1     0.11        84.88
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #55               1     0.11        84.99
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #52          1     0.11        85.10
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #25          1     0.11        85.21
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #73          1     0.11        85.32
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #59          1     0.11        85.43
+  Mali-G78 #67                                                                                       1     0.11        85.54
+  Mali-G78 #10                                                                                       1     0.11        85.65
+  Mali-G78 #48                                                                                       1     0.11        85.76
+  Mali-G78 #47                                                                                       1     0.11        85.87
+  Mali-G78 #85                                                                                       1     0.11        85.98
+  Mali-G78 #25                                                                                       1     0.11        86.09
+  Mali-G78 #49                                                                                       1     0.11        86.20
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #84        1     0.11        86.31
+  Intel(R) UHD Graphics 630 #38                                                                      1     0.11        86.42
+  Intel(R) UHD Graphics 630 #14                                                                      1     0.11        86.53
+  Intel(R) UHD Graphics 630 #21                                                                      1     0.11        86.64
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #49               1     0.11        86.75
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #26               1     0.11        86.87
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #86               1     0.11        86.98
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #74               1     0.11        87.09
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #25               1     0.11        87.20
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #36               1     0.11        87.31
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #27          1     0.11        87.42
+  Mali-G78 #28                                                                                       1     0.11        87.53
+  Mali-G78 #27                                                                                       1     0.11        87.64
+  Mali-G78 #79                                                                                       1     0.11        87.75
+  Mali-G78 #45                                                                                       1     0.11        87.86
+  Mali-G78 #69                                                                                       1     0.11        87.97
+  Mali-G78 #70                                                                                       1     0.11        88.08
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #69        1     0.11        88.19
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #54        1     0.11        88.30
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #40        1     0.11        88.41
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #65        1     0.11        88.52
+  Intel(R) UHD Graphics 630 #13                                                                      1     0.11        88.63
+  Intel(R) UHD Graphics 630 #87                                                                      1     0.11        88.74
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #48               1     0.11        88.85
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #68               1     0.11        88.96
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #72               1     0.11        89.07
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #83                 1     0.11        89.18
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #63          1     0.11        89.29
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #70          1     0.11        89.40
+  Mali-G78 #92                                                                                       1     0.11        89.51
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #70        1     0.11        89.62
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #33        1     0.11        89.74
+  Intel(R) UHD Graphics 630 #24                                                                      1     0.11        89.85
+  Intel(R) UHD Graphics 630 #40                                                                      1     0.11        89.96
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #78               1     0.11        90.07
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #77               1     0.11        90.18
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #12               1     0.11        90.29
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #90                 1     0.11        90.40
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #69                 1     0.11        90.51
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #76          1     0.11        90.62
+  Mali-G78 #62                                                                                       1     0.11        90.73
+  Mali-G78 #86                                                                                       1     0.11        90.84
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #90        1     0.11        90.95
+  Intel(R) UHD Graphics 630 #64                                                                      1     0.11        91.06
+  Intel(R) UHD Graphics 630 #29                                                                      1     0.11        91.17
+  Intel(R) UHD Graphics 630 #52                                                                      1     0.11        91.28
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #94                 1     0.11        91.39
+  Mali-G78 #59                                                                                       1     0.11        91.50
+  Mali-G78 #73                                                                                       1     0.11        91.61
+  Mali-G78 #38                                                                                       1     0.11        91.72
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #85        1     0.11        91.83
+  Intel(R) UHD Graphics 630 #90                                                                      1     0.11        91.94
+  Intel(R) UHD Graphics 630 #34                                                                      1     0.11        92.05
+  Intel(R) UHD Graphics 630 #62                                                                      1     0.11        92.16
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #27               1     0.11        92.27
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #51               1     0.11        92.38
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #61          1     0.11        92.49
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #88          1     0.11        92.60
+  Mali-G78 #46                                                                                       1     0.11        92.72
+  Mali-G78 #53                                                                                       1     0.11        92.83
+  Mali-G78 #34                                                                                       1     0.11        92.94
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #30        1     0.11        93.05
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #31        1     0.11        93.16
+  Intel(R) UHD Graphics 630 #85                                                                      1     0.11        93.27
+  Intel(R) UHD Graphics 630 #48                                                                      1     0.11        93.38
+  Intel(R) UHD Graphics 630 #23                                                                      1     0.11        93.49
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #18                 1     0.11        93.60
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #25                 1     0.11        93.71
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #81                 1     0.11        93.82
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #92                 1     0.11        93.93
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #51                 1     0.11        94.04
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #38                 1     0.11        94.15
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #32          1     0.11        94.26
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #89          1     0.11        94.37
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #77          1     0.11        94.48
+  Mali-G78 #24                                                                                       1     0.11        94.59
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #13        1     0.11        94.70
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #49        1     0.11        94.81
+  Intel(R) UHD Graphics 630 #32                                                                      1     0.11        94.92
+  Intel(R) UHD Graphics 630 #67                                                                      1     0.11        95.03
+  Intel(R) UHD Graphics 630 #47                                                                      1     0.11        95.14
+  Intel(R) UHD Graphics 630 #16                                                                      1     0.11        95.25
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #36                 1     0.11        95.36
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #55                 1     0.11        95.47
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #98          1     0.11        95.58
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #95          1     0.11        95.70
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #15          1     0.11        95.81
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #93          1     0.11        95.92
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #91          1     0.11        96.03
+  Mali-G78 #54                                                                                       1     0.11        96.14
+  Mali-G78 #18                                                                                       1     0.11        96.25
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #93        1     0.11        96.36
+  Intel(R) UHD Graphics 630 #77                                                                      1     0.11        96.47
+  Intel(R) UHD Graphics 630 #17                                                                      1     0.11        96.58
+  Intel(R) UHD Graphics 630 #94                                                                      1     0.11        96.69
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #39               1     0.11        96.80
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #85               1     0.11        96.91
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #41                 1     0.11        97.02
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #99                 1     0.11        97.13
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #57                 1     0.11        97.24
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #45                 1     0.11        97.35
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #95                 1     0.11        97.46
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #49          1     0.11        97.57
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #36        1     0.11        97.68
+  Intel(R) UHD Graphics 630 #45                                                                      1     0.11        97.79
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #75               1     0.11        97.90
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #19                 1     0.11        98.01
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #17                 1     0.11        98.12
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #64          1     0.11        98.23
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #90          1     0.11        98.34
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #35          1     0.11        98.45
+  Mali-G78 #74                                                                                       1     0.11        98.57
+  Mali-G78 #52                                                                                       1     0.11        98.68
+  ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Ti Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8088) #63        1     0.11        98.79
+  Intel(R) UHD Graphics 630 #60                                                                      1     0.11        98.90
+  Intel(R) UHD Graphics 630 #37                                                                      1     0.11        99.01
+  Intel(R) UHD Graphics 630 #70                                                                      1     0.11        99.12
+  Intel(R) UHD Graphics 630 #54                                                                      1     0.11        99.23
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #17               1     0.11        99.34
+  ANGLE (NVIDIA, NVIDIA Quadro M2000 Direct3D11 vs_5_0 ps_5_0, D3D11-32.0.15.8180) #44               1     0.11        99.45
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #22                 1     0.11        99.56
+  AMD Radeon Pro W7600 (radeonsi, navi33, LLVM 21.1.8, DRM 3.64, 6.18.12-gentoo) #31                 1     0.11        99.67
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #96          1     0.11        99.78
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #10          1     0.11        99.89
+  AMD Radeon Pro WX 3200 Series (radeonsi, polaris12, ACO, DRM 3.64, 6.17.0-22-generic) #94          1     0.11       100.00
+

@@ -1,0 +1,11 @@
+  hw_cpu_model
+  ------------------------------------------------------------
+  Key                                           Count        % Cumulative %
+  --------------------------------------------------------------------------
+  Intel(R) Core(TM) i7-14700K                     301    33.22        33.22
+  Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz       201    22.19        55.41
+  Cortex-X1                                       101    11.15        66.56
+  Intel(R) Xeon(R) CPU E5-2637 v4 @ 3.50GHz       101    11.15        77.70
+  AMD Ryzen Threadripper PRO 7975WX 32-Cores      101    11.15        88.85
+  AMD Ryzen Threadripper PRO 3975WX 32-Cores      101    11.15       100.00
+

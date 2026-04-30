@@ -1,0 +1,21 @@
+Analyzing the fingerprint distribution for P1-C: P0, Font Protections, fdLibm (WINNT)-Signifyd_Realistic
+  There are 402 total users
+  There are 316 unique users, or 78.607% out of 402 users
+  Our cohort fitness score is 0.009975000618796566
+  Our cohort fitness score (HHI2, excl. singletons) is 0.1752298539751217
+  Our P50 (median cohort size, non-unique users) is 15
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   316          |   316        |   78.61 %
+  22                 |   1            |   22         |   5.47 %
+  20                 |   1            |   20         |   4.98 %
+  15                 |   1            |   15         |   3.73 %
+  12                 |   1            |   12         |   2.99 %
+  3                  |   3            |   9          |   2.24 %
+  2                  |   4            |   8          |   1.99 %
+
+
+ There are 402 total users
+ There are 316 unique users, or 78.607% out of 402 users
+

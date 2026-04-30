@@ -1,4 +1,4 @@
-#!python3.14t
+#!/usr/bin/env python3
 """Correlation analysis: Adjusted Mutual Information (AMI) and Theil's U.
 
 Standalone script that:

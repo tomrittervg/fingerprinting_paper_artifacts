@@ -1,0 +1,24 @@
+Iterative MinMetrics (Greedy): AkamaiV2_Realistic (WINNT)
+=====================================================================================
+Total users: 402
+Baseline unique (all metrics): 147 (36.57%)
+Max K: 16
+
+    K  Metric added                                        Unique  % unique          +New
+  -------------------------------------------------------------------------------------
+    1  canvas_canvasdata12_fingerprintjs1                     108   26.866%          +108
+    2  locale_accept_language                                 132   32.836%           +24
+    3  hw_processor_count                                     143   35.572%           +11
+    4  intl_timezone_offset_web                               147   36.567%            +4
+    5  screen_primary_avail                                   147   36.567%            +0
+    6  user_agent                                             147   36.567%            +0
+    7  prefs_general_donottrack_enabled                       147   36.567%            +0
+    8  hw_oscpu                                               147   36.567%            +0
+    9  prefs_cookiesenabled                                   147   36.567%            +0
+   10  screen_primary_resolution                              147   36.567%            +0
+   11  platform                                               147   36.567%            +0
+   12  canvas_canvasdata13_fingerprintjs2                     147   36.567%            +0
+   13  screen_primary_pixel_depth                             147   36.567%            +0
+   14  screen_primary_color_depth                             147   36.567%            +0
+   15  locale_languages                                       147   36.567%            +0
+   16  hw_max_touch_points                                    147   36.567%            +0

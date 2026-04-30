@@ -1,0 +1,49 @@
+============================================================
+viz_minmetrics_all — Provenance Log
+Generated: 2026-04-30T18:35:06Z
+============================================================
+
+SOURCE DIRECTORIES
+  ./simulated-output/iterative_minmetrics_fpjsV2_1777574009
+  ./simulated-output/iterative_minmetrics_akamaiV2_1777574010
+  ./simulated-output/iterative_minmetrics_signifyd_1777574011
+
+FINGERPRINTERS: 3
+  AkamaiV2_Realistic (Akamai)
+  FPJSv2_Realistic (Fingerprint Pro)
+  Signifyd_Realistic (SignifyD)
+
+PER-OS DATA
+  Akamai (AkamaiV2_Realistic):
+    Android   users=         101  baseline_unique=36.63%
+             csv: ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Android.csv
+    macOS     users=         201  baseline_unique=34.83%
+             csv: ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Darwin.csv
+    Linux     users=         202  baseline_unique=36.14%
+             csv: ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Linux.csv
+    Windows   users=         402  baseline_unique=36.57%
+             csv: ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_WINNT.csv
+
+  Fingerprint Pro (FPJSv2_Realistic):
+    Android   users=         101  baseline_unique=87.13%
+             csv: ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Android.csv
+    macOS     users=         201  baseline_unique=92.54%
+             csv: ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Darwin.csv
+    Linux     users=         202  baseline_unique=93.07%
+             csv: ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_Linux.csv
+    Windows   users=         402  baseline_unique=90.55%
+             csv: ./simulated-output/iterative_minmetrics_fpjsV2_1777574009/iterative_minmetrics_FPJSv2_Realistic_os_WINNT.csv
+
+  SignifyD (Signifyd_Realistic):
+    Android   users=         101  baseline_unique=83.17%
+             csv: ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Android.csv
+    macOS     users=         201  baseline_unique=88.56%
+             csv: ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Darwin.csv
+    Linux     users=         202  baseline_unique=88.12%
+             csv: ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_Linux.csv
+    Windows   users=         402  baseline_unique=84.08%
+             csv: ./simulated-output/iterative_minmetrics_signifyd_1777574011/iterative_minmetrics_Signifyd_Realistic_os_WINNT.csv
+
+OUTPUT
+  ./simulated-output/gen_gfx_output/viz_minmetrics_all.png
+

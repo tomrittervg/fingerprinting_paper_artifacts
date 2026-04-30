@@ -1,0 +1,18 @@
+Analyzing the fingerprint distribution for P1-I: fdLibm (Darwin)-FPJSv2_Realistic
+  There are 201 total users
+  There are 186 unique users, or 92.5373% out of 201 users
+  Our cohort fitness score is 0.006410732407613673
+  Our cohort fitness score (HHI2, excl. singletons) is 0.3244444444444445
+  Our P50 (median cohort size, non-unique users) is 4
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   186          |   186        |   92.54 %
+  7                  |   1            |   7          |   3.48 %
+  2                  |   2            |   4          |   1.99 %
+  4                  |   1            |   4          |   1.99 %
+
+
+ There are 201 total users
+ There are 186 unique users, or 92.5373% out of 201 users
+

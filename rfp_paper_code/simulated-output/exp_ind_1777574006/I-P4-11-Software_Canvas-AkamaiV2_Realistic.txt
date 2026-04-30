@@ -1,0 +1,33 @@
+Analyzing the fingerprint distribution for P4-I: Software Canvas-AkamaiV2_Realistic
+  There are 906 total users
+  There are 75 unique users, or 8.2781% out of 906 users
+  Our cohort fitness score is 0.08680418500163248
+  Our cohort fitness score (HHI2, excl. singletons) is 0.10307127103905375
+  Our P50 (median cohort size, non-unique users) is 76
+  All-Data baseline:  327 unique users (36.0927%), cohort fitness 0.04369935041835385
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  74                 |   2            |   148        |   16.34 %
+  146                |   1            |   146        |   16.11 %
+  144                |   1            |   144        |   15.89 %
+  78                 |   1            |   78         |   8.61 %
+  76                 |   1            |   76         |   8.39 %
+  1                  |   75           |   75         |   8.28 %
+  72                 |   1            |   72         |   7.95 %
+  6                  |   4            |   24         |   2.65 %
+  4                  |   5            |   20         |   2.21 %
+  10                 |   2            |   20         |   2.21 %
+  2                  |   10           |   20         |   2.21 %
+  8                  |   2            |   16         |   1.77 %
+  5                  |   3            |   15         |   1.66 %
+  7                  |   2            |   14         |   1.55 %
+  12                 |   1            |   12         |   1.32 %
+  11                 |   1            |   11         |   1.21 %
+  9                  |   1            |   9          |   0.99 %
+  3                  |   2            |   6          |   0.66 %
+
+
+ There are 906 total users
+ There are 75 unique users, or 8.2781% out of 906 users
+

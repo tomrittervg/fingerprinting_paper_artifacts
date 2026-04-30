@@ -1,0 +1,18 @@
+Analyzing the fingerprint distribution for P0-I: WebGL Renderer Sanitizing (Linux)-FPJSv2_Realistic
+  There are 202 total users
+  There are 179 unique users, or 88.6139% out of 202 users
+  Our cohort fitness score is 0.008234486815018136
+  Our cohort fitness score (HHI2, excl. singletons) is 0.29678638941398866
+  Our P50 (median cohort size, non-unique users) is 8
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   179          |   179        |   88.61 %
+  9                  |   1            |   9          |   4.46 %
+  8                  |   1            |   8          |   3.96 %
+  2                  |   3            |   6          |   2.97 %
+
+
+ There are 202 total users
+ There are 179 unique users, or 88.6139% out of 202 users
+

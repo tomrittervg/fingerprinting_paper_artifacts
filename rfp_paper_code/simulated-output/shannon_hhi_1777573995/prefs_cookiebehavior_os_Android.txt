@@ -1,0 +1,5 @@
+  prefs_cookiebehavior (Android)
+  ------------------------------------------------------------
+  Key                                   Count        % Cumulative %
+  -----------------------------------------------------------------
+  Reject Tracker & Partition Foreign      101  100.00%      100.00%

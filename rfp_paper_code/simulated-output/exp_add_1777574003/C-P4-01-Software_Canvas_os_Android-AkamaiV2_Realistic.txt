@@ -1,0 +1,18 @@
+Analyzing the fingerprint distribution for P4-C: P3, Software Canvas (Android)-AkamaiV2_Realistic
+  There are 101 total users
+  There are 8 unique users, or 7.9208% out of 101 users
+  Our cohort fitness score is 0.6827761984119203
+  Our cohort fitness score (HHI2, excl. singletons) is 0.8043704474505723
+  Our P50 (median cohort size, non-unique users) is 83
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  83                 |   1            |   83         |   82.18 %
+  8                  |   1            |   8          |   7.92 %
+  1                  |   8            |   8          |   7.92 %
+  2                  |   1            |   2          |   1.98 %
+
+
+ There are 101 total users
+ There are 8 unique users, or 7.9208% out of 101 users
+

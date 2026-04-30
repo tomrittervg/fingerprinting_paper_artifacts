@@ -1,0 +1,16 @@
+============================================================
+viz_minmetrics_weighted_avg — Provenance Log
+Generated: 2026-04-30T14:32:56Z
+============================================================
+
+SOURCE DIRECTORIES
+  ../../../sandbox-analyses/final-range/iterative_minmetrics_fpjsV2_final-realistic_1777125885
+
+RUNS: 1
+  Fingerprint Pro (FPJSv2_Realistic):
+    users=24,871,013  baseline_unique=75.65%  K=1..52
+    source: ../../../sandbox-analyses/final-range/iterative_minmetrics_fpjsV2_final-realistic_1777125885
+
+OUTPUT
+  /home/user/code/gen_gfx/iminmetrics/viz_minmetrics_1.png
+

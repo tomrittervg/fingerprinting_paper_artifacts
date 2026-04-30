@@ -1,0 +1,17 @@
+  css_font_helvetica
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  ---------------------------------------------------
+  16px Helvetica           871    96.14        96.14
+  None                      19     2.10        98.23
+  16px  Helvetica            4     0.44        98.68
+   16px Helvetica            2     0.22        98.90
+  16px He lvetica            2     0.22        99.12
+  16px Helvet ica            2     0.22        99.34
+  16px Helveti ca            1     0.11        99.45
+  16 px Helvetica            1     0.11        99.56
+  16px H elvetica            1     0.11        99.67
+  16px Helve tica            1     0.11        99.78
+  16px Hel vetica            1     0.11        99.89
+  16px Helv etica            1     0.11       100.00
+

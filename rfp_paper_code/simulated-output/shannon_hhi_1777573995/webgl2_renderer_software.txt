@@ -1,0 +1,9 @@
+  webgl2_renderer_software
+  ------------------------------------------------------------
+  Key                                                                                      Count        % Cumulative %
+  ---------------------------------------------------------------------------------------------------------------------
+  ANGLE (Microsoft, Microsoft Basic Render Driver Direct3D11 vs_5_0 ps_5_0), or similar      402    44.37        44.37
+  llvmpipe, or similar                                                                       202    22.30        66.67
+  Apple M1, or similar                                                                       201    22.19        88.85
+  None                                                                                       101    11.15       100.00
+

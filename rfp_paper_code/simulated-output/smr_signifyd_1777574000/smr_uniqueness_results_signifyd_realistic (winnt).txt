@@ -1,0 +1,9 @@
+  Uniqueness Results (Signifyd_Realistic (WINNT)):
+    53 fewer unique users when ignoring combined_css_colors_hash
+    43 fewer unique users when ignoring webgl_renderer
+    28 fewer unique users when ignoring combined_css_fonts_hash
+    9 fewer unique users when ignoring locale_accept_language
+    8 fewer unique users when ignoring hw_processor_count
+    8 fewer unique users when ignoring storage_quota
+    6 fewer unique users when ignoring screen_web_pixel_ratio
+    2 fewer unique users when ignoring intl_timezone_offset_web

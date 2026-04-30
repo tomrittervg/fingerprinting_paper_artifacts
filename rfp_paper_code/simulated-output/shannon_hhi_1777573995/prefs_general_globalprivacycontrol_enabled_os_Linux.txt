@@ -1,0 +1,5 @@
+  prefs_general_globalprivacycontrol_enabled (Linux)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  True                     202  100.00%      100.00%

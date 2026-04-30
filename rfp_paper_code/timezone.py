@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.14t
+#!/usr/bin/env python3
 import argparse
 
 from webgl_constants import tz_abbr_to_utc_offset, NON_BACKWARD_TIMEZONE_MAPPINGS

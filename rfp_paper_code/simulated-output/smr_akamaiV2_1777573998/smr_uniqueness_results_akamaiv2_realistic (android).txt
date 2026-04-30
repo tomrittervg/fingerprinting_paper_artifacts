@@ -1,0 +1,4 @@
+  Uniqueness Results (AkamaiV2_Realistic (Android)):
+    26 fewer unique users when ignoring canvas_canvasdata12_fingerprintjs1
+    8 fewer unique users when ignoring locale_accept_language
+    1 fewer unique users when ignoring hw_processor_count

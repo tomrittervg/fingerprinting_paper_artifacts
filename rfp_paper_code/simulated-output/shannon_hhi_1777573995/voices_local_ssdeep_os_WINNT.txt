@@ -1,0 +1,5 @@
+  voices_local_ssdeep (WINNT)
+  ------------------------------------------------------------
+  Key                                                                                                  Count        % Cumulative %
+  --------------------------------------------------------------------------------------------------------------------------------
+  6:QXud6MACc7NEY3ud6MSiInCc7NEY3uLOCCc7NEY3uDWUc7NEY3uDWP8InCc7No:QXuqCc7Nz3uenCc7Nz3uLOXc7Nz3uDnV      402  100.00%      100.00%

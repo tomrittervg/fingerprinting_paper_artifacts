@@ -12,8 +12,8 @@ sharing: simply delete this file; the code falls back to
 
 BQ_PROJECT_ID = "moz-fx-dev-tritter-fpanalysis"
 
-DEFAULT_CACHE_DIR = "/home/tom/moz/fingerprinting-data/sandbox-cache"
-DEFAULT_OUTPUT_DIR = "/home/tom/moz/fingerprinting-data/sandbox-analyses"
+#DEFAULT_CACHE_DIR = "/home/tom/moz/fingerprinting-data/sandbox-cache"
+#DEFAULT_OUTPUT_DIR = "/home/tom/moz/fingerprinting-data/sandbox-analyses"
 
 MIN_SET_METRIC_AGGREGATION_PATH = (
     "/home/tom/moz/fingerprinting-data/sandbox-analyses/final-range/"

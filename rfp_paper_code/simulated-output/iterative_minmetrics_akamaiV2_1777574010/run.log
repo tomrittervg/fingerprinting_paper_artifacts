@@ -1,0 +1,138 @@
+Started: 04/30/26 02:33:30 PM
+Reading data from:  Database
+Command line:  /home/tom/moz/fingerprinting-data/code/analyze.py -o ./simulated-output/iterative_minmetrics_akamaiV2 -c configs/iterative_minmetrics_akamaiV2.py --cache-dir ./simulated-cache --per-os=true --force --partition-width 1
+Writing to:    ./simulated-output/iterative_minmetrics_akamaiV2_1777574010
+Git hash:      9b87688
+Date range:    2026-02-13 to 2026-05-01 (77 day(s))
+Tiny Mode:    DISABLED
+Minimize Mode:    DISABLED
+Partition width:    1 (16 partitions)
+Config file:   configs/iterative_minmetrics_akamaiV2.py
+  --per-os=true overrides config per_os_analysis
+Script config:
+  browser_modes = False
+  calculate_metric_experiment_aggregated = False
+  calculate_metrics_aggregated = False
+  correlation_analysis = False
+  experiments = False
+  fingerprint_archiving = False
+  fingerprint_buckets = False
+  fingerprints = False
+  iterative_minmetrics_fingerprinter = 'AkamaiV2_Realistic'
+  iterative_minmetrics_max_k = None
+  max_procs = 2
+  max_threads_experiment_merging = 4
+  max_threads_graph_export = 1
+  max_worker_threads = None
+  metric_buckets = False
+  missing_font_sets = False
+Pattern   Hashmissing_fonts = False
+  per_os_analysis = True
+  perform_iterative_minmetrics_analysis = True
+  perform_iterative_single_metric_remova: R9MNk-2FxUs= - ./simulated-cache/R9MNk-2FxUs=
+
+l_analysis = False
+  perform_iterative_single_metric_replacement_analysis = False
+  perform_logical_metric_removal_analysis = False
+  perform_min_set_combo_analysis = False
+  perform_minmetrics_analysis = False
+  perform_segmentation_decision_tree = False
+  perform_segmentation_shitty = False
+  perform_single_metric_removal_analysis = False
+  print_x_by_os_aggregate_graphs = False
+  raw_rows_only = False
+684 metrics to visualize
+
+  No partition processing needed — skipping worker pool
+  Per-OS analysis enabled for: ['Android', 'Darwin', 'Linux', 'WINNT']
+  IterativeMinMetrics: AkamaiV2_Realistic
+    Loaded cached numpy array (906, 16) (0.0GB) in 0.0s
+    906 users x 16 metrics (0.0GB), max_k=16
+    Greedy selection: 16 rounds, 32 eval threads
+    [14:33:30] K=  1/16: canvas_canvasdata12_fingerprintjs1       +       254 ( 28.0%) [0.0s round, 0s total]
+    K=  1: canvas_canvasdata12_fingerprintjs1            unique=       254 ( 28.0%) +       254  [0.0s]
+    [14:33:30] K=  2/16: locale_accept_language                   +        55 ( 34.1%) [0.0s round, 0s total]
+    K=  2: locale_accept_language                        unique=       309 ( 34.1%) +        55  [0.0s]
+    [14:33:30] K=  3/16: hw_processor_count                       +        14 ( 35.7%) [0.0s round, 0s total]
+    K=  3: hw_processor_count                            unique=       323 ( 35.7%) +        14  [0.0s]
+    [14:33:30] K=  4/16: intl_timezone_offset_web                 +         4 ( 36.1%) [0.0s round, 0s total]
+    K=  4: intl_timezone_offset_web                      unique=       327 ( 36.1%) +         4  [0.0s]
+    [14:33:30] K=  5/16: screen_primary_avail                     +         0 ( 36.1%) [0.0s round, 0s total]
+    K=  5: screen_primary_avail                          unique=       327 ( 36.1%) +         0  [0.0s]
+  IterativeMinMetrics complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic.csv
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic.txt
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_ordering.py
+  IterativeMinMetrics [AkamaiV2_Realistic][Android]: AkamaiV2_Realistic (Android)
+    Loaded cached numpy array (101, 16) (0.0GB) in 0.0s
+    101 users x 16 metrics (0.0GB), max_k=16
+    Greedy selection: 16 rounds, 32 eval threads
+    [14:33:30] K=  1/16: canvas_canvasdata12_fingerprintjs1       +        26 ( 25.7%) [0.0s round, 0s total]
+    K=  1: canvas_canvasdata12_fingerprintjs1            unique=        26 ( 25.7%) +        26  [0.0s]
+    [14:33:30] K=  2/16: locale_accept_language                   +        10 ( 35.6%) [0.0s round, 0s total]
+    K=  2: locale_accept_language                        unique=        36 ( 35.6%) +        10  [0.0s]
+    [14:33:30] K=  3/16: hw_processor_count                       +         1 ( 36.6%) [0.0s round, 0s total]
+    K=  3: hw_processor_count                            unique=        37 ( 36.6%) +         1  [0.0s]
+    [14:33:30] K=  4/16: intl_timezone_offset_web                 +         0 ( 36.6%) [0.0s round, 0s total]
+    K=  4: intl_timezone_offset_web                      unique=        37 ( 36.6%) +         0  [0.0s]
+  IterativeMinMetrics [AkamaiV2_Realistic][Android] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Android.csv
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Android.txt
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Android_ordering.py
+  IterativeMinMetrics [AkamaiV2_Realistic][Darwin]: AkamaiV2_Realistic (Darwin)
+    Loaded cached numpy array (201, 16) (0.0GB) in 0.0s
+    201 users x 16 metrics (0.0GB), max_k=16
+    Greedy selection: 16 rounds, 32 eval threads
+    [14:33:30] K=  1/16: canvas_canvasdata12_fingerprintjs1       +        60 ( 29.9%) [0.0s round, 0s total]
+    K=  1: canvas_canvasdata12_fingerprintjs1            unique=        60 ( 29.9%) +        60  [0.0s]
+    [14:33:30] K=  2/16: locale_accept_language                   +         8 ( 33.8%) [0.0s round, 0s total]
+    K=  2: locale_accept_language                        unique=        68 ( 33.8%) +         8  [0.0s]
+    [14:33:30] K=  3/16: hw_processor_count                       +         2 ( 34.8%) [0.0s round, 0s total]
+    K=  3: hw_processor_count                            unique=        70 ( 34.8%) +         2  [0.0s]
+    [14:33:30] K=  4/16: intl_timezone_offset_web                 +         0 ( 34.8%) [0.0s round, 0s total]
+    K=  4: intl_timezone_offset_web                      unique=        70 ( 34.8%) +         0  [0.0s]
+  IterativeMinMetrics [AkamaiV2_Realistic][Darwin] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Darwin.csv
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Darwin.txt
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Darwin_ordering.py
+  IterativeMinMetrics [AkamaiV2_Realistic][Linux]: AkamaiV2_Realistic (Linux)
+    Loaded cached numpy array (202, 16) (0.0GB) in 0.0s
+    202 users x 16 metrics (0.0GB), max_k=16
+    Greedy selection: 16 rounds, 32 eval threads
+    [14:33:30] K=  1/16: canvas_canvasdata12_fingerprintjs1       +        60 ( 29.7%) [0.0s round, 0s total]
+    K=  1: canvas_canvasdata12_fingerprintjs1            unique=        60 ( 29.7%) +        60  [0.0s]
+    [14:33:30] K=  2/16: locale_accept_language                   +        13 ( 36.1%) [0.0s round, 0s total]
+    K=  2: locale_accept_language                        unique=        73 ( 36.1%) +        13  [0.0s]
+    [14:33:30] K=  3/16: intl_timezone_offset_web                 +         0 ( 36.1%) [0.0s round, 0s total]
+    K=  3: intl_timezone_offset_web                      unique=        73 ( 36.1%) +         0  [0.0s]
+  IterativeMinMetrics [AkamaiV2_Realistic][Linux] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Linux.csv
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Linux.txt
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_Linux_ordering.py
+  IterativeMinMetrics [AkamaiV2_Realistic][WINNT]: AkamaiV2_Realistic (WINNT)
+    Loaded cached numpy array (402, 16) (0.0GB) in 0.0s
+    402 users x 16 metrics (0.0GB), max_k=16
+    Greedy selection: 16 rounds, 32 eval threads
+    [14:33:30] K=  1/16: canvas_canvasdata12_fingerprintjs1       +       108 ( 26.9%) [0.0s round, 0s total]
+    K=  1: canvas_canvasdata12_fingerprintjs1            unique=       108 ( 26.9%) +       108  [0.0s]
+    [14:33:30] K=  2/16: locale_accept_language                   +        24 ( 32.8%) [0.0s round, 0s total]
+    K=  2: locale_accept_language                        unique=       132 ( 32.8%) +        24  [0.0s]
+    [14:33:30] K=  3/16: hw_processor_count                       +        11 ( 35.6%) [0.0s round, 0s total]
+    K=  3: hw_processor_count                            unique=       143 ( 35.6%) +        11  [0.0s]
+    [14:33:30] K=  4/16: intl_timezone_offset_web                 +         4 ( 36.6%) [0.0s round, 0s total]
+    K=  4: intl_timezone_offset_web                      unique=       147 ( 36.6%) +         4  [0.0s]
+    [14:33:30] K=  5/16: screen_primary_avail                     +         0 ( 36.6%) [0.0s round, 0s total]
+    K=  5: screen_primary_avail                          unique=       147 ( 36.6%) +         0  [0.0s]
+  IterativeMinMetrics [AkamaiV2_Realistic][WINNT] complete [0.0s]
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_WINNT.csv
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_1777574010/iterative_minmetrics_AkamaiV2_Realistic_os_WINNT.txt
+  Wrote ./simulated-output/iterative_minmetrics_akamaiV2_17775
+All analysis complete.
+Wrote to:    ./simulated-output/iterative_minmetrics_akamai7V24_010/iterative_minmetrics_AkamaiV2_Realistic_os_WINNT_ordering.py
+1777574010
+Pattern Hash: R9MNk-2FxUs= - ./simulated-cache/R9MNk-2FxUs=
+
+Execution times (seconds):
+  iterative_minmetrics: 0.08
+Total execution time: 0.08 seconds
+

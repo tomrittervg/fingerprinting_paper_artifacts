@@ -1,0 +1,19 @@
+Analyzing the fingerprint distribution for P2-C: P1, Processor Count, Screen Availability (Darwin)-FPJSv2_Realistic
+  There are 201 total users
+  There are 171 unique users, or 85.0746% out of 201 users
+  Our cohort fitness score is 0.011806638449543327
+  Our cohort fitness score (HHI2, excl. singletons) is 0.34
+  Our P50 (median cohort size, non-unique users) is 8
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   171          |   171        |   85.07 %
+  15                 |   1            |   15         |   7.46 %
+  8                  |   1            |   8          |   3.98 %
+  2                  |   2            |   4          |   1.99 %
+  3                  |   1            |   3          |   1.49 %
+
+
+ There are 201 total users
+ There are 171 unique users, or 85.0746% out of 201 users
+

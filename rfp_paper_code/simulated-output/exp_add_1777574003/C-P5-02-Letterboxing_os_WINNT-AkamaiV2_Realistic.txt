@@ -1,0 +1,22 @@
+Analyzing the fingerprint distribution for P5-C: P4, Shipping Missing Fonts, Letterboxing (WINNT)-AkamaiV2_Realistic
+  There are 402 total users
+  There are 27 unique users, or 6.7164% out of 402 users
+  Our cohort fitness score is 0.25548872552659585
+  Our cohort fitness score (HHI2, excl. singletons) is 0.29341155555555554
+  Our P50 (median cohort size, non-unique users) is 84
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  165                |   1            |   165        |   41.04 %
+  84                 |   1            |   84         |   20.9 %
+  81                 |   1            |   81         |   20.15 %
+  1                  |   27           |   27         |   6.72 %
+  15                 |   1            |   15         |   3.73 %
+  2                  |   6            |   12         |   2.99 %
+  11                 |   1            |   11         |   2.74 %
+  7                  |   1            |   7          |   1.74 %
+
+
+ There are 402 total users
+ There are 27 unique users, or 6.7164% out of 402 users
+

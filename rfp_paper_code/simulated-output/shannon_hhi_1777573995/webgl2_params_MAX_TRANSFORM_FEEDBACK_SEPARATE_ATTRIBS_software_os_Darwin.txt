@@ -1,0 +1,5 @@
+  webgl2_params_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS_software (Darwin)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  4                        201  100.00%      100.00%

@@ -1,0 +1,6 @@
+  voices_sample (Linux)
+  ------------------------------------------------------------
+  Key                                                                                                                                                   Count        % Cumulative %
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  #m:Afrikaans+Adam?af,#m:Danish+Gene?da,#m:Hakka%20Chinese+Michel?hak,#m:Luxembourgish+Robosoft6?lb,#m:Serbian+female5?sr,#m:xextan-test+shelby?xex      101   50.00%       50.00%
+  #m:Afrikaans+Adam?af,#m:Dutch+Gene?nl,#m:Hawaiian+Miguel?haw,#m:Luxembourgish+Robosoft?lb,#m:Russian+grandpa?ru,#m:Welsh+whisper?cy                     101   50.00%      100.00%

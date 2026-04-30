@@ -1,0 +1,2 @@
+# Generated files — run generate_sql.py to produce these from the .sql.template sources
+*.sql

@@ -1,0 +1,18 @@
+Analyzing the fingerprint distribution for P3-I: Storage Quota (Darwin)-Signifyd_Realistic
+  There are 201 total users
+  There are 173 unique users, or 86.0697% out of 201 users
+  Our cohort fitness score is 0.010618549045815696
+  Our cohort fitness score (HHI2, excl. singletons) is 0.32653061224489793
+  Our P50 (median cohort size, non-unique users) is 10
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   173          |   173        |   86.07 %
+  12                 |   1            |   12         |   5.97 %
+  10                 |   1            |   10         |   4.98 %
+  2                  |   3            |   6          |   2.99 %
+
+
+ There are 201 total users
+ There are 173 unique users, or 86.0697% out of 201 users
+

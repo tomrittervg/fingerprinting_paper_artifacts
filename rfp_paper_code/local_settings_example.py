@@ -24,10 +24,10 @@ import os
 BQ_PROJECT_ID = os.environ.get("BQ_PROJECT_ID", "YOUR_BQ_PROJECT_ID")
 
 # Default cache directory for analyze.py and run_all.sh.
-DEFAULT_CACHE_DIR = os.environ.get("RFP_CACHE_DIR", "./cache")
+DEFAULT_CACHE_DIR = os.environ.get("RFP_CACHE_DIR", "./simulated-cache")
 
 # Default output directory base. analyze.py appends a timestamp.
-DEFAULT_OUTPUT_DIR = os.environ.get("RFP_OUTPUT_DIR", "./output")
+DEFAULT_OUTPUT_DIR = os.environ.get("RFP_OUTPUT_DIR", "./simulated-output")
 
 # Path to a prior metric_aggregation_output.bin file. Required only
 # by the min_set_top* configs that consume a previous run's output.

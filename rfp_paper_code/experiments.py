@@ -761,6 +761,7 @@ class outerEqualsInnerFilter(Filter):
         return [
             'screen_web_outer', 'screen_web_outer_width', 'screen_web_outer_height',
             'screen_web_outer_diff', 'screen_web_outer_width_diff', 'screen_web_outer_height_diff',
+            'screen_web_outer_inner_diff', 'screen_web_outer_inner_width_diff', 'screen_web_outer_inner_height_diff',
         ]
 
     def __init__(self, dataValues):
@@ -772,6 +773,9 @@ class outerEqualsInnerFilter(Filter):
         dataValues.screen_web_outer_diff = dataValues.screen_web_inner_diff
         dataValues.screen_web_outer_width_diff = dataValues.screen_web_inner_width_diff
         dataValues.screen_web_outer_height_diff = dataValues.screen_web_inner_height_diff
+        dataValues.screen_web_outer_inner_width_diff = "0"
+        dataValues.screen_web_outer_inner_height_diff = "0"
+        dataValues.screen_web_outer_inner_diff = "0x0"
 
         self.applied_effect = any(
             getattr(dataValues, m) != self.originals[m] for m in self.affected_metrics()

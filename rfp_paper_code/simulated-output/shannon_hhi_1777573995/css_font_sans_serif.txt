@@ -1,0 +1,17 @@
+  css_font_sans_serif
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  ---------------------------------------------------
+  16px sans-serif          877    96.80        96.80
+  None                      13     1.43        98.23
+  1 6px sans-serif           3     0.33        98.57
+  16px  sans-serif           3     0.33        98.90
+   16px sans-serif           2     0.22        99.12
+  16px sans-serif            2     0.22        99.34
+  16px sans-se rif           1     0.11        99.45
+  16px sans-s erif           1     0.11        99.56
+  16p x sans-serif           1     0.11        99.67
+  16px sa ns-serif           1     0.11        99.78
+  16px san s-serif           1     0.11        99.89
+  16px sans-ser if           1     0.11       100.00
+

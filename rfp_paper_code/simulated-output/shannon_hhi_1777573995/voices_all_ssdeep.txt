@@ -1,0 +1,10 @@
+  voices_all_ssdeep
+  ------------------------------------------------------------
+  Key                                                                                                   Count        % Cumulative %
+  ----------------------------------------------------------------------------------------------------------------------------------
+  6:QXud6MACc7NEY3ud6MSiInCc7NEY3uLOCCc7NEY3uDWUc7NEY3uDWP8InCc7No:QXuqCc7Nz3uenCc7Nz3uLOXc7Nz3uDnV       402    44.37        44.37
+  48:cCIV6Tw2oNeE+vLoCIlDWCqGgGv5dmCZpv0NWaK6TfGjvKxxuSuNhTuwlFK:cCU2QeE+vLo/xt0XfsvKxxuPlFK              201    22.19        66.56
+  12:b721wGT7G5ZjD/uwWZdZf4soGUwZZGI5o4QvI1GI5Pq0UuIaKhNI5YGf8CSfq5:baOu7GfD/fWZ7dZZrRQvGGB0UjGfUfq5      101    11.15        77.70
+  6144:giz7RQPTiBh+yQXJaLjqK1kn+6ccjZEKbQOTEiEJj9Ra5g+:giww+ELjBkTvVGRa5g+                                101    11.15        88.85
+  6144:jiPiPwqiJ/CogFzRTAxCCuyez39rKXL2Hya7DjM9t5p:jiyzROCSEpw9t5p                                        101    11.15       100.00
+

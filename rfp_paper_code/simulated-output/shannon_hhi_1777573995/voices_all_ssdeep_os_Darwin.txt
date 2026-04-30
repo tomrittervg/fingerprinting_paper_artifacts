@@ -1,0 +1,5 @@
+  voices_all_ssdeep (Darwin)
+  ------------------------------------------------------------
+  Key                                                                                           Count        % Cumulative %
+  -------------------------------------------------------------------------------------------------------------------------
+  48:cCIV6Tw2oNeE+vLoCIlDWCqGgGv5dmCZpv0NWaK6TfGjvKxxuSuNhTuwlFK:cCU2QeE+vLo/xt0XfsvKxxuPlFK      201  100.00%      100.00%

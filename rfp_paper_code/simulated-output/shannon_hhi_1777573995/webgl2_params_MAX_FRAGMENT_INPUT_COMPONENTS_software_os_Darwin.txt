@@ -1,0 +1,5 @@
+  webgl2_params_MAX_FRAGMENT_INPUT_COMPONENTS_software (Darwin)
+  ------------------------------------------------------------
+  Key                    Count        % Cumulative %
+  --------------------------------------------------
+  128                      201  100.00%      100.00%

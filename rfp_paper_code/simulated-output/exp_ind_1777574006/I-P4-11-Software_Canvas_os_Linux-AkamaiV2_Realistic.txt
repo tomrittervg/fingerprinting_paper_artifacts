@@ -1,0 +1,20 @@
+Analyzing the fingerprint distribution for P4-I: Software Canvas (Linux)-AkamaiV2_Realistic
+  There are 202 total users
+  There are 16 unique users, or 7.9208% out of 202 users
+  Our cohort fitness score is 0.27296343495735714
+  Our cohort fitness score (HHI2, excl. singletons) is 0.3214822522835009
+  Our P50 (median cohort size, non-unique users) is 74
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  74                 |   2            |   148        |   73.27 %
+  1                  |   16           |   16         |   7.92 %
+  6                  |   2            |   12         |   5.94 %
+  5                  |   2            |   10         |   4.95 %
+  4                  |   2            |   8          |   3.96 %
+  2                  |   4            |   8          |   3.96 %
+
+
+ There are 202 total users
+ There are 16 unique users, or 7.9208% out of 202 users
+

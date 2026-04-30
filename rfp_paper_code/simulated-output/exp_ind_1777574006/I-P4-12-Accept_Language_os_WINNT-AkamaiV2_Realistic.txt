@@ -1,0 +1,23 @@
+Analyzing the fingerprint distribution for P4-I: Accept Language (WINNT)-AkamaiV2_Realistic
+  There are 402 total users
+  There are 146 unique users, or 36.3184% out of 402 users
+  Our cohort fitness score is 0.10539343085567186
+  Our cohort fitness score (HHI2, excl. singletons) is 0.257659912109375
+  Our P50 (median cohort size, non-unique users) is 54
+
+  cohort_size        | # of cohorts   | # of users   | % of users
+  ------------------------------------------------------------
+  1                  |   146          |   146        |   36.32 %
+  54                 |   2            |   108        |   26.87 %
+  104                |   1            |   104        |   25.87 %
+  7                  |   2            |   14         |   3.48 %
+  3                  |   3            |   9          |   2.24 %
+  8                  |   1            |   8          |   1.99 %
+  5                  |   1            |   5          |   1.24 %
+  2                  |   2            |   4          |   1.0 %
+  4                  |   1            |   4          |   1.0 %
+
+
+ There are 402 total users
+ There are 146 unique users, or 36.3184% out of 402 users
+
